@@ -1,0 +1,28 @@
+.formContainer{
+    padding-top: 50px;
+    padding-left: 50px;
+    color: #238188;
+    padding-right: 20px;
+    @media screen and (max-width:768px) {
+        padding-left: 20px;
+        padding-right: 30px;
+    }
+}
+.activities{
+    min-height: 150px;
+    box-shadow: 3px 3px lightgray;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+}
+.Layout{
+    padding-right: 40px;
+
+}
+
+.label{
+    font-size: 15px;
+    font-weight: bold;
+}
