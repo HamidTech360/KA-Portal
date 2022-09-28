@@ -16,7 +16,7 @@ export const NavBarOptions = ()=>{
         {
             label:'Uploaded',
             icon:<AiOutlineCloudUpload size={20}/>,
-            target:'/dashboard/upload'
+            target:'/dashboard/uploads'
         },
         {
             label:'Draft',

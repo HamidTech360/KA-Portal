@@ -1,47 +1,36 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
+import { useQuery } from 'react-query';
 import HomeLayout from '../../Layouts/HomeLayout';
 import { Link } from 'react-router-dom';
-import { useQuery } from 'react-query';
-import { getRequest } from '../../utils/axios';
 import {IoIosNotificationsOutline} from 'react-icons/io'
 import {BiSearchAlt2} from 'react-icons/bi'
 import { Form } from 'react-bootstrap';
 import Avatar from 'react-avatar';
-import AppTable from '../../components/table';
-import Backdrop from '../../components/backdrop';
 import { userContext } from '../../context/user';
+import Backdrop from '../../components/backdrop';
+import AppTable from '../../components/table';
 
 import styles from './styles/dashboard.module.scss'
 
-const Dashboard = () => {
+const Draft = () => {
 
     const [user, setUser] = useContext(userContext)
-    // console.log('User exported from store:', user)
+    const [tableData, setTableData] = useState(JSON.parse(localStorage.getItem('draft')) || [])
 
-    const { isLoading, isFetching, data:response} = useQuery(
-        'schools',
-        ()=>getRequest({url:'api/schools'}),
-        {
-            refetchOnWindowFocus:false,
-            onSuccess(response){
-                //  console.log(response);
-               
-            },
-            onError(error){
-                console.log(error)
-            }
-        }
-    )
-
-    if(isLoading){
-        // console.log(data)
-        return <Backdrop/>
+    const removeFromDraft = (item)=>{
+        const draft = JSON.parse(localStorage.getItem('draft'))
+        console.log(draft)
+        const draft__c = draft.filter(el=>el.id!==item.id)
+        setTableData(draft__c)
+        localStorage.setItem('draft', JSON.stringify(draft__c))
     }
-    let tableData = response.data?.schools
-    tableData = [...tableData].reverse().slice(0, 5)
+    
+    
+    
 
     return ( 
         <HomeLayout>
+        
             <div className={styles.pageContainer}>
                 <div className={`d-flex`}>
                     <div>
@@ -61,20 +50,20 @@ const Dashboard = () => {
                 <div className="d-flex flex-1 justify-content-end hideOnMobile">
                         <div className={`${styles.smallNavs} hideOnMobile`}>
                            <div><Link className={styles.links}> Contact Supervisor</Link></div>
-                           <div><Link to="/dashboard/admins" className={styles.links}>Admins</Link></div>
+                           <div><Link className={styles.links}>Admins</Link></div>
                            <div><Link className={styles.links}>Logout</Link></div>
                         </div>
                 </div>
 
                 <div>
                     <div className={`d-flex`}>
-                       <Link to="/dashboard/new"> <button className={styles.btnCreate}>Create Record</button></Link>
-                        <div className={`numberBox d-flex justify-content-end flex-1`}>
+                        {/* <button className={styles.btnCreate}>Create Record</button> */}
+                        <div className={`numberBox mb-3`}>
                             <div className={`${styles.numberBox}`}>
                                 <div className="d-flex">
-                                    <div className={styles.number}>{response.data?.schools?.length}</div>
-                                    <div className={`${styles.numberLabel} ml-2`}>
-                                        <div>Records</div><div>uploaded</div>
+                                    <div className={styles.number}>{tableData.length}</div>
+                                    <div className={`${styles.numberLabel} ml-2 `}>
+                                        <div className='text-sm'>records</div><div className='text-sm'>in draft</div>
                                     </div>
                                 </div>
                             </div>
@@ -90,17 +79,21 @@ const Dashboard = () => {
                     </div>
                    
                 </div>
-                <AppTable 
-                    TbHeadings="Recent records" 
-                    tbData={tableData} 
+               
+                <AppTable
+                    tbData={tableData}
+                    TbHeadings="Drafts"
+                    showDraftAction={true}
+                    enableActions={true}
+                    removeDraft={removeFromDraft}
                 />
             </div>
 
             
            
-            {!user && <Backdrop/>}
+
         </HomeLayout>
      );
 }
  
-export default Dashboard;
+export default Draft;

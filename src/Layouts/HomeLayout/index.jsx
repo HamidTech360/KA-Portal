@@ -48,13 +48,13 @@ const HomeLayout = ({children}) => {
                     <SideBarContent/>
                 </Col>
 
-                <Col style={{height:'100vh', overflow:'scroll'}} lg="10" md="9" className={styles.childSection}>
+                <Col style={{height:'100vh', overflow:'scroll', paddingBottom:'50px'}} lg="10" md="9" className={styles.childSection}>
                    <div className="hideOnDesktop">
                     <div className={` d-flex  ${styles.mobileTop}`} >
                             <div> <RiMenu5Fill onClick={()=>setShow(true)} size="40" color='#0D5459' /> </div>
                             <div className="d-flex flex-1 justify-content-end px-4">
                                     <IoIosNotificationsOutline className='mr-4 mt-2' size={23} color='#0D5459' />
-                                    <Avatar fgcolor ="#fff" name={!isLoading && data.data.admin.userName} round={true} size={'40px'}/>
+                                    <Avatar fgcolor ="#fff" name={!isLoading? data.data.admin.userName:''} round={true} size={'40px'}/>
                             </div>
                         </div>
                    </div>

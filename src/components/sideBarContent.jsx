@@ -28,7 +28,7 @@ const SideBarConten = () => {
             <div className={styles.navBarOptions}>
                 {
                     navOptions.map((item,i)=>
-                    <div className={styles.listsBox}>
+                    <div key={i} className={styles.listsBox}>
                         <Link style={{color:'white', textDecoration:'none'}} to={item.target}>
                         <span className='mr-2'> {item.icon}</span>
                             {item.label}

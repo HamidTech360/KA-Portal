@@ -9,6 +9,9 @@ import Register from "../views/Auth/register";
 import Dashboard from "../views/Admin/dashboard";
 import NewRecord from "../views/Admin/new_record";
 import Admins from "../views/Admin/admins";
+import Uploaded from "../views/Admin/uploads";
+import ManageRecords from "../views/Admin/manage";
+import Draft from "../views/Admin/draft";
 
 const AllRoutes = ()=>(
     <BrowserRouter>
@@ -21,6 +24,33 @@ const AllRoutes = ()=>(
                 element={
                     <PrivateRoute>
                         <NewRecord/>
+                    </PrivateRoute>
+                }
+            />
+
+            <Route
+                path="/dashboard/draft"
+                element={
+                    <PrivateRoute>
+                        <Draft/>
+                    </PrivateRoute>
+                }
+            />
+
+            <Route
+                path="/dashboard/manage"
+                element={
+                    <PrivateRoute>
+                        <ManageRecords/>
+                    </PrivateRoute>
+                }
+            />
+
+            <Route
+                path="/dashboard/uploads"
+                element={
+                    <PrivateRoute>
+                        <Uploaded/>
                     </PrivateRoute>
                 }
             />

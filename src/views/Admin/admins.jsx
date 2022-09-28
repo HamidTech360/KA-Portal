@@ -17,7 +17,7 @@ const Admins = () => {
 
     const [user, setUser] = useContext(userContext)
     const [Admins, setAdmins] = useState([])
-
+    
     const { isLoading, isFetching, data} = useQuery(
         'admins',
         ()=>getRequest({url:'api/admins'}),
@@ -92,6 +92,7 @@ const Admins = () => {
                 {isLoading?'Loading......':''}
                 <AdminTable
                     tbData={data?.data?.admins}
+                    tbTitle="Admins"
                 />
             </div>
 

@@ -21,3 +21,22 @@ export const getRequest = async({url})=>{
  
 }
 
+export const deleteRequest = async({url})=>{
+   
+    return await axios.delete(`${config.apiUrl}/${url}`, {
+         headers:{
+             authorization:`Bearer ${localStorage.getItem('authToken')}`
+         }
+     })
+ 
+}
+
+export const updateRequest = async({url, data})=>{
+   
+    return await axios.put(`${config.apiUrl}/${url}`, data, {
+         headers:{
+             authorization:`Bearer ${localStorage.getItem('authToken')}`
+         }
+     })
+ 
+}
