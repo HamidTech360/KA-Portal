@@ -1,10 +1,9 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { useQuery } from 'react-query';
 import HomeLayout from '../../Layouts/HomeLayout';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {IoIosNotificationsOutline} from 'react-icons/io'
-import {BiSearchAlt2} from 'react-icons/bi'
-import { Form } from 'react-bootstrap';
+import Header from '../../components/header';
 import Avatar from 'react-avatar';
 import { userContext } from '../../context/user';
 import Backdrop from '../../components/backdrop';
@@ -16,15 +15,18 @@ const Draft = () => {
 
     const [user, setUser] = useContext(userContext)
     const [tableData, setTableData] = useState(JSON.parse(localStorage.getItem('draft')) || [])
-
+    const navigate = useNavigate()
     const removeFromDraft = (item)=>{
         const draft = JSON.parse(localStorage.getItem('draft'))
-        console.log(draft)
-        const draft__c = draft.filter(el=>el.id!==item.id)
+        // console.log(draft)
+        const draft__c = draft.filter(el=>el._id!==item._id)
         setTableData(draft__c)
         localStorage.setItem('draft', JSON.stringify(draft__c))
     }
     
+    const handleSearch = ()=>{
+        navigate('/dashboard/manage')
+    }
     
     
 
@@ -32,28 +34,12 @@ const Draft = () => {
         <HomeLayout>
         
             <div className={styles.pageContainer}>
-                <div className={`d-flex`}>
-                    <div>
-                        <div className={styles.hello}>Hello, {user?.userName} </div>
-                        <div className={styles.welcome}>Welcome to your dashboard</div>
-                    </div>
-                    <div className={`d-flex flex-1 justify-content-end`} >
-                        <div className='hideOnMobile'>
-                            <IoIosNotificationsOutline className='mr-4' size={23} color='#0D5459' />
-                            <Avatar name={user?.userName} round={true} size={'60px'}/>
-                        </div>
-                       
-                    </div>
-                    
-                </div>
                 
-                <div className="d-flex flex-1 justify-content-end hideOnMobile">
-                        <div className={`${styles.smallNavs} hideOnMobile`}>
-                           <div><Link className={styles.links}> Contact Supervisor</Link></div>
-                           <div><Link className={styles.links}>Admins</Link></div>
-                           <div><Link className={styles.links}>Logout</Link></div>
-                        </div>
-                </div>
+
+                <Header
+                    title={`Draft`}
+                    subTitle={`Edit draft items`}
+                />
 
                 <div>
                     <div className={`d-flex`}>
@@ -71,12 +57,12 @@ const Draft = () => {
                     </div>
 
 
-                    <div className={` ${styles.searchLayer}`}>
-                        <div className={styles.searchBox}>
+                    {/* <div className={` ${styles.searchLayer}`}>
+                        <div className={styles.searchBox} onClick={navigate}>
                             <Form.Control placeholder='Search' className={`${styles.searchInput} shadow-none`} type="search" />
                             <BiSearchAlt2 color="lightgray" size={23} />
                         </div>
-                    </div>
+                    </div> */}
                    
                 </div>
                
@@ -86,6 +72,7 @@ const Draft = () => {
                     showDraftAction={true}
                     enableActions={true}
                     removeDraft={removeFromDraft}
+                    type="draft"
                 />
             </div>
 

@@ -3,8 +3,7 @@ import { useQuery } from 'react-query';
 import HomeLayout from '../../Layouts/HomeLayout';
 import { Link } from 'react-router-dom';
 import {IoIosNotificationsOutline} from 'react-icons/io'
-import {BiSearchAlt2} from 'react-icons/bi'
-import { Form } from 'react-bootstrap';
+import Header from '../../components/header';
 import Avatar from 'react-avatar';
 import AdminTable from '../../components/adminTable';
 import { getRequest } from '../../utils/axios';
@@ -43,28 +42,11 @@ const Uploaded = () => {
         <HomeLayout>
             {isLoading && <Backdrop/>}
             <div className={styles.pageContainer}>
-                <div className={`d-flex`}>
-                    <div>
-                        <div className={styles.hello}>Hello, {user?.userName} </div>
-                        <div className={styles.welcome}>Welcome to your dashboard</div>
-                    </div>
-                    <div className={`d-flex flex-1 justify-content-end`} >
-                        <div className='hideOnMobile'>
-                            <IoIosNotificationsOutline className='mr-4' size={23} color='#0D5459' />
-                            <Avatar name={user?.userName} round={true} size={'60px'}/>
-                        </div>
-                       
-                    </div>
-                    
-                </div>
+                <Header
+                    title="Uploaded"
+                    subTitle="All active institutions"
+                />
                 
-                <div className="d-flex flex-1 justify-content-end hideOnMobile">
-                        <div className={`${styles.smallNavs} hideOnMobile`}>
-                           <div><Link className={styles.links}> Contact Supervisor</Link></div>
-                           <div><Link className={styles.links}>Admins</Link></div>
-                           <div><Link className={styles.links}>Logout</Link></div>
-                        </div>
-                </div>
 
                 <div>
                     <div className={`d-flex`}>
@@ -82,12 +64,12 @@ const Uploaded = () => {
                     </div>
 
 
-                    <div className={` ${styles.searchLayer}`}>
+                    {/* <div className={` ${styles.searchLayer}`}>
                         <div className={styles.searchBox}>
                             <Form.Control placeholder='Search' className={`${styles.searchInput} shadow-none`} type="search" />
                             <BiSearchAlt2 color="lightgray" size={23} />
                         </div>
-                    </div>
+                    </div> */}
                    
                 </div>
                 {isLoading?'Loading......':''}
@@ -95,6 +77,7 @@ const Uploaded = () => {
                     tbData={data?.data?.schools || []}
                     TbHeadings="Your uploads"
                     enableActions={true}
+                    type="uploads"
                 />
             </div>
 

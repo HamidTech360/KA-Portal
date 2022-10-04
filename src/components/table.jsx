@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import { useQuery, useQueryClient } from 'react-query';
+import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import config from '../config'
 import axios from 'axios';
 import styles from './styles/table.module.scss'
 
-const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDraft}) => {
+const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDraft, type}) => {
 
     const formatDigit  = (number)=>{
         let s__number = `000${number}`
@@ -14,6 +15,7 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
         return id
     }
     const queryClient = useQueryClient()
+    const navigate = useNavigate()
     const [isLaoding, setIsLaoding] = useState(null)
 
     
@@ -23,11 +25,15 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
         if(!query) return
         Swal.fire({
             icon: 'success',
-            title: 'Account Created',
-            text:'Account has been created successfully, Proceed to login'
+            title: 'Record deleted',
+            text:'Record has been deleted succesfully'
         })
         try{
-            const response = await axios.delete(`${config.apiUrl}/api/schools/${item._id}`)
+            const response = await axios.delete(`${config.apiUrl}/api/schools/${item._id}`, {
+                headers:{
+                    authorization:`Bearer ${localStorage.getItem('authToken')}`
+                }
+            })
             console.log(response.data)
             queryClient.invalidateQueries('user-uploads')
             Swal.close()
@@ -38,18 +44,19 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
     }
 
     const editRecord = (item)=>{
-        Swal.fire({
-            icon: 'info',
-            title: 'Not available',
-            text:'Currently working on this feature'
-        })
+        // Swal.fire({
+        //     icon: 'info',
+        //     title: 'Not available',
+        //     text:'Currently working on this feature'
+        // })
+        navigate(`/dashboard/edit/${item._id}?type=${type}`)
     }
 
    
     
    
     return ( 
-        <div className={`mt-14 ${styles.tableContainer}`}>
+        <div className={`mt-7 ${styles.tableContainer}`}>
             <div className={`d-flex`}>
                 <div className={`${styles.tableTitle}`}>
                     {TbHeadings}
@@ -67,7 +74,7 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                         <td className={styles.th}>Location</td>
                         <td className={styles.th}>department</td>
                         <td className={styles.th}>Faculty</td>
-                        {enableActions &&  <td className={styles.th}>Action</td>}
+                        {enableActions?  <td className={styles.th}>Action</td>:<td className={styles.th}>Author</td>}
 
                     </tr>
                 </thead>
@@ -89,7 +96,13 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                                         <span  className={styles.delete} onClick={()=>removeDraft(item)} >Delete</span>:
                                         <span className={styles.delete} onClick={()=>deleteRecord(item)}>Delete</span>
                                     } 
-                                    </>:''
+                                    </>:
+                                    <td className={styles.td}>
+                                        <Link style={{color:'blue', textDecoration:'none'}} to={`/dashboard/profile/${item?.author?._id}`}>
+                                            {`${item?.author?.firstName} ${item?.author?.lastName}`}
+                                             
+                                        </Link>
+                                    </td>
                                 }
                             </td>
                         </tr>

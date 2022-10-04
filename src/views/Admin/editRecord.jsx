@@ -1,56 +1,46 @@
 import React, {useEffect, useState} from 'react';
 import { useFormik } from 'formik';
-import { useMutation } from 'react-query';
+import { useMutation , useQuery} from 'react-query';
+import { useParams, useSearchParams } from 'react-router-dom';
 import Spinner from 'react-spinner-material';
 import Swal from 'sweetalert2';
-import { postRequest } from '../../utils/axios';
+import { getRequest, postRequest, updateRequest } from '../../utils/axios';
 import { NewRecordValidator } from '../../utils/validators/admin/newRecord';
 import HomeLayout from '../../Layouts/HomeLayout';
 import DashBoardHeader from '../../components/dashboard_header';
 import { Row, Col, Form, Button } from 'react-bootstrap';
+import Backdrop from '../../components/backdrop';
 
 import styles from './styles/new.module.scss'
 
 
-const NewRecord = () => {
+const EditRecord = () => {
 
-    const formik = useFormik({
-        initialValues:{
-            schoolName:'',
-            department:'',
-            contact:'',
-            faculty:'',
-            country:'',
-            email:'',
-            website:'',
-            courseOverview:'',
-            funding:'',
-            aboutSchool:'',
-            requirement:'',
-            services:'',
-            fee:''
-        },
-        validationSchema:NewRecordValidator(),
-        onSubmit:(values)=>{
-            console.log(values)
-            mutate({
-                url:'api/schools',
-                data:values
-            })
-
-        }
-    })
-
-    const {isLoading, mutate} = useMutation(postRequest, {
+   
+    
+    const [searchParams] = useSearchParams()
+    const params = useParams()
+    const id = params.id
+    const type = searchParams.get('type')
+    
+    const {isLoading, mutate} = useMutation(type=="uploads"?updateRequest:postRequest, {
         onSuccess(response){
             Swal.fire({
                 icon: 'success',
-                title: 'Record Saved',
-                text:'New record has been created successfully'
+                title: 'Record Edited',
+                text:'Record has been edited successfully'
             })
              for(let key in formik.values){
                 formik.values[key] = ""
              } 
+            //  console.log(type)
+
+             if(type=="draft"){
+                const drafts = JSON.parse(localStorage.getItem('draft'))
+                const remaining = drafts.filter(item=>item._id != id)
+                // console.log(remaining)
+                localStorage.setItem('draft', JSON.stringify(remaining))
+             }
              
         },
         onError(error){
@@ -64,39 +54,65 @@ const NewRecord = () => {
         }
     })
 
-    const [disableDraftBTN, setDisableDraftBTN] = useState(true)
-    const saveAsDraft = ()=>{
-        console.log(formik.values)
+    const {isLoading:recordIsLoading, data:schoolResponse} = useQuery(
+        ["editRecords", id],
+        ()=>getRequest({url:`api/schools/${id}`}),
+        {
+            refetchOnWindowFocus:false,
+            onSuccess(response){
+                //success
+            },
+            onError(error){
+                console.log(error)
+            },
+            enabled:type=="uploads"
+        }
+    )
         
-        let savedDraft = localStorage.getItem('draft')
-        savedDraft = JSON.parse(savedDraft)
-         const allDrafts = savedDraft? [...savedDraft]:[]
-         allDrafts.push({_id:allDrafts.length, ...formik.values})
-        const stringifiedDrafts = JSON.stringify(allDrafts)
-        localStorage.setItem("draft", stringifiedDrafts)
-        Swal.fire({
-            icon: 'success',
-            title: 'Saved to draft',
-            text:`${allDrafts.length} items in draft`
-        })
+    const draft = JSON.parse(localStorage.getItem('draft'))
+    const current = draft.find(item=>item._id==id)
+    const school = type=="uploads"?schoolResponse?.data?.school:current
+   
+   
+    const formik = useFormik({
+        initialValues:{
+            schoolName:school?.schoolName ,
+            department:school?.department || '',
+            contact:school?.contact || '',
+            faculty:school?.faculty || '',
+            country:school?.country || '',
+            email:school?.email || '',
+            website:school?.website || '',
+            courseOverview:school?.courseOverview || '',
+            funding:school?.funding || '',
+            aboutSchool:school?.aboutSchool || '',
+            requirement:school?.requirement || '',
+            services:school?.services || '',
+            fee:school?.fee || ''
+        },
+        validationSchema:NewRecordValidator(),
+        onSubmit:(values)=>{
+            console.log(values)
+            mutate({
+                url:type=="uploads"?`api/schools/${id}`:`api/schools`,
+                data:values
+            })
+
+        },
+        enableReinitialize:true
+    })
+    if(recordIsLoading){
+        return <Backdrop/>
     }
 
-    useEffect(()=>{
-        const keyList = []
-        for(let key in formik.values){
-           keyList.push(key)
-        }
-        const activeKey = keyList.find(item=>formik.values[item] !== "")
-        activeKey?setDisableDraftBTN(false):setDisableDraftBTN(true)
-       
-    }, [formik.values])
-
+    
+   
     const errorStyle = {border:'1px solid red'}
     return ( 
         <HomeLayout>
             <DashBoardHeader 
-                title={"New Record"} 
-                subTitle="Create new record for institution"
+                title={type=="draft"? "Draft":"Edit"} 
+                subTitle={type=="draft"?"Continue from where you left":"Make Changes to Existing Record"}
             />
 
             <Row className={styles.Layout}>
@@ -110,7 +126,7 @@ const NewRecord = () => {
                                     <Form.Control
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur} 
-                                        value={formik.values.schoolName}
+                                        value={formik.values?.schoolName}
                                         type="text" className={`${styles.input}  ml-3 `}
                                         name="schoolName" 
                                         style={formik.touched.schoolName && formik.errors.schoolName && errorStyle}
@@ -347,10 +363,10 @@ const NewRecord = () => {
                         </Row>
 
                             <Button type="submit" style={{width:'100%'}} >
-                                {isLoading?<Spinner className="mx-auto" color="white" radius={28} stroke={2} />:'Upload data'}
+                                {isLoading?<Spinner className="mx-auto" color="white" radius={28} stroke={2} />:'Edit data'}
                             </Button>
                         </form>
-                        <Button disabled={disableDraftBTN} onClick={()=>saveAsDraft()} variant='secondary' className={`mt-3`}>Save as draft</Button>
+                        
                     </div>
                 </Col>
                 {/* <Col lg="3" className='hideOnMobile'>
@@ -364,4 +380,4 @@ const NewRecord = () => {
      );
 }
  
-export default NewRecord;
+export default EditRecord;

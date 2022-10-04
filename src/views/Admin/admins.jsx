@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import { useQuery } from 'react-query';
 import HomeLayout from '../../Layouts/HomeLayout';
+import Header from '../../components/header';
 import { Link } from 'react-router-dom';
 import {IoIosNotificationsOutline} from 'react-icons/io'
 import {BiSearchAlt2} from 'react-icons/bi'
@@ -42,28 +43,11 @@ const Admins = () => {
         <HomeLayout>
             {isLoading && <Backdrop/>}
             <div className={styles.pageContainer}>
-                <div className={`d-flex`}>
-                    <div>
-                        <div className={styles.hello}>Hello, {user?.userName} </div>
-                        <div className={styles.welcome}>Welcome to your dashboard</div>
-                    </div>
-                    <div className={`d-flex flex-1 justify-content-end`} >
-                        <div className='hideOnMobile'>
-                            <IoIosNotificationsOutline className='mr-4' size={23} color='#0D5459' />
-                            <Avatar name={user?.userName} round={true} size={'60px'}/>
-                        </div>
-                       
-                    </div>
-                    
-                </div>
                 
-                <div className="d-flex flex-1 justify-content-end hideOnMobile">
-                        <div className={`${styles.smallNavs} hideOnMobile`}>
-                           <div><Link className={styles.links}> Contact Supervisor</Link></div>
-                           <div><Link className={styles.links}>Admins</Link></div>
-                           <div><Link className={styles.links}>Logout</Link></div>
-                        </div>
-                </div>
+                <Header
+                    title={`Hello, ${user?.userName}`}
+                    subTitle="Welcome to your dashboard"
+                />
 
                 <div>
                     <div className={`d-flex`}>

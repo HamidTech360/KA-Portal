@@ -1,14 +1,10 @@
 import React, {useContext, useState} from 'react';
 import { useQuery } from 'react-query';
 import HomeLayout from '../../Layouts/HomeLayout';
-import Header from '../../components/header';
 import { Link , useNavigate} from 'react-router-dom';
 import {IoIosNotificationsOutline} from 'react-icons/io'
-import {BiSearchAlt2} from 'react-icons/bi'
-import { Form } from 'react-bootstrap';
+import Header from '../../components/header';
 import Avatar from 'react-avatar';
-import axios from 'axios';
-import config from '../../config'
 import { getRequest } from '../../utils/axios';
 import { userContext } from '../../context/user';
 import Backdrop from '../../components/backdrop';
@@ -16,17 +12,17 @@ import AppTable from '../../components/table';
 
 import styles from './styles/dashboard.module.scss'
 
-const ManageRecords = () => {
+const Trash = () => {
 
     const [user, setUser] = useContext(userContext)
     const [searchResult, setSearchResult] = useState([])
     const { isLoading, isFetching, data} = useQuery(
-        'user-uploads',
-        ()=>getRequest({url:`api/schools`}),
+        'trash',
+        ()=>getRequest({url:`api/schools/trash`}),
         {
             refetchOnWindowFocus:false,
             onSuccess(response){
-                //  console.log(response);
+                // console.log(response);
             },
             onError(error){
                 console.log(error)
@@ -38,25 +34,17 @@ const ManageRecords = () => {
         return <Backdrop/>
     }
 
-    const handleSearch = async (e)=>{
-        const query = e.currentTarget.value
-        try{
-            const response = await axios.get(`${config.apiUrl}/api/schools/search?keyword=${query}`)
-            setSearchResult(response.data?.result)
-        }catch(error){
-            console.log(error.response?.data)
-        }
-    }
-   
+    
 
     return ( 
         <HomeLayout>
             {isLoading && <Backdrop/>}
             <div className={styles.pageContainer}>
                 <Header
-                    title={'Manage'}
-                    subTitle={'Manage All Records'}
+                    title="Trash"
+                    subTitle="Item in trash"
                 />
+                
 
                 <div>
                     <div className={`d-flex`}>
@@ -74,18 +62,18 @@ const ManageRecords = () => {
                     </div>
 
 
-                    <div className={` ${styles.searchLayer}`}>
+                    {/* <div className={` ${styles.searchLayer}`}>
                         <div className={styles.searchBox}>
                             <Form.Control onChange={(e)=>handleSearch(e)}  placeholder='Search' className={`${styles.searchInput} shadow-none`} type="search" />
                             <BiSearchAlt2 color="lightgray" size={23} />
                         </div>
-                    </div>
+                    </div> */}
                    
                 </div>
                 {isLoading?'Loading......':''}
                 <AppTable
-                    tbData={searchResult.length > 0 ? searchResult: data?.data?.schools  || []}
-                    TbHeadings="All Records"
+                    tbData={data?.data?.trash  || []}
+                    TbHeadings="Trash"
                 />
             </div>
 
@@ -96,4 +84,4 @@ const ManageRecords = () => {
      );
 }
  
-export default ManageRecords;
+export default Trash;
