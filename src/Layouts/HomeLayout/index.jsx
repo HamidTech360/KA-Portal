@@ -35,7 +35,7 @@ const HomeLayout = ({children}) => {
                 localStorage.removeItem('authToken')
                 navigate('/')
             },
-            // refetchOnWindowFocus:false
+            refetchOnWindowFocus:false
         }
     )
 
@@ -54,7 +54,9 @@ const HomeLayout = ({children}) => {
                             <div> <RiMenu5Fill onClick={()=>setShow(true)} size="40" color='#0D5459' /> </div>
                             <div className="d-flex flex-1 justify-content-end px-4">
                                     <IoIosNotificationsOutline className='mr-4 mt-2' size={23} color='#0D5459' />
-                                    <Avatar fgcolor ="#fff" name={!isLoading? data.data.admin.userName:''} round={true} size={'40px'}/>
+                                    <Link to={`/dashboard/profile/${userDetails?._id}`}>
+                                         <Avatar fgcolor ="#fff" name={!isLoading? data.data.admin.userName:''} round={true} size={'40px'}/>
+                                    </Link>
                             </div>
                         </div>
                    </div>
