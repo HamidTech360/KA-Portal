@@ -70,7 +70,7 @@ const EditRecord = () => {
     )
         
     const draft = JSON.parse(localStorage.getItem('draft'))
-    const current = draft.find(item=>item._id==id)
+    const current = draft?.find(item=>item._id==id)
     const school = type=="uploads"?schoolResponse?.data?.school:current
    
    
