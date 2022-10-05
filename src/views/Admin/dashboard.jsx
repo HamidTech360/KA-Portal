@@ -79,6 +79,7 @@ const Dashboard = () => {
                 <AppTable 
                     TbHeadings="Recent records" 
                     tbData={tableData || []} 
+                    type="uploads"
                 />
             </div>
 

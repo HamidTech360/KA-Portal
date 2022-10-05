@@ -60,7 +60,7 @@ const EditRecord = () => {
         {
             refetchOnWindowFocus:false,
             onSuccess(response){
-                //success
+               console.log(response.data)
             },
             onError(error){
                 console.log(error)

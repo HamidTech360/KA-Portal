@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import { useQuery, useQueryClient } from 'react-query';
+import { userContext } from '../context/user';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import config from '../config'
@@ -16,7 +17,7 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
     }
     const queryClient = useQueryClient()
     const navigate = useNavigate()
-    const [isLaoding, setIsLaoding] = useState(null)
+    const [user, setUser] = useContext(userContext)
 
     
     const deleteRecord = async (item)=>{
@@ -36,6 +37,7 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
             })
             console.log(response.data)
             queryClient.invalidateQueries('user-uploads')
+            queryClient.invalidateQueries('manage')
             Swal.close()
         }catch(error){
             console.log(error)
@@ -44,11 +46,6 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
     }
 
     const editRecord = (item)=>{
-        // Swal.fire({
-        //     icon: 'info',
-        //     title: 'Not available',
-        //     text:'Currently working on this feature'
-        // })
         navigate(`/dashboard/edit/${item._id}?type=${type}`)
     }
 
@@ -74,8 +71,8 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                         <td className={styles.th}>Location</td>
                         <td className={styles.th}>department</td>
                         <td className={styles.th}>Faculty</td>
-                        {enableActions?  <td className={styles.th}>Action</td>:<td className={styles.th}>Author</td>}
-
+                        <td className={styles.th}>  {enableActions?'Action':'Author'} </td>
+                        {user.isMainAdmin && !enableActions && <td>Action</td>}
                     </tr>
                 </thead>
                 <tbody>
@@ -87,7 +84,7 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                             <td className={styles.td}>{item.country}</td>
                             <td className={styles.td}>{item.department}</td>
                             <td className={styles.td}>{item.faculty}</td>
-                            <td className={styles.td}> 
+                            <td className={`${styles.td}`}> 
                                 {
                                     enableActions?
                                     <>
@@ -97,14 +94,24 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                                         <span className={styles.delete} onClick={()=>deleteRecord(item)}>Delete</span>
                                     } 
                                     </>:
-                                    <td className={styles.td}>
-                                        <Link style={{color:'blue', textDecoration:'none'}} to={`/dashboard/profile/${item?.author?._id}`}>
-                                            {`${item?.author?.firstName} ${item?.author?.lastName}`}
-                                             
-                                        </Link>
-                                    </td>
+                                        <span className={``}>
+                                            <Link style={{color:'blue', textDecoration:'none'}} to={`/dashboard/profile/${item?.author?._id}`}>
+                                                {`${item?.author?.firstName} ${item?.author?.lastName}`} 
+                                            </Link>
+                                        </span>
                                 }
                             </td>
+                            {user.isMainAdmin && !enableActions && 
+                            <td>
+                                <>
+                                    <span onClick={()=>editRecord(item)} className={`${styles.edit} mr-3`}>Edit </span>
+                                    {showDraftAction?
+                                        <span  className={styles.delete} onClick={()=>removeDraft(item)} >Delete</span>:
+                                        <span className={styles.delete} onClick={()=>deleteRecord(item)}>Delete</span>
+                                    } 
+                                </>
+                            </td>
+                            }
                         </tr>
                         )
                     }

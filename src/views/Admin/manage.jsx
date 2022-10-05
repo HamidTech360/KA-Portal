@@ -21,7 +21,7 @@ const ManageRecords = () => {
     const [user, setUser] = useContext(userContext)
     const [searchResult, setSearchResult] = useState([])
     const { isLoading, isFetching, data} = useQuery(
-        'user-uploads',
+        'manage',
         ()=>getRequest({url:`api/schools`}),
         {
             refetchOnWindowFocus:false,
@@ -86,6 +86,7 @@ const ManageRecords = () => {
                 <AppTable
                     tbData={searchResult.length > 0 ? searchResult: data?.data?.schools  || []}
                     TbHeadings="All Records"
+                    type="uploads"
                 />
             </div>
 
