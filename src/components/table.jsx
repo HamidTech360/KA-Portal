@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQueryClient } from 'react-query';
 import { userContext } from '../context/user';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -78,12 +78,13 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                 <tbody>
                     {
                         tbData.map((item, i)=>
-                        <tr key={i}>
+                        <tr className={`${styles.tableRow}`} key={i}>
                             <td className={styles.td}>{formatDigit(i+1)}</td>
                             <td className={styles.td}>{item.schoolName}</td>
                             <td className={styles.td}>{item.country}</td>
                             <td className={styles.td}>{item.department}</td>
                             <td className={styles.td}>{item.faculty}</td>
+                            
                             <td className={`${styles.td}`}> 
                                 {
                                     enableActions?
@@ -102,7 +103,7 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                                 }
                             </td>
                             {user.isMainAdmin && !enableActions && 
-                            <td>
+                            <td >
                                 <>
                                     <span onClick={()=>editRecord(item)} className={`${styles.edit} mr-3`}>Edit </span>
                                     {showDraftAction?
@@ -110,6 +111,12 @@ const AppTable = ({showDraftAction, tbData, TbHeadings, enableActions, removeDra
                                         <span className={styles.delete} onClick={()=>deleteRecord(item)}>Delete</span>
                                     } 
                                 </>
+                            </td>
+                            }
+                            {
+                            !showDraftAction && 
+                            <td >
+                                <a style={{color:'blue'}} href={`${config.userURL}/search/${item._id}`}>Preview</a>
                             </td>
                             }
                         </tr>

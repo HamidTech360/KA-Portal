@@ -1,4 +1,5 @@
 {
     "-apiUrl":"http://localhost:4000",
-    "apiUrl":"https://dau-university-api.herokuapp.com"
+    "apiUrl":"https://dau-university-api.herokuapp.com",
+    "userURL":"https://da-tuition-free-unis.herokuapp.com"
 }

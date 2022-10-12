@@ -22,6 +22,15 @@ const EditRecord = () => {
     const params = useParams()
     const id = params.id
     const type = searchParams.get('type')
+    const [previewSource, setPreviewSource] = useState(null)
+    const [logoSource, setLogoSource] = useState(null)
+
+    useEffect(()=>{
+        if(type==="draft"){
+            school?.file && setPreviewSource(school?.file)
+            school?.logo && setLogoSource(school?.file)
+        }
+    },[type])
     
     const {isLoading, mutate} = useMutation(type=="uploads"?updateRequest:postRequest, {
         onSuccess(response){
@@ -93,18 +102,38 @@ const EditRecord = () => {
         validationSchema:NewRecordValidator(),
         onSubmit:(values)=>{
             console.log(values)
+            
             mutate({
                 url:type=="uploads"?`api/schools/${id}`:`api/schools`,
-                data:values
+                data:{
+                    ...values,
+                    ...(previewSource && { file:previewSource }),
+                    ...(logoSource && { logo:logoSource }),
+                }
             })
 
         },
         enableReinitialize:true
     })
+
+    const handleImgSelection = (e, type)=>{
+        e.preventDefault()
+        let reader = new FileReader()
+        let file = e.target.files[0]
+    
+        reader.onloadend= ()=>{
+            type=="image"?setPreviewSource(reader.result) :setLogoSource(reader.result)
+        }
+        reader.readAsDataURL(file)
+
+        // console.log(previewSource)
+    }
+
     if(recordIsLoading){
         return <Backdrop/>
     }
 
+    // console.log(school)
     
    
     const errorStyle = {border:'1px solid red'}
@@ -114,6 +143,25 @@ const EditRecord = () => {
                 title={type=="draft"? "Draft":"Edit"} 
                 subTitle={type=="draft"?"Continue from where you left":"Make Changes to Existing Record"}
             />
+
+            <div className={`${styles.imageSelction} mt-5 `}>
+                <div className={`px-5 text-center mb-3 `}>
+                    <input onChange = {(e)=>handleImgSelection(e, 'image')} type="file" className={`${styles.inputFile} mb-3`} /> <br />
+                    <img src={previewSource || school?.file||"../../assets/image.jpg"} alt="placeholder" className={styles.placeholder} />
+                    <div className={`${styles.selectLabel} mt-2`}>select school image</div>
+                </div>
+
+                <div className={`px-5 text-center`}>
+                    <input  onChange = {(e)=>handleImgSelection(e, 'logo')} type="file" className={`${styles.inputFile} mb-3`} /> <br />
+                    <img src={logoSource || school?.logo||"../../assets/image.jpg"} alt="placeholder" className={styles.logo} />
+                    <div className={`${styles.selectLabel} mt-2`}>select school logo</div>
+                </div>
+            </div>
+
+
+            <div className={`px-5 mt-5`}>
+               
+            </div>
 
             <Row className={styles.Layout}>
                 <Col lg="12" md="12" sm="12" xs="12">

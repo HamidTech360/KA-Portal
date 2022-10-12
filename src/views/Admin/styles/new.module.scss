@@ -31,3 +31,42 @@
     font-size: 13px;
     font-weight: bold;
 }
+.placeholder{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    @media screen and (max-width:768px) {
+        width: 100px;
+        height: 100px;
+    }
+}
+.inputFile{
+    border: none;
+    font-size: 13px;
+    font-weight: 900;
+  
+}
+.selectLabel{
+    font-size: 14px;
+    font-weight: bolder;
+}
+.logo{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    @media screen and (max-width:768px) {
+        width: 70px;
+        height: 70px;
+    }
+}
+.imageSelction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width:768px) {
+        display: block;
+    }
+}

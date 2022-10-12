@@ -32,10 +32,11 @@ const NewRecord = () => {
         },
         validationSchema:NewRecordValidator(),
         onSubmit:(values)=>{
-            console.log(values)
+            console.log({file:previewSource, logo:logoSource, ...values})
+            
             mutate({
                 url:'api/schools',
-                data:values
+                data:{file:previewSource, logo:logoSource, ...values}
             })
 
         }
@@ -48,9 +49,10 @@ const NewRecord = () => {
                 title: 'Record Saved',
                 text:'New record has been created successfully'
             })
-             for(let key in formik.values){
-                formik.values[key] = ""
-             } 
+            //  for(let key in formik.values){
+            //     formik.values[key] = ""
+            //  } 
+             console.log(response.data)
              
         },
         onError(error){
@@ -66,12 +68,19 @@ const NewRecord = () => {
 
     const [disableDraftBTN, setDisableDraftBTN] = useState(true)
     const saveAsDraft = ()=>{
-        console.log(formik.values)
         
         let savedDraft = localStorage.getItem('draft')
         savedDraft = JSON.parse(savedDraft)
          const allDrafts = savedDraft? [...savedDraft]:[]
-         allDrafts.push({_id:allDrafts.length, ...formik.values})
+
+         allDrafts.push(
+            {
+                _id:allDrafts.length,
+                ...formik.values,
+                ...(previewSource && { file:previewSource }),
+                ...(logoSource && { logo:logoSource })
+            })
+
         const stringifiedDrafts = JSON.stringify(allDrafts)
         localStorage.setItem("draft", stringifiedDrafts)
         Swal.fire({
@@ -91,6 +100,22 @@ const NewRecord = () => {
        
     }, [formik.values])
 
+    const [previewSource, setPreviewSource] = useState(null)
+    const [logoSource, setLogoSource] = useState(null)
+    const handleImgSelection = (e, type)=>{
+        e.preventDefault()
+        let reader = new FileReader()
+        let file = e.target.files[0]
+    
+        reader.onloadend= ()=>{
+            type=="image"?setPreviewSource(reader.result) :setLogoSource(reader.result)
+        }
+        reader.readAsDataURL(file)
+
+        // console.log(previewSource)
+    }
+    
+
     const errorStyle = {border:'1px solid red'}
     return ( 
         <HomeLayout>
@@ -98,6 +123,22 @@ const NewRecord = () => {
                 title={"New Record"} 
                 subTitle="Create new record for institution"
             />
+
+            <div className={`${styles.imageSelction} mt-5 `}>
+                <div className={`px-5 text-center mb-3`}>
+                    <input  onChange = {(e)=>handleImgSelection(e, 'image')} type="file" className={`${styles.inputFile} mb-3`} /> <br />
+                    <img src={previewSource?previewSource:"../../assets/image.jpg"} alt="placeholder" className={styles.placeholder} />
+                    <div className={`${styles.selectLabel} mt-2`}>select school image</div>
+                </div>
+
+                <div className={`px-5 text-center`}>
+                    <input  onChange = {(e)=>handleImgSelection(e, 'logo')} type="file" className={`${styles.inputFile} mb-3`} /> <br />
+                    <img src={logoSource?logoSource:"../../assets/image.jpg"} alt="placeholder" className={styles.logo} />
+                    <div className={`${styles.selectLabel} mt-2`}>select school logo</div>
+                </div>
+            </div>
+
+           
 
             <Row className={styles.Layout}>
                 <Col lg="12" md="12" sm="12" xs="12">
