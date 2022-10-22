@@ -4,7 +4,7 @@ import styles from './styles/about.module.scss'
 const About = () => {
     return ( 
         <div>
-            <h1>About Template</h1>
+            {/* <h1>About Template</h1> */}
         </div>
      );
 }
