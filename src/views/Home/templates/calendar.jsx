@@ -4,7 +4,44 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiOutlineDownload } from "react-icons/ai";
+
+
+
 const Calendar = () => {
+    const events =[
+        {
+            day:'12',
+            month:'Jul',
+            title:'Registration for Winter Semester starts '
+        },
+        {
+            day:'12',
+            month:'Jul',
+            title:'Registration for Winter Semester starts '
+        },
+        {
+            day:'12',
+            month:'Jul',
+            title:'Registration for Winter Semester starts '
+        },
+        {
+            day:'12',
+            month:'Jul',
+            title:' Egesteas amet bibendum virae'
+        },
+        {
+            day:'12',
+            month:'Jul',
+            title:'Egesteas amet bibendum virae '
+        },
+        {
+            day:'12',
+            month:'Jul',
+            title:'Winter Semester Finals Week '
+        },
+    ]
+
+
   return (
     <div className={styles.calender}>
       <Container fluid className={styles.calender_body}>
@@ -27,9 +64,23 @@ const Calendar = () => {
             </a>
           </Col>
 
-          <Col className={styles.card_sideTwo} xs={12} sm={6}>
-            <div className="calender_side1">check</div>
-            <div className="calender_side2">check</div>
+          <Col className={styles.calender_sideTwo} xs={12} sm={6}>
+            {events.map(event=>(
+                <Row classsName={styles.calender_sideTwo_main}>
+                <Col sx={2} sm={2}>
+                  <p className={styles.calender_sideTwo_main_text}>
+                    {" "}
+                    <span className={styles.calender_sideTwo_main_date} >{event.day}</span>
+                    <span className={styles.calender_sideTwo_main_month} >{event.month}</span>{" "}
+                </p>
+                </Col>
+                <Col className={styles.calender_sideTwo_main_title} sx={8} sm={10}>
+                  {event.title}
+                </Col>
+                <span className="line2">  </span>
+              </Row>
+            ))}
+            
           </Col>
         </Row>
       </Container>

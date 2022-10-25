@@ -12,12 +12,12 @@ $button_text: #1A8F4A;
 
 .calender{
     background-color: $primary_color;
-    height: 100vh;
-
+    height: auto;
    
 .calender_body{
-    height: 80vh;
+    
     padding: 3rem;
+    
 }
 
 .calender_sideOne{
@@ -33,7 +33,7 @@ $button_text: #1A8F4A;
 
 .calender_line{
     border-bottom: 5px solid #8FC620;
-    width: 12rem; 
+    width: 7rem; 
     @include responsive{
         width: 6rem;
     }
@@ -98,16 +98,54 @@ padding-top: .5rem;
 
 
 
-.card_sideTwo{
+.calender_sideTwo{
     background-color:#FFFFFF;
     width: 703px;
-    height: 700px;
+    height: auto;
     padding: 40px 32px 40px 32px;
     margin: 30% auto;
     box-shadow: -2px 1px 5px 0px #DADADA40;
     border-radius: 5px;
     line-height: 1.7;
-    display: ;
+    text-align: center;
+    margin: 0% auto;
+
+   
+}
+.calender_sideTwo_main{
+
+    &_text{
+        font-family: Open Sans;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: center;
+        color: $button_text;
+        padding-top: 20px;
 
 
+    }
+
+    &_date{
+        display: block;
+       
+     
+
+    }
+    &_month{
+        display: block;
+        font-size:17px
+
+    }
+
+    &_title{
+        font-family: Open Sans;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 22px;
+        text-align: left;
+        color: #4A4A4A;
+        padding-top: 29px;
+        word-spacing: 5px;
+    }
 }
