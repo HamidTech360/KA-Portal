@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;700&display=swap');
+
+
+$primary_color:#fcfff5;
+$button_border: #8FC620;
+$button_text: #1A8F4A;
+.calender{
+    background-color: $primary_color;
+}
+.calender_body{
+    height: 80vh;
+    padding: 3rem;
+}
+
+.calender_sideOne{
+    line-height: 5rem;
+    width: 43%;
+}
+
+.calender_line{
+    border-bottom: 5px solid #8FC620;
+    width: 12rem; 
+}
+
+.calender_para1{
+font-family: Open Sans;
+font-size: 48px;
+font-weight: 700;
+line-height: 58px;
+letter-spacing: 0em;
+text-align: left;
+padding-top: .5rem;
+}
+
+.calender_para2{
+font-family: Open Sans;
+font-size: 18px;
+font-weight: 400;
+line-height: 28px;
+letter-spacing: .3rem;
+text-align: left;
+padding-top: .5rem;
+}
+
+.calender_button{
+    line-height: 22.4px;
+    border-radius: .8rem;
+    padding: 20px 48px;
+    border: 1px solid $button_border;
+    text-align: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 16px;
+    color: $button_text ;
+
+    &:hover{
+        text-decoration: none;
+        color: $button_text;
+    }
+}
+
+
+
+
