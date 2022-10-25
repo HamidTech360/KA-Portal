@@ -1,20 +1,13 @@
-@import "tailwindcss/components";
-/* ---------- import component folder ---------- */
-@import "tailwindcss/components";
 
-/* ----------- import utilities folder ---------- */
-@import "tailwindcss/utilities";
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Merriweather:wght@300;400;700;900&display=swap');
 body{
     overflow-x: hidden;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 .hideOnDesktop{
     display: none;
 }
-.hideOnMobile{
-    display: block;
-}
+
 
 @media screen and (max-width:768px) {
     .hideOnDesktop{
