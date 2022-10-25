@@ -7,7 +7,7 @@ import { AiOutlineDownload } from "react-icons/ai";
 const Calendar = () => {
   return (
     <div className={styles.calender}>
-      <Container className={styles.calender_body}>
+      <Container fluid className={styles.calender_body}>
         <Row>
           <Col className={styles.calender_sideOne} xs={12} sm={6}>
             <div className={styles.calender_line}></div>
@@ -18,7 +18,7 @@ const Calendar = () => {
             </p>
 
             <p className={styles.calender_para2}>
-              You can download the complete <br/> session calender below
+              You can download the complete <br /> session calender below
             </p>
 
             <a href="#" className={styles.calender_button}>
@@ -26,11 +26,10 @@ const Calendar = () => {
               <AiOutlineDownload size={29} style={{ paddingLeft: "10px" }} />
             </a>
           </Col>
-          <Col xs={12} sm={6}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus
-            saepe rem nulla, laboriosam ipsa doloribus laborum maxime. Nihil,
-            praesentium? Tempore iste in quaerat? Voluptate adipisci id
-            doloremque? Necessitatibus, qui. Cum.
+
+          <Col className={styles.card_sideTwo} xs={12} sm={6}>
+            <div className="calender_side1">check</div>
+            <div className="calender_side2">check</div>
           </Col>
         </Row>
       </Container>

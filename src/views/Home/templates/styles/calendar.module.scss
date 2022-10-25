@@ -1,13 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;700&display=swap');
 
 
 $primary_color:#fcfff5;
 $button_border: #8FC620;
 $button_text: #1A8F4A;
+
+@mixin  responsive {
+    @media screen and (max-width:768px){@content};
+}
+
 .calender{
     background-color: $primary_color;
-}
+    height: 100vh;
+
+   
 .calender_body{
     height: 80vh;
     padding: 3rem;
@@ -16,11 +23,20 @@ $button_text: #1A8F4A;
 .calender_sideOne{
     line-height: 5rem;
     width: 43%;
+  
+    @include responsive{
+        height:50vh ;
+        width: 100%;
+    }
+}
 }
 
 .calender_line{
     border-bottom: 5px solid #8FC620;
     width: 12rem; 
+    @include responsive{
+        width: 6rem;
+    }
 }
 
 .calender_para1{
@@ -28,9 +44,15 @@ font-family: Open Sans;
 font-size: 48px;
 font-weight: 700;
 line-height: 58px;
-letter-spacing: 0em;
 text-align: left;
 padding-top: .5rem;
+
+@include responsive{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+
 }
 
 .calender_para2{
@@ -39,8 +61,13 @@ font-size: 18px;
 font-weight: 400;
 line-height: 28px;
 letter-spacing: .3rem;
-text-align: left;
 padding-top: .5rem;
+
+@include responsive(){
+    font-size: 19px;
+    letter-spacing: 5px;
+    
+}
 }
 
 .calender_button{
@@ -55,6 +82,13 @@ padding-top: .5rem;
     font-size: 16px;
     color: $button_text ;
 
+    @include responsive(){
+        margin: 20% auto;
+        padding: 20px 20px;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+
     &:hover{
         text-decoration: none;
         color: $button_text;
@@ -64,3 +98,16 @@ padding-top: .5rem;
 
 
 
+.card_sideTwo{
+    background-color:#FFFFFF;
+    width: 703px;
+    height: 700px;
+    padding: 40px 32px 40px 32px;
+    margin: 30% auto;
+    box-shadow: -2px 1px 5px 0px #DADADA40;
+    border-radius: 5px;
+    line-height: 1.7;
+    display: ;
+
+
+}
