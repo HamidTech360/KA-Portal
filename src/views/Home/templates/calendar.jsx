@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import { AiOutlineDownload } from "react-icons/ai";
 
 const Calendar = () => {
+
   const events = [
     {
       day: "12",
@@ -83,3 +84,4 @@ const Calendar = () => {
 };
 
 export default Calendar;
+
