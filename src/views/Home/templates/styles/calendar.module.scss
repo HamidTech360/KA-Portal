@@ -26,8 +26,9 @@ $button_text: #1A8F4A;
 
 .calender_sideOne{
     line-height: 5rem;
-    width: 43%;
-  
+    width: 100%;
+    padding-left: 50px !important;
+
     @include responsive{
         height:50vh ;
         width: 100%;
@@ -57,10 +58,10 @@ padding-top: .5rem;
     font-weight: 600;
 }
 
-// &_main,
-// &_sub {
-//     display:block;
-// }
+&_main,
+&_sub {
+    display:block;
+}
 
 
 
@@ -68,10 +69,9 @@ padding-top: .5rem;
 
 .calender_para2{
 font-family: Open Sans;
-font-size: 18px;
+font-size: 20px;
 font-weight: 400;
 line-height: 28px;
-letter-spacing: .3rem;
 padding-top: .5rem;
 
 @include responsive(){
@@ -119,6 +119,7 @@ padding-top: .5rem;
     border-radius: 5px;
     line-height: 1.7;
     
+    
     @include responsive(){
     //    margin: 0;
        width: 100%;
@@ -130,7 +131,8 @@ padding-top: .5rem;
 .calender_sideTwo_main{
     display: flex;
     border-bottom: 1px solid #e7e7e7;
-
+    font-weight: bold;
+    padding-left: 20px;
    
 
    
