@@ -6,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import { AiOutlineDownload } from "react-icons/ai";
 
 const Calendar = () => {
-
   const events = [
     {
       day: "12",
@@ -44,7 +43,7 @@ const Calendar = () => {
     <div className={styles.calender}>
       <Container fluid className={styles.calender_body}>
         <Row>
-          <Col className={styles.calender_sideOne} xs={12} sm={5}>
+          <Col className={styles.calender_sideOne} xs={12} sm={6}>
             <div className={styles.calender_line}></div>
 
             <p className={styles.calender_para1}>
