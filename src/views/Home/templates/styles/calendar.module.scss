@@ -31,8 +31,7 @@ $button_text: #1A8F4A;
     padding-left: 50px !important;
 
     @include responsive{
-        height:50vh ;
-        width: 100%;
+        height:auto ;
         margin-bottom: 10px;
         padding-left: 20px !important;
     }
@@ -43,8 +42,8 @@ $button_text: #1A8F4A;
     border-bottom: 5px solid #8FC620;
     width: 7rem; 
     @include responsive{
-        width: 6rem;
-        border-bottom: 3px solid #8FC620;
+        width: 4rem;
+        border-bottom: 2px solid #8FC620;
     }
 }
 
@@ -57,13 +56,17 @@ text-align: left;
 padding-top: .5rem;
 
 @include responsive{
-    font-size: 40px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 &_main,
 &_sub {
     display:block;
+
+    @include responsive(){
+        display:inline-block;
+    }
 }
 
 
@@ -78,7 +81,7 @@ line-height: 28px;
 padding-top: .5rem;
 
 @include responsive(){
-    font-size: 19px;
+    font-size: 18px;
    
     
 }
@@ -177,7 +180,7 @@ padding-top: .5rem;
             padding-top: 10px;
             padding-bottom: 10px;
             line-height: 1.2;
-             font-size: 13px !important;
+             font-size: 15px !important;
 
         }
      
