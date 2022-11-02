@@ -64,9 +64,9 @@ const Calendar = () => {
           </Col>
 
           <Col className={styles.calender_sideTwo} xs={12} sm={6}>
-            {events.map((event) => (
-              <div className={styles.calender_sideTwo_main}>
-                <div className={styles.calender_sideTwo_main_text}>
+            {events.map((event, i) => (
+              <div key={i} className={styles.calender_sideTwo_main}>
+                <div  className={styles.calender_sideTwo_main_text}>
                   <div>{event.day}</div>
                   <div>{event.month}</div>
                 </div>

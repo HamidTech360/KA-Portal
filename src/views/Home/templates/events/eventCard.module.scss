@@ -1,0 +1,54 @@
+.card_body{
+height:  401.84px;
+width:379px;
+border-radius: 11px;
+background-image: linear-gradient(to right , rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2) ),url('./../../../../../public/assets/events.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: top;
+padding: 100px;
+position: relative;
+// background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.57) 75.52%);
+
+}
+
+.badge_para1{
+color: #FCFCFC;
+font-family: Inter;
+font-size: 13px;
+font-weight: 600;
+letter-spacing: 0.01em;
+text-align: center;
+line-height: 10px;
+
+
+
+}
+.badge{
+height: 74px;
+border-radius: 11px;
+padding: 20px;
+position: absolute;
+top: 0%;
+left: 0%;
+border: 1.42px solid;
+box-shadow: 7px 7px 11px 0px #00000026;
+background: radial-gradient(100% 100% at 100% 100%, rgba(110, 110, 110, 0.09) 0%, rgba(0, 0, 0, 0) 100%) ,
+linear-gradient(132.84deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.05) 100%),
+radial-gradient(100% 107.84% at 0% 0%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.105694) 78.86%, rgba(255, 255, 255, 0) 100%) ;
+}
+
+.para{
+height: 61px;
+width: 303px;
+position: absolute;
+left: 31px;
+top: 304px;
+font-family: Open Sans;
+font-size: 18px;
+font-weight: 700;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: left;
+color: #FCFCFC;
+}
