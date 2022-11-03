@@ -5,6 +5,7 @@ import { PrivateRoute, AuthRoute, PublicRoute } from "./config";
 
 //----------------Pages-------------------------//
 import Home from "../views/Home";
+// import Footer from './../components/footer';
 
 
 const AllRoutes = ()=>(
@@ -13,6 +14,7 @@ const AllRoutes = ()=>(
             
             <Route path="/" element={ <Home/>} />
         </Routes>
+        {/* < Footer/> */}
     </BrowserRouter>
 )
 

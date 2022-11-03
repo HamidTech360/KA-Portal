@@ -12,8 +12,9 @@ position: relative;
     @media screen and (max-width:768px) {
         margin: 30% auto;
         max-width:100%;
-        margin-top: 10px
-        
+        margin-top: 10px;
+        width:300px;
+        height:310px;
         ;
     }
 }
@@ -57,4 +58,11 @@ line-height: 26px;
 letter-spacing: 0em;
 text-align: left;
 color: #FCFCFC;
+
+@media screen and (max-width:768px) {
+    top: 200px;
+    left: 21px;
+    font-size: 15px;
+
+}
 }
