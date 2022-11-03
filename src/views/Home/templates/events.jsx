@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles/events.module.scss";
-import { Navigation, Scrollbar, A11y } from "swiper";
+import { Navigation, Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import EventsCard from "./events/eventsCard";
 
@@ -23,16 +23,20 @@ const Events = () => {
        breakpoints={{
          320:{
           width:320,
-          slidesPerView:1
+          slidesPerView:1,
+          spaceBetween:10
+          
          },
           640: {
             width: 640,
             slidesPerView: 1,
+            spaceBetween:20
           },
          
           768: {
             width: 768,
             slidesPerView: 2,
+            spaceBetween:30
           },
         }}
         modules={[Navigation, Scrollbar]}
@@ -46,7 +50,7 @@ const Events = () => {
         speed={400}
         initialSlide={2}
        
-        // className={styles.swiper_container}
+        
       >
         <SwiperSlide>
             <EventsCard/>

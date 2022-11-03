@@ -11,7 +11,10 @@ position: relative;
 // background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.57) 75.52%);
     @media screen and (max-width:768px) {
         margin: 30% auto;
-      
+        max-width:100%;
+        margin-top: 10px
+        
+        ;
     }
 }
 
