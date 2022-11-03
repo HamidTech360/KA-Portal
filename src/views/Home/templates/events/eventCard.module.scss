@@ -2,14 +2,17 @@
 height:  401.84px;
 width:379px;
 border-radius: 11px;
-background-image: linear-gradient(to right , rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2) ),url('./../../../../../public/assets/events.jpg');
+background-image: linear-gradient(to right , rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.1) ),url('./../../../../../public/assets/events.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 background-position: top;
 padding: 100px;
 position: relative;
 // background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.57) 75.52%);
-
+    @media screen and (max-width:768px) {
+        margin: 30% auto;
+      
+    }
 }
 
 .badge_para1{
