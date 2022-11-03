@@ -31,8 +31,7 @@ $button_text: #1A8F4A;
     padding-left: 50px !important;
 
     @include responsive{
-        height:50vh ;
-        width: 100%;
+        height:auto ;
         margin-bottom: 10px;
         padding-left: 20px !important;
     }
@@ -43,8 +42,8 @@ $button_text: #1A8F4A;
     border-bottom: 5px solid #8FC620;
     width: 7rem; 
     @include responsive{
-        width: 6rem;
-        border-bottom: 3px solid #8FC620;
+        width: 4rem;
+        border-bottom: 2px solid #8FC620;
     }
 }
 
@@ -57,13 +56,17 @@ text-align: left;
 padding-top: .5rem;
 
 @include responsive{
-    font-size: 40px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 &_main,
 &_sub {
     display:block;
+
+    @include responsive(){
+        display:inline-block;
+    }
 }
 
 
@@ -78,7 +81,7 @@ line-height: 28px;
 padding-top: .5rem;
 
 @include responsive(){
-    font-size: 19px;
+    font-size: 18px;
    
     
 }
@@ -114,21 +117,12 @@ padding-top: .5rem;
 
 .calender_sideTwo{
     background-color:#FFFFFF;
-    width: 703px;
     height: auto;
     padding: 40px 32px 40px 32px;
     margin: 30% auto;
-    box-shadow: -2px 1px 5px 0px #DADADA40;
+    box-shadow: -4px 1px 5px 0px #DADADA40;
     border-radius: 5px;
     line-height: 1.7;
-
-    
-    
-    @include responsive(){
-       max-width: 100%;
-     
-
-    }
 
    
 }
@@ -141,7 +135,7 @@ padding-top: .5rem;
    
     @include responsive(){
         max-width: 100%;
-        padding-left: 2px !important;
+        padding-left: 1px !important;
     
      }
    
@@ -162,6 +156,8 @@ padding-top: .5rem;
             padding-top: 10px;
             padding-bottom: 10px;
             line-height: 1.2;
+            font-size: 13px !important;
+
         }
       
 
@@ -184,13 +180,10 @@ padding-top: .5rem;
             padding-top: 10px;
             padding-bottom: 10px;
             line-height: 1.2;
+             font-size: 15px !important;
+
         }
      
     }
 }
 
-// .calender_hr{
-//     border-bottom: .5px solid $primary_color;
-//     display: flex;
-//     width: 0px;
-// }

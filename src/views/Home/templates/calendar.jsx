@@ -65,15 +65,15 @@ const Calendar = () => {
 
           <Col className={styles.calender_sideTwo} xs={12} sm={6}>
             {events.map((event) => (
-            
-                <div className={styles.calender_sideTwo_main}>
-                    <div className={styles.calender_sideTwo_main_text}>
-                        <div>{event.day}</div>
-                        <div>{event.month}</div>
-                    </div>
-                    <div className={styles.calender_sideTwo_main_title}>{event.title}</div>
+              <div className={styles.calender_sideTwo_main}>
+                <div className={styles.calender_sideTwo_main_text}>
+                  <div>{event.day}</div>
+                  <div>{event.month}</div>
                 </div>
-            
+                <div className={styles.calender_sideTwo_main_title}>
+                  {event.title}
+                </div>
+              </div>
             ))}
           </Col>
         </Row>
@@ -83,4 +83,3 @@ const Calendar = () => {
 };
 
 export default Calendar;
-
