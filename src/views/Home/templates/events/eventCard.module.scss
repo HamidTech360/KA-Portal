@@ -12,9 +12,11 @@ position: relative;
     @media screen and (max-width:768px) {
         margin: 30% auto;
         max-width:100%;
-        margin-top: 10px
+        margin-top: 10px;
+        display: flex;
+        height:350px;
+        width: 100% !important;
         
-        ;
     }
 }
 
@@ -42,6 +44,12 @@ box-shadow: 7px 7px 11px 0px #00000026;
 background: radial-gradient(100% 100% at 100% 100%, rgba(110, 110, 110, 0.09) 0%, rgba(0, 0, 0, 0) 100%) ,
 linear-gradient(132.84deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.05) 100%),
 radial-gradient(100% 107.84% at 0% 0%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.105694) 78.86%, rgba(255, 255, 255, 0) 100%) ;
+    
+    @media screen and (max-width:768px) {
+        height: auto;
+        padding: 10px;
+        
+    }
 }
 
 .para{
@@ -57,4 +65,12 @@ line-height: 26px;
 letter-spacing: 0em;
 text-align: left;
 color: #FCFCFC;
+
+@media screen and (max-width:768px) {
+    top: 270px;
+    left: 21px;
+    font-size: 15px;
+    padding-right: 20px;
+
+}
 }

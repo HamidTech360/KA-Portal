@@ -23,20 +23,26 @@ const Events = () => {
        breakpoints={{
          320:{
           width:320,
-          slidesPerView:1,
-          spaceBetween:10
+          slidesPerView:1.05,
+          spaceBetween:10,
+          
+
           
          },
           640: {
             width: 640,
-            slidesPerView: 1,
-            spaceBetween:20
+            slidesPerView: 1.05,
+            spaceBetween:10,
+           
+
           },
          
           768: {
             width: 768,
             slidesPerView: 2,
-            spaceBetween:30
+            spaceBetween:30,
+         
+
           },
         }}
         modules={[Navigation, Scrollbar]}

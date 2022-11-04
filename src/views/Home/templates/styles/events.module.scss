@@ -10,6 +10,8 @@
 
     @include responsive(){
         padding-top: 1rem;
+        height: auto;
+        // padding: 0;
       
     }
 }
