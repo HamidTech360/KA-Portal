@@ -8,6 +8,21 @@
 
 }
 
+.hideOnMobile{
+    visibility: visible;
+
+    @include responsive(tab){
+        display: none;
+    }
+}
+.hideOnDesktop{
+    visibility: none;
+
+    @include responsive(tab){
+        visibility: visible;
+    }
+}
+
 .footer{
     background-color: #EEF7F3;
     height: 80vh;
@@ -15,7 +30,8 @@
     padding: 30px 65px;
 
     @include responsive(tab){
-        padding: 10px;    
+        padding: 10px;
+        height: auto;    
     }
    
 }
@@ -27,18 +43,23 @@
     background-color: #161E03;
     display: flex;
     box-shadow: 0px 30px 20px rgba(0,0,0,.2);
+    margin-bottom: 110px;
 
     @include responsive(phone){
         height: auto;
         display: block;  
         border-radius: 5px;
-    box-shadow: none
+        box-shadow: none;
+         margin-bottom: 50px;
+
     }
 
     @include responsive(tab){
         height: auto;
         border-radius: 5px;
-    box-shadow: none
+        box-shadow: none;
+        margin-bottom: 50px;
+
     }
 
 
@@ -162,3 +183,90 @@
    
 }
 
+
+.social{
+
+    @include responsive(phone){
+        padding: 10px; 
+        // line-height: 5;
+
+    }
+
+
+
+  
+}
+
+.social_name{
+
+
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: flex;
+
+    @include responsive(tab){
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: bold;
+        color: #2A2A2A;
+        padding-bottom: 30px;
+         
+
+    }
+}
+// .logo{
+//     padding-right: 10px;
+//     @extend .hideOnMobile;
+// }
+.social_links{
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #0A142F;
+
+    @include responsive(tab){
+       padding-bottom: 30px;
+       font-weight: bold;
+       font-size: 20px;
+    }
+  
+
+    
+}
+.social_link{
+    line-height: 1.7;
+    display: block;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0px;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    color: #0A142F;
+    @include responsive(tab){
+        font-size: 15;
+     }
+}
+.social_link:hover{
+    text-decoration: none;
+}
+
+.social_location{
+    @extend .social_links
+    
+}
+
+.location{
+    @extend .social_link
+    
+
+}
