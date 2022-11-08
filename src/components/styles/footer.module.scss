@@ -26,17 +26,19 @@
     border-radius: 10px;
     background-color: #161E03;
     display: flex;
+    box-shadow: 0px 30px 20px rgba(0,0,0,.2);
 
     @include responsive(phone){
         height: auto;
         display: block;  
         border-radius: 5px;
+    box-shadow: none
     }
 
     @include responsive(tab){
         height: auto;
         border-radius: 5px;
-         
+    box-shadow: none
     }
 
 
