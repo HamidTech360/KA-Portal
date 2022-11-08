@@ -8,6 +8,7 @@ import About from './templates/about';
 import Calendar from './templates/calendar';
 import Events from './templates/events';
 import News from './templates/news';
+import Footer from './../../components/footer';
 
 const Home = () => {
     return ( 
@@ -18,6 +19,7 @@ const Home = () => {
            <Calendar/>
            <Events/>
            <News/>
+           < Footer/>
         </div>
      );
 }
