@@ -1,0 +1,44 @@
+@mixin mobile {
+    @media only screen and (max-width: 768px){
+        @content
+    }
+}
+
+.about{
+    margin-top: 50px;
+}
+.sidebar1{
+
+    h1{
+        position: relative;
+        line-height: 40px;
+        font-size: 48px;
+        font-weight: 700;
+        color: #161E03;
+        white-space: wrap;
+        padding-top: 30px;
+
+        @include mobile{
+                    font-size: 28px;
+                    line-height: 38px;
+        }
+
+    }
+    h1::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0px;
+        border-top: 5px solid #8FC620;
+        width: 7rem;
+
+        @include mobile{
+            width: 4rem;
+            border-bottom: 1px solid #8FC620;
+    }
+        
+    }
+
+  
+}
