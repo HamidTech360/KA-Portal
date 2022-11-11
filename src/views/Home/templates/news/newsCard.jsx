@@ -1,25 +1,26 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
-
-import React from 'react';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import styles from "./newsCard.module.scss";
+import img from "./../../../../assets/news2.jpg";
+import { Link } from "react-router-dom";
 
 function NewsCard(props) {
-    return (
-        <div>
-            <Card style={{ width: '18rem' }}>
-       <Card.Img variant="top" src="holder.js/100px180" />
-       <Card.Body>
-         <Card.Title>Card Title</Card.Title>
-         <Card.Text>
-           Some quick example text to build on the card title and make up the
-           bulk of the card's content.
-         </Card.Text>
-         <Button variant="primary">Go somewhere</Button>
-       </Card.Body>
-     </Card>
-        </div>
-    );
+  return (
+    <div>
+      <Card className={styles.card} style={{ width: "20rem" }}>
+        <Card.Img variant="top" src={img} />
+        <Card.Body>
+          <Card.Title className={styles.title}>News Title</Card.Title>
+          <Card.Text className={styles.text}>
+            Ac, amet lacus, tristique viverra et sit convallis. Egestas amet
+            bibendum vitae in egestas Ut libero lorem arcu interdum...
+          </Card.Text>
+          < Link className={styles.btn} to='#'> Read More <span className={styles.arrow}> &rarr;</span> </Link>
+        </Card.Body>
+      </Card>
+    </div>
+  );
 }
 
 export default NewsCard;

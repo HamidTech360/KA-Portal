@@ -1,0 +1,42 @@
+
+
+.card{
+    height: auto;
+    border-radius: 15px;
+    border: 0px;
+}
+
+.title{
+    font-family: Lato;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 38px;
+    text-align: left;
+    text-transform: uppercase;
+    color: #2A2A2A;
+}
+
+.text{
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #4F4F4F;
+}
+.btn{
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    text-decoration: none;
+    color: #1A8F4A;
+    
+    &:hover{
+        color: #1A8F4A;
+        text-decoration: none;
+    }
+}

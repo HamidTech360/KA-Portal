@@ -11,10 +11,14 @@ const News = () => {
             </p>
             <div className="row">
             <div className="col-12 col-lg-4 col-md-8">
-                {/* < NewsCard/> */}
+                < NewsCard/>
             </div>
-            <div className="col-12 col-lg-4 col-md-8"></div>
-            <div className="col-12 col-lg-4 col-md-8"></div>
+            <div className="col-12 col-lg-4 col-md-8">
+                < NewsCard/>
+            </div>
+            <div className="col-12 col-lg-4 col-md-8">
+                < NewsCard/>
+            </div>
 
             </div>
         </div>
