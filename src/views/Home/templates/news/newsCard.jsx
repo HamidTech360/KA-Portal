@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import styles from "./newsCard.module.scss";
 import img from "./../../../../assets/news2.jpg";
 import { Link } from "react-router-dom";
-
+import {BsArrowRightShort} from 'react-icons/bs'
 function NewsCard(props) {
   return (
     <div>
@@ -16,7 +16,7 @@ function NewsCard(props) {
             Ac, amet lacus, tristique viverra et sit convallis. Egestas amet
             bibendum vitae in egestas Ut libero lorem arcu interdum...
           </Card.Text>
-          < Link className={styles.btn} to='#'> Read More <span className={styles.arrow}> &rarr;</span> </Link>
+          < Link className={styles.btn} to='#'> Read More <span className={styles.arrow}> <BsArrowRightShort size={25}/></span> </Link>
         </Card.Body>
       </Card>
     </div>
