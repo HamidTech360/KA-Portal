@@ -10,7 +10,7 @@ function NewsCard(props) {
     <div>
       <Card className={styles.card} style={{ width: "20rem" }}>
         <Card.Img variant="top" src={img} />
-        <Card.Body>
+        <Card.Body className={styles.card_body}>
           <Card.Title className={styles.title}>News Title</Card.Title>
           <Card.Text className={styles.text}>
             Ac, amet lacus, tristique viverra et sit convallis. Egestas amet

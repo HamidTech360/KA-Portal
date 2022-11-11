@@ -1,19 +1,59 @@
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+
+}
 
 
 .card{
     height: auto;
     border-radius: 15px;
     border: 0px;
-}
 
+    @include responsive(tab){
+        width: 100% !important  ;
+
+        margin-bottom: 20px;   
+     }
+
+    @include responsive(phone){
+       width: 100% ;
+       margin-bottom: 20px;   
+
+    }
+
+
+   
+}
+.card_body{
+    @include responsive(tab){
+        padding: 20px !important;
+    }
+}
 .title{
     font-family: Lato;
     font-size: 24px;
     font-weight: 700;
     line-height: 38px;
-    text-align: left;
     text-transform: uppercase;
     color: #2A2A2A;
+
+    @include responsive(phone){
+        padding-left: 12px;
+    }
+    @include responsive(tab){
+        padding-left: 16px;
+        padding-bottom: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 30px;
+        padding-top: 0px !important;
+    }
+
 }
 
 .text{
@@ -22,8 +62,9 @@
     font-weight: 500;
     line-height: 23px;
     letter-spacing: 0em;
-    text-align: left;
     color: #4F4F4F;
+
+ 
 }
 .btn{
     font-family: Open Sans;
@@ -35,8 +76,19 @@
     text-decoration: none;
     color: #1A8F4A;
     
+    @include responsive(tab){
+        font-size: 16px;
+    }
+
+
     &:hover{
         color: #1A8F4A;
         text-decoration: none;
     }
+}
+
+
+.arrow{
+    color: #8FC620;
+
 }
