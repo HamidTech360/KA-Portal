@@ -4,6 +4,33 @@ import { Link } from "react-router-dom";
 import logo from "./../assets/logo.png";
 import { FaTwitter, FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 function Footer(props) {
+
+  const links=[
+        {
+          linkName:'About Adabi',
+          linkTo:'/'
+        },
+        {
+          linkName:'Calender',
+          linkTo:'/'
+        },
+        {
+          linkName:'About Adabi',
+          linkTo:'/'
+        },
+        {
+          linkName:'News & Update',
+          linkTo:'/'
+        },
+        {
+          linkName:'Contact ',
+          linkTo:'/'
+        },
+        {
+          linkName:'FAQ',
+          linkTo:'/'
+        }
+  ]
   return (
     <div className={styles.footer}>
       <div className={styles.letter}>
@@ -33,21 +60,9 @@ function Footer(props) {
 
         <div className={`col-12 col-lg-2  col-md-6  ${styles.social_links}`}>
           <p>Quick Links</p>
-          <Link className={styles.social_link} to="/">
-            About Adab
-          </Link>
-          <Link className={styles.social_link} to="/">
-            Calender
-          </Link>
-          <Link className={styles.social_link} to="/">
-            News & update
-          </Link>
-          <Link className={styles.social_link} to="/">
-            Contact
-          </Link>
-          <Link className={styles.social_link} to="/">
-            FAQ
-          </Link>
+          {links.map((link,i)=>(
+            <Link key={i} className={styles.social_link} to={link.linkTo}>{link.linkName}</Link>
+          ))}
         </div>
         <div className={`col-12 col-lg-2  col-md-6 ${styles.social_location}`}>
           <p>Location</p>
@@ -76,6 +91,9 @@ function Footer(props) {
           </>
         </div>
       </div>
+        <div className={styles.social_line}></div>
+        <div className={styles.year}>© 2022 Khayrul Adab School | All Rights Reserved</div>
+
     </div>
   );
 }
