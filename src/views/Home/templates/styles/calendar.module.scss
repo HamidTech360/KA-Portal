@@ -14,7 +14,7 @@ $button_text: #1A8F4A;
     background-color: $primary_color;
     height: 100vh;
 
-    @include responsive(){
+    @include responsive{
         height: auto;
         margin-bottom: 10px;
     }
