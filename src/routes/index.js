@@ -12,6 +12,7 @@ const AllRoutes = ()=>(
         <Routes>
             <Route path="/" element={ <Home/>} />
         </Routes>
+    
     </BrowserRouter>
 )
 

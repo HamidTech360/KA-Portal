@@ -1,0 +1,290 @@
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+
+}
+
+.hideOnMobile{
+    visibility: visible;
+
+    @include responsive(tab){
+        display: none;
+    }
+}
+.hideOnDesktop{
+    visibility: none;
+
+    @include responsive(tab){
+        visibility: visible;
+    }
+}
+
+.footer{
+    background-color: #EEF7F3;
+    height: 90vh;
+    width:100%;
+    padding: 30px 65px;
+
+    @include responsive(tab){
+        padding: 10px;
+        height: auto;    
+    }
+   
+}
+
+.letter{
+    height: 100px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #161E03;
+    display: flex;
+    box-shadow: 0px 30px 20px rgba(0,0,0,.2);
+    margin-bottom: 110px;
+
+    @include responsive(phone){
+        height: auto;
+        display: block;  
+        border-radius: 5px;
+        box-shadow: none;
+         margin-bottom: 4px !important;
+
+    }
+
+    @include responsive(tab){
+        height: auto;
+        border-radius: 5px;
+        box-shadow: none;
+        margin-bottom: 50px;
+
+    }
+
+
+
+    &_main{
+        padding: 30px 50px;
+        display: flex;
+
+        @include responsive(phone){
+            height: auto;
+            padding: 10px ;
+            display: block;
+            
+        }
+        @include responsive(tab){
+            height: auto;
+            padding: 10px ;
+            
+        }
+    
+        
+    }
+
+    &_text{
+        font-family: Absara Bold;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 38px;
+        color: #FFFFFF;
+        margin-right: 140px;
+
+     
+       
+        @include responsive(phone){   
+            font-size: 30px;    
+             margin-right: 0px;
+             text-align: center;
+    
+        }
+         @include responsive(tab){
+            font-size: 25px;
+            padding-left: 10px;
+            margin-right: 10px;
+
+        }
+
+    }
+
+    &_input{
+        height: 50px;
+        width: 575px ; 
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        flex: 1;
+
+        @include responsive(phone){
+            height: 40px;
+            width: 100% ; 
+             
+        }
+    
+       
+    
+    }
+}
+.input{
+    height: 40px;
+    border: 0px;
+    width: 365px;
+    padding-left:20px;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+
+    @include responsive(phone){
+        height: 30px ;
+        width: 65% !important; 
+        
+    }
+    @include responsive(tab){
+        height: 30px;
+        width: 55% ; 
+        
+    }
+}
+.input:focus{
+    outline: none;
+}
+.letter_button{
+    height: 40px;
+    width: 203px;
+    border-radius: 4px;
+    background-color: #1A8F4A;
+    border: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #FFFFFF;
+    @include responsive(phone){
+        height: 30px;
+        width: 30% ; 
+        border-radius: 2px;
+        font-size: 10px;
+        margin-left: 12px;
+        margin-top: 5px;
+         
+    }
+    @include responsive(tab){
+        margin-left: 15px; 
+    }
+   
+}
+
+
+.social{
+
+    @include responsive(phone){
+        padding: 10px; 
+      
+        // line-height: 5;
+
+    }
+
+
+
+  
+}
+
+.social_name{
+
+
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: flex;
+
+    @include responsive(tab){
+        font-family: Poppins;
+        font-size: 15px;
+        font-weight: bold;
+        color: #2A2A2A;
+        padding-bottom: 10px;
+         
+
+    }
+}
+
+.social_links{
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #0A142F;
+
+    @include responsive(tab){
+       padding-bottom: 10px;
+       font-weight: bold;
+       font-size: 20px;
+    }
+  
+
+    
+}
+.social_link{
+    line-height: 1.7;
+    display: block;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #0A142F;
+    @include responsive(tab){
+        
+     }
+}
+.social_link:hover{
+    text-decoration: none;
+}
+
+.social_location{
+    @extend .social_links
+    
+}
+
+.location{
+    @extend .social_link
+
+    
+
+}
+.social_text{
+    @extend .social_links
+    
+}
+
+.social_line{
+    padding-top: 50px;
+    border-bottom: 1.5px solid #979797;
+    width: 100%;
+    margin-bottom: 15px;
+
+    @include responsive(tab){
+
+    }
+    
+}
+
+
+.year{
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+    text-align: center;
+    color: #0A142F;
+
+}

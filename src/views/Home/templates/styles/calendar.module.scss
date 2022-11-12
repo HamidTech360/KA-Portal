@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;700&display=swap');
+
+
+$primary_color:#fcfff5;
+$button_border: #8FC620;
+$button_text: #1A8F4A;
+
+@mixin  responsive {
+    @media screen and (max-width:768px){@content};
+}
+
+.calender{
+    background-color: $primary_color;
+    height: 100vh;
+
+    @include responsive{
+        height: auto;
+        margin-bottom: 10px;
+    }
+}
+
+.calender_body{
+    padding: 3rem;
+
+}
+
+.calender_sideOne{
+    line-height: 5rem;
+    width: 100%;
+    padding-left: 50px !important;
+
+    @include responsive{
+        height:auto ;
+        margin-bottom: 10px;
+        padding-left: 20px !important;
+    }
+}
+
+
+.calender_line{
+    border-bottom: 5px solid #8FC620;
+    width: 7rem; 
+    @include responsive{
+        width: 4rem;
+        border-bottom: 2px solid #8FC620;
+    }
+}
+
+.calender_para1{
+font-family: Open Sans;
+font-size: 48px;
+font-weight: 700;
+line-height: 58px;
+text-align: left;
+padding-top: .5rem;
+
+@include responsive{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+&_main,
+&_sub {
+    display:block;
+
+    @include responsive(){
+        display:inline-block;
+    }
+}
+
+
+
+}
+
+.calender_para2{
+font-family: Open Sans;
+font-size: 20px;
+font-weight: 400;
+line-height: 28px;
+padding-top: .5rem;
+
+@include responsive(){
+    font-size: 18px;
+   
+    
+}
+}
+
+.calender_button{
+    line-height: 22.4px;
+    border-radius: .8rem;
+    padding: 20px 48px;
+    border: 1px solid $button_border;
+    text-align: center;
+    text-decoration: none;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 16px;
+    color: $button_text ;
+
+    @include responsive(){
+        margin: 20% auto;
+        padding: 20px 20px;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+
+    &:hover{
+        text-decoration: none;
+        color: $button_text;
+    }
+}
+
+
+
+
+.calender_sideTwo{
+    background-color:#FFFFFF;
+    height: auto;
+    padding: 40px 32px 40px 32px;
+    margin: 30% auto;
+    box-shadow: -4px 1px 5px 0px #DADADA40;
+    border-radius: 5px;
+    line-height: 1.7;
+
+   
+}
+
+.calender_sideTwo_main{
+    display: flex;
+    border-bottom: 1px solid #e7e7e7;
+    font-weight: bold;
+    padding-left: 20px;
+   
+    @include responsive(){
+        max-width: 100%;
+        padding-left: 1px !important;
+    
+     }
+   
+
+
+    &_text{
+        font-family: Open Sans;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $button_text;
+        padding-top: 20px;
+        text-align: center;
+        margin-right: 30px;
+        margin-left: 30px;
+
+        @include responsive(){
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 1.2;
+            font-size: 13px !important;
+
+        }
+      
+
+
+    }
+
+
+    &_title{
+        font-family: Open Sans;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 22px;
+        color: #4A4A4A;
+        padding-top: 29px;
+        word-spacing: 5px;
+        margin-left: 5px;
+        flex: 1;
+
+        @include responsive(){
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 1.2;
+             font-size: 15px !important;
+
+        }
+     
+    }
+}
+
