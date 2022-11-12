@@ -1,0 +1,78 @@
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+
+}
+
+.hideOnMobile{
+    visibility: visible;
+
+    @include responsive(tab){
+        display: none;
+    }
+}
+.hideOnDesktop{
+    visibility: none;
+
+    @include responsive(tab){
+        visibility: visible;
+    }
+}
+
+
+.new{
+    height: 800px;
+    padding: 100px 80px ;
+    background-image: linear-gradient(to right bottom, rgba(0,0,0,.5),rgba(0,0,0,.5) ) ,url('../../../../../public/assets/news.jfif');
+    background-size: cover;
+    background-position: center;   
+
+    @include responsive(tab){
+        height: auto;
+        width: 100% !important;
+        padding: 20px;
+
+    }
+   
+}
+
+.news_text{
+    font-family: Lato;
+    line-height: 1.1;
+    
+    
+
+    &_sub{
+     display: block;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #EAEB06;
+    @include responsive(tab){
+        font-size: 16px;
+        font-weight: 400;
+        
+    }
+
+    }
+
+
+
+    &_main{
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    color: #FFFFFF;
+
+    @include responsive(tab){
+        font-size: 38px;
+        font-weight: bold;
+        
+    }
+
+    }
+}

@@ -3,7 +3,7 @@ import styles from "./styles/events.module.scss";
 import { Navigation, Scrollbar } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import EventsCard from "./events/eventsCard";
-
+import Footer from './../../../components/footer'
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -68,6 +68,8 @@ const Events = () => {
         <SwiperSlide><EventsCard/></SwiperSlide>
         <SwiperSlide><EventsCard/></SwiperSlide>
       </Swiper>
+
+      
     </div>
   );
 };
