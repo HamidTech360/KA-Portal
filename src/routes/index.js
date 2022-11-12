@@ -10,7 +10,6 @@ import Home from "../views/Home";
 const AllRoutes = ()=>(
     <BrowserRouter>
         <Routes>
-            
             <Route path="/" element={ <Home/>} />
         </Routes>
     </BrowserRouter>
