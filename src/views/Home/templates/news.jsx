@@ -10,15 +10,15 @@ const News = () => {
                 <span className={styles.news_text_main}>News & Updates</span>
             </p>
             <div className="row">
-            <div className="col-12 col-lg-4 col-md-5">
-                < NewsCard/>
-            </div>
-            <div className="col-12 col-lg-4 col-md-5">
-                < NewsCard/>
-            </div>
-            <div className="col-12 col-lg-4 col-md-5">
-                < NewsCard/>
-            </div>
+                <div className="col-12 col-lg-4 col-md-5">
+                    < NewsCard/>
+                </div>
+                <div className="col-12 col-lg-4 col-md-5">
+                    < NewsCard/>
+                </div>
+                <div className="col-12 col-lg-4 col-md-5">
+                    < NewsCard/>
+                </div>
 
             </div>
         </div>
