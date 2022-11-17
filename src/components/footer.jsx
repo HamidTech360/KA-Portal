@@ -42,7 +42,7 @@ function Footer(props) {
           <div className={styles.letter_input}>
             <input
               type="text"
-              className={styles.input}
+              className={`${styles.input}`}
               placeholder="Enter your mail"
             ></input>
             <button className={styles.letter_button}>Subscribe Now</button>
@@ -51,7 +51,7 @@ function Footer(props) {
       </div>
 
       <div className={`${styles.social} row`}>
-        <div className={`${styles.social_name} col-12 col-lg-5  col-md-6 `}>
+        <div className={`${styles.social_name} col-12 col-lg-5  col-md-6`}>
           <div className={`${styles.logo} `}>
             <img src={logo} alt="School logo" />
           </div>
@@ -60,9 +60,11 @@ function Footer(props) {
 
         <div className={`col-12 col-lg-2  col-md-6  ${styles.social_links}`}>
           <p>Quick Links</p>
+          <div className={styles.linkTexts}>
           {links.map((link,i)=>(
             <Link key={i} className={styles.social_link} to={link.linkTo}>{link.linkName}</Link>
           ))}
+          </div>
         </div>
         <div className={`col-12 col-lg-2  col-md-6 ${styles.social_location}`}>
           <p>Location</p>

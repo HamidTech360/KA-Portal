@@ -70,9 +70,9 @@ const About = () => {
 
 
             <div className={styles.footerwrap}>
-                    {/* <div> 
-                        <iframe src={img} frameborder="0"></iframe> 
-                    </div> */}
+                    <div className={styles.iframeContainer}> 
+                        <iframe width="100%"  src="https://www.youtube.com/embed/ekpCDd9jE9c"></iframe>
+                    </div>
 
                     <div className={styles.foot}>
                          
