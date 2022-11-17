@@ -1,0 +1,65 @@
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+};
+
+
+.lecture{
+    height: 1571px;
+    width: 1450px;
+    left: -5.5px;
+    top: 580px;
+    border-radius: 0px;
+    padding: 96px 85px 126px 85px;
+    display:flex;
+    position: relative;
+
+}
+
+.breadCrumb{
+    // text-align: center;
+
+    border-top: 1px solid #1A8F4A;
+    border-bottom: 1px solid #1A8F4A;
+    height: 2.7rem;
+    display: inline-flex;
+    list-style-type: none;
+    left: 35%;
+    position: absolute;
+    left: 20;
+    // align-items: center;
+    // text-align: center;
+
+    @include responsive(tab){
+        padding-left: 15%;
+    }
+    @include responsive(phone){
+        padding-left: 2%;
+    }
+    
+    
+}
+
+.breadCrumb_items{
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color:  #667085;
+    padding-right: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.breadCrumb_items:hover,
+.breadCrumb_items:active{
+    color:  #667085;
+}
+
