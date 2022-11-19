@@ -6,7 +6,7 @@ import Lectures from './templates/lectures';
 
 function Resources(props) {
   return (
-    <div>
+    <div style={{overflowX:'hidden'}}>
       <AppHeader />
       <ResoucesBanner />
       < Lectures/>

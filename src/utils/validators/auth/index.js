@@ -2,10 +2,9 @@ import * as Yup from 'yup'
 
 export const LoginValidator = ()=>{
     return Yup.object({
-        email:Yup
+        username:Yup
             .string()
-            .required('Email is required')
-            .email('Invalid email address'),
+            .required('Username is required'),
         password:Yup
             .string()
             .required('Password is required')

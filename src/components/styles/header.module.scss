@@ -4,7 +4,7 @@
     padding:1rem;
     padding-left: 1.5rem;
     overflow-x: hidden;
-
+    background-color: #FCFCFC;
     @media screen and (max-width:768px) {
         padding-bottom: 0.5rem;
         padding-left: 0.5rem;
@@ -56,4 +56,24 @@
     @media screen and (max-width:768px) {
         margin-right: 0.3rem;
     }
+}
+.sideBarContainer{
+    padding: 2rem 1rem;
+    background-color: rgba(167, 207, 184, 0.4);
+    height: 100vh;
+}
+.navItems{
+    margin-top: 4rem;
+    padding-left: 1rem;
+}
+.navItem{
+    margin-top: 1.5rem;
+    font-weight: bolder;
+    font-size: 17px;
+    color: #021b0c;
+    // color: #08351a;
+    text-decoration: none;
+}
+.icon{
+    margin-right: 10px;
 }
