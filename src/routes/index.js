@@ -10,13 +10,15 @@ import Login from "../views/Auth/login";
 import News from "../views/News";
 import Students from "../views/User/students";
 
+import AuthLayout from "../Layouts/AuthLayout";
+
 const AllRoutes = ()=>(
     <BrowserRouter>
         <Routes>
             <Route path="/resources" element={ < Resources />} />
             <Route path="/login" element={ < Login />} />
             <Route path="/news" element={ < News />} />
-            <Route path="/students" element={ < Students />} />
+            <Route path="/user/*" element={<AuthLayout/>} />
             <Route path="/" element={ <Home/>} />
         </Routes>
     

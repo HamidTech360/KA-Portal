@@ -1,3 +1,119 @@
 .studentScreen{
     min-height: 100vh;
+    box-sizing: border-box;
+}
+.main{
+    min-width: 100%;
+    min-height: 150px;
+    padding: 40px 0 60px 35px;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    // margin-left: 35px;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 17px;
+}
+.top > h1 {
+    padding-right: 20px;
+    border-right: 1px solid #000;
+    color: #1A8F4A;
+    font-weight: bolder;
+    font-family: Lato;
+}
+.top > h4{
+    padding-left: 20px;
+    font-size: 20px;
+    font-family: Lato;
+    font-weight: bolder;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    // margin-left: 35px;
+    align-items: center;
+    height: 50px;
+}
+.search > input{
+    min-width: 45%;
+    height: 48px;
+    padding: 10px 10px 10px 15px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid rgba(167, 207, 184, 0.4);
+}
+.search .mdsearch{
+    position: relative;
+    right: 50px;
+    cursor: pointer;
+}
+.search .button{
+    background-color: #1A8F4A;
+    text-transform: initial;
+    width: 180px;
+    height: 50px;
+    border-radius: 8px;
+    outline: none;
+    color: white;
+}
+.search .button:hover{
+    background-color: #1A8F4A;
+}
+.photo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: grey;
+}
+table{
+    width: 90%;
+    font-family: Lato;
+    border-collapse: collapse;
+    margin: 35px;
+}
+td, th{
+    border-bottom: 1px solid rgba(167, 207, 184, 0.4) !important;
+    padding: 8px;
+}
+tr:nth-child(odd){
+    color: #1A8F4A;
+    // border-left: 2px solid #1A8F4A;
+}
+tr:nth-child(even){
+    border-left: 2px solid #f3f3f3;
+}
+th {
+    background-color: #1A8F4A;
+    color: #fff;
+}
+th:first-child{
+    border-top-left-radius: 8px !important;
+}
+th:last-child{
+    border-top-right-radius: 8px !important;
+}
+.scroll{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -140px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color:#fff;
+    justify-content: center;
+    color: #1A8F4A;
+    font-family: Lato;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    border: 6px solid #fff;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 2px 4px 5px 5px rgba(.1,.1,.1,.1);
 }

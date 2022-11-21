@@ -19,7 +19,7 @@ const Home = () => {
            <Calendar/>
            <Events/>
            <News/>
-           < Footer/>
+           <Footer/>
         </div>
      );
 }
