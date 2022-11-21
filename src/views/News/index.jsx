@@ -1,6 +1,6 @@
 import React from 'react';
 import {AiOutlineHome, AiOutlineFile} from "react-icons/ai"
-import {TfiAngleRight} from "react-icons/tfi"
+// import {TfiAngleRight} from "react-icons/tfi"
 import styles from "./styles/news.module.scss"
 import AppHeader from './../../components/header';
 import Footer from '../../components/footer';
@@ -24,7 +24,7 @@ const News = () => {
                         <span>Home</span>
                                        </div>
                          <div>
-                            <TfiAngleRight />
+                            {/* <TfiAngleRight /> */}
                          </div>
                                        <div className= {styles.item}>
                         <AiOutlineFile />

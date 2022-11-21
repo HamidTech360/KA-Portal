@@ -10,56 +10,67 @@
 
 .lecture{
     height: 1571px;
-    width: 1450px;
-    left: -5.5px;
-    top: 580px;
-    border-radius: 0px;
     padding: 96px 85px 126px 85px;
-    display:flex;
-    position: relative;
-
-}
-
-.breadCrumb{
-    // text-align: center;
-
-    border-top: 1px solid #1A8F4A;
-    border-bottom: 1px solid #1A8F4A;
-    height: 2.7rem;
-    display: inline-flex;
-    list-style-type: none;
-    left: 35%;
-    position: absolute;
-    left: 20;
-    // align-items: center;
-    // text-align: center;
-
-    @include responsive(tab){
-        padding-left: 15%;
-    }
     @include responsive(phone){
-        padding-left: 2%;
+        padding: 0;
+        padding-top: 10px;
+        padding-left: 10px;
     }
-    
-    
 }
 
-.breadCrumb_items{
-    font-family: Lato;
+
+.text{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: left;
+    color: #333333;
+    margin-right: 15px;
+    @include responsive(phone){
+
+    }
+}
+.input{
+    height: 43px;
+    width: 260px;
+    left: 65px;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color:#656565;
+    border: 1px solid #D0D5DD ;
+    font-family: Inter;
     font-size: 16px;
     font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-    color:  #667085;
-    padding-right: 10px;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 10px;
+    line-height: 22px;
+
+  
+    
+
 }
 
-.breadCrumb_items:hover,
-.breadCrumb_items:active{
-    color:  #667085;
+.input:focus{
+    outline: none;
+   
 }
+
+.upper{
+    display: flex;
+    width: 100%;
+
+    @include responsive(phone){
+        display:block
+    }
+
+}
+
+.search{
+    flex: 1;
+    justify-content: flex-end;
+    
+    @include responsive(phone){
+        padding-top: 2rem;
+    }
+}
+
 
