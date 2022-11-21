@@ -57,6 +57,7 @@
     height: 50px;
     border-radius: 8px;
     outline: none;
+    color: white;
 }
 .search .button:hover{
     background-color: #1A8F4A;
@@ -79,7 +80,7 @@ td, th{
 }
 tr:nth-child(odd){
     color: #1A8F4A;
-    border-left: 2px solid #1A8F4A;
+    // border-left: 2px solid #1A8F4A;
 }
 tr:nth-child(even){
     border-left: 2px solid #f3f3f3;

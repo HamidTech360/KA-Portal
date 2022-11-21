@@ -2,12 +2,10 @@ import React from 'react';
 import styles from './styles/student.module.scss'
 import AppHeader from '../../../components/header';
 import Footer from '../../../components/footer';
-import { MdSearch } from "react-icons/md";
-import AddIcon from '@mui/icons-material/Add';
-import Button from '@mui/material/Button';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import SearchIcon from '@mui/icons-material/Search';
+import { BsSearch } from 'react-icons/bs';
+import { Button } from 'react-bootstrap';
+import {AiOutlinePlus} from 'react-icons/ai'
+import {IoMdMore} from 'react-icons/io'
 
 
 
@@ -86,7 +84,7 @@ const Students = () => {
 
     return ( 
         <div className={styles.studentScreen}>
-            <AppHeader />
+            
             <div className={styles.main}>
                 <div className={styles.top}>
                     <h1>All Students</h1>
@@ -94,8 +92,8 @@ const Students = () => {
                 </div>
                 <div className={styles.search}>
                     <input type="text" placeholder='Search by Name' />
-                    <MdSearch size={26} className={styles.mdsearch}/>
-                    <Button variant="contained" startIcon={<AddIcon />} className={styles.button}>Add Filter</Button>
+                    <BsSearch size={23} className={styles.mdsearch}/>
+                    <Button variant="contained"  className={styles.button}>Add Filter <AiOutlinePlus color="white" /> </Button>
                 </div>
             </div>
             <table>
@@ -121,14 +119,14 @@ const Students = () => {
                                 <td>{row.gender}</td>
                                 <td>{row.program}</td>
                                 <td>{row.Level}</td>
-                                <td>{<MoreVertIcon />}</td>
+                                <td style={{cursor:'pointer'}}><IoMdMore size={25} /></td>
                             </tr>
                         ))
                     }
                 </tbody>
-                <button className={styles.scroll}><ExpandMoreIcon />  Scroll down</button>
+                {/* <button className={styles.scroll}><ExpandMoreIcon />  Scroll down</button> */}
             </table>
-            <Footer />
+           
         </div>
      );
 }
