@@ -2,10 +2,12 @@ import React from 'react';
 import styles from './styles/student.module.scss'
 import AppHeader from '../../../components/header';
 import Footer from '../../../components/footer';
+
 import { BsSearch } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 import {AiOutlinePlus} from 'react-icons/ai'
 import {IoMdMore} from 'react-icons/io'
+
 
 
 
@@ -92,6 +94,7 @@ const Students = () => {
                 </div>
                 <div className={styles.search}>
                     <input type="text" placeholder='Search by Name' />
+
                     <BsSearch size={23} className={styles.mdsearch}/>
                     <Button variant="contained"  className={styles.button}>Add Filter <AiOutlinePlus color="white" /> </Button>
                 </div>
@@ -126,7 +129,7 @@ const Students = () => {
                 </tbody>
                 {/* <button className={styles.scroll}><ExpandMoreIcon />  Scroll down</button> */}
             </table>
-           
+
         </div>
      );
 }

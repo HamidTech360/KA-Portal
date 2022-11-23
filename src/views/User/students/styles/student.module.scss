@@ -33,7 +33,6 @@
     display: flex;
     flex-direction: row;
     min-width: 100%;
-    // margin-left: 35px;
     align-items: center;
     height: 50px;
 }
@@ -50,17 +49,46 @@
     right: 50px;
     cursor: pointer;
 }
+@media screen and (max-width:800px) {
+    .search .button{
+        max-width: 180px;
+        margin-left: 10px;
+    }
+    .search .mdsearch{
+        right: 40px;
+    }
+    .search > input{
+        font-size: 10px;
+    }
+}
+@media screen and (min-width: 410px) and (max-width: 800px) {
+    .search > input{
+        font-size: 15px;
+    }
+}
 .search .button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #1A8F4A;
-    text-transform: initial;
-    width: 180px;
+    width: 190px;
     height: 50px;
+    border: none;
     border-radius: 8px;
     outline: none;
+
+    margin:0 10px 0 0;
+    color: #fff;
+    font-family: Lato;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+
     color: white;
 }
 .search .button:hover{
     background-color: #1A8F4A;
+
 }
 .photo{
     width: 50px;
@@ -68,8 +96,16 @@
     border-radius: 50%;
     background-color: grey;
 }
+.toptable{
+    overflow-x: auto;
+}
+@media screen and (min-width: 1100px) {
+    .toptable{
+        overflow-x: hidden;
+    }
+}
 table{
-    width: 90%;
+    width: 100%;
     font-family: Lato;
     border-collapse: collapse;
     margin: 35px;
@@ -112,8 +148,8 @@ th:last-child{
     border-radius: 8px;
     cursor: pointer;
     outline: none;
-    border: 6px solid #fff;
+    border: none;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 19px;
     box-shadow: 2px 4px 5px 5px rgba(.1,.1,.1,.1);
 }
