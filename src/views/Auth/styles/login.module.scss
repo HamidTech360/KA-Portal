@@ -8,6 +8,9 @@
     border-top: 5px solid #1A8F4A;
     border-radius: 5px;
     padding: 3rem;
+    border-right: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
 
     @media screen and (max-width:768px) {
         padding-left: 1rem;
@@ -16,7 +19,7 @@
     }
 }
 .loginScreen{
-    background-color: #FCFCFC;
+    background-color: #EEF7F3;
     padding-left: 15px;
     padding-right: 15px;
 }

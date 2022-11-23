@@ -76,12 +76,19 @@
     border: none;
     border-radius: 8px;
     outline: none;
+
     margin:0 10px 0 0;
     color: #fff;
     font-family: Lato;
     cursor: pointer;
     font-weight: 500;
     font-size: 18px;
+
+    color: white;
+}
+.search .button:hover{
+    background-color: #1A8F4A;
+
 }
 .photo{
     width: 50px;
@@ -109,7 +116,7 @@ td, th{
 }
 tr:nth-child(odd){
     color: #1A8F4A;
-    border-left: 2px solid #1A8F4A;
+    // border-left: 2px solid #1A8F4A;
 }
 tr:nth-child(even){
     border-left: 2px solid #f3f3f3;

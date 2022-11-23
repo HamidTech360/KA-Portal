@@ -1,12 +1,14 @@
-import {FiHome} from 'react-icons/fi'
-import {AiFillInfoCircle, AiFillHome} from 'react-icons/ai'
-import {GrResources} from 'react-icons/gr'
+import {IoMdNotificationsOutline} from 'react-icons/io'
+import {AiFillInfoCircle, AiOutlineSetting, AiFillHome, AiOutlineCloudUpload} from 'react-icons/ai'
+import {FaUserGraduate} from 'react-icons/fa'
 import {MdSchool, MdHelp} from 'react-icons/md'
-import {FaHouseUser} from 'react-icons/fa'
+import {BiHomeAlt} from 'react-icons/bi'
 import {RiVideoFill} from 'react-icons/ri'
 
 
 const iconSize = 24
+const authIconSize = 24
+
 const color = "#1A8F4A"
 export const navItems = [
     {
@@ -32,4 +34,36 @@ export const navItems = [
         label:'Contact Us',
         icon:<MdHelp color={color} size={iconSize} />
     }
+]
+
+
+
+export const AuthNav = [
+    {
+        label:'Home',
+        icon:<BiHomeAlt size={authIconSize} />,
+        path:'/user'
+    },
+    {
+        label:'Students',
+        icon:<FaUserGraduate size={authIconSize} />,
+        path:'/user/students'
+    },
+    {
+        label:'Upload Result',
+        icon:<AiOutlineCloudUpload size={authIconSize} />,
+        path:'/user/upload'
+    },
+    {
+        label:'Notifications',
+        icon:<IoMdNotificationsOutline size={authIconSize}/>,
+        path:'/user/notification'
+    },
+    {
+        label:'Settings',
+        icon:<AiOutlineSetting size={authIconSize}/>,
+        path:'/user/settings'
+    },
+    
+    
 ]
