@@ -15,7 +15,7 @@ function LectureList(props) {
             <div className={` ${styles.video} col-12 col-lg-4 col-sm-12`}>
               <video src={programm.src} controls />
             </div>
-            <div className={`col-12 col-lg-8 col-sm-12 mt-1`}>
+            <div className={`col-12 col-lg-8 col-sm-12 `}>
               <p className={styles.para1}> {programm.para1} </p>
               <p className={styles.para2}> {programm.para2}</p>
               <p className={styles.para3}> {programm.para3}</p>
