@@ -20,7 +20,9 @@
     padding-left: 30px;
 
     @include responsive(tab){
-
+        padding-bottom: 3px;
+        padding-left: 10px;
+        font-weight:bold; 
     }
 
 }
@@ -41,8 +43,16 @@
     padding-top: 30px;
     padding-bottom: 20px;
 
+    
+        @include responsive(tab){
+            padding-bottom: 15px;
+        }
+}
+
+.vid{
+    width:100%;
     @include responsive(tab){
-        // padding-left: 10px;
+        padding-bottom: 7px;
     }
 }
 
