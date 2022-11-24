@@ -1,0 +1,121 @@
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+};
+.lecture_List{
+    padding-top: 40px;
+}
+
+.book{
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+    padding-bottom: 5px;
+    padding-left: 30px;
+
+    @include responsive(tab){
+        padding-bottom: 3px;
+        padding-left: 10px;
+        font-weight:bold; 
+    }
+
+}
+
+.line{
+    border-bottom: 1px solid #D7D7D7;
+  
+}
+.line2{
+    border-bottom: 1.7px solid #D7D7D7;
+}
+
+
+
+
+.programme{
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 20px;
+
+    
+        @include responsive(tab){
+            padding-bottom: 15px;
+        }
+}
+
+.vid{
+    width:100%;
+    @include responsive(tab){
+        padding-bottom: 7px;
+    }
+}
+
+
+
+.para1{
+    font-family: Open Sans;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 28px;
+    color:#515151;
+
+    @include responsive(tab){
+        font-weight: bold;
+        line-height: 24px;
+        font-size: 25px;
+    }
+
+
+ }
+
+.para2{
+    font-family: Open Sans;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #4A4A4A;   
+    
+    @include responsive(tab){
+        font-size: 20px;
+        line-height: 17px;
+    }
+}
+
+.para3{
+    font-family: Open Sans;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #515151;
+
+    @include responsive(tab){
+        font-size: 19px;
+        line-height: 20px;
+    }
+}
+.para4{
+    font-family: Open Sans;
+    font-family: Lato;
+    color: #667085;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    
+    @include responsive(tab){
+        font-size: 17px;
+       text-align:justify;
+
+    }
+
+
+&_link{
+    color:#1554F6;
+    text-decoration: none;
+}
+}

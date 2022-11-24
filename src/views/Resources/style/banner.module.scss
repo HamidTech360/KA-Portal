@@ -11,6 +11,11 @@
     top: 40%;
     left: 14%;
     line-height: 27px;
+
+    @media screen and (max-width:768) {
+        top:50%;
+        left:10%
+    }
 }
 
 .para1{

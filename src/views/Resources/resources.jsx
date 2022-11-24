@@ -2,15 +2,15 @@ import React from "react";
 import ResoucesBanner from "./templates/banner";
 import Footer from './../../components/footer';
 import AppHeader from "./../../components/header";
-import Lectures from './templates/lectures';
+import Lecture from './templates/lecture'
 
 function Resources(props) {
   return (
-    <div style={{overflowX:'hidden'}}>
+    <div >
       <AppHeader />
       <ResoucesBanner />
-      < Lectures/>
-      {/* < Footer/> */}
+      < Lecture/>
+      < Footer/>
     </div>
   );
 }
