@@ -10,7 +10,7 @@ import AppHeader from '../../components/header'
 //pages
 import Dashboard from '../../views/User/dashboard';
 import Students from '../../views/User/students';
-import RegisterStudent from '../../views/User/NewStudent';
+import RegisterStudent from '../../views/User/newStudent';
 import StudentProfile from '../../views/User/profile';
 
 
@@ -72,7 +72,7 @@ const AuthLayout = () => {
                 <div className={styles.pageContent}>
                     <Routes>
                         <Route path='/students/profile' element={<StudentProfile/>} />
-                        {/* <Route path='/students/new' element={<NewStudent/>} /> */}
+                        <Route path='/students/new' element={<RegisterStudent/>} />
                         <Route path="/students" element={<Students/>}/>
                         <Route path='/' element={<Dashboard/>}/>
                     </Routes>
