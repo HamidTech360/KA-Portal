@@ -11,6 +11,7 @@ import AppHeader from '../../components/header'
 import Dashboard from '../../views/User/dashboard';
 import Students from '../../views/User/students';
 // import NewStudent from '../../views/User/newStudent';
+import NewStudent from '../../views/User/newStudent/index'
 import StudentProfile from '../../views/User/profile';
 
 
