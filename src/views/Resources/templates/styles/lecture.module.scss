@@ -9,16 +9,17 @@
 
 
 .lecture{
-    height: 1571px;
-    padding: 96px 85px 126px 85px;
+  
+    padding: 5rem 4rem 4rem 5rem;
     width: 100%;
+   
     @include responsive(phone){
         padding: 0;
         padding-top: 10px;
         // padding-left: 10px;
     };
     @include responsive(tab){
-        padding: 10px;
+        padding:  5rem 0.5rem 4rem 0.5rem;
         width:100%;
         height: auto;
     };
@@ -27,7 +28,7 @@
 
 .text{
     font-family: Inter;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 28px;
     color: #333333;
@@ -49,10 +50,10 @@
     color:#707070;
     border: 1px solid #D0D5DD ;
     font-family: Inter;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 22px;
-
+  
   @include responsive(tab){
     height: 39px;
     width: 240px;
@@ -80,10 +81,12 @@
 .search{
     flex: 1;
     justify-content: flex-end;
-    
+    margin-left: 1rem;
     @include responsive(phone){
         padding-top: 1.5rem;
     }
 }
-
+.filter{
+    margin-left: 1rem;
+}
 

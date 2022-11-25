@@ -8,6 +8,8 @@
 };
 .lecture_List{
     padding-top: 40px;
+    margin-bottom: 100px;
+   
 }
 
 .book{
@@ -17,11 +19,11 @@
     line-height: 20px;
     color: #333333;
     padding-bottom: 5px;
-    padding-left: 30px;
+    // padding-left: 30px;
 
     @include responsive(tab){
         padding-bottom: 3px;
-        padding-left: 10px;
+        padding-right: 0 !important;
         font-weight:bold; 
     }
 
@@ -42,17 +44,37 @@
     width: 100%;
     padding-top: 30px;
     padding-bottom: 20px;
-
+    
     
         @include responsive(tab){
             padding-bottom: 15px;
+            margin: 0 !important;
+           
         }
 }
-
+.text{
+    padding-right: 100px !important;
+    // border: 1px solid blue;
+    @media screen and (max-width:768px) {
+        padding-right: 0px !important;
+    }
+   
+}
+.video{
+    @include responsive(tab){
+       width: 100%;
+    //    border: 1px solid red;
+       padding: 0 !important;
+       
+    }
+}
 .vid{
     width:100%;
+    border-radius: 5px;
+   
     @include responsive(tab){
         padding-bottom: 7px;
+       
     }
 }
 
@@ -60,15 +82,15 @@
 
 .para1{
     font-family: Open Sans;
-    font-size: 30px;
-    font-weight: 400;
+    font-size: 1.6rem;
+    font-weight: 500;
     line-height: 28px;
     color:#515151;
 
     @include responsive(tab){
-        font-weight: bold;
-        line-height: 24px;
-        font-size: 25px;
+        font-weight: 500;
+        line-height: 34px;
+        font-size: 20px;
     }
 
 
@@ -76,13 +98,13 @@
 
 .para2{
     font-family: Open Sans;
-    font-size: 22px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 18px;
     color: #4A4A4A;   
     
     @include responsive(tab){
-        font-size: 20px;
+       
         line-height: 17px;
     }
 }
@@ -102,14 +124,14 @@
 .para4{
     font-family: Open Sans;
     font-family: Lato;
-    color: #667085;
-    font-size: 18px;
+    color: #41495a;
+    font-size: 17px;
     font-weight: 400;
     line-height: 28px;
-    
+    // text-align: justify !important;
     @include responsive(tab){
-        font-size: 17px;
-       text-align:justify;
+        font-size: 15px;
+    //    text-align:justify;
 
     }
 
