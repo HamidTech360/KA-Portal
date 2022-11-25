@@ -10,8 +10,7 @@ import AppHeader from '../../components/header'
 //pages
 import Dashboard from '../../views/User/dashboard';
 import Students from '../../views/User/students';
-// import NewStudent from '../../views/User/newStudent';
-import NewStudent from '../../views/User/newStudent/index'
+import RegisterStudent from '../../views/User/NewStudent';
 import StudentProfile from '../../views/User/profile';
 
 
