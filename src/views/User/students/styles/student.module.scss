@@ -6,6 +6,10 @@
     min-width: 100%;
     min-height: 150px;
     padding: 40px 0 60px 35px;
+
+    @media screen and (max-width:768px) {
+        padding: 40px 15px 40px 15px;
+    }
 }
 .top{
     display: flex;
@@ -16,78 +20,84 @@
     height: 50px;
     margin-bottom: 17px;
 }
-.top > h1 {
-    padding-right: 20px;
-    border-right: 1px solid #000;
-    color: #1A8F4A;
-    font-weight: bolder;
-    font-family: Lato;
-}
-.top > h4{
-    padding-left: 20px;
-    font-size: 20px;
-    font-family: Lato;
-    font-weight: bolder;
-}
+
 .search{
     display: flex;
     flex-direction: row;
-    min-width: 100%;
     align-items: center;
     height: 50px;
+    background-color: white;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    width: 300px;
+    padding-right: 10px;
 }
 .search > input{
-    min-width: 45%;
+    width: 100%;
     height: 48px;
     padding: 10px 10px 10px 15px;
     border-radius: 8px;
     outline: none;
-    border: 1px solid rgba(167, 207, 184, 0.4);
+    border: none;
+    font-size: 14px;
 }
-.search .mdsearch{
-    position: relative;
-    right: 50px;
-    cursor: pointer;
-}
-@media screen and (max-width:800px) {
-    .search .button{
-        max-width: 180px;
-        margin-left: 10px;
-    }
-    .search .mdsearch{
-        right: 40px;
-    }
-    .search > input{
-        font-size: 10px;
+.searchPanel{
+    display: flex;
+    @media screen and (max-width:768px) {
+       display: block;
     }
 }
-@media screen and (min-width: 410px) and (max-width: 800px) {
-    .search > input{
-        font-size: 15px;
-    }
-}
-.search .button{
+// .search .mdsearch{
+//     position: relative;
+//     right: 50px;
+//     cursor: pointer;
+// }
+// @media screen and (max-width:800px) {
+   
+//     .search .mdsearch{
+//         right: 40px;
+//     }
+//     .search > input{
+//         font-size: 10px;
+//     }
+// }
+// @media screen and (min-width: 410px) and (max-width: 800px) {
+//     .search > input{
+//         font-size: 15px;
+//     }
+// }
+ .button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1A8F4A;
+    background-color: #1A8F4A !important;
+    color: white !important;
     width: 190px;
     height: 50px;
     border: none;
     border-radius: 8px;
     outline: none;
-
     margin:0 10px 0 0;
     color: #fff;
     font-family: Lato;
     cursor: pointer;
     font-weight: 500;
-    font-size: 18px;
-
+    margin-left: 20px;
     color: white;
+
+    @media screen and (max-width:800px) {
+        max-width: 180px;
+        height: 40px;
+        margin-top: 10px;
+        margin-left: 0px;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 100px;
+    }
 }
 .search .button:hover{
     background-color: #1A8F4A;
+    color: white;
 
 }
 .photo{
@@ -95,20 +105,35 @@
     height: 50px;
     border-radius: 50%;
     background-color: grey;
+
+    @media screen and (max-width:768px) {
+        width: 30px;
+        height: 30px;
+    }
 }
 .toptable{
     overflow-x: auto;
 }
-@media screen and (min-width: 1100px) {
-    .toptable{
-        overflow-x: hidden;
-    }
+.tableContainer{
+    max-width: 100%;
+    overflow-x: scroll;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 50px;
 }
+// @media screen and (min-width: 1100px) {
+//     .toptable{
+//         overflow-x: hidden;
+//     }
+// }
 table{
     width: 100%;
     font-family: Lato;
     border-collapse: collapse;
-    margin: 35px;
+
+    @media screen and (max-width:768px) {
+        font-size: 13px;
+    }
 }
 td, th{
     border-bottom: 1px solid rgba(167, 207, 184, 0.4) !important;
@@ -152,4 +177,21 @@ th:last-child{
     font-weight: bold;
     font-size: 19px;
     box-shadow: 2px 4px 5px 5px rgba(.1,.1,.1,.1);
+}
+
+.boldHeader{
+    color: #1A8F4A;
+    font-size: 30px;
+    font-weight: 700;
+    margin-right: 20px;
+
+    @media screen and (max-width:768px) {
+        font-size: 24px;
+    }
+}
+.subHeader{
+    color: black;
+    @media screen and (max-width:768px) {
+        font-size: 14px;
+    }
 }

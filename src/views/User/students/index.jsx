@@ -4,7 +4,7 @@ import AppHeader from '../../../components/header';
 import Footer from '../../../components/footer';
 
 import { BsSearch } from 'react-icons/bs';
-import { Button } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 import {AiOutlinePlus} from 'react-icons/ai'
 import {IoMdMore} from 'react-icons/io'
 
@@ -89,46 +89,62 @@ const Students = () => {
             
             <div className={styles.main}>
                 <div className={styles.top}>
-                    <h1>All Students</h1>
-                    <h4>284 students</h4>
+                    <div className={`${styles.boldHeader}`}>All Students</div>
+                    <div className={`${styles.subHeader}`}>284 students</div>
                 </div>
-                <div className={styles.search}>
-                    <input type="text" placeholder='Search by Name' />
-
-                    <BsSearch size={23} className={styles.mdsearch}/>
-                    <Button variant="contained"  className={styles.button}>Add Filter <AiOutlinePlus color="white" /> </Button>
+                <div className={styles.searchPanel}>
+                    <div className={styles.search}>
+                        <input type="text" placeholder='Search by Name' />
+                        <BsSearch size={20} className={styles.mdsearch}/> 
+                    </div>
+                    <div>
+                        <button  className={styles.button}>
+                            Add Filter <AiOutlinePlus color="white" /> 
+                        </button>
+                    </div>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr className={styles.head}>
-                        <th>Student ID</th>
-                        <th>Name</th>
-                        <th>Photo</th>
-                        <th>Gender</th>
-                        <th>Program</th>
-                        <th>Level</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data &&
-                        data.map(row => (
-                            <tr className={styles.data}>
-                                <td>{row.id}</td>
-                                <td>{row.name}</td>
-                                <td>{<div className={styles.photo}></div>}</td>
-                                <td>{row.gender}</td>
-                                <td>{row.program}</td>
-                                <td>{row.Level}</td>
-                                <td style={{cursor:'pointer'}}><IoMdMore size={25} /></td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-                {/* <button className={styles.scroll}><ExpandMoreIcon />  Scroll down</button> */}
-            </table>
+
+            
+            <div className={styles.tableContainer}>
+                <table>
+                    <thead>
+                        <tr className={styles.head}>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Photo</th>
+                            <th>Gender</th>
+                            <th>Program</th>
+                            <th>Level</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data &&
+                            data.map(row => (
+                                <tr className={styles.data}>
+                                    <td>{row.id}</td>
+                                    <td>{row.name}</td>
+                                    <td>{<div className={styles.photo}></div>}</td>
+                                    <td>{row.gender}</td>
+                                    <td>{row.program}</td>
+                                    <td>{row.Level}</td>
+                                    <td style={{cursor:'pointer'}}>
+                                        <NavDropdown >
+                                            <NavDropdown.Item style={{fontSize:'14px'}}>View Profile</NavDropdown.Item>
+                                            <NavDropdown.Item  style={{fontSize:'14px'}}>View Results</NavDropdown.Item>
+                                            <NavDropdown.Item style={{fontSize:'14px'}}>Update student record</NavDropdown.Item>
+                                        </NavDropdown>
+                                        
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                
+                </table>
+            </div>
 
         </div>
      );
