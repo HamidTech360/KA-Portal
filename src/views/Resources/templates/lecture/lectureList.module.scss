@@ -63,7 +63,7 @@
 .video{
     @include responsive(tab){
        width: 100%;
-    //    border: 1px solid red;
+       height: 300px;
        padding: 0 !important;
        
     }

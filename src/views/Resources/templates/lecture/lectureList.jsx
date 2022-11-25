@@ -8,7 +8,7 @@ function LectureList(props) {
    
   return (
     <div className={styles.lecture_List}>
-      <p className={styles.book}> Book(200+)</p>
+      <p className={styles.book}> Lectures(10+)</p>
       
       <div className={styles.line}></div>
 

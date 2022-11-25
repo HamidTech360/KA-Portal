@@ -16,7 +16,7 @@ const AppHeader = () => {
         <div className={`${styles.header}`}>
           
             <div className={`${styles.textLogo}`}>
-                <img className={`${styles.logo}`} src="../assets/logo.png" alt="logo" />
+                <img className={`${styles.logo}`} src="/assets/logo.png" alt="logo" />
                 <div>KHAYRUL ADAB <span className="hideOnMobile">SCHOOL OF ARABIC AND ISLAMIC STUDIES</span> </div>
             </div>
             <div  className={`${styles.navSection} hideOnMobile justify-content-end`}>

@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './styles/dashboard.module.scss'
 
 const Dashboard = () => {
     return ( 
-        <div style={{height:'120vh'}}>
-            Dashboard
+        <div>
+            <h1>Dashboard</h1>
         </div>
      );
 }

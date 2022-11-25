@@ -42,27 +42,32 @@ export const AuthNav = [
     {
         label:'Home',
         icon:<BiHomeAlt size={authIconSize} />,
-        path:'/user'
+        path:'/user',
+        location:['/user']
     },
     {
         label:'Students',
         icon:<FaUserGraduate size={authIconSize} />,
-        path:'/user/students'
+        path:'/user/students',
+        location:['/user/students', '/user/students/profile', '/user/students/new']
     },
     {
         label:'Upload Result',
         icon:<AiOutlineCloudUpload size={authIconSize} />,
-        path:'/user/upload'
+        path:'/user/upload',
+        location:['/user/upload']
     },
     {
         label:'Notifications',
         icon:<IoMdNotificationsOutline size={authIconSize}/>,
-        path:'/user/notification'
+        path:'/user/notification',
+        location:['/user/notification']
     },
     {
         label:'Settings',
         icon:<AiOutlineSetting size={authIconSize}/>,
-        path:'/user/settings'
+        path:'/user/settings',
+        location:['/user/settings']
     },
     
     

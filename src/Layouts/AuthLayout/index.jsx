@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthNav } from '../../utils/helpers/nav';
 import {BsSearch} from 'react-icons/bs'
 import {GoPrimitiveDot} from 'react-icons/go'
@@ -9,14 +9,17 @@ import AppHeader from '../../components/header'
 
 //pages
 import Dashboard from '../../views/User/dashboard';
-import NewStudent from '../../views/User/NewStudent';
 import Students from '../../views/User/students';
+import NewStudent from '../../views/User/newStudent';
+import StudentProfile from '../../views/User/profile';
+
 
 import styles from './layout.module.scss'
 
 const AuthLayout = () => {
 
     const location = useLocation()
+    const navigate = useNavigate()
    
     return ( 
         <div>
@@ -33,15 +36,15 @@ const AuthLayout = () => {
                        {AuthNav.map((item, i)=>
                         <Link key={i} to={item.path} style={{textDecoration:'none'}}>
                             <div 
-                                style={location.pathname===item.path? 
+                                style={item.location.includes(location.pathname)? 
                                     {color:'#1A8F4A'}
                                     :{}}
                                 className={styles.navItem}
                             >
                                 <span className={styles.icon}> {item.icon} </span>
-                                <span style={{fontWeight:location.pathname===item.path?'700':''}} className={styles.navLabel}>{item.label}</span>
+                                <span style={{fontWeight:item.location.includes(location.pathname)?'700':''}} className={styles.navLabel}>{item.label}</span>
                                 {
-                                    location.pathname===item.path &&
+                                    item.location.includes(location.pathname) &&
                                     <span className={styles.dot}>
                                         <GoPrimitiveDot color='#1A8F4A' />
                                     </span>
@@ -59,7 +62,7 @@ const AuthLayout = () => {
                     </div>
 
                     <div className={styles.newStudentBlock}>
-                        <div className={styles.fab}>
+                        <div onClick={()=>navigate('/user/students/new')} className={styles.fab}>
                             <AiOutlinePlus color='white' size={20} />
                         </div>
                         <div className={styles.bold}>Add New Student</div>
@@ -68,8 +71,9 @@ const AuthLayout = () => {
                 </div>
                 <div className={styles.pageContent}>
                     <Routes>
+                        <Route path='/students/profile' element={<StudentProfile/>} />
+                        <Route path='/students/new' element={<NewStudent/>} />
                         <Route path="/students" element={<Students/>}/>
-                        <Route path='/new' element={<NewStudent/>} />
                         <Route path='/' element={<Dashboard/>}/>
                     </Routes>
                 </div>

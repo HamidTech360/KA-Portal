@@ -6,7 +6,7 @@ function Lecture(props) {
   return (
     <div className={styles.lecture} >
       <div className={styles.upper}>
-        <div className={styles.filter}>
+        <div className={`${styles.filter} hideOnMobile`}>
           <label for="username" className={` ${styles.text_filter} ${styles.text}`}  >Filter: </label>
           <input id="username" placeholder='categories'className={styles.input} type='text' />
         </div>
