@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SideNav from "./sidenav";
 import { Link } from "react-router-dom";
 import styles from "./styles/authHeader.module.scss";
 import { FaSearch } from "react-icons/fa";
@@ -28,11 +29,11 @@ const AuthHeader = () => {
           <FaSearch className={styles.searchIcon} />
         </form>
         <div className={styles.notification}>
-          <IoMdNotificationsOutline className={styles.notificationIcon} />
+          <IoMdNotificationsOutline size={22} className={styles.notificationIcon} />
           <div className={styles.dot}></div>
         </div>
         <div className={styles.user}>
-          <p className={styles.username}>Nabil A.</p>
+          <p className={styles.username}>Staff.</p>
           <span className={styles.usertype}>Admin</span>
         </div>
         <img
@@ -53,31 +54,12 @@ const AuthHeader = () => {
                 placement="end" 
                 style={{width:'70%'}}
             >
-            <div className={styles.sideBarContainer}>
-                <div className={`${styles.textLogo}`}>
-                    <img className={`${styles.logo}`} src="../assets/logo.png" alt="logo" />
-                    <div>KHAYRUL ADAB <span className="hideOnMobile">SCHOOL OF ARABIC AND ISLAMIC STUDIES</span> </div>
-                </div>
-
-                <div className={`${styles.navItems}  ${styles.navItem}`}>
-                <form action="" className={styles.form} >
-          <input className={styles.input} type="text" placeholder="Search..." />
-          <FaSearch className={styles.searchIcon} />
-        </form>
-        <div className={`${styles.notification}  ${styles.navItem}`}>
-          <IoMdNotificationsOutline className={styles.notificationIcon} />
-          <div className={styles.dot}></div>
-        </div>
-        <div className={`${styles.user} ${styles.navItem}`}>
-          <p className={styles.username}>Nabil A.</p>
-          <span className={styles.usertype}>Admin</span>
-        </div>
-        <img className={styles.navItem}
-          src="https://media.istockphoto.com/id/468900036/photo/portrait-of-middle-eastern-man.jpg?b=1&s=170667a&w=0&k=20&c=CyIbNLKkQ7gu2Jy6nHh7Thx8obPPZ07tYzQcS5fPNTE="
-          alt=""
-        />
-                </div>
-            </div>
+               <div className={styles.mobileSideNavContainer}>
+                  <div className={styles.avatar}>
+                      KA
+                  </div>
+                  <SideNav/>
+               </div>
             </Offcanvas>
     </div>
   );

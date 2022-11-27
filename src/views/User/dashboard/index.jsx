@@ -3,7 +3,7 @@ import styles from './styles/dashboard.module.scss'
 
 const Dashboard = () => {
     return ( 
-        <div>
+        <div >
             <h1>Dashboard</h1>
         </div>
      );
