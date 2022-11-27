@@ -11,6 +11,7 @@ import News from "../views/News";
 import Students from "../views/User/students";
 
 import AuthLayout from "../Layouts/AuthLayout";
+import AuthHeader from "../components/authHeader";
 
 const AllRoutes = ()=>(
     <BrowserRouter>
@@ -20,6 +21,7 @@ const AllRoutes = ()=>(
             <Route path="/news" element={ < News />} />
             <Route path="/user/*" element={<AuthLayout/>} />
             <Route path="/" element={ <Home/>} />
+            <Route path ="/auth" element = {<AuthHeader/> } />
         </Routes>
     
     </BrowserRouter>
