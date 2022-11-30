@@ -1,0 +1,144 @@
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+};
+
+.profile{
+    height: 818px;
+    width: 100%; 
+    padding: 2rem;
+    margin: 2rem;
+    background-color: white;
+
+    @include responsive(tab){
+        height: auto;
+        padding: 1.5rem;
+    }
+}
+
+.para1{
+    font-family: Open Sans;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;  
+    
+    @include responsive(tab){
+        font-size:22px
+    }
+}
+
+.para1_container{
+    display:flex;
+    width: 100%;
+}
+
+.menu_btn{
+    flex: 1;
+    justify-content: flex-end;
+    cursor: pointer;
+    position: relative;
+    top: 4;
+    left:79%;
+    color: #667085;
+
+    @include responsive(tab){
+        left:72% !important;
+    }
+    @include responsive(phone){
+        left:52% !important;
+
+    }
+}
+
+.passport{
+    outline: 3px solid #8FC620;
+    outline-offset: 5px;
+    border-radius: 5px !important;
+    width: 252px;
+    height: 252px;
+    margin-top: 5px;
+
+    @include responsive(tab){
+        width: 100%;
+        height: 200px;
+
+    }
+    @include responsive(phone){
+        width: 70%;
+        height: 250px;
+        margin: 30% auto;
+        margin-top: 1px !important;
+        margin-bottom: 20px !important;
+        outline: 2px solid #8FC620;
+        outline-offset: 3px;
+        border-radius: 3px !important;
+
+
+    }
+}
+
+.student_details{
+    padding-left:50px
+}
+
+.para2{
+    font-family: Open Sans;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;
+    color: #161E03;
+    @include responsive(tab){
+        font-size:22px
+    }
+    
+}
+
+.para4{
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 25px;
+    color: #737D89;   
+    
+    @include responsive(tab){
+        font-size:17px
+    }
+}
+
+.para5{
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: (2, 1fr);
+
+    @include responsive(tab){
+        font-size:17px;
+        line-height: 22px;
+    }
+  
+}
+
+.para5_main{
+    color: #737D89;
+    grid-column: 1/2;
+    grid-row: 1;
+    
+}
+.para5_sub{
+    color: #161E03;
+    // margin-left: 160px;
+    font-weight: 600 !important;
+    line-height: 25px;
+    // flex: 1;
+    grid-column: 2/2;
+    grid-row: 1;
+    justify-content: flex-start;    
+}
+
