@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './styles/student.module.scss'
-import AppHeader from '../../../components/header';
-import Footer from '../../../components/footer';
+
 
 import { BsSearch } from 'react-icons/bs';
 import { NavDropdown } from 'react-bootstrap';
 import {AiOutlinePlus} from 'react-icons/ai'
-import {IoMdMore} from 'react-icons/io'
+
 
 
 
@@ -132,7 +132,7 @@ const Students = () => {
                                     <td>{row.Level}</td>
                                     <td style={{cursor:'pointer'}}>
                                         <NavDropdown >
-                                            <NavDropdown.Item style={{fontSize:'14px'}}>View Profile</NavDropdown.Item>
+                                            <NavDropdown.Item style={{fontSize:'14px'}}> <Link style={{textDecoration:'none'}} to="/user/students/profile">View Profile</Link> </NavDropdown.Item>
                                             <NavDropdown.Item  style={{fontSize:'14px'}}>View Results</NavDropdown.Item>
                                             <NavDropdown.Item style={{fontSize:'14px'}}>Update student record</NavDropdown.Item>
                                         </NavDropdown>

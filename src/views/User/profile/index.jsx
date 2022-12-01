@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles/profile.module.scss";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { Row, Col } from "react-bootstrap";
 import {TbMinusVertical} from 'react-icons/tb'
 
 import pics from "./../../../assets/pass.png";
@@ -64,11 +65,12 @@ const StudentProfile = () => {
     },
    
   ]
+
   return (
     <div className={styles.profile}>
       <div className={styles.profile_top}>
           <p className={styles.para6}>
-            <span  className={styles.para6_main}>All Students</span>
+            <span  className={styles.para6_main}>Student Profile</span>
             <span className={styles.para6_line}> | </span>
             <span className={styles.sub}>248 students</span>
           </p>
@@ -98,12 +100,13 @@ const StudentProfile = () => {
               laoreet ullamcorper ac at. Et amet, malesuada scelerisque nisi velit
               id.{" "}
             </p>
-        {studentsProfile.map((student,i)=>(
-            <div className={styles.para5} key={i} >
-              <p  className={styles.para5_main}>{student.main}</p>
-              <p className={styles.para5_sub}>{student.sub}</p>
-            </div>
-        ))}
+            
+            {studentsProfile.map((student,i)=>(
+            <Row className={styles.para5} key={i} >
+              <Col col="6"    className={styles.para5_main}>{student.main}</Col>
+              <Col col="6" className={styles.para5_sub}>{student.sub}</Col>
+            </Row>
+           ))}
           </div>
         </div>
       </div>

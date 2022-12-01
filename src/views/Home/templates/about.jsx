@@ -48,7 +48,7 @@ const About = () => {
                 </Col>
 
                 <Col lg={6} md={6} sm={12} xs={12}  className={styles.sidebar2}>
-                    <img className={styles.img} src= "assets/events.jpg" alt="Al-Qur'an" />
+                    <img className={styles.img} src= "../../../assets/Image.svg" alt="Al-Qur'an" />
                     <div className={styles.article}>
                         <h1>About Our Institution</h1>
                         <p>

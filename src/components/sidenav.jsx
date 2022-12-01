@@ -11,7 +11,7 @@ const SideNav = () => {
     const navigate = useNavigate()
     return ( 
         <>
-                    <div className={styles.searchBox}>
+                    <div className={`${styles.searchBox} hideOnMobile`}>
                         <BsSearch size={20} />
                         <input type="text" className={styles.searchInput} />
                     </div>
