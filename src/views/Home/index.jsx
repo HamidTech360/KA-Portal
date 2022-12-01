@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles/home.module.scss'
+// import styles from './styles/home.module.scss'
 
 //Components
 import AppHeader from '../../components/header';
@@ -12,7 +12,7 @@ import Footer from './../../components/footer';
 
 const Home = () => {
     return ( 
-        <div className={styles.wrapper}>
+        <div >
            <AppHeader/>
            <Banner/>
            <About/>

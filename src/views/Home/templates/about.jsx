@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import styles from './styles/about.module.scss'
 import {FaRegHeart, FaAngleDoubleRight }from "react-icons/fa"
 import { ourValues } from '../../../utils/helpers/data';
-import img from "../../../assets/Image.svg"
+// import img from "../../../assets/Image.svg"
 
 const About = () => {
     const [active, setActive] = useState(0)
@@ -48,7 +48,7 @@ const About = () => {
                 </Col>
 
                 <Col lg={6} md={6} sm={12} xs={12}  className={styles.sidebar2}>
-                    <img className={styles.img} src= {img} alt="Al-Qur'an" width={350} height={250} />
+                    <img className={styles.img} src= "assets/events.jpg" alt="Al-Qur'an" />
                     <div className={styles.article}>
                         <h1>About Our Institution</h1>
                         <p>
