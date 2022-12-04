@@ -19,9 +19,14 @@ const AllRoutes = ()=>(
             <Route path="/resources" element={ < Resources />} />
             <Route path="/login" element={ < Login />} />
             <Route path="/news" element={ < News />} />
-            <Route path="/user/*" element={<AuthLayout/>} />
+            <Route 
+                path="/user/*" 
+                element={
+                    <PrivateRoute>
+                        <AuthLayout/>
+                    </PrivateRoute>}
+            />
             <Route path="/" element={ <Home/>} />
-            <Route path ="/auth" element = {<AuthHeader/> } />
         </Routes>
     
     </BrowserRouter>

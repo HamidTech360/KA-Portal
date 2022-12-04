@@ -1,5 +1,4 @@
 {
-    "-apiUrl":"http://localhost:4000",
-    "apiUrl":"https://ka-server.herokuapp.com/api",
-    "userURL":"https://da-tuition-free-unis.herokuapp.com"
+    "-apiUrl":"http://localhost:4000/api",
+    "apiUrl":"https://ka-server.onrender.com/api"
 }
