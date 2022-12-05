@@ -14,9 +14,9 @@
     align-items: center;
     // padding: 40px 0 60px 35px;
 
-    // @media screen and (max-width:768px) {
-    //     padding: 40px 15px 40px 15px;
-    // }
+    @media screen and (max-width:768px) {
+        padding-left: 10px 20px 4px 20px;
+    }
 }
 .boldHeader{
     color: #1A8F4A;
@@ -46,6 +46,7 @@
     @media screen and (max-width:768px) {
         flex-direction: column;
         align-items: center;
+        padding-left: 20px;
     }
 }
 
@@ -96,7 +97,7 @@
         width: 100%;
         flex-direction: column;
         align-items: center;
-        
+        padding-left: 20px;
     }
 }
 .calTab .tab{
@@ -120,12 +121,13 @@
    justify-content: space-between;
    align-items: center;
    margin-top: 30px;
+   
 }
-.calTab .tab .subTab .active{
-    background-color: aquamarine;
-    border-left: 3px solid #1A8F4A; 
-    border-radius: 10px;   
-}
+// .active{
+//     background-color: aquamarine;
+//     border-left: 3px solid #1A8F4A; 
+//     border-radius: 10px;   
+// }
 .calTab .calendar{
     width: 40%;
     height: auto;
@@ -192,6 +194,21 @@ th:first-child{
 th:last-child{
     border-top-right-radius: 8px !important;
 }
+
+#overlay {
+    // position: fixed;
+    // display: none;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbf0da;;
+    z-index: 2;
+    border-radius: 7px;
+    border-left: 4px solid #1A8F4A;
+    padding: 16px;
+  }
 
 // react calendar
 

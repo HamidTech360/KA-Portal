@@ -3,6 +3,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import styles from './styles/dashboard.module.scss'
 import Calendar from 'react-calendar';
 import './styles/calendar.css'
+import { addDays, differenceInCalendarDays } from 'date-fns';
 // import 'react-calendar/dist/Calendar.css'
 
 import { NavDropdown } from 'react-bootstrap';
@@ -59,6 +60,23 @@ const Dashboard = () => {
     const [date, setDate] = useState(new Date())
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     let month = months[date.getMonth()];
+
+    const tomorrow = addDays(date, 1);
+    const in3Days = addDays(date, 3);
+    const in5Days = addDays(date, 5);
+    const highlightedDates = [tomorrow, in3Days, in5Days];
+    function isSameDay(a, b) {
+        return differenceInCalendarDays(a, b) === 0;
+    }
+    function tileClassName({ date, view }) {
+    if (
+        view === 'month' &&
+        highlightedDates.find((dDate) => isSameDay(dDate, date))
+    ) {
+        return 'highlight';
+    }
+    }  
+
     return ( 
         <div className={styles.dashboard}>
             <div className={styles.header}>
@@ -100,7 +118,7 @@ const Dashboard = () => {
             <div className={styles.calTab}>
                 <div className={styles.tab}>
                     <h5 className={styles.notify}>Notifications</h5>
-                    <div className={styles.subTab}>
+                    <div className={styles.subTab} id={styles.overlay}>
                         <div className={styles.tabMain}>
                             <h6 style={{ color: "#000", fontSize: "16px", fontWeight: "700" }}>Registration for winter semester starts</h6>
                             <h6 style={{ fontSize: "13px", color: "grey" }}>Lorem ipsum dolor sit amet consectetur adipisicing.....</h6>
@@ -143,7 +161,10 @@ const Dashboard = () => {
                         <h4 style={{ fontSize: "19px", fontWeight: "600" }}>School Calendar</h4>
                         <h5 style={{ color: "#1A8F4A", fontSize: "17px" }}>{month} {date.getFullYear()}</h5>
                     </div>
-                     <Calendar onChange={setDate} value={date} />
+
+                    <Calendar onChange={setDate} value={date}
+                    tileClassName = {tileClassName}
+                    />
                 </div>
             </div>
             <div className={styles.tableContainer}>
