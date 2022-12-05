@@ -1,4 +1,5 @@
 {
-    "-apiUrl":"http://localhost:4000/api",
-    "apiUrl":"https://ka-server.onrender.com/api"
+    "AapiUrl":"http://localhost:4000/api",
+    "BapiUrl":"https://ka-server.onrender.com/api",
+    "apiUrl":"https://magnificent-lime-crayfish.cyclic.app/api"
 }
