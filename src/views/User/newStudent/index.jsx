@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { RegisterValidator } from './../../../utils/validators/auth/index';
 
 const RegisterStudent = () => {
-    const [loading,setLoading]= useState(false)
+    const [ isLoading, setisLoading]= useState(false)
     
   const formik = useFormik({
     initialValues: {
@@ -22,10 +22,10 @@ const RegisterStudent = () => {
       parentAddress: "",
       phoneNumber: "",
     },
-    validaionSchema:RegisterValidator(),
-    onSubmit:(values) =>{
-        setLoading(true)
-        console.log('values', values);
+    validationSchema:RegisterValidator(),
+    onSubmit:async (values)=>{
+        setisLoading(true)
+       console.log('values', values);
     }
   });
 
@@ -273,7 +273,7 @@ const RegisterStudent = () => {
             </Row>
             <div className={styles.buttons}>
               <button className={styles.btnReset} type='reset'>Reset</button>
-              <button className={styles.btnSave}  type='submit' disabled={loading}>{loading?'saving.......': 'Register'}</button>
+              <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving.......': 'Register'}</button>
             </div>
           </div>
         </form>

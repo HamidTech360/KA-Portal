@@ -1,12 +1,7 @@
 import React from "react";
 import styles from "./styles/profile.module.scss";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
-<<<<<<< HEAD
 import { TbMinusVertical } from "react-icons/tb";
-=======
-import { Row, Col } from "react-bootstrap";
-import {TbMinusVertical} from 'react-icons/tb'
->>>>>>> 9325d38e4f0e06610351f35cb77573ee948eaa7b
 
 import pics from "./../../../assets/pass.png";
 const StudentProfile = () => {
@@ -67,7 +62,6 @@ const StudentProfile = () => {
       main: "Mother Contact",
       sub: "090 12345678",
     },
-<<<<<<< HEAD
   ];
   return (
     <div className={styles.profile}>
@@ -82,24 +76,6 @@ const StudentProfile = () => {
           <span className={styles.para7_icon}> &gt; </span>
           <span className={styles.para7_sub}>Abdullah Fatah </span>
         </p>
-=======
-   
-  ]
-
-  return (
-    <div className={styles.profile}>
-      <div className={styles.profile_top}>
-          <p className={styles.para6}>
-            <span  className={styles.para6_main}>Student Profile</span>
-            <span className={styles.para6_line}> | </span>
-            <span className={styles.sub}>248 students</span>
-          </p>
-          <p className={styles.para7}>
-            <span className={styles.para7_main}>Students  </span>
-            <span className={styles.para7_icon}> &gt; </span>
-            <span className={styles.para7_sub}>Abdullah Fatah  </span>
-          </p>
->>>>>>> 9325d38e4f0e06610351f35cb77573ee948eaa7b
       </div>
 
       <div className={styles.profile_body}>

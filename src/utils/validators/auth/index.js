@@ -71,7 +71,7 @@ export const RegisterValidator = ()=>{
         PhoneNumber:Yup
             .string()
             .required('LastName is required')
-            .max(11, 'Phone number can not be more than 11'),
+            .min(11, 'Phone number can not be more than 11'),
        
     })
 }
