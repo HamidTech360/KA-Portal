@@ -29,9 +29,10 @@ const RegisterStudent = () => {
     }
   });
 
-//  const handleClick=()=>{
-    // console.log(formik.values);
-//  }
+ const handleClick=()=>{
+  // console.log(formik.values)
+    formik.values='';
+ }
   return (
     <div className={styles.addNewPage}>
       <div className={styles.header}>
@@ -272,7 +273,7 @@ const RegisterStudent = () => {
               </Col>
             </Row>
             <div className={styles.buttons}>
-              <button className={styles.btnReset} type='reset'>Reset</button>
+              <button className={styles.btnReset} onClick={handleClick} type='reset'>Reset</button>
               <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving.......': 'Register'}</button>
             </div>
           </div>
