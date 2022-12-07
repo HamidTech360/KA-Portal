@@ -15,8 +15,6 @@ import StudentProfile from '../../views/User/profile';
 import styles from './layout.module.scss'
 
 const AuthLayout = () => {
-
-    
    
     return ( 
         <div>

@@ -1,4 +1,8 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import Swal from 'sweetalert2';
+import config from '../../../config'
 import { useFormik } from 'formik';
 import { LoginValidator } from '../../../utils/validators/auth';
 import AppHeader from '../../../components/header';
@@ -14,6 +18,7 @@ import styles from '../styles/login.module.scss'
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [isLoading, setisLoading] = useState(false)
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues:{
@@ -21,9 +26,26 @@ const Login = () => {
             password:''
         },
         validationSchema:LoginValidator(),
-        onSubmit:(values)=>{
+        onSubmit:async (values)=>{
             setisLoading(true)
-           console.log('values', values)
+           //console.log('values', values)
+           try{
+                const {data} = await axios.post(`${config.apiUrl}/auth/login`, values)
+                localStorage.setItem('accessToken', data.accessToken)
+                navigate('/user/students')
+           }catch(error){
+              console.log(error.response?.data)
+              setisLoading(false)
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text:error.response?.data || 'Authentication failed',
+                showCancelButton:true,
+                showConfirmButton:false
+              })
+           }finally{
+             setisLoading(false)
+           }
         }
     })
     

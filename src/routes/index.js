@@ -9,7 +9,7 @@ import Resources from './../views/Resources/resources';
 import Login from "../views/Auth/login";
 import News from "../views/News";
 import Students from "../views/User/students";
-import RegisterStudent from './../views/User/newStudent/index';
+
 
 import AuthLayout from "../Layouts/AuthLayout";
 import AuthHeader from "../components/authHeader";
@@ -20,10 +20,19 @@ const AllRoutes = ()=>(
             <Route path="/resources" element={ < Resources />} />
             <Route path="/login" element={ < Login />} />
             <Route path="/news" element={ < News />} />
+<<<<<<< HEAD
             <Route path="/user/*" element={<AuthLayout/>} />
-            <Route path="/register" element={ <RegisterStudent/>} />
+           
+=======
+            <Route 
+                path="/user/*" 
+                element={
+                    <PrivateRoute>
+                        <AuthLayout/>
+                    </PrivateRoute>}
+            />
+>>>>>>> 9325d38e4f0e06610351f35cb77573ee948eaa7b
             <Route path="/" element={ <Home/>} />
-            <Route path ="/auth" element = {<AuthHeader/> } />
         </Routes>
     
     </BrowserRouter>

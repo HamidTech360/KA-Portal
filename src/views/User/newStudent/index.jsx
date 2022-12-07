@@ -25,12 +25,12 @@ const RegisterStudent = () => {
     validaionSchema:RegisterValidator(),
     onSubmit:(values) =>{
         setLoading(true)
-        console.log('values',values);
+        console.log('values', values);
     }
   });
 
 //  const handleClick=()=>{
-//     console.log(formik.values);
+    // console.log(formik.values);
 //  }
   return (
     <div className={styles.addNewPage}>

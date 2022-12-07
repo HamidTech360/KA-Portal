@@ -9,9 +9,14 @@ import styles from './styles/sidenav.module.scss'
 const SideNav = () => {
     const location = useLocation()
     const navigate = useNavigate()
+
+    const logOut = ()=>{
+        localStorage.removeItem('accessToken')
+        navigate('/')
+    }
     return ( 
         <>
-                    <div className={styles.searchBox}>
+                    <div className={`${styles.searchBox} hideOnMobile`}>
                         <BsSearch size={20} />
                         <input type="text" className={styles.searchInput} />
                     </div>
@@ -38,10 +43,14 @@ const SideNav = () => {
                        )}
                     </div>
 
-                    <div className="logOut">
+                    <div className="logOut" >
                         <div className={styles.navItem}>
                             <span className={styles.icon}> <AiOutlineLogout size={24} /> </span>
-                            <span className={styles.navLabel}> Logout </span>
+                            <span 
+                                className={styles.navLabel} 
+                                style={{cursor:'pointer'}} 
+                                onClick={logOut}
+                            > Logout </span>
                         </div>
                     </div>
 
