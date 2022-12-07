@@ -20,18 +20,7 @@ const AllRoutes = ()=>(
             <Route path="/resources" element={ < Resources />} />
             <Route path="/login" element={ < Login />} />
             <Route path="/news" element={ < News />} />
-<<<<<<< HEAD
             <Route path="/user/*" element={<AuthLayout/>} />
-           
-=======
-            <Route 
-                path="/user/*" 
-                element={
-                    <PrivateRoute>
-                        <AuthLayout/>
-                    </PrivateRoute>}
-            />
->>>>>>> 9325d38e4f0e06610351f35cb77573ee948eaa7b
             <Route path="/" element={ <Home/>} />
         </Routes>
     

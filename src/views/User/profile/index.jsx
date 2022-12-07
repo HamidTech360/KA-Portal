@@ -122,7 +122,6 @@ const StudentProfile = () => {
               laoreet ullamcorper ac at. Et amet, malesuada scelerisque nisi
               velit id.{" "}
             </p>
-<<<<<<< HEAD
 
             {studentsProfile.map((student, i) => (
               <div className={styles.para5} key={i}>
@@ -130,15 +129,6 @@ const StudentProfile = () => {
                 <p className={styles.para5_sub}>{student.sub}</p>
               </div>
             ))}
-=======
-            
-            {studentsProfile.map((student,i)=>(
-            <Row className={styles.para5} key={i} >
-              <Col col="6"    className={styles.para5_main}>{student.main}</Col>
-              <Col col="6" className={styles.para5_sub}>{student.sub}</Col>
-            </Row>
-           ))}
->>>>>>> 9325d38e4f0e06610351f35cb77573ee948eaa7b
           </div>
         </div>
       </div>
