@@ -278,7 +278,7 @@ const RegisterStudent = () => {
             </Row>
             <div className={styles.buttons}>
               <button className={styles.btnReset} type='reset'>Reset</button>
-              <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving.......': 'Register'}</button>
+              <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving...': 'Register'}</button>
             </div>
           </div>
         </form>

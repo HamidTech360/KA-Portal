@@ -118,7 +118,9 @@
     background-color: #1A8F4A;
     color: white;
 }
-
+.btnSave:disabled{
+    opacity: 0.5;
+}
 
 .errorMsg{
     color: red;
