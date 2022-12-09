@@ -5,8 +5,11 @@ import styles from "./styles/new.module.scss";
 import { useFormik } from "formik";
 import { RegisterValidator } from './../../../utils/validators/auth/index';
 
+
 const RegisterStudent = () => {
     const [ isLoading, setisLoading]= useState(false)
+
+   
     
   const formik = useFormik({
     initialValues: {
@@ -23,14 +26,16 @@ const RegisterStudent = () => {
       phoneNumber: "",
     },
     validationSchema:RegisterValidator(),
-    onSubmit:async (values)=>{
+      
+    onSubmit: (values)=>{
         setisLoading(true)
        console.log('values', values);
+      alert('done')
     }
   });
 
  const handleClick=()=>{
-  // console.log(formik.values)
+  console.log(formik.values)
     formik.values='';
  }
   return (
@@ -49,7 +54,7 @@ const RegisterStudent = () => {
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>Student Information</div>
 
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <div className={styles.formContent}>
             <Row className={styles.row}>
               <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
@@ -273,8 +278,8 @@ const RegisterStudent = () => {
               </Col>
             </Row>
             <div className={styles.buttons}>
-              <button className={styles.btnReset} onClick={handleClick} type='reset'>Reset</button>
-              <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving.......': 'Register'}</button>
+              <button className={styles.btnReset} type="reset" >Reset</button>
+              <button className={styles.btnSave}  type='submit' disabled={isLoading}>Register</button>
             </div>
           </div>
         </form>
