@@ -10,6 +10,7 @@ import Login from "../views/Auth/login";
 import News from "../views/News";
 import Students from "../views/User/students";
 
+
 import AuthLayout from "../Layouts/AuthLayout";
 import AuthHeader from "../components/authHeader";
 
@@ -19,13 +20,7 @@ const AllRoutes = ()=>(
             <Route path="/resources" element={ < Resources />} />
             <Route path="/login" element={ < Login />} />
             <Route path="/news" element={ < News />} />
-            <Route 
-                path="/user/*" 
-                element={
-                    <PrivateRoute>
-                        <AuthLayout/>
-                    </PrivateRoute>}
-            />
+            <Route path="/user/*" element={<AuthLayout/>} />
             <Route path="/" element={ <Home/>} />
         </Routes>
     
