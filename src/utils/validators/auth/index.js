@@ -68,10 +68,10 @@ export const RegisterValidator = ()=>{
         parentAddress:Yup
             .string()
             .required('LastName is required'),
-        PhoneNumber:Yup
+        phoneNumber:Yup
             .string()
-            .required('LastName is required')
-            .min(11, 'Phone number can not be more than 11'),
+            .required('Phone number is required')
+            .min(10, 'Phone number can not be less than 11 digits'),
        
     })
 }

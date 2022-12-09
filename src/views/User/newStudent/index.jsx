@@ -29,6 +29,8 @@ const RegisterStudent = () => {
     }
   });
 
+  // console.log(formik.errors)
+
  const handleClick=()=>{
   // console.log(formik.values)
     formik.values='';
@@ -49,7 +51,9 @@ const RegisterStudent = () => {
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>Student Information</div>
 
-        <form>
+        <form
+          onSubmit={formik.handleSubmit}
+        >
           <div className={styles.formContent}>
             <Row className={styles.row}>
               <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
@@ -65,7 +69,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.firstName && 
+                    formik.touched.firstName && formik.errors.firstName &&
                     <p className={styles.errorMsg}>{formik.errors.firstName}</p>
                 }
               </Col>
@@ -83,7 +87,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.lastName && 
+                    formik.touched.lastName && formik.errors.lastName &&
                     <p className={styles.errorMsg}>{formik.errors.lastName}</p>
                 }
               </Col>
@@ -106,7 +110,7 @@ const RegisterStudent = () => {
                   </select>
                 </div>
                    {
-                    formik.touched.gender && 
+                    formik.touched.gender && formik.errors.gender &&
                     <p className={styles.errorMsg}>{formik.errors.gender}</p>
                 }
               </Col>
@@ -124,7 +128,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.dob && 
+                    formik.touched.dob && formik.errors.dob &&
                     <p className={styles.errorMsg}>{formik.errors.dob}</p>
                 }
               </Col>
@@ -144,7 +148,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.admissionDate && 
+                    formik.touched.admissionDate &&  formik.errors.admissionDate &&
                     <p className={styles.errorMsg}>{formik.errors.admissionDate}</p>
                 }
               </Col>
@@ -162,7 +166,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.address && 
+                    formik.touched.address &&  formik.errors.address &&
                     <p className={styles.errorMsg}>{formik.errors.address}</p>
                 }
               </Col>
@@ -182,7 +186,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.state && 
+                    formik.touched.state &&  formik.errors.state &&
                     <p className={styles.errorMsg}>{formik.errors.state}</p>
                 }
               </Col>
@@ -204,7 +208,7 @@ const RegisterStudent = () => {
                   </select>
                 </div>
                 {
-                    formik.touched.level && 
+                    formik.touched.level &&  formik.errors.level &&
                     <p className={styles.errorMsg}>{formik.errors.level}</p>
                 }
               </Col>
@@ -229,7 +233,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.parentName && 
+                    formik.touched.parentName &&  formik.errors.parentName &&
                     <p className={styles.errorMsg}>{formik.errors.parentName}</p>
                 }
               </Col>
@@ -247,7 +251,7 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.parentAddress && 
+                    formik.touched.parentAddress &&  formik.errors.parentAddress &&
                     <p className={styles.errorMsg}>{formik.errors.parentAddress}</p>
                 }
               </Col>
@@ -267,13 +271,13 @@ const RegisterStudent = () => {
                   />
                 </div>
                 {
-                    formik.touched.phoneNumber && 
+                    formik.touched.phoneNumber &&  formik.errors.phoneNumber &&
                     <p className={styles.errorMsg}>{formik.errors.phoneNumber}</p>
                 }
               </Col>
             </Row>
             <div className={styles.buttons}>
-              <button className={styles.btnReset} onClick={handleClick} type='reset'>Reset</button>
+              <button className={styles.btnReset} type='reset'>Reset</button>
               <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving.......': 'Register'}</button>
             </div>
           </div>
