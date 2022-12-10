@@ -1,16 +1,13 @@
-import React, {useState}from "react";
+import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./styles/new.module.scss";
 import { useFormik } from "formik";
-import { RegisterValidator } from './../../../utils/validators/auth/index';
-
+import { RegisterValidator } from "./../../../utils/validators/auth/index";
 
 const RegisterStudent = () => {
-    const [ isLoading, setisLoading]= useState(false)
+  const [isLoading, setisLoading] = useState(false);
 
-   
-    
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -25,21 +22,21 @@ const RegisterStudent = () => {
       parentAddress: "",
       phoneNumber: "",
     },
-    validationSchema:RegisterValidator(),
-      
-    onSubmit: (values)=>{
-        setisLoading(true)
-       console.log('values', values);
-      alert('done')
-    }
+    validationSchema: RegisterValidator(),
+
+    onSubmit: (values) => {
+      setisLoading(true);
+      console.log("values", values);
+     
+    },
   });
 
   // console.log(formik.errors)
 
- const handleClick=()=>{
-  console.log(formik.values)
-    formik.values='';
- }
+  const handleClick = () => {
+    console.log(formik.values);
+    formik.values = "";
+  };
   return (
     <div className={styles.addNewPage}>
       <div className={styles.header}>
@@ -71,10 +68,9 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.firstName && formik.errors.firstName &&
-                    <p className={styles.errorMsg}>{formik.errors.firstName}</p>
-                }
+                {formik.touched.firstName && formik.errors.firstName && (
+                  <p className={styles.errorMsg}>{formik.errors.firstName}</p>
+                )}
               </Col>
 
               <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
@@ -89,10 +85,9 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.lastName && formik.errors.lastName &&
-                    <p className={styles.errorMsg}>{formik.errors.lastName}</p>
-                }
+                {formik.touched.lastName && formik.errors.lastName && (
+                  <p className={styles.errorMsg}>{formik.errors.lastName}</p>
+                )}
               </Col>
             </Row>
 
@@ -112,10 +107,9 @@ const RegisterStudent = () => {
                     <option value="Female">Female</option>
                   </select>
                 </div>
-                   {
-                    formik.touched.gender && formik.errors.gender &&
-                    <p className={styles.errorMsg}>{formik.errors.gender}</p>
-                }
+                {formik.touched.gender && formik.errors.gender && (
+                  <p className={styles.errorMsg}>{formik.errors.gender}</p>
+                )}
               </Col>
 
               <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
@@ -130,10 +124,9 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.dob && formik.errors.dob &&
-                    <p className={styles.errorMsg}>{formik.errors.dob}</p>
-                }
+                {formik.touched.dob && formik.errors.dob && (
+                  <p className={styles.errorMsg}>{formik.errors.dob}</p>
+                )}
               </Col>
             </Row>
 
@@ -150,10 +143,12 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.admissionDate &&  formik.errors.admissionDate &&
-                    <p className={styles.errorMsg}>{formik.errors.admissionDate}</p>
-                }
+                {formik.touched.admissionDate &&
+                  formik.errors.admissionDate && (
+                    <p className={styles.errorMsg}>
+                      {formik.errors.admissionDate}
+                    </p>
+                  )}
               </Col>
 
               <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
@@ -168,10 +163,9 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.address &&  formik.errors.address &&
-                    <p className={styles.errorMsg}>{formik.errors.address}</p>
-                }
+                {formik.touched.address && formik.errors.address && (
+                  <p className={styles.errorMsg}>{formik.errors.address}</p>
+                )}
               </Col>
             </Row>
 
@@ -188,10 +182,9 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.state &&  formik.errors.state &&
-                    <p className={styles.errorMsg}>{formik.errors.state}</p>
-                }
+                {formik.touched.state && formik.errors.state && (
+                  <p className={styles.errorMsg}>{formik.errors.state}</p>
+                )}
               </Col>
 
               <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
@@ -210,10 +203,9 @@ const RegisterStudent = () => {
                     <option value={8}>SSS 1</option>
                   </select>
                 </div>
-                {
-                    formik.touched.level &&  formik.errors.level &&
-                    <p className={styles.errorMsg}>{formik.errors.level}</p>
-                }
+                {formik.touched.level && formik.errors.level && (
+                  <p className={styles.errorMsg}>{formik.errors.level}</p>
+                )}
               </Col>
             </Row>
           </div>
@@ -235,10 +227,9 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.parentName &&  formik.errors.parentName &&
-                    <p className={styles.errorMsg}>{formik.errors.parentName}</p>
-                }
+                {formik.touched.parentName && formik.errors.parentName && (
+                  <p className={styles.errorMsg}>{formik.errors.parentName}</p>
+                )}
               </Col>
 
               <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
@@ -253,10 +244,12 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.parentAddress &&  formik.errors.parentAddress &&
-                    <p className={styles.errorMsg}>{formik.errors.parentAddress}</p>
-                }
+                {formik.touched.parentAddress &&
+                  formik.errors.parentAddress && (
+                    <p className={styles.errorMsg}>
+                      {formik.errors.parentAddress}
+                    </p>
+                  )}
               </Col>
             </Row>
 
@@ -273,15 +266,23 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   />
                 </div>
-                {
-                    formik.touched.phoneNumber &&  formik.errors.phoneNumber &&
-                    <p className={styles.errorMsg}>{formik.errors.phoneNumber}</p>
-                }
+                {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                  <p className={styles.errorMsg}>{formik.errors.phoneNumber}</p>
+                )}
               </Col>
             </Row>
             <div className={styles.buttons}>
-              <button className={styles.btnReset} type="reset" >Reset</button>
-              <button className={styles.btnSave}  type='submit' disabled={isLoading}>Register</button>
+              <button className={styles.btnReset} type="reset">
+                Reset
+              </button>
+              <button
+                className={styles.btnSave}
+                type="submit"
+                disabled={isLoading}
+              >
+                {" "}
+                {isLoading ? "Saving...":"Register"}
+              </button>
             </div>
           </div>
         </form>

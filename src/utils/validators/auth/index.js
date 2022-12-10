@@ -46,28 +46,28 @@ export const RegisterValidator = ()=>{
             .required('LastName is required'),
         gender:Yup
             .string()
-            .required('LastName is required'),
+            .required('Gender is required'),
         dob:Yup
             .string()
-            .required('LastName is required'),
+            .required('Date of birth is required'),
         admissionDate:Yup
             .string()
-            .required('LastName is required'),
+            .required('Admition Date is required'),
         address:Yup
             .string()
-            .required('LastName is required'),
+            .required('Address is required'),
         state:Yup
             .string()
-            .required('LastName is required'),
+            .required('State is required'),
         level:Yup
             .string()
-            .required('LastName is required'),
+            .required('Level is required'),
         parentName:Yup
             .string()
-            .required('LastName is required'),
+            .required('Parent Name is required'),
         parentAddress:Yup
             .string()
-            .required('LastName is required'),
+            .required('Parent address is required'),
         phoneNumber:Yup
             .string()
             .required('Phone number is required')
