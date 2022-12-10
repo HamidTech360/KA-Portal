@@ -52,7 +52,7 @@ export const RegisterValidator = ()=>{
             .required('Date of birth is required'),
         admissionDate:Yup
             .string()
-            .required('Admition Date is required'),
+            .required('Admission date is required'),
         address:Yup
             .string()
             .required('Address is required'),
@@ -64,7 +64,7 @@ export const RegisterValidator = ()=>{
             .required('Level is required'),
         parentName:Yup
             .string()
-            .required('Parent Name is required'),
+            .required('Parent name is required'),
         parentAddress:Yup
             .string()
             .required('Parent address is required'),
