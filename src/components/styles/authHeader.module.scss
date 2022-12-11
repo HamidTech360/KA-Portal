@@ -1,0 +1,164 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding:1rem;
+    padding-left: 1.5rem;
+    overflow-x: hidden;
+    height: 100px;
+    // background-color: #FCFCFC;
+    border-bottom: 1px solid whitesmoke;
+    @media screen and (max-width:768px) {
+        padding-bottom: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    
+
+
+.textLogo{
+    max-width: 300px;
+    min-width: 400px;
+    display: flex;
+    font-weight: 500;
+    line-height: 20px;
+    align-items: center;
+    font-size: 15px;
+
+    
+    @media screen and (max-width:768px) {
+        min-width: 100px;
+        font-weight: 900;
+        max-width: 100px;
+       font-size: 14px;
+    }
+}
+
+
+.navSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+
+    .input{
+        width: 25rem;
+        padding: .5rem;
+        border-radius: 50px;
+        // background-color: ;
+        outline: none;
+        border: 1px solid #DADADA;
+ 
+    }
+
+    .searchIcon{
+        position: relative;
+        right: 28px;
+        color: rgb(196, 195, 195);
+    }
+
+ 
+    
+}
+
+
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.notification{
+    position: relative;
+    background-color:#FAFAFA ;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.notificationIcon{
+    // font-size: 2rem;
+
+}
+
+.dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #138951;
+    position: absolute;
+    left: 28px;
+    bottom: 28px;
+   
+}
+.username{
+    font-weight: 600;
+    color:  #303972;
+    margin-bottom: -5px;
+}
+.usertype{
+    color:  #A098AE;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.menuBar{
+   padding-top: 1rem;
+   cursor: pointer;
+    
+}
+
+.sideBarContainer{
+    padding: 2rem 1rem;
+    background-color: rgba(167, 207, 184, 0.4);
+    height: 100vh;
+   
+
+
+        .navItems{
+            margin-top: 4rem;
+          
+        }
+        .navItem{
+            margin-top: 1.5rem;
+            font-weight: bolder;
+            font-size: 17px;
+            color: #021b0c;
+        
+        }
+}
+
+.mobileSideNavContainer{
+    padding: 1rem 1rem 3rem 1rem;
+    overflow-y: scroll;
+}
+.avatar{
+    height: 70px;
+    width: 70px;
+    background-color: #138951;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    margin: auto;
+    margin-bottom: 20px;
+    // border-radius: 50%;
+}

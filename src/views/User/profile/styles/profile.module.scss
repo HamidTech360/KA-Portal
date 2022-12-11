@@ -1,0 +1,217 @@
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+};
+.profile{
+    overflow-x: hidden;
+}
+.profile_body{
+    height: 818px;
+    width: 100%; 
+    padding: 2rem;
+    margin: 1rem;
+    margin-top: 0px !important;
+    background-color: white;
+
+    @include responsive(tab){
+        height: auto;
+        padding: 2rem 1rem 2rem 1rem;
+    }
+}
+
+.para1{
+    font-family: Open Sans;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;  
+    
+    @include responsive(tab){
+        font-size:22px
+    }
+}
+
+.para1_container{
+    display:flex;
+    width: 100%;
+}
+
+.menu_btn{
+    flex: 1;
+    justify-content: flex-end;
+    cursor: pointer;
+    position: relative;
+    top: 4;
+    left:75%;
+    color: #667085;
+
+    @include responsive(tab){
+        left:72% !important;
+    }
+    @include responsive(phone){
+        left:52% !important;
+
+    }
+}
+
+.passport{
+    outline: 3px solid #8FC620;
+    outline-offset: 5px;
+    border-radius: 5px !important;
+    width: 252px;
+    height: 252px;
+    margin-top: 5px;
+
+    @include responsive(tab){
+        width: 100%;
+        height: 200px;
+
+    }
+    @include responsive(phone){
+        width: 90%;
+        height: 270px;
+        margin: 30% auto;
+        margin-top: 1px !important;
+        margin-bottom: 20px !important;
+        outline: 2px solid #8FC620;
+        outline-offset: 3px;
+        border-radius: 3px !important;
+
+
+    }
+}
+
+.student_details{
+    padding-left:50px;
+
+    @media screen and (max-width:768px) {
+        padding-left: 0px;
+    }
+}
+
+.para2{
+    font-family: Open Sans;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;
+    color: #161E03;
+    @include responsive(tab){
+        font-size:22px
+    }
+    
+}
+
+.para4{
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 25px;
+    color: #737D89;   
+    
+    @include responsive(tab){
+        font-size:17px
+    }
+}
+
+.para5{
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    width: 100%;
+    margin-bottom: 1rem;
+    
+   
+    @include responsive(tab){
+        font-size:17px;
+        line-height: 22px;
+    }
+  
+}
+
+.para5_main{
+    color: #737D89;
+  
+    
+}
+.para5_sub{
+    color: #161E03;
+    font-weight: 600 !important;
+    line-height: 25px;
+    text-align: left !important;
+}
+
+
+.profile_top{
+    padding: 3.5rem;
+    padding-bottom:5px !important;
+}
+.para6_main{
+    font-family: Open Sans;
+    font-size: 36px !important;
+    font-weight: 700;
+    line-height: 49px;
+    color:#1A8F4A;
+
+    @include responsive(tab){
+        font-size:27px !important;
+        font-weight: bold;
+        line-height: 40px;
+    }
+}
+
+.para6_line{
+    color:  #DADADA;
+    height:100%;
+    padding-left:10px;
+    padding-right:10px;
+
+    @include responsive(tab){
+        padding-left:5px;
+        padding-right:5px;
+    }
+
+}
+
+.para6_sub{
+    font-family: Open Sans;
+    font-size: 21px !important;
+    font-weight: 600;
+    line-height: 29px;
+    color:#434343;
+
+    @include responsive(tab){
+        font-size:19px
+    }
+
+}
+
+.para7{
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;  
+}
+.para7_main{
+    color: #667085;
+}
+
+.para7_icon{
+    color: #667085;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    @include responsive(tab){
+        padding-left: 10px;
+        padding-right: 10px;
+
+    }
+
+}
+
+.para7_sub{
+  color:#1A8F4A;
+}

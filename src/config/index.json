@@ -1,5 +1,5 @@
 {
-    "-apiUrl":"http://localhost:4000",
-    "apiUrl":"https://dau-university-api.herokuapp.com",
-    "userURL":"https://da-tuition-free-unis.herokuapp.com"
+    "AapiUrl":"http://localhost:4000/api",
+    "BapiUrl":"https://ka-server.onrender.com/api",
+    "apiUrl":"https://magnificent-lime-crayfish.cyclic.app/api"
 }

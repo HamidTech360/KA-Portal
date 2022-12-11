@@ -9,7 +9,9 @@ body{
 .hideOnDesktop{
     display: none;
 }
-
+img{
+    border-radius: 0px;
+}
 
 @media screen and (max-width:768px) {
     .hideOnDesktop{

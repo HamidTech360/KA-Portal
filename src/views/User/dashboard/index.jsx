@@ -78,6 +78,7 @@ const Dashboard = () => {
     }  
 
     return ( 
+
         <div className={styles.dashboard}>
             <div className={styles.header}>
                 <div className={`${styles.boldHeader}`}>Dashboard</div>
@@ -207,6 +208,7 @@ const Dashboard = () => {
                 
                 </table>
             </div>
+
         </div>
      );
 }

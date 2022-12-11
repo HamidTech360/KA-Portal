@@ -10,7 +10,9 @@ import Login from "../views/Auth/login";
 import News from "../views/News";
 import Students from "../views/User/students";
 
+
 import AuthLayout from "../Layouts/AuthLayout";
+import AuthHeader from "../components/authHeader";
 
 const AllRoutes = ()=>(
     <BrowserRouter>
