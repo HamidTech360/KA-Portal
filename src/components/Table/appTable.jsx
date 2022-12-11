@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
-import styles from './styles/appTable.module.scss'
+import styles from './appTable.module.scss'
 
 const AppTable = ({
     tableHeader,
@@ -16,15 +16,15 @@ const AppTable = ({
                 <thead>
                     <tr className={styles.head}>
                        {tableHeader.map((item, i)=>
-                            <th>{item.label}</th>
+                            <th key={i}>{item.label}</th>
                        )}
                     </tr>
                 </thead>
                 <tbody>
                     {
                         tableData &&
-                        tableData.map(row => (
-                            <tr className={styles.data}>
+                        tableData.map((row, i) => (
+                            <tr key={i} className={styles.data}>
                                 <td>{row.id}</td>
                                 <td>{row.name}</td>
                                 <td>{<div className={styles.photo}></div>}</td>

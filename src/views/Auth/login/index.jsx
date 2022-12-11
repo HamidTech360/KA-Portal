@@ -5,8 +5,8 @@ import Swal from 'sweetalert2';
 import config from '../../../config'
 import { useFormik } from 'formik';
 import { LoginValidator } from '../../../utils/validators/auth';
-import AppHeader from '../../../components/header';
-import Footer from '../../../components/footer';
+import AppHeader from '../../../components/Header/header';
+import Footer from '../../../components/Footer/footer';
 
 //components
 import { Form, Button } from 'react-bootstrap';

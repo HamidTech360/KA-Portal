@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./styles/footer.module.scss";
+import styles from "./footer.module.scss";
 import { Link } from "react-router-dom";
-import logo from "./../assets/logo.png";
+import logo from "./../../assets/logo.png";
 import { FaTwitter, FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 function Footer(props) {
 

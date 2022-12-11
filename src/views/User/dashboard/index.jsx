@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Fab from '../../../components/fab';
-import AppTable from '../../../components/appTable';
+import Fab from '../../../components/Fab/fab';
+import AppTable from '../../../components/Table/appTable';
 import styles from './styles/dashboard.module.scss'
 import Calendar from 'react-calendar';
 import './styles/calendar.css'
@@ -104,7 +104,7 @@ const Dashboard = () => {
                         <div className={styles.details}><b style={{ color: "green" }}>+10%</b> than last month</div>
                     </div>
                  </div>
-                 <div className={styles.card2}>
+                 <div className={`${styles.card2} hideOnMobile`}>
                     <Fab bgColor="#F0FFD1" />
                     <div className={styles.cardContent}>
                         <div className={styles.details}>Total Students</div>
@@ -112,8 +112,8 @@ const Dashboard = () => {
                         <div className={styles.details}><b style={{ color: "lightgreen" }}>-0.5%</b> than last month</div>
                     </div>
                  </div>
-                 <div className={styles.card3}>
-                    <Fab bgColor="#FFF2D4" />
+                 <div className={`${styles.card3} hideOnMobile`}>
+                    <Fab bgColor="#FFF2D4 " />
                     <div className={styles.cardContent}>
                         <div className={styles.details}>Total Students</div>
                         <div className={styles.subDetails}>4</div>

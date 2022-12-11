@@ -1,4 +1,7 @@
 import React, {useState}from "react";
+import axios from 'axios'
+import Swal from 'sweetalert2';
+import config from '../../../config'
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./styles/new.module.scss";
@@ -25,16 +28,37 @@ const RegisterStudent = () => {
     validationSchema:RegisterValidator(),
     onSubmit:async (values)=>{
         setisLoading(true)
-       console.log('values', values);
+       try{
+          const {data} =await axios.post(`${config.apiUrl}/student/create`, values, {
+            headers:{
+              authorization:`Bearer ${localStorage.getItem('accessToken')}`
+            }
+          })
+          console.log(data)
+          Swal.fire({
+            icon: 'success',
+            title: 'Student record created',
+            text:`Stuent has been registered successfully with reg number ${data.student?.regNumber}`
+         })
+         formik.handleReset()
+       }catch(error){
+          console.log(error.response)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text:error.response?.data || 'Failed to save record',
+            showCancelButton:true,
+            showConfirmButton:false
+          })
+       }finally{
+         setisLoading(false)
+         
+       }
     }
   });
 
   // console.log(formik.errors)
 
- const handleClick=()=>{
-  // console.log(formik.values)
-    formik.values='';
- }
   return (
     <div className={styles.addNewPage}>
       <div className={styles.header}>
@@ -205,6 +229,13 @@ const RegisterStudent = () => {
                     <option value={10}>SSS 3</option>
                     <option value={9}>SSS 2</option>
                     <option value={8}>SSS 1</option>
+                    <option value={7}>JSS 3</option>
+                    <option value={6}>JSS 2</option>
+                    <option value={5}>JSS 1</option>
+                    <option value={4}>Primary 4</option>
+                    <option value={3}>Primary 3</option>
+                    <option value={2}>Primary 2</option>
+                    <option value={1}>Primary 1</option>
                   </select>
                 </div>
                 {
@@ -262,7 +293,7 @@ const RegisterStudent = () => {
                 <div className={styles.formLabel}>Phone Number</div>
                 <div className={styles.input__wrappper}>
                   <input
-                    type="number"
+                    type="text"
                     className={styles.input}
                     name="phoneNumber"
                     value={formik.values.phoneNumber}

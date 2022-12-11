@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles/student.module.scss'
-import AppTable from '../../../components/appTable';
+import AppTable from '../../../components/Table/appTable';
 
 import { BsSearch } from 'react-icons/bs';
 import { NavDropdown } from 'react-bootstrap';

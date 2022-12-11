@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import SideNav from '../../components/sidenav';
+import SideNav from '../../components/SideNav/sidenav';
 
 
-import AuthHeader from '../../components/authHeader';
+import AuthHeader from '../../components/Header/authHeader';
 
 //pages
 import Dashboard from '../../views/User/dashboard';

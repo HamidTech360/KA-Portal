@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
-import styles from './styles/fab.module.scss'
+import styles from './fab.module.scss'
 
 const Fab = ({icon, bgColor}) => {
 

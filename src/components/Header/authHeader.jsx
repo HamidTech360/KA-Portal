@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import SideNav from "./sidenav";
+import SideNav from "../SideNav/sidenav";
 import { Link } from "react-router-dom";
-import styles from "./styles/authHeader.module.scss";
+import styles from "./authHeader.module.scss";
 import { FaSearch } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { Offcanvas } from "react-bootstrap";
-import { navItems } from "../utils/helpers/nav";
+import { navItems } from "../../utils/helpers/nav";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 
 const AuthHeader = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  
 
   return (
     <div className={`${styles.header}`}>
@@ -53,12 +54,13 @@ const AuthHeader = () => {
                 onHide={handleClose} 
                 placement="end" 
                 style={{width:'70%'}}
+               
             >
                <div className={styles.mobileSideNavContainer}>
                   <div className={styles.avatar}>
                       KA
                   </div>
-                  <SideNav/>
+                  <SideNav  handleSelect={handleClose} />
                </div>
             </Offcanvas>
     </div>

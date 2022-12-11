@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthNav } from '../utils/helpers/nav';
+import { AuthNav } from '../../utils/helpers/nav';
 import { AiOutlineLogout, AiOutlinePlus } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
-import styles from './styles/sidenav.module.scss'
+import styles from './sidenav.module.scss'
 
-const SideNav = () => {
+const SideNav = ({handleSelect}) => {
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -29,6 +29,7 @@ const SideNav = () => {
                                     {color:'#1A8F4A'}
                                     :{}}
                                 className={styles.navItem}
+                                onClick={handleSelect}
                             >
                                 <span className={styles.icon}> {item.icon} </span>
                                 <span style={{fontWeight:item.location.includes(location.pathname)?'700':''}} className={styles.navLabel}>{item.label}</span>
