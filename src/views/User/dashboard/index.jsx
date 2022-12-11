@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { AiOutlineUser } from 'react-icons/ai';
+import Fab from '../../../components/fab';
+import AppTable from '../../../components/appTable';
 import styles from './styles/dashboard.module.scss'
 import Calendar from 'react-calendar';
 import './styles/calendar.css'
@@ -56,6 +57,14 @@ const Dashboard = () => {
             Level: 100
         },
     ]
+    const tableHeader = [
+        {label:'Student Id'},
+        {label:'Name'},
+        {label:'Photo'},
+        {label:'Gender'},
+        {label:'Program'},
+        {label:'Level'}
+    ]
     
     const [date, setDate] = useState(new Date())
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -69,26 +78,26 @@ const Dashboard = () => {
         return differenceInCalendarDays(a, b) === 0;
     }
     function tileClassName({ date, view }) {
-    if (
-        view === 'month' &&
-        highlightedDates.find((dDate) => isSameDay(dDate, date))
-    ) {
-        return 'highlight';
-    }
+        if (
+            view === 'month' &&
+            highlightedDates.find((dDate) => isSameDay(dDate, date))
+        ) {
+            return 'highlight';
+        }
     }  
 
+    
     return ( 
 
         <div className={styles.dashboard}>
+           
             <div className={styles.header}>
                 <div className={`${styles.boldHeader}`}>Dashboard</div>
                 <div className={`${styles.subHeader}`}>Today</div>
             </div>
             <div className={styles.card}>
                  <div className={styles.card1}>
-                    <div className={styles.icon}>
-                        <AiOutlineUser size={25} />
-                    </div>
+                    <Fab bgColor="#E1FFED" />
                     <div className={styles.cardContent}>
                         <div className={styles.details}>Total Students</div>
                         <div className={styles.subDetails}>932</div>
@@ -96,9 +105,7 @@ const Dashboard = () => {
                     </div>
                  </div>
                  <div className={styles.card2}>
-                    <div className={styles.icon}>
-                        <AiOutlineUser size={25} />
-                    </div>
+                    <Fab bgColor="#F0FFD1" />
                     <div className={styles.cardContent}>
                         <div className={styles.details}>Total Students</div>
                         <div className={styles.subDetails}>754</div>
@@ -106,9 +113,7 @@ const Dashboard = () => {
                     </div>
                  </div>
                  <div className={styles.card3}>
-                    <div className={styles.icon}>
-                        <AiOutlineUser size={25} />
-                    </div>
+                    <Fab bgColor="#FFF2D4" />
                     <div className={styles.cardContent}>
                         <div className={styles.details}>Total Students</div>
                         <div className={styles.subDetails}>4</div>
@@ -163,51 +168,21 @@ const Dashboard = () => {
                         <h5 style={{ color: "#1A8F4A", fontSize: "17px" }}>{month} {date.getFullYear()}</h5>
                     </div>
 
-                    <Calendar onChange={setDate} value={date}
-                    tileClassName = {tileClassName}
+                    <Calendar 
+                        onChange={setDate} 
+                        value={date}
+                        tileClassName = {tileClassName}
                     />
                 </div>
             </div>
-            <div className={styles.tableContainer}>
-                <div className={styles.tableHead}>Students List</div>
-                <table>
-                    <thead>
-                        <tr className={styles.head}>
-                            <th>Student ID</th>
-                            <th>Name</th>
-                            <th>Photo</th>
-                            <th>Gender</th>
-                            <th>Program</th>
-                            <th>Level</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            data &&
-                            data.map(row => (
-                                <tr className={styles.data}>
-                                    <td>{row.id}</td>
-                                    <td>{row.name}</td>
-                                    <td>{<div className={styles.photo}></div>}</td>
-                                    <td>{row.gender}</td>
-                                    <td>{row.program}</td>
-                                    <td>{row.Level}</td>
-                                    <td style={{cursor:'pointer'}}>
-                                        <NavDropdown >
-                                            <NavDropdown.Item style={{fontSize:'14px'}}>View Profile</NavDropdown.Item>
-                                            <NavDropdown.Item  style={{fontSize:'14px'}}>View Results</NavDropdown.Item>
-                                            <NavDropdown.Item style={{fontSize:'14px'}}>Update student record</NavDropdown.Item>
-                                        </NavDropdown>
-                                        
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                
-                </table>
-            </div>
+
+            <div className={styles.tableHead}>Student List</div>
+            <AppTable
+                hasAction={false}
+                tableHeader={tableHeader}
+                tableData={data}
+            />
+            
 
         </div>
      );

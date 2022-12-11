@@ -32,7 +32,7 @@ const Login = () => {
            try{
                 const {data} = await axios.post(`${config.apiUrl}/auth/login`, values)
                 localStorage.setItem('accessToken', data.accessToken)
-                navigate('/user/students')
+                navigate('/user')
            }catch(error){
               console.log(error.response?.data)
               setisLoading(false)

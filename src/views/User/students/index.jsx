@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles/student.module.scss'
-
+import AppTable from '../../../components/appTable';
 
 import { BsSearch } from 'react-icons/bs';
 import { NavDropdown } from 'react-bootstrap';
@@ -82,6 +82,20 @@ const Students = () => {
 
 
     ]
+    const tableHeader = [
+        {label:'Student ID'},
+        {label:'Name'},
+        {label:'Photo'},
+        {label:'Gender'},
+        {label:'Program'},
+        {label:'Level'},
+        {label:'Action'},
+    ]
+    const actions = [
+        {label:'View Profile', link:'/user/students/profile'},
+        {label:'View Result', link:'/user/students'},
+        {label:'Update Student Record', link:'/user/students'}
+    ]
 
 
     return ( 
@@ -105,47 +119,13 @@ const Students = () => {
                 </div>
             </div>
 
-            
-            <div className={styles.tableContainer}>
-                <table>
-                    <thead>
-                        <tr className={styles.head}>
-                            <th>Student ID</th>
-                            <th>Name</th>
-                            <th>Photo</th>
-                            <th>Gender</th>
-                            <th>Program</th>
-                            <th>Level</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            data &&
-                            data.map(row => (
-                                <tr className={styles.data}>
-                                    <td>{row.id}</td>
-                                    <td>{row.name}</td>
-                                    <td>{<div className={styles.photo}></div>}</td>
-                                    <td>{row.gender}</td>
-                                    <td>{row.program}</td>
-                                    <td>{row.Level}</td>
-                                    <td style={{cursor:'pointer'}}>
-                                        <NavDropdown >
-                                            <NavDropdown.Item style={{fontSize:'14px'}}> <Link style={{textDecoration:'none'}} to="/user/students/profile">View Profile</Link> </NavDropdown.Item>
-                                            <NavDropdown.Item  style={{fontSize:'14px'}}>View Results</NavDropdown.Item>
-                                            <NavDropdown.Item style={{fontSize:'14px'}}>Update student record</NavDropdown.Item>
-                                        </NavDropdown>
-                                        
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                
-                </table>
-            </div>
-
+        
+            <AppTable
+                tableData={data}
+                tableHeader={tableHeader}
+                hasAction={true}
+                actions={actions}
+            />
         </div>
      );
 }
