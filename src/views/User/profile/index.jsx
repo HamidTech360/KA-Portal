@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import Loader from "../../../components/Loader/loader";
 import axios from "axios";
 import config from '../../../config'
 import { useSearchParams } from "react-router-dom";
@@ -11,6 +12,7 @@ const StudentProfile = () => {
   const [searchParams] = useSearchParams()
   const studentId = searchParams.get('id')
   const [record, setRecord] = useState({})
+  const [isFetching, setIsFetching] = useState(true)
 
   useEffect(()=>{
       (async function (){
@@ -18,8 +20,9 @@ const StudentProfile = () => {
               const response = await axios.get(`${config.apiUrl}/student/${studentId}`, {headers:{
                 authorization:`Bearer ${localStorage.getItem('accessToken')}`
               }})
-              console.log(response.data)
+              // console.log(response.data)
               setRecord(response.data.student)
+              setIsFetching(false)
           }catch(error){
             console.log(error.response?.data)
           }
@@ -29,6 +32,7 @@ const StudentProfile = () => {
 
   return (
     <div className={styles.profile}>
+      {isFetching && <Loader/> }
       <div className={styles.profile_top}>
         <p className={styles.para6}>
           <span className={styles.para6_main}>All Students</span>
@@ -59,7 +63,7 @@ const StudentProfile = () => {
             <p className={styles.para2}> {record?.firstName} {record?.lastName}</p>
             <p className={styles.para4}>
                 {record?.firstName} {record?.lastName} is a student of Khayrul Adab modrosa. {record?.gender=="male"?'He':'She'} is currently in the 
-                the class {record?.level}. He was admitted on {record?.admissionDate}
+                 class {record?.level}. {record?.gender=="male"?'He':'She'} was admitted on {record?.admissionDate}
             </p>
 
            
