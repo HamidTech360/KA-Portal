@@ -1,68 +1,32 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+import config from '../../../config'
+import { useSearchParams } from "react-router-dom";
 import styles from "./styles/profile.module.scss";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
-import { TbMinusVertical } from "react-icons/tb";
 
-import pics from "./../../../assets/pass.png";
+
+
 const StudentProfile = () => {
-  const studentsProfile = [
-    {
-      main: "Sudent",
-      sub: "123455",
-    },
-    {
-      main: "name",
-      sub: "Adewale tobiloba",
-    },
-    {
-      main: "Gender",
-      sub: "Male",
-    },
-    {
-      main: "Admission Date",
-      sub: "12-05-2022",
-    },
-    {
-      main: "Address",
-      sub: "Lorem ipsum dolor sit amet",
-    },
-    {
-      main: "Sudent",
-      sub: "123455",
-    },
-    {
-      main: "indegene",
-      sub: "osun",
-    },
-    {
-      main: "Nationality",
-      sub: "Nigeria",
-    },
-    {
-      main: "Program",
-      sub: "Program Title",
-    },
-    {
-      main: "Current Level",
-      sub: "200",
-    },
-    {
-      main: "Father Name",
-      sub: "Mr. Abdullah",
-    },
-    {
-      main: "Father Contact",
-      sub: "090 12345678",
-    },
-    {
-      main: "Mother Name",
-      sub: "Mr. Abdullah",
-    },
-    {
-      main: "Mother Contact",
-      sub: "090 12345678",
-    },
-  ];
+  const [searchParams] = useSearchParams()
+  const studentId = searchParams.get('id')
+  const [record, setRecord] = useState({})
+
+  useEffect(()=>{
+      (async function (){
+          try{
+              const response = await axios.get(`${config.apiUrl}/student/${studentId}`, {headers:{
+                authorization:`Bearer ${localStorage.getItem('accessToken')}`
+              }})
+              console.log(response.data)
+              setRecord(response.data.student)
+          }catch(error){
+            console.log(error.response?.data)
+          }
+      })()
+  },[])
+ 
+
   return (
     <div className={styles.profile}>
       <div className={styles.profile_top}>
@@ -74,7 +38,7 @@ const StudentProfile = () => {
         <p className={styles.para7}>
           <span className={styles.para7_main}>Students </span>
           <span className={styles.para7_icon}> &gt; </span>
-          <span className={styles.para7_sub}>Abdullah Fatah </span>
+          <span className={styles.para7_sub}> {record?.firstName} </span>
         </p>
       </div>
 
@@ -89,22 +53,41 @@ const StudentProfile = () => {
         </div>
         <div className="row">
           <div className={`col-12 col-md-4`}>
-            <img src={pics} alt="Passport" className={styles.passport} />
+            <img src={record?.gender==="male"?`../../../assets/man.jpg`:`../../../assets/woman.png`} alt="Passport" className={styles.passport} />
           </div>
           <div className={`${styles.student_details} col-12 col-md-8`}>
-            <p className={styles.para2}> Abdullah Fatah </p>
+            <p className={styles.para2}> {record?.firstName} {record?.lastName}</p>
             <p className={styles.para4}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et urna,
-              laoreet ullamcorper ac at. Et amet, malesuada scelerisque nisi
-              velit id.{" "}
+                {record?.firstName} {record?.lastName} is a student of Khayrul Adab modrosa. {record?.gender=="male"?'He':'She'} is currently in the 
+                the class {record?.level}. He was admitted on {record?.admissionDate}
             </p>
 
-            {studentsProfile.map((student, i) => (
-              <div className={styles.para5} key={i}>
-                <p className={styles.para5_main}>{student.main}</p>
-                <p className={styles.para5_sub}>{student.sub}</p>
-              </div>
-            ))}
+           
+            <div className={styles.para5}>
+                <p className={styles.para5_main}>First Name</p>
+                <p className={styles.para5_sub}>{record?.firstName}</p>
+            </div>
+
+            <div className={styles.para5}>
+                <p className={styles.para5_main}>Last Name</p>
+                <p className={styles.para5_sub}>{record?.lastName}</p>
+            </div>
+
+            <div className={styles.para5}>
+                <p className={styles.para5_main}>Date of Birth</p>
+                <p className={styles.para5_sub}>{record?.dob}</p>
+            </div>
+
+            <div className={styles.para5}>
+                <p className={styles.para5_main}>Class</p>
+                <p className={styles.para5_sub}>{record?.level}</p>
+            </div>
+
+            <div className={styles.para5}>
+                <p className={styles.para5_main}>Admission Date</p>
+                <p className={styles.para5_sub}>{record?.admissionDate}</p>
+            </div>
+           
           </div>
         </div>
       </div>

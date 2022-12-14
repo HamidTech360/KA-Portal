@@ -55,17 +55,7 @@ const RegisterStudent = () => {
         phoneNumber: record.phoneNumber,
         parentAddress: record.parentAddress
       })
-      // formik.values.firstName = record?.firstName
-      // formik.values.lastName = record.lastName
-      // formik.values.gender = record.gender
-      // formik.values.dob = record.dob?.split("/").reverse().join("-")
-      // formik.values.admissionDate = record.admissionDate?.split("/").reverse().join("-")
-      // formik.values.address = record.address
-      // formik.values.state = record.state
-      // formik.values.level = record.level
-      // formik.values.parentName = record.parentName
-      // formik.values.phoneNumber = record.phoneNumber
-      // formik.values.parentAddress = record.parentAddress
+     
     }
   },[record])
  // console.log(record)

@@ -58,12 +58,12 @@ const Dashboard = () => {
         },
     ]
     const tableHeader = [
-        {label:'Student Id'},
-        {label:'Name'},
-        {label:'Photo'},
-        {label:'Gender'},
-        {label:'Program'},
-        {label:'Level'}
+        {label:'Student Id', key:'id'},
+        {label:'Name', key:'name'},
+        {label:'Photo', key:''},
+        {label:'Gender', key:'gender'},
+        {label:'Program', key:'program'},
+        {label:'Level', key:'Level'}
     ]
     
     const [date, setDate] = useState(new Date())
