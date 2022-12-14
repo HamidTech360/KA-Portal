@@ -53,8 +53,6 @@ const RegisterStudent = () => {
       formik.values.parentName = record.parentName
       formik.values.phoneNumber = record.phoneNumber
       formik.values.parentAddress = record.parentAddress
-    }else{
-      formik.handleReset()
     }
   },[record])
  // console.log(record)
