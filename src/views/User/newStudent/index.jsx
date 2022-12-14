@@ -39,20 +39,33 @@ const RegisterStudent = () => {
   },[])
 
   
-
+  
   useEffect(()=>{
     if(action==="edit"){
-      formik.values.firstName = record.firstName
-      formik.values.lastName = record.lastName
-      formik.values.gender = record.gender
-      formik.values.dob = record.dob?.split("/").reverse().join("-")
-      formik.values.admissionDate = record.admissionDate?.split("/").reverse().join("-")
-      formik.values.address = record.address
-      formik.values.state = record.state
-      formik.values.level = record.level
-      formik.values.parentName = record.parentName
-      formik.values.phoneNumber = record.phoneNumber
-      formik.values.parentAddress = record.parentAddress
+      formik.setValues({
+        firstName: record?.firstName,
+        lastName: record.lastName,
+        gender: record.gender,
+        dob: record.dob?.split("/").reverse().join("-"),
+        admissionDate: record.admissionDate?.split("/").reverse().join("-"),
+        address: record.address,
+        state: record.state,
+        level: record.level,
+        parentName: record.parentName,
+        phoneNumber: record.phoneNumber,
+        parentAddress: record.parentAddress
+      })
+      // formik.values.firstName = record?.firstName
+      // formik.values.lastName = record.lastName
+      // formik.values.gender = record.gender
+      // formik.values.dob = record.dob?.split("/").reverse().join("-")
+      // formik.values.admissionDate = record.admissionDate?.split("/").reverse().join("-")
+      // formik.values.address = record.address
+      // formik.values.state = record.state
+      // formik.values.level = record.level
+      // formik.values.parentName = record.parentName
+      // formik.values.phoneNumber = record.phoneNumber
+      // formik.values.parentAddress = record.parentAddress
     }
   },[record])
  // console.log(record)
