@@ -56,7 +56,7 @@ const SideNav = ({handleSelect}) => {
                     </div>
 
                     <div className={styles.newStudentBlock}>
-                        <div onClick={()=>navigate('/user/students/new')} className={styles.fab}>
+                        <div onClick={()=>navigate('/user/students/create')} className={styles.fab}>
                             <AiOutlinePlus color='white' size={20} />
                         </div>
                         <div className={styles.bold}>Add New Student</div>

@@ -94,7 +94,7 @@ const Students = () => {
     const actions = [
         {label:'View Profile', link:'/user/students/profile'},
         {label:'View Result', link:'/user/students'},
-        {label:'Update Student Record', link:'/user/students'}
+        {label:'Update Student Record', link:'/user/students/create?action=edit&id=638b971176fec6e73cc93d8e'}
     ]
 
 

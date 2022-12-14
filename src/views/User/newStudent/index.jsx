@@ -1,20 +1,71 @@
-import React, {useState}from "react";
+import React, {useState, useEffect}from "react";
 import axios from 'axios'
 import Swal from 'sweetalert2';
 import config from '../../../config'
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./styles/new.module.scss";
 import { useFormik } from "formik";
+import Loader from "../../../components/Loader/loader";
 import { RegisterValidator } from './../../../utils/validators/auth/index';
 
 const RegisterStudent = () => {
+  const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
+    const action = searchParams.get('action')
+    const studentId = searchParams.get('id')
     const [ isLoading, setisLoading]= useState(false)
-    
+    const [isFetching, setIsFetching] = useState(action?true:false)
+    const [record, setRecord] = useState({})
+
+
+  useEffect(()=>{
+    (async function (){
+      if (action==="edit" && studentId){
+        setIsFetching(true)
+        try{
+            const response = await axios.get(`${config.apiUrl}/student/${studentId}`, {headers:{
+              authorization:`Bearer ${localStorage.getItem('accessToken')}`
+            }})
+            // console.log(response.data.student)
+            setRecord(response.data.student)
+            setIsFetching(false)
+        }catch(error){
+          console.log(error.response?.data)
+          navigate('/user/students')
+        }
+     }
+    })()
+  },[])
+
+  
+
+  useEffect(()=>{
+    if(action==="edit"){
+      formik.values.firstName = record.firstName
+      formik.values.lastName = record.lastName
+      formik.values.gender = record.gender
+      formik.values.dob = record.dob?.split("/").reverse().join("-")
+      formik.values.admissionDate = record.admissionDate?.split("/").reverse().join("-")
+      formik.values.address = record.address
+      formik.values.state = record.state
+      formik.values.level = record.level
+      formik.values.parentName = record.parentName
+      formik.values.phoneNumber = record.phoneNumber
+      formik.values.parentAddress = record.parentAddress
+    }else{
+      formik.handleReset()
+    }
+  },[record])
+ // console.log(record)
+
+  
+
+  
   const formik = useFormik({
     initialValues: {
       firstName: "",
-      lastName: "",
+      lastName: "" ,
       gender: "",
       dob: "",
       admissionDate: "",
@@ -29,6 +80,27 @@ const RegisterStudent = () => {
     onSubmit:async (values)=>{
         setisLoading(true)
        try{
+
+        //editing record
+        if(action==="edit"){
+          const {data} =await axios.put(`${config.apiUrl}/student/${studentId}`, values, {
+            headers:{
+              authorization:`Bearer ${localStorage.getItem('accessToken')}`
+            }
+          })
+          console.log(data)
+          Swal.fire({
+            icon: 'success',
+            title: 'Student record updated',
+            text:`Stuent Record updated with success`
+         })
+          formik.handleReset()
+          return
+        }
+        ///////
+
+
+        //saving record
           const {data} =await axios.post(`${config.apiUrl}/student/create`, values, {
             headers:{
               authorization:`Bearer ${localStorage.getItem('accessToken')}`
@@ -41,12 +113,15 @@ const RegisterStudent = () => {
             text:`Stuent has been registered successfully with reg number ${data.student?.regNumber}`
          })
          formik.handleReset()
+         ///////
+
+
        }catch(error){
           console.log(error.response)
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text:error.response?.data || 'Failed to save record',
+            text:error.response?.data || 'Something Failed',
             showCancelButton:true,
             showConfirmButton:false
           })
@@ -57,18 +132,20 @@ const RegisterStudent = () => {
     }
   });
 
-  // console.log(formik.errors)
+ 
+  // console.log(record.firstName)
 
   return (
     <div className={styles.addNewPage}>
+      {isFetching &&  <Loader/>}
       <div className={styles.header}>
-        <div className={styles.headerText}>Add New Student</div>
+        <div className={styles.headerText}>{action==="edit"?"Edit Student Record":"Add New student"}</div>
         <div className={styles.breadCrumb}>
           <Link style={{ textDecoration: "none" }} to="/user/students">
             <span className={styles.b__student}>Student</span>
           </Link>
           <span className={styles.b__icon}>{">"}</span>
-          <span className={styles.b__addNew}>Add New student</span>
+          <span className={styles.b__addNew}> {action==="edit"?"Edit Student Record":"Add New student"} </span>
         </div>
       </div>
 
@@ -308,8 +385,15 @@ const RegisterStudent = () => {
               </Col>
             </Row>
             <div className={styles.buttons}>
-              <button className={styles.btnReset} type='reset'>Reset</button>
-              <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving...': 'Register'}</button>
+                {
+                  action==="edit"?
+                  <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'updating...': 'Update Record'}</button>:
+                   <>
+                    <button className={styles.btnReset} type='reset'>Reset</button>
+                    <button className={styles.btnSave}  type='submit' disabled={isLoading}>{ isLoading ? 'saving...': 'Register'}</button>
+                  </>
+                 
+                }
             </div>
           </div>
         </form>
