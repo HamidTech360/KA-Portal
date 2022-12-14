@@ -15,7 +15,7 @@ const RegisterStudent = () => {
     const action = searchParams.get('action')
     const studentId = searchParams.get('id')
     const [ isLoading, setisLoading]= useState(false)
-    const [isFetching, setIsFetching] = useState(action?true:false)
+    const [isFetching, setIsFetching] = useState(action==="edit"?true:false)
     const [record, setRecord] = useState({})
 
 
