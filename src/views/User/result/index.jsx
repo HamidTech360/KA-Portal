@@ -87,6 +87,8 @@ const Result = () => {
                     title: 'Result Uploaded',
                     text:`Result has been saved with success`
                  })
+                 formik.handleReset()
+                 setTableData([])
             }catch(error){
                 console.log(error.response?.data)
                 Swal.fire({
