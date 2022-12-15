@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import config from '../../../config'
 import { Row, Col, Modal } from 'react-bootstrap';
 import AppTable from '../../../components/Table/appTable';
+import { UploadResultValidator } from '../../../utils/validators/result';
+import { useFormik } from 'formik';
 import {AiOutlineClose} from 'react-icons/ai'
 import styles from './styles/result.module.scss'
 
+
 const Result = () => {
-    const tableHeader = [
-        {label:'Subject', key:'subject'},
-        {label:'1st Semester Test ', key:'test1'},
-        {label:'1st Semester Exam ',  key:'exam1'},
-        {label:'2nd Semester Test', key:'test2'},
-        {label:'2nd Semester Exam', key:'exam2'},
-    ]
+   
+    const [isLoading, setisLoading] = useState(false)
     const [tableData, setTableData] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [result, setResult] = useState({
@@ -22,6 +23,14 @@ const Result = () => {
         test2:'',
         exam2:''
     })
+    const tableHeader = [
+        {label:'Subject', key:'subject'},
+        {label:'1st Semester Test ', key:'test1'},
+        {label:'1st Semester Exam ',  key:'exam1'},
+        {label:'2nd Semester Test', key:'test2'},
+        {label:'2nd Semester Exam', key:'exam2'},
+    ]
+    const resultList = []
 
     const handleChange = (e)=>{
         const result__c = {...result}
@@ -29,13 +38,13 @@ const Result = () => {
         setResult(result__c)
     }
 
+
+
     const AddToList = ()=>{
         if(result.test1=="" && result.exam1=="" && result.test2=="" && result.exam2==""){
             alert('Cannot add an empty record to queue')
             return
         }
-
-        // setTableData(tbd__c)
         tableData.push({
             subject:result.subject,
             test1:result.test1 || 0,
@@ -47,6 +56,51 @@ const Result = () => {
         setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'' })
         setShowModal(false)
     }
+
+    const formik = useFormik({
+        initialValues:{
+            regNumber:'',
+            session:''
+        },
+        validationSchema:UploadResultValidator,
+        onSubmit:async (values)=>{
+      
+            if(tableData.length < 1) return alert('No record added yet')
+            tableData.forEach(element=>{
+                resultList.push([element.subject, element.test1, element.exam1, element.test2, element.exam2])
+            })
+            setisLoading(true)
+            const payload = {
+                scores:resultList,
+                regNumber:values.regNumber,
+                session:values.session
+            }
+            console.log(payload);
+            
+            try{
+                const response = await axios.post(`${config.apiUrl}/result`, payload, {headers:{
+                    authorization:`Bearer ${localStorage.getItem('accessToken')}`
+                }})
+                console.log(response.data)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Result Uploaded',
+                    text:`Result has been saved with success`
+                 })
+            }catch(error){
+                console.log(error.response?.data)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Failed to save result',
+                    showCancelButton:true,
+                    showConfirmButton:false
+                  })
+            }finally{
+                setisLoading(false)
+            }
+        }
+    })
 
     return ( 
         <div className={styles.result}>
@@ -72,11 +126,15 @@ const Result = () => {
                                 <input
                                     type="text"
                                     className={styles.input}
-                                    name="firstName"
-                                    // value={formik.values.firstName}
-                                    // onChange={formik.handleChange}
-                                    // onBlur={formik.handleBlur}
+                                    name="regNumber"
+                                    value={formik.values.regNumber}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {
+                                    formik.touched.regNumber && formik.errors.regNumber &&
+                                    <p className={styles.errorMsg}>{formik.errors.regNumber}</p>
+                                }
                             </div>
                         </Col>
 
@@ -86,11 +144,15 @@ const Result = () => {
                                 <input
                                     type="text"
                                     className={styles.input}
-                                    name="firstName"
-                                    // value={formik.values.firstName}
-                                    // onChange={formik.handleChange}
-                                    // onBlur={formik.handleBlur}
+                                    name="session"
+                                    value={formik.values.session}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
+                                {
+                                    formik.touched.session && formik.errors.session &&
+                                    <p className={styles.errorMsg}>{formik.errors.session}</p>
+                                }
                             </div>
                         </Col>
                     </Row>
@@ -108,7 +170,7 @@ const Result = () => {
 
                 <div className={styles.buttons}>
                     <button className={styles.btnReset} type='reset'>Reset</button>
-                    <button className={styles.btnSave}  type='submit' disabled={false}>Upload</button>
+                    <button className={styles.btnSave} onClick={formik.handleSubmit}  type='submit' disabled={isLoading}>{isLoading?'Uploading...':'Upload'}</button>
                 </div>
                 
             </div>
