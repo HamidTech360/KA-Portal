@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { levels } from '../../../utils/helpers/data/levels';
+import { Dropdown } from 'react-bootstrap';
 import config from '../../../config'
 import Loader from '../../../components/Loader/loader';
 import styles from './styles/student.module.scss'
@@ -13,6 +15,9 @@ import {AiOutlinePlus} from 'react-icons/ai'
 const Students = () => {
     const [studentsRecord, setStudentsRecord] = useState([])
     const [isFetching, setIsFetching] = useState(true)
+    const [filteredGender, setFilteredGender] = useState(null)
+    const [filteredClass, setFilteredClass] = useState(null)
+    const [filteredList, setFilteredList] = useState([])
 
     const tableHeader = [
         {label:'Student ID', key:'regNumber'},
@@ -22,18 +27,30 @@ const Students = () => {
         
     ]
 
+    const handleFilter = (criteria, value)=>{
+        let filtered
+        if(!value) setFilteredList([])
+        const record__c = [...studentsRecord]
+        if(criteria ==="class"){
+            setFilteredClass(value)
+            filtered = record__c.filter(item=>item.gender?.toLowerCase() ===value.toLowerCase())
+        }else if (criteria === "level"){
+            setFilteredGender(value)
+            filtered = record__c.filter(item=>item.level ==value)
+        }
+        setFilteredList(filtered)
+    }
+
     useEffect(()=>{
         (async function(){
             try{
                 const response = await axios.get(`${config.apiUrl}/student`, {headers:{
                     authorization:`Bearer ${localStorage.getItem('accessToken')}`
                 }})
-               // console.log(response.data.students)
                 const allStudents = [...response.data.students]
                 allStudents.forEach(item=>{
                     item['fullName'] = `${item.firstName} ${item.lastName}`
                 })
-                // console.log(allStudents)
                 setStudentsRecord(allStudents)
                 setIsFetching(false)
             }catch(error){
@@ -42,7 +59,7 @@ const Students = () => {
         })()
     },[])
 
- 
+    
 
 
     return ( 
@@ -58,17 +75,48 @@ const Students = () => {
                         <input type="text" placeholder='Search by Name' />
                         <BsSearch size={20} className={styles.mdsearch}/> 
                     </div>
-                    <div>
-                        <button  className={styles.button}>
+
+                    <div className={styles.dropDownContainer}>
+                        {/* <button  className={styles.button}>
                             Add Filter <AiOutlinePlus color="white" /> 
-                        </button>
+                        </button> */}
+                        <Dropdown style={{fontSize:'14px'}}>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                All classes
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={()=>handleFilter('level', null)} >All classes</Dropdown.Item>
+                                {levels.map((item, i)=>
+                                    <Dropdown.Item key={i} onClick={()=>handleFilter('level', item.value)}>
+                                        {item.label}
+                                    </Dropdown.Item>
+                                )}
+                                {/* <Dropdown.Item>Another action</Dropdown.Item>
+                                <Dropdown.Item>Something else</Dropdown.Item> */}
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Dropdown style={{fontSize:'14px'}} className='dropdown'>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                {!filteredClass?'All gender':filteredClass}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={()=>handleFilter('class', null)} >All</Dropdown.Item>
+                                <Dropdown.Item onClick={()=>handleFilter('class', 'male')}>Male students</Dropdown.Item>
+                                <Dropdown.Item onClick={()=>handleFilter('class', 'female')}>Female stuents</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        
                     </div>
                 </div>
             </div>
 
         
             <AppTable
-                tableData={studentsRecord}
+                tableData={filteredList.length>0?filteredList:studentsRecord}
                 tableHeader={tableHeader}
                 hasAction={true}
                 tableLabel="students"

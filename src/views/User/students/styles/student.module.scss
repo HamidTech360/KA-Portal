@@ -195,3 +195,16 @@ th:last-child{
         font-size: 14px;
     }
 }
+.dropDownContainer{
+    padding-left: 10px;
+    display: flex;
+    row-gap: 10px;
+    column-gap: 20px;
+   
+    @media screen and (max-width:768px) {
+        padding-left: 0px;
+        padding-top: 10px;
+        column-gap: 5px;
+       
+    }
+}

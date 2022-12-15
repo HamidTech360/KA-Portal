@@ -7,6 +7,7 @@ import AuthHeader from '../../components/Header/authHeader';
 
 //pages
 import Dashboard from '../../views/User/dashboard';
+import Result from '../../views/User/result';
 import Students from '../../views/User/students';
 import RegisterStudent from '../../views/User/newStudent';
 import StudentProfile from '../../views/User/profile';
@@ -29,6 +30,7 @@ const AuthLayout = () => {
                         <Route path='/students/profile' element={<StudentProfile/>} />
                         <Route path='/students/create' element={<RegisterStudent/>} />
                         <Route path="/students" element={<Students/>}/>
+                        <Route path="/uploadResult" element={<Result/>}/>
                         <Route path='/' element={<Dashboard/>}/>
                     </Routes>
                 </div>
