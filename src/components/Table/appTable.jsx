@@ -7,7 +7,6 @@ const AppTable = ({
     tableHeader,
      tableData, 
      hasAction, 
-     actions,
      tableLabel
     }) => {
 
@@ -49,6 +48,9 @@ const AppTable = ({
                                             </NavDropdown.Item>
                                             <NavDropdown.Item>  
                                                 <Link style={linkStyle} to={`/user/students/create?action=edit&id=${row._id}`}>Update Profile</Link>
+                                            </NavDropdown.Item>
+                                            <NavDropdown.Item>  
+                                                <Link style={linkStyle} to={`/user/students/result?id=${row._id}`}>View Result</Link>
                                             </NavDropdown.Item>
                                         </NavDropdown>
                                         } 

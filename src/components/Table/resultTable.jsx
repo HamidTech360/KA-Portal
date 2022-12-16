@@ -3,7 +3,7 @@ import React from 'react';
 function ResultTable(props) {
     return (
         <div>
-            <table className='table'>
+            <table className=''>
                 <thead>
                     <th>testing</th>
                     <th>testing</th>

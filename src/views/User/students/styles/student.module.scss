@@ -47,25 +47,7 @@
        display: block;
     }
 }
-// .search .mdsearch{
-//     position: relative;
-//     right: 50px;
-//     cursor: pointer;
-// }
-// @media screen and (max-width:800px) {
-   
-//     .search .mdsearch{
-//         right: 40px;
-//     }
-//     .search > input{
-//         font-size: 10px;
-//     }
-// }
-// @media screen and (min-width: 410px) and (max-width: 800px) {
-//     .search > input{
-//         font-size: 15px;
-//     }
-// }
+
  .button{
     display: flex;
     align-items: center;
@@ -100,84 +82,8 @@
     color: white;
 
 }
-.photo{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: grey;
 
-    @media screen and (max-width:768px) {
-        width: 30px;
-        height: 30px;
-    }
-}
-.toptable{
-    overflow-x: auto;
-}
-.tableContainer{
-    max-width: 100%;
-    overflow-x: scroll;
-    margin-left: 7px;
-    margin-right: 7px;
-    margin-bottom: 50px;
-}
-// @media screen and (min-width: 1100px) {
-//     .toptable{
-//         overflow-x: hidden;
-//     }
-// }
-table{
-    width: 100%;
-    font-family: Lato;
-    border-collapse: collapse;
 
-    @media screen and (max-width:768px) {
-        font-size: 13px;
-    }
-}
-td, th{
-    border-bottom: 1px solid rgba(167, 207, 184, 0.4) !important;
-    padding: 8px;
-}
-tr:nth-child(odd){
-    color: #1A8F4A;
-    // border-left: 2px solid #1A8F4A;
-}
-tr:nth-child(even){
-    border-left: 2px solid #f3f3f3;
-}
-th {
-    background-color: #1A8F4A;
-    color: #fff;
-}
-th:first-child{
-    border-top-left-radius: 8px !important;
-}
-th:last-child{
-    border-top-right-radius: 8px !important;
-}
-.scroll{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -140px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    width: 200px;
-    height: 50px;
-    background-color:#fff;
-    justify-content: center;
-    color: #1A8F4A;
-    font-family: Lato;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    font-weight: bold;
-    font-size: 19px;
-    box-shadow: 2px 4px 5px 5px rgba(.1,.1,.1,.1);
-}
 
 .boldHeader{
     color: #1A8F4A;
@@ -204,7 +110,7 @@ th:last-child{
     @media screen and (max-width:768px) {
         padding-left: 0px;
         padding-top: 10px;
-        column-gap: 5px;
+        column-gap: 15px;
        
     }
 }

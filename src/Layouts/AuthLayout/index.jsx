@@ -11,7 +11,7 @@ import Result from '../../views/User/result';
 import Students from '../../views/User/students';
 import RegisterStudent from '../../views/User/newStudent';
 import StudentProfile from '../../views/User/profile';
-import studentResult from '../../views/User/studentResult'
+import StudentResult from '../../views/User/studentResult'
 
 
 import styles from './layout.module.scss'
@@ -30,9 +30,9 @@ const AuthLayout = () => {
                     <Routes>
                         <Route path='/students/profile' element={<StudentProfile/>} />
                         <Route path='/students/create' element={<RegisterStudent/>} />
+                        <Route path="/students/result" element={<StudentResult/>}/>
                         <Route path="/students" element={<Students/>}/>
                         <Route path="/uploadResult" element={<Result/>}/>
-                        <Route path="/studentResult" element={<studentResult/>}/>
                         <Route path='/' element={<Dashboard/>}/>
                     </Routes>
                 </div>

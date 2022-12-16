@@ -81,7 +81,7 @@ const Students = () => {
                         </button> */}
                         <Dropdown style={{fontSize:'14px'}}>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                All classes
+                                Filter by class
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
@@ -91,14 +91,13 @@ const Students = () => {
                                         {item.label}
                                     </Dropdown.Item>
                                 )}
-                                {/* <Dropdown.Item>Another action</Dropdown.Item>
-                                <Dropdown.Item>Something else</Dropdown.Item> */}
+                               
                             </Dropdown.Menu>
                         </Dropdown>
 
                         <Dropdown style={{fontSize:'14px'}} className='dropdown'>
                             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                {!filteredClass?'All gender':filteredClass}
+                               filter by gender
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
