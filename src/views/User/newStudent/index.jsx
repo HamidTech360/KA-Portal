@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import config from '../../../config'
 import { Row, Col } from "react-bootstrap";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { levels } from "../../../utils/helpers/data/levels";
 import styles from "./styles/new.module.scss";
 import { useFormik } from "formik";
 import Loader from "../../../components/Loader/loader";
@@ -55,17 +56,7 @@ const RegisterStudent = () => {
         phoneNumber: record.phoneNumber,
         parentAddress: record.parentAddress
       })
-      // formik.values.firstName = record?.firstName
-      // formik.values.lastName = record.lastName
-      // formik.values.gender = record.gender
-      // formik.values.dob = record.dob?.split("/").reverse().join("-")
-      // formik.values.admissionDate = record.admissionDate?.split("/").reverse().join("-")
-      // formik.values.address = record.address
-      // formik.values.state = record.state
-      // formik.values.level = record.level
-      // formik.values.parentName = record.parentName
-      // formik.values.phoneNumber = record.phoneNumber
-      // formik.values.parentAddress = record.parentAddress
+     
     }
   },[record])
  // console.log(record)
@@ -314,16 +305,9 @@ const RegisterStudent = () => {
                     onBlur={formik.handleBlur}
                   >
                     <option value="">select level</option>
-                    <option value={10}>SSS 3</option>
-                    <option value={9}>SSS 2</option>
-                    <option value={8}>SSS 1</option>
-                    <option value={7}>JSS 3</option>
-                    <option value={6}>JSS 2</option>
-                    <option value={5}>JSS 1</option>
-                    <option value={4}>Primary 4</option>
-                    <option value={3}>Primary 3</option>
-                    <option value={2}>Primary 2</option>
-                    <option value={1}>Primary 1</option>
+                    {levels.map((item, i)=>
+                      <option value={item.value} > {item.label} </option>
+                    )}
                   </select>
                 </div>
                 {

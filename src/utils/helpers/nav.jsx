@@ -49,13 +49,13 @@ export const AuthNav = [
         label:'Students',
         icon:<FaUserGraduate size={authIconSize} />,
         path:'/user/students',
-        location:['/user/students', '/user/students/profile', '/user/students/new']
+        location:['/user/students', '/user/students/profile', '/user/students/create']
     },
     {
         label:'Upload Result',
         icon:<AiOutlineCloudUpload size={authIconSize} />,
-        path:'/user/upload',
-        location:['/user/upload']
+        path:'/user/uploadResult',
+        location:['/user/uploadResult']
     },
     {
         label:'Notifications',

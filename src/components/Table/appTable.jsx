@@ -7,9 +7,19 @@ const AppTable = ({
     tableHeader,
      tableData, 
      hasAction, 
-     actions}) => {
+     actions,
+     tableLabel
+    }) => {
 
-
+    const linkStyle = {
+        textDecoration:'none',
+        fontSize:'14px'
+    }
+    const entries = []
+    tableHeader.forEach(element => {
+        entries.push(element.key)
+    });
+    
     return ( 
         <div className={styles.tableContainer}>
             <table>
@@ -18,6 +28,7 @@ const AppTable = ({
                        {tableHeader.map((item, i)=>
                             <th key={i}>{item.label}</th>
                        )}
+                    {hasAction && <th>Actions</th>}
                     </tr>
                 </thead>
                 <tbody>
@@ -25,24 +36,22 @@ const AppTable = ({
                         tableData &&
                         tableData.map((row, i) => (
                             <tr key={i} className={styles.data}>
-                                <td>{row.id}</td>
-                                <td>{row.name}</td>
-                                <td>{<div className={styles.photo}></div>}</td>
-                                <td>{row.gender}</td>
-                                <td>{row.program}</td>
-                                <td>{row.Level}</td>
-                                {
-                                    hasAction && 
+                                {entries.map((item, i)=>
+                                    <td> {row[item]} </td>
+                                )}
+
+                                {hasAction && 
                                     <td style={{cursor:'pointer'}}>
+                                        {tableLabel ==="students" && 
                                         <NavDropdown >
-                                            {actions.map((item, i)=>
-                                                 <NavDropdown.Item key={i} style={{fontSize:'14px'}}> 
-                                                    <Link style={{textDecoration:'none'}} to={item.link}>{item.label}</Link>
-                                                 </NavDropdown.Item>
-                                            )}
-               
+                                            <NavDropdown.Item> 
+                                                <Link style={linkStyle} to={`/user/students/profile?id=${row._id}`}>View Profile</Link>
+                                            </NavDropdown.Item>
+                                            <NavDropdown.Item>  
+                                                <Link style={linkStyle} to={`/user/students/create?action=edit&id=${row._id}`}>Update Profile</Link>
+                                            </NavDropdown.Item>
                                         </NavDropdown>
-                                        
+                                        } 
                                     </td>
                                 }
                             </tr>
