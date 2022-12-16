@@ -11,7 +11,6 @@ import { BsSearch } from 'react-icons/bs';
 
 import {AiOutlinePlus} from 'react-icons/ai'
 
-
 const Students = () => {
     const [studentsRecord, setStudentsRecord] = useState([])
     const [isFetching, setIsFetching] = useState(true)
