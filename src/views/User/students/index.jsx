@@ -1,5 +1,15 @@
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import { levels } from '../../../utils/helpers/data/levels';
+import { Dropdown } from 'react-bootstrap';
+import config from '../../../config'
+import Loader from '../../../components/Loader/loader';
 import styles from './styles/student.module.scss'
+import AppTable from '../../../components/Table/appTable';
+
+import { BsSearch } from 'react-icons/bs';
+
+import {AiOutlinePlus} from 'react-icons/ai'
 
 const Students = () => {
     const [studentsRecord, setStudentsRecord] = useState([])
