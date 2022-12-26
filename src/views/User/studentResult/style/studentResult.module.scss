@@ -1,6 +1,20 @@
 
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+
+}
+
 .result{
     padding: 2rem;
+
+    @include responsive(tab){
+        padding: 1rem;
+    }
     
 }
 
@@ -10,6 +24,16 @@
     font-weight: 700;
     line-height: 49px;
     color: #1A8F4A;
+
+    @include responsive(tab){
+        font-size: 30px;
+        // font-weight: 600;
+        line-height: 40px;
+    }
+    @include responsive(tab){
+        font-size: 28px;
+       
+    }
 }
 
 .para2{
@@ -19,7 +43,7 @@
     line-height: 24px;
     color:  #1A8F4A;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
 
 
 
@@ -38,5 +62,84 @@
     color: #1A8F4A;
     cursor: pointer;
     }
+}
+.pass_container{
+    margin-right: 50px;
+
+
+}
+.pass{
+    height: 214px;
+    width: 214px;
+    border-radius: 3px;
+    background: #DADADA;
+    outline: 3px solid  orange;
+    outline-offset: 6px;
+
+    @include responsive(tab){
+        width: 190px;
+        height: 190px;
+        outline: 2px solid orange;
+        outline-offset: 5px;
+    }
+}
+
+.para4{
+    font-family: Open Sans;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 33px;  
+    color: #161E03;   
+    
+    @include responsive(tab){
+        font-size: 20px;
+    }
+    @include responsive(phone){
+        padding-top: 15px;
+    }
+}
+
+.details{
+    font-family: Open Sans;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    column-gap: 10px;
+
+    @include responsive(tab){
+        font-size: 18px;
+        grid-template-columns: repeat(3, 150px);
+        padding-bottom: 15px;
+    }
+
+
+    
+    
+
+    
+    &_main{
+        color: #737D89;
+        grid-column: 1/2;
+        
+
+    
+    }
+
+
+
+
+
+    &_sub{
+        font-weight: 600;
+        color: #161E03;
+        grid-column: 2/4;
+       
+      
+        
+    }
+
 }
 
