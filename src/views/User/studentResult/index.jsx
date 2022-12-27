@@ -9,6 +9,9 @@ function StudentResult(props) {
         {label:'Course tiltle'},
         {label:'Pass/Fail'},
         {label:'Score'},
+        {label:'Grade'},
+        {label:''},
+
      
     ]
 
@@ -17,49 +20,65 @@ function StudentResult(props) {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:75 
+            score:75,
+            grade:'',
+            dots: '',
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:32 
+            score:32,
+            grade:'',
+            dots: '',
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:75 
+            score:75,
+            grade:'',
+            dots: '',
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:68 
+            score:68,
+            grade:'',
+            dots: '',
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:32 
+            score:32,
+            grade:'',
+            dots: '',
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:75 
+            score:75,
+            grade:'',
+            dots: '',
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:32 
+            score:32,
+            grade:'',
+            dots: '',
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:75 
+            score:75,
+            grade:'',
+            dots: '',
         },
         
     ]
@@ -83,7 +102,6 @@ function StudentResult(props) {
        
     ]
 
-    const
 
     return (
         <div>
