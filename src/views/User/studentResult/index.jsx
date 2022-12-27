@@ -46,7 +46,7 @@ function StudentResult(props) {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
-            score:75 
+            score:10 
         },
     ]
     const details = [
@@ -68,8 +68,6 @@ function StudentResult(props) {
         },
        
     ]
-
-const check = results.score>=50 ? 'pass' : 'fail';
 
     return (
         <div className={styles.result}>

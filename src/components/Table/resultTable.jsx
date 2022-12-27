@@ -9,6 +9,7 @@ function ResultTable({tableHeader,results}) {
                         <th key={i}>{theader.label}</th>
                         ))}
                 </thead>
+                
                 <tbody>
                         {results.map(result=>(
                             
