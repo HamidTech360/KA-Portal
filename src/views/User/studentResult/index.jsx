@@ -3,6 +3,8 @@ import ResultTable from '../../../components/Table/resultTable';
 import styles from './style/studentResult.module.scss'
 import passport from './../../../assets/pass.png'
 import Footer from './../../../components/Footer/footer';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+
 function StudentResult(props) {
     const tableHeader=[
         {label:'Course code'},
@@ -21,64 +23,64 @@ function StudentResult(props) {
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:75,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:32,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:75,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:68,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:32,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:75,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:32,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         {
             courseCode:'IRS101',
             courseTitle:'Islamic Religion Studies',
             pass:'pass',
             score:75,
-            grade:'',
-            dots: '',
+            grade:'Good',
+            dots: <BsThreeDotsVertical/>,
         },
         
     ]

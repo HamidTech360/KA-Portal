@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './resultTable.module.scss'
 function ResultTable({tableHeader,results}) {
-   let check = [...results]
-    if (check.score<50){
-        check.grade='fail'
-    }else if (check.score>=50 || check.score<69 ){
-        check.grade= 'Average'
-    }else if (check.score >=70 || check.score<80){
-        check.grade='Very Good'
+ 
+    if (results.score<50){
+        results.grade='fail'
+    }else if (results.score >=50 || results.score<69 ){
+        results.grade= 'Average'
+    }else if (results.score >=70 || results.score<80){
+        results.grade='Very Good'
 
     }else {
-        check.grade='Excellent'
+        results.grade='Excellent'
     }
-    console.log(check);
+    console.log(results);
     return (
         <div>
             <table >
@@ -30,8 +30,8 @@ function ResultTable({tableHeader,results}) {
                         <td>{result.courseTitle}</td>
                         <td className={result.score<50? `${styles.fail}`: `${styles.pass}`}>{result.score<50 ? result.pass='fail': result.pass='pass'}</td>
                         <td>{result.score}%</td>
-                        <td>{result.score}</td>
-                        <td>{result.score}%</td>
+                        <td>{result.grade}</td>
+                        <td>{result.dots}</td>
                     </tr>
                         ))}
                    
