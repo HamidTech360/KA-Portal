@@ -143,3 +143,37 @@
 
 }
 
+.studentTable{
+    background-color: #FFFFFF;
+
+}
+.table_title{
+    font-family: Open Sans;
+    font-weight: 600;
+    line-height: 43px;
+    margin-top: 40px;
+    padding: 20px;
+    
+    
+    
+    
+    &_main{
+        font-size: 24px;
+        color: #161E03;
+
+    }
+
+
+
+
+    &_sub{
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 33px;
+        color: #667085;
+        
+    }
+
+
+}
+ 

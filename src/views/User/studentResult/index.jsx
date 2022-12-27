@@ -3,6 +3,52 @@ import ResultTable from '../../../components/Table/resultTable';
 import styles from './style/studentResult.module.scss'
 import passport from './../../../assets/pass.png'
 function StudentResult(props) {
+    const tableHeader=[
+        {label:'Course code'},
+        {label:'Course tiltle'},
+        {label:'Pass/Fail'},
+        {label:'Score'},
+     
+    ]
+
+    const results=[
+        {
+            courseCode:'IRS101',
+            courseTitle:'Islamic Religion Studies',
+            pass:'pass',
+            score:75 
+        },
+        {
+            courseCode:'IRS101',
+            courseTitle:'Islamic Religion Studies',
+            pass:'pass',
+            score:75 
+        },
+        {
+            courseCode:'IRS101',
+            courseTitle:'Islamic Religion Studies',
+            pass:'pass',
+            score:75 
+        },
+        {
+            courseCode:'IRS101',
+            courseTitle:'Islamic Religion Studies',
+            pass:'pass',
+            score:75 
+        },
+        {
+            courseCode:'IRS101',
+            courseTitle:'Islamic Religion Studies',
+            pass:'pass',
+            score:75 
+        },
+        {
+            courseCode:'IRS101',
+            courseTitle:'Islamic Religion Studies',
+            pass:'pass',
+            score:75 
+        },
+    ]
     const details = [
         {
             main:'Student ID',
@@ -22,6 +68,8 @@ function StudentResult(props) {
         },
        
     ]
+
+const check = results.score>=50 ? 'pass' : 'fail';
 
     return (
         <div className={styles.result}>
@@ -46,14 +94,23 @@ function StudentResult(props) {
                         <span className={styles.details_sub}>{detail.sub}</span>
                     </div>
                     ))}
-                    
-
 
                 </div>
 
             </div>
+                    
+                    <div className={styles.studentTable}>
+                        <div className={styles.table_title}>
+                        <p className={styles.table_title_main}>Results for WINTER SEMESTER 2018/2019 SESSION</p>
+                            <p className={styles.table_title_sub}> List of offered courses</p>
+                        </div>
+                        
+                    < ResultTable
+                        tableHeader={tableHeader}
+                        results={results}
+                    />
+                    </div>
 
-            {/* < ResultTable/> */}
         </div>
     );
 }
