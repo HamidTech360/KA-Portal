@@ -161,6 +161,12 @@
         font-size: 24px;
         color: #161E03;
 
+        @include responsive(tab){
+            font-size: 20px;
+            line-height: 30px;
+            margin-top: 40px;
+        }
+
     }
 
 
@@ -171,6 +177,10 @@
         font-weight: 600;
         line-height: 33px;
         color: #667085;
+
+        @include responsive(tab){
+            font-size: 17px;
+        }
         
     }
 
