@@ -14,6 +14,8 @@ function StudentResult(props) {
     const studentId = searchParams.get('id') 
     const [isFetching, setIsFetching]  = useState(true)
     const [data, setData] = useState({})
+    const [results, setResults] = useState([])
+    
 
     useEffect(()=>{
         (async ()=>{
@@ -21,8 +23,9 @@ function StudentResult(props) {
                 const response = await axios.get(`${config.apiUrl}/result/${studentId}`, {headers:{
                     authorization:`Bearer ${localStorage.getItem('accessToken')}`
                   }})
-                  console.log(response.data.result.results)
+                //   console.log(response.data.result.results)
                   setData(response.data.result)
+                  setResults(response.data.result?.results?.reverse())
                   setIsFetching(false)
             }catch(error){
                 console.log(error.response?.data)
@@ -47,7 +50,7 @@ function StudentResult(props) {
 
                 <Row >
                     <Col lg="3" md="3" sm="5" xs="5" >
-                        <img className={styles.passport} src="../../../assets/man.jpg" alt='student passport' />
+                        <img className={styles.passport} src={data.gender==="male"?"../../../assets/man.jpg":"../../../assets/woman.png"} alt='student passport' />
                     </Col>
 
                     <Col lg="9" md="9" sm="7" xs="7" className={styles.studentInfo}>
@@ -66,8 +69,8 @@ function StudentResult(props) {
                     </Col>
                 </Row>
         
-            
-                 {[...data.results]?.reverse().map((item, i)=>
+                {results.length < 1 && <div className={styles.noRecord}>NO RECORD UPLOADED YET</div>}
+                 {results.map((item, i)=>
                     <div className={styles.studentTable}>
                         <ResultTable
                             tableTitle={`Results for ${item?.session} SESSION`}

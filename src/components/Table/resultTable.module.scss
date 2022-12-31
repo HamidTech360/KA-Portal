@@ -19,7 +19,13 @@
     color: #1A8F4A;
     padding: 11px 30px;
     border-radius: 30px;
+
+    @media screen and (max-width:768px) {
+        padding: 8px 25px;
+        border-radius: 20px;
+    }
     
+
     
 
 }
@@ -33,6 +39,12 @@
     padding: 11px 35px;
     border-radius: 30px;
 
+    @media screen and (max-width:768px) {
+        padding: 8px 30px;
+        border-radius: 20px;
+    }
+
+
 }
 thead{
     height: 60px;
@@ -41,6 +53,10 @@ thead{
 .trows{
     height: 70px;
     margin-left: 100px !important;
+
+    @media screen and (max-width:768px) {
+        height: 50px;
+    }
 }
 
 .trows:nth-child(odd){

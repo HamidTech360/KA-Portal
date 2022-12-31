@@ -29,7 +29,6 @@
 
     @include responsive(tab){
         font-size: 30px;
-        // font-weight: 600;
         line-height: 40px;
     }
     @include responsive(tab){
@@ -67,6 +66,11 @@
 }
 .pass_container{
     margin-right: 50px;
+
+    @include responsive(tab){
+        margin-right: 0px !important;
+
+    }
 
 
 }
@@ -144,5 +148,15 @@
     }  
 }
 
+.noRecord{
+    margin-top: 50px;
+    text-align: center;
+    color: lightgray;
+    font-size: 28px;
+    font-weight: 600;
 
+    @include responsive(tab){
+       font-size: 20px;
+     }  
+}
  
