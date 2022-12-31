@@ -1,5 +1,15 @@
 
 
+@mixin  responsive($breakpoint) {
+    @if $breakpoint==phone{
+        @media screen and (max-width:430px){@content};
+    }
+    @if $breakpoint==tab{
+        @media screen and (max-width:768px){@content};
+    }
+
+}
+
 .pass{
     background-color: rgba(19, 137, 81, 0.15);
     font-family: Inter;
@@ -35,4 +45,37 @@ thead{
 
 .trows:nth-child(odd){
     border-left: 3px solid #1A8F4A;
+}
+
+.table_title{
+    font-family: Open Sans;
+    font-weight: 600;
+    line-height: 43px;
+    
+
+    &_main{
+        font-size: 24px;
+        color: #161E03;
+
+        @include responsive(tab){
+            font-size: 20px;
+            line-height: 30px;
+            
+        }
+    }
+    &_sub{
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 33px;
+        color: #667085;
+
+        @include responsive(tab){
+            font-size: 17px;
+        }       
+    }
+}
+.tableContainer{
+    overflow-x: scroll;
+    margin-left: -10px;
+    margin-right: -10px;
 }

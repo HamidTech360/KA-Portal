@@ -1,147 +1,80 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import config from '../../../config'
+import { useSearchParams } from "react-router-dom";
+import Loader from "../../../components/Loader/loader";
+import axios from "axios";
+import { Row, Col } from 'react-bootstrap';
 import ResultTable from '../../../components/Table/resultTable';
 import styles from './style/studentResult.module.scss'
-import passport from './../../../assets/pass.png'
-import Footer from './../../../components/Footer/footer';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 function StudentResult(props) {
-    const tableHeader=[
-        {label:'Course code'},
-        {label:'Course tiltle'},
-        {label:'Pass/Fail'},
-        {label:'Score'},
-        {label:'Grade'},
-        {label:''},
 
-     
-    ]
+    const [searchParams] = useSearchParams()
+    const studentId = searchParams.get('id') 
+    const [isFetching, setIsFetching]  = useState(true)
+    const [data, setData] = useState({})
 
-    const results=[
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:75,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:32,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:75,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:68,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:32,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:75,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:32,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        {
-            courseCode:'IRS101',
-            courseTitle:'Islamic Religion Studies',
-            pass:'pass',
-            score:75,
-            grade:'Good',
-            dots: <BsThreeDotsVertical/>,
-        },
-        
-    ]
-    const details = [
-        {
-            main:'Student ID',
-            sub: '12345'
-        },
-        {
-            main:'Session',
-            sub: '2015/2016 Session'
-        },
-        {
-            main:'Programe',
-            sub: 'Full Time'
-        },
-        {
-            main:'Current',
-            sub: '200'
-        },
-       
-    ]
+    useEffect(()=>{
+        (async ()=>{
+            try{
+                const response = await axios.get(`${config.apiUrl}/result/${studentId}`, {headers:{
+                    authorization:`Bearer ${localStorage.getItem('accessToken')}`
+                  }})
+                  console.log(response.data.result.results)
+                  setData(response.data.result)
+                  setIsFetching(false)
+            }catch(error){
+                console.log(error.response?.data)
+            }
+        })()
+    },[])
 
+    // const arr = [1,2,3].reverse
 
     return (
         <div>
             <div className={styles.result}>
+                {isFetching && <Loader/> }
                 <div>
-                    <div className={styles.para1}>View Examination Results</div>
+                    <div className={styles.para1}>Student Results</div>
                     <div className={styles.para2}>
                          <span>Home</span>
                         <span className={styles.para2_logo}>&gt;</span>
                         <span className={styles.para2_sub}>Student Result</span>
                      </div>
                 </div>
-                <div className={`row ${styles.studentDetails} `}>
-                    <div className={`col-12 col-md-3 col-lg-3 ${styles.pass_container}`}>
-                        <img className={styles.pass} src={passport} alt='student passport' />
-                    </div>
-                    <div className="col-12 col-md-8 col-lg-8">
-                        <p className={styles.para4}>Abdullah Fattah</p>
-                        {details.map((detail,i)=>(
-                        <div key={i} className={styles.details}>
-                            <span className={styles.details_main}>{detail.main}</span>
-                            <span className={styles.details_sub}>{detail.sub}</span>
+
+                <Row >
+                    <Col lg="3" md="3" sm="5" xs="5" >
+                        <img className={styles.passport} src="../../../assets/man.jpg" alt='student passport' />
+                    </Col>
+
+                    <Col lg="9" md="9" sm="7" xs="7" className={styles.studentInfo}>
+                    <p className={styles.para4}>{data?.firstName} {data?.lastName} </p>
+                        
+                        <div className={styles.details}>
+                            <span className={styles.details_main}>Class:</span>
+                            <span className={styles.details_sub}>{data?.level}</span>
                         </div>
-                        ))}
-                    </div>
-                </div>
-            
-                        <div className={styles.studentTable}>
-                            <div className={styles.table_title}>
-                            <p className={styles.table_title_main}>Results for WINTER SEMESTER 2018/2019 SESSION</p>
-                                <p className={styles.table_title_sub}> List of offered courses</p>
-                            </div>
-            
-                        < ResultTable
-                            tableHeader={tableHeader}
-                            results={results}
-                        />
+
+                        <div className={styles.details}>
+                            <span className={styles.details_main}>Reg Number:</span>
+                            <span className={styles.details_sub}>{data?.regNumber}</span>
                         </div>
+                       
+                    </Col>
+                </Row>
+        
+            
+                 {[...data.results]?.reverse().map((item, i)=>
+                    <div className={styles.studentTable}>
+                        <ResultTable
+                            tableTitle={`Results for ${item?.session} SESSION`}
+                            results={item?.scores}
+                        />                    
+                    </div>
+                 )}
             </div>
                 
         </div>
