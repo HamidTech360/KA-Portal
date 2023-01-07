@@ -1,21 +1,67 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import config from '../../../config'
 import { Row, Col, Modal } from 'react-bootstrap';
 import AppTable from '../../../components/Table/appTable';
 import { UploadResultValidator } from '../../../utils/validators/result';
+import Loader from '../../../components/Loader/loader';
 import { useFormik } from 'formik';
 import {AiOutlineClose} from 'react-icons/ai'
 import styles from './styles/result.module.scss'
 
 
-const Result = () => {
+const UploadResult = () => {
    
     const [isLoading, setisLoading] = useState(false)
+    const [isFetching, setIsFetching] = useState(false)
     const [tableData, setTableData] = useState([])
     const [showModal, setShowModal] = useState(false)
+    const [record, setRecord] = useState({})
+    const [recordToBeEdited, setRecordToBeEdited] = useState(null)
+    const [searchParams] = useSearchParams()
+
+    const action = searchParams.get('action')
+    const resultId = searchParams.get('id')
+
+
+    useEffect(()=>{
+        (async function (){
+            if (action==="edit" && resultId){
+              setIsFetching(true)
+              try{
+                  const response = await axios.get(`${config.apiUrl}/result/one/${resultId}`, {headers:{
+                    authorization:`Bearer ${localStorage.getItem('accessToken')}`
+                  }})
+                  setRecord(response.data.result)
+                  console.log(response.data.result?.scores)
+                  formik.setValues({
+                    regNumber:response.data.result?.regNumber,
+                    session:response.data.result?.session
+                  })
+
+                  const formattedRecord = []
+                  response.data.result?.scores?.forEach(item=>{
+                        formattedRecord.push({
+                            subject:item[0],
+                            test1:item[1],
+                            exam1:item[2],
+                            test2:item[3],
+                            exam2:item[4]
+                        })
+                  })
+                  setTableData(formattedRecord)
+                  
+                  setIsFetching(false)
+              }catch(error){
+                console.log(error.response?.data)
+                //navigate('/user/students')
+              }
+           }
+          })()
+    }, [])
+
     const [result, setResult] = useState({
         subject:'',
         test1:'',
@@ -38,7 +84,18 @@ const Result = () => {
         setResult(result__c)
     }
 
-
+    const openForEditing = (record, index)=>{
+        console.log(record)
+        setResult({
+            subject:record.subject,
+            test1:record.test1,
+            exam1:record.exam1,
+            test2:record.test2,
+            exam2:record.exam2
+        })
+        setShowModal(true)
+        setRecordToBeEdited(index)
+    }
 
     const AddToList = ()=>{
         if(result.test1=="" && result.exam1=="" && result.test2=="" && result.exam2==""){
@@ -47,14 +104,28 @@ const Result = () => {
         }
         tableData.push({
             subject:result.subject,
-            test1:result.test1 || 0,
-            exam1:result.exam1 || 0,
-            test2:result.test2 || 0,
-            exam2:result.exam2 || 0
+            test1:result.test1 ,
+            exam1:result.exam1 ,
+            test2:result.test2 ,
+            exam2:result.exam2 
         })
         console.log(tableData)
         setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'' })
         setShowModal(false)
+    }
+
+    const modifyRecord = ()=>{
+        if(result.test1=="" && result.exam1=="" && result.test2=="" && result.exam2==""){
+            alert('Cannot add an empty record to queue')
+            return
+        }
+        const tabledata__c = [...tableData]
+        tabledata__c[recordToBeEdited] = result
+        setTableData(tabledata__c)
+        setShowModal(false)
+        setRecordToBeEdited(null)
+        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'' })
+        //alert('done')
     }
 
     const formik = useFormik({
@@ -76,16 +147,22 @@ const Result = () => {
                 session:values.session
             }
             console.log(payload);
-            
+            let response
             try{
-                const response = await axios.post(`${config.apiUrl}/result`, payload, {headers:{
-                    authorization:`Bearer ${localStorage.getItem('accessToken')}`
-                }})
+                 if(action==="edit"){
+                    response = await axios.put(`${config.apiUrl}/result/${resultId}`, payload, {headers:{
+                        authorization:`Bearer ${localStorage.getItem('accessToken')}`
+                    }})
+                 }else{
+                    response = await axios.post(`${config.apiUrl}/result`, payload, {headers:{
+                        authorization:`Bearer ${localStorage.getItem('accessToken')}`
+                    }})
+                 }
                 console.log(response.data)
                 Swal.fire({
                     icon: 'success',
-                    title: 'Result Uploaded',
-                    text:`Result has been saved with success`
+                    title: action==="edit"?"Result Modified":'Result Uploaded',
+                    text:action==="edit"?"Result has been modified successfully":`Result has been saved with success`
                  })
                  formik.handleReset()
                  setTableData([])
@@ -94,7 +171,7 @@ const Result = () => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Failed to save result',
+                    text: 'Failed to process result',
                     showCancelButton:true,
                     showConfirmButton:false
                   })
@@ -106,7 +183,7 @@ const Result = () => {
 
     return ( 
         <div className={styles.result}>
-
+            {isFetching && <Loader/> }
             <div className={styles.header}>
                 <div className={styles.headerText}>Upload Result </div>
                 <div className={styles.breadCrumb}>
@@ -129,6 +206,7 @@ const Result = () => {
                                     type="text"
                                     className={styles.input}
                                     name="regNumber"
+                                    disabled={action==="edit"}
                                     value={formik.values.regNumber}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
@@ -147,6 +225,8 @@ const Result = () => {
                                     type="text"
                                     className={styles.input}
                                     name="session"
+                                    placeholder='e.g 2020/2023'
+                                    disabled={action==="edit"}
                                     value={formik.values.session}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
@@ -167,12 +247,18 @@ const Result = () => {
                 <AppTable
                     tableHeader={tableHeader}
                     tableData={tableData}
+                    isEditMode={true}
+                    onEdit={openForEditing}
                 />
                 </div>
 
                 <div className={styles.buttons}>
-                    <button className={styles.btnReset} type='reset'>Reset</button>
-                    <button className={styles.btnSave} onClick={formik.handleSubmit}  type='submit' disabled={isLoading}>{isLoading?'Uploading...':'Upload'}</button>
+                    <button onClick={()=>setTableData([])} className={styles.btnReset} type='reset'>
+                        Reset
+                    </button>
+                    <button className={styles.btnSave} onClick={formik.handleSubmit}  type='submit' disabled={isLoading}>
+                        {isLoading?'Uploading...':'Upload'}
+                    </button>
                 </div>
                 
             </div>
@@ -191,6 +277,7 @@ const Result = () => {
                                     type="text"
                                     className={styles.input}
                                     name="subject"
+                                    value={result?.subject}
                                     onChange={(e)=>handleChange(e)}
                                 />
                             </div>
@@ -203,6 +290,7 @@ const Result = () => {
                                     type="number"
                                     className={styles.input}
                                     name="test1"
+                                    value={result?.test1}
                                     onChange={(e)=>handleChange(e)}
                                 />
                             </div>
@@ -215,6 +303,7 @@ const Result = () => {
                                     type="number"
                                     className={styles.input}
                                     name="exam1"
+                                    value={result?.exam1}
                                     onChange={(e)=>handleChange(e)}
                                 />
                             </div>
@@ -227,6 +316,7 @@ const Result = () => {
                                     type="number"
                                     className={styles.input}
                                     name="test2"
+                                    value={result?.test2}
                                     onChange={(e)=>handleChange(e)}
                                 />
                             </div>
@@ -239,12 +329,15 @@ const Result = () => {
                                     type="number"
                                     className={styles.input}
                                     name="exam2"
+                                    value={result?.exam2}
                                     onChange={(e)=>handleChange(e)}
                                 />
                             </div>
                         </div>
 
-                        <button onClick={AddToList} className={styles.btnAddResult}>Add Result</button>
+                        <button onClick={recordToBeEdited != null? modifyRecord:AddToList} className={styles.btnAddResult}>
+                            {action==="edit"? "Modify record":'Add Result'}
+                        </button>
 
 
                     </div>
@@ -255,4 +348,4 @@ const Result = () => {
      );
 }
  
-export default Result;
+export default UploadResult;

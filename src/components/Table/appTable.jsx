@@ -7,7 +7,9 @@ const AppTable = ({
     tableHeader,
      tableData, 
      hasAction, 
-     tableLabel
+     tableLabel,
+     isEditMode,
+     onEdit
     }) => {
 
     const linkStyle = {
@@ -27,7 +29,7 @@ const AppTable = ({
                        {tableHeader.map((item, i)=>
                             <th key={i}>{item.label}</th>
                        )}
-                    {hasAction && <th>Actions</th>}
+                    {(hasAction || isEditMode )&& <th>Actions</th>}
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +56,13 @@ const AppTable = ({
                                             </NavDropdown.Item>
                                         </NavDropdown>
                                         } 
+                                    </td>
+                                }
+
+                                {
+                                    isEditMode && 
+                                    <td onClick={()=>onEdit(row, i)} style={{cursor:'pointer'}}>
+                                        <b>Modify</b>
                                     </td>
                                 }
                             </tr>

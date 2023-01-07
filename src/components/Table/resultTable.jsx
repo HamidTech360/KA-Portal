@@ -7,19 +7,19 @@ function ResultTable({tableTitle,results}) {
      results?.forEach(item=>{
         resultArr.push({
             subject:item[0] || 0,
-            test1:item[1] || 0,
-            exam1:item[2] || 0,
-            test2:item[3] || 0,
-            exam2:item[4]|| 0
+            test1:item[1] ,
+            exam1:item[2] ,
+            test2:item[3] ,
+            exam2:item[4]
         })
     })
     // console.log(resultArr)
 
     const getTotal = (result)=>{
-        return  parseInt( result.test1) + 
-                parseInt(result.exam1) + 
-                parseInt( result.test2) +
-                parseInt(result.exam2)
+        return  parseInt( result.test1 || 0)  + 
+                parseInt(result.exam1 || 0)  + 
+                parseInt( result.test2 || 0) +
+                parseInt(result.exam2 || 0) 
     }
 
     const getPercentage = (result)=>{
@@ -30,6 +30,9 @@ function ResultTable({tableTitle,results}) {
     }
 
     const getGrade = (result)=>{
+
+        if(!result.test1 || !result.exam1 || !result.test1 || !result.exam2) return 'Awaiting'
+
         const percent = getPercentage(result)
         if(percent >= 80 && percent <= 100) return 'Excellent'
         else if (percent >= 70 && percent < 80 ) return 'Very Good'
@@ -62,11 +65,11 @@ function ResultTable({tableTitle,results}) {
                         {resultArr.map((result, i)=>(    
                         <tr key={i} className={styles.trows}>
                             <td>{result.subject}</td>
-                            <td>{result.test1}</td>
-                            <td>{result.exam1}</td>
-                            <td>{result.test2}</td>
+                            <td>{result.test1 || 'Awaiting'}</td>
+                            <td>{result.exam1 || 'Awaiting'}</td>
+                            <td>{result.test2 || 'Awaiting'}</td>
                             {/* <td > <span className={result.score<50? `${styles.fail}`: `${styles.pass}`}>{result.score<50 ? result.pass='Failed': result.pass='Passed'}</span> </td> */}
-                            <td>{result.exam2}</td>
+                            <td>{result.exam2 || 'Awaiting'}</td>
                             <td>{getTotal(result)}</td>
                             <td>{getPercentage(result)}%</td>
                             <td> {getGrade(result)} </td>

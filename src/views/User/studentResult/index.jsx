@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import config from '../../../config'
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import Loader from "../../../components/Loader/loader";
 import axios from "axios";
 import { Row, Col } from 'react-bootstrap';
 import ResultTable from '../../../components/Table/resultTable';
 import styles from './style/studentResult.module.scss'
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import { AiFillEdit } from 'react-icons/ai';
 
 function StudentResult(props) {
 
@@ -23,7 +23,7 @@ function StudentResult(props) {
                 const response = await axios.get(`${config.apiUrl}/result/${studentId}`, {headers:{
                     authorization:`Bearer ${localStorage.getItem('accessToken')}`
                   }})
-                //   console.log(response.data.result.results)
+                   console.log(response.data.result.results)
                   setData(response.data.result)
                   setResults(response.data.result?.results?.reverse())
                   setIsFetching(false)
@@ -75,7 +75,10 @@ function StudentResult(props) {
                         <ResultTable
                             tableTitle={`Results for ${item?.session} SESSION`}
                             results={item?.scores}
-                        />                    
+                        />  
+                       <div>
+                            <Link style={{textDecoration:'none'}} to={`/user/uploadResult?action=edit&id=${item._id}`}><b>Edit</b> <AiFillEdit size={27} color="#1A8F4A" /></Link>
+                        </div>                  
                     </div>
                  )}
             </div>
