@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { levels } from '../../../utils/helpers/data/levels';
 import { Dropdown } from 'react-bootstrap';
 import config from '../../../config'
 import Loader from '../../../components/Loader/loader';
+import { levels } from '../../../utils/helpers/data/levels';
 import styles from './styles/student.module.scss'
 import AppTable from '../../../components/Table/appTable';
 
@@ -22,7 +22,7 @@ const Students = () => {
         {label:'Student ID', key:'regNumber'},
         {label:'Name', key:'fullName'},
         {label:'Gender',  key:'gender'},
-        {label:'Level', key:'level'},
+        {label:'Level', key:'class'},
         
     ]
 
@@ -48,8 +48,12 @@ const Students = () => {
                 }})
                 const allStudents = [...response.data.students]
                 allStudents.forEach(item=>{
+                    const itemIndex = levels.findIndex(el=>el.value==item?.level)
+                    item['class'] = levels[itemIndex].label
                     item['fullName'] = `${item.firstName} ${item.lastName}`
                 })
+
+        
                 setStudentsRecord(allStudents)
                 setIsFetching(false)
             }catch(error){

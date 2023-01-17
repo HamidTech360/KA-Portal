@@ -6,7 +6,8 @@ export const levels = [
     {label:'JSS 1', value:'5'},
     {label:'JSS 2', value:'6'},
     {label:'JSS 3', value:'7'},
-    {label:'sSS 1', value:'8'},
-    {label:'sSS 2', value:'9'},
-    {label:'sSS 3', value:'10'},
+    {label:'SSS 1', value:'8'},
+    {label:'SSS 2', value:'9'},
+    {label:'SSS 3', value:'10'},
+    {label:'Graduated', value:'11'},
 ]
