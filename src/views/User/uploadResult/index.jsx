@@ -4,6 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import config from '../../../config'
 import { Row, Col, Modal } from 'react-bootstrap';
+import OTPModal from '../../../components/OTPModal/otpmodal';
 import AppTable from '../../../components/Table/appTable';
 import { UploadResultValidator } from '../../../utils/validators/result';
 import Loader from '../../../components/Loader/loader';
@@ -19,12 +20,14 @@ const UploadResult = () => {
     const [tableData, setTableData] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [record, setRecord] = useState({})
+    const [openAuthMoal, setOpenAuthModal] = useState(false)
+    const [OTPVerified, setOTPVerified] = useState(false)
     const [recordToBeEdited, setRecordToBeEdited] = useState(null)
     const [searchParams] = useSearchParams()
 
     const action = searchParams.get('action')
     const resultId = searchParams.get('id')
-
+    const resultList = []
 
     useEffect(()=>{
         (async function (){
@@ -76,7 +79,25 @@ const UploadResult = () => {
         {label:'2nd Semester Test', key:'test2'},
         {label:'2nd Semester Exam', key:'exam2'},
     ]
-    const resultList = []
+    
+    const authOTP = ()=>{
+        setOTPVerified(true)
+        setOpenAuthModal(false)
+        formik.handleSubmit()
+      }
+
+    const validateSession = (session)=>{
+        const year = session.split('/')
+        const criteria1 = year.length == 2
+        const criteria2 = (parseInt(year[1]) -  parseInt(year[0])) == 1 
+        //const criteria3 = parseInt(year[1]) > 2000
+        
+        if(criteria1 && criteria2){
+            return true
+        }else{
+            return false
+        }
+    }
 
     const handleChange = (e)=>{
         const result__c = {...result}
@@ -128,6 +149,8 @@ const UploadResult = () => {
         //alert('done')
     }
 
+    
+
     const formik = useFormik({
         initialValues:{
             regNumber:'',
@@ -135,11 +158,15 @@ const UploadResult = () => {
         },
         validationSchema:UploadResultValidator,
         onSubmit:async (values)=>{
-      
+            
             if(tableData.length < 1) return alert('No record added yet')
             tableData.forEach(element=>{
                 resultList.push([element.subject, element.test1, element.exam1, element.test2, element.exam2])
             })
+            if(!validateSession(values.session)) return alert('Invalid session format entered. Session should look like this "2020/2021"')
+            if(!OTPVerified && !openAuthMoal ){
+                return setOpenAuthModal(true)
+             }
             setisLoading(true)
             const payload = {
                 scores:resultList,
@@ -184,6 +211,7 @@ const UploadResult = () => {
     return ( 
         <div className={styles.result}>
             {isFetching && <Loader/> }
+            {openAuthMoal && <OTPModal action={authOTP} />}
             <div className={styles.header}>
                 <div className={styles.headerText}>Upload Result </div>
                 <div className={styles.breadCrumb}>

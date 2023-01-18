@@ -9,7 +9,8 @@ const AppTable = ({
      hasAction, 
      tableLabel,
      isEditMode,
-     onEdit
+     onEdit,
+     showSerialNumber
     }) => {
 
     const linkStyle = {
@@ -26,6 +27,7 @@ const AppTable = ({
             <table>
                 <thead>
                     <tr className={styles.head}>
+                        {showSerialNumber && <th>S/N</th>}
                        {tableHeader.map((item, i)=>
                             <th key={i}>{item.label}</th>
                        )}
@@ -37,6 +39,7 @@ const AppTable = ({
                         tableData &&
                         tableData.map((row, i) => (
                             <tr key={i} className={styles.data}>
+                                {showSerialNumber && <td>{i+1}</td> }
                                 {entries.map((item, i)=>
                                     <td> {row[item]} </td>
                                 )}

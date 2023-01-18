@@ -69,8 +69,6 @@ const RegisterStudent = () => {
     setOTPVerified(true)
     setOpenAuthModal(false)
     formik.handleSubmit()
-    
-    //console.log('proeeding action')
   }
   
   const formik = useFormik({
@@ -89,7 +87,8 @@ const RegisterStudent = () => {
     },
     validationSchema:RegisterValidator(),
     onSubmit:async (values)=>{
-        if(!OTPVerified){
+     
+        if(!OTPVerified && !openAuthMoal ){
            return setOpenAuthModal(true)
         }
 
