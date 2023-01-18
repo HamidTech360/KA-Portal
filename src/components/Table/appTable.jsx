@@ -38,7 +38,7 @@ const AppTable = ({
                         tableData.map((row, i) => (
                             <tr key={i} className={styles.data}>
                                 {entries.map((item, i)=>
-                                    <td> {row[item]} </td>
+                                    <td key={i}> {row[item]} </td>
                                 )}
 
                                 {hasAction && 
