@@ -107,15 +107,15 @@ const Dashboard = () => {
                  <div className={`${styles.card2} hideOnMobile`}>
                     <Fab bgColor="#F0FFD1" />
                     <div className={styles.cardContent}>
-                        <div className={styles.details}>Total Students</div>
-                        <div className={styles.subDetails}>754</div>
+                        <div className={styles.details}>Total Staffs</div>
+                        <div className={styles.subDetails}>20</div>
                         <div className={styles.details}><b style={{ color: "lightgreen" }}>-0.5%</b> than last month</div>
                     </div>
                  </div>
                  <div className={`${styles.card3} hideOnMobile`}>
                     <Fab bgColor="#FFF2D4 " />
                     <div className={styles.cardContent}>
-                        <div className={styles.details}>Total Students</div>
+                        <div className={styles.details}>Total Active</div>
                         <div className={styles.subDetails}>4</div>
                         <div className={styles.details}><b style={{ color: "orange" }}>-0.5%</b> than last month</div>
                     </div>
@@ -176,12 +176,14 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className={styles.tableHead}>Student List</div>
+           <div className={styles.tableSection}>
+           <div className={styles.tableHead}>Student List</div>
             <AppTable
                 hasAction={false}
                 tableHeader={tableHeader}
                 tableData={data}
             />
+           </div>
             
 
         </div>

@@ -6,6 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { levels } from "../../../utils/helpers/data/levels";
 import styles from "./styles/new.module.scss";
+import OTPModal from "../../../components/OTPModal/otpmodal";
 import { useFormik } from "formik";
 import Loader from "../../../components/Loader/loader";
 import { RegisterValidator } from './../../../utils/validators/auth/index';
@@ -16,6 +17,8 @@ const RegisterStudent = () => {
     const action = searchParams.get('action')
     const studentId = searchParams.get('id')
     const [ isLoading, setisLoading]= useState(false)
+    const [openAuthMoal, setOpenAuthModal] = useState(false)
+    const [OTPVerified, setOTPVerified] = useState(false)
     const [isFetching, setIsFetching] = useState(action==="edit"?true:false)
     const [record, setRecord] = useState({})
 
@@ -62,7 +65,13 @@ const RegisterStudent = () => {
  // console.log(record)
 
   
-
+  const authOTP = ()=>{
+    setOTPVerified(true)
+    setOpenAuthModal(false)
+    formik.handleSubmit()
+    
+    //console.log('proeeding action')
+  }
   
   const formik = useFormik({
     initialValues: {
@@ -80,6 +89,10 @@ const RegisterStudent = () => {
     },
     validationSchema:RegisterValidator(),
     onSubmit:async (values)=>{
+        if(!OTPVerified){
+           return setOpenAuthModal(true)
+        }
+
         setisLoading(true)
        try{
 
@@ -116,7 +129,7 @@ const RegisterStudent = () => {
          })
          formik.handleReset()
          ///////
-
+         setOTPVerified(false)
 
        }catch(error){
           console.log(error.response)
@@ -140,6 +153,7 @@ const RegisterStudent = () => {
   return (
     <div className={styles.addNewPage}>
       {isFetching &&  <Loader/>}
+      {openAuthMoal && <OTPModal action={authOTP} />}
       <div className={styles.header}>
         <div className={styles.headerText}>{action==="edit"?"Edit Student Record":"Add New student"}</div>
         <div className={styles.breadCrumb}>

@@ -57,13 +57,13 @@ const StudentProfile = () => {
         </div>
         <div className="row">
           <div className={`col-12 col-md-4`}>
-            <img src={record?.gender==="male"?`../../../assets/man.jpg`:`../../../assets/woman.png`} alt="Passport" className={styles.passport} />
+            <img src={record?.gender?.toLowerCase()==="male"?`../../../assets/man.jpg`:`../../../assets/woman.png`} alt="Passport" className={styles.passport} />
           </div>
           <div className={`${styles.student_details} col-12 col-md-8`}>
             <p className={styles.para2}> {record?.firstName} {record?.lastName}</p>
             <p className={styles.para4}>
-                {record?.firstName} {record?.lastName} is a student of Khayrul Adab modrosa. {record?.gender=="male"?'He':'She'} is currently in the 
-                 class {record?.level}. {record?.gender=="male"?'He':'She'} was admitted on {record?.admissionDate}
+                {record?.firstName} {record?.lastName} is a student of Khayrul Adab modrosa. {record?.gender?.toLowerCase()=="male"?'He':'She'} is currently in the 
+                 class {record?.level}. {record?.gender?.toLowerCase()=="male"?'He':'She'} was admitted on {record?.admissionDate}
             </p>
 
            

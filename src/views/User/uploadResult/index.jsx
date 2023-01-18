@@ -171,7 +171,7 @@ const UploadResult = () => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Failed to process result',
+                    text: error.response?.data?.message || 'Failed to process result',
                     showCancelButton:true,
                     showConfirmButton:false
                   })
