@@ -48,9 +48,9 @@ const AppHeader = () => {
 
                 <div className={styles.navItems}>
                     {navItems.map((item, i)=>
-                       <Link style={{textDecoration:'none'}} to={item.path} >
-                            <div className={styles.navItem}>
-                                <span  className={styles.icon}>{item.icon}</span>
+                       <Link key={i} style={{textDecoration:'none'}} to={item.path} >
+                            <div  className={styles.navItem}>
+                                <span   className={styles.icon}>{item.icon}</span>
                                 <span>{item.label}</span>
                             </div>
                        </Link>
