@@ -42,6 +42,16 @@ function ResultTable({tableTitle,results}) {
         else return 'Invalid score'
     }
 
+    const passed = (result)=>{
+        if(!result.test1 || !result.exam1 || !result.test1 || !result.exam2) return 'Awaiting'
+        const avg = getPercentage(result)
+        if(avg < 50){
+            return false
+        }else{
+            return true
+        }
+    }
+
     return (
         <div>
             <div className={styles.table_title}>
@@ -55,6 +65,7 @@ function ResultTable({tableTitle,results}) {
                         <th>1st CA</th>
                         <th>1st Exam</th>
                         <th>2nd CA</th>
+                        <th>Comment</th>
                         <th>2nd Exam</th>
                         <th>Total</th>
                         <th>Average</th>
@@ -68,7 +79,12 @@ function ResultTable({tableTitle,results}) {
                             <td>{result.test1 || 'Awaiting'}</td>
                             <td>{result.exam1 || 'Awaiting'}</td>
                             <td>{result.test2 || 'Awaiting'}</td>
-                            {/* <td > <span className={result.score<50? `${styles.fail}`: `${styles.pass}`}>{result.score<50 ? result.pass='Failed': result.pass='Passed'}</span> </td> */}
+                            <td> 
+                                {passed(result)==="Awaiting"?'Awaiting':
+                                <span className={passed(result)? `${styles.pass}`: `${styles.fail}`}>
+                                        {passed(result) ? 'Pass': 'Fail'}
+                                </span>}
+                             </td>
                             <td>{result.exam2 || 'Awaiting'}</td>
                             <td>{getTotal(result)}</td>
                             <td>{getPercentage(result)}%</td>
