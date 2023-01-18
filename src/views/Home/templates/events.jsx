@@ -51,9 +51,7 @@ const Events = () => {
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
-        speed={400}
+        speed={1000}
         initialSlide={2}
        
         
