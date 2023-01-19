@@ -20,7 +20,6 @@ const OTPModal = ({action}) => {
         try{
             setRequesting(true)
             const response = await axios.get(`${config.apiUrl}/otp`)
-            //console.log(response)
             setOTPeceived(true)
         }catch(error){
             console.log(error.response?.data)
@@ -34,12 +33,11 @@ const OTPModal = ({action}) => {
         try{
             setVerifying(true)
             const response = await axios.post(`${config.apiUrl}/otp`, {otp})
-            console.log(response)
             action()
+            setVerifying(false)
         }catch(error){
             console.log(error.response?.data)
             alert('Failed to verify OTP')
-        }finally{
             setVerifying(false)
         }
     }
@@ -82,7 +80,7 @@ const OTPModal = ({action}) => {
                                 onClick={verifyOTP}
                                 disabled={verifying}
                             >
-                                Verify OTP
+                                Proceed
                             </Button>
                         </div>
                     </>

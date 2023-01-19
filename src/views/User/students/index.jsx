@@ -122,6 +122,7 @@ const Students = () => {
                 tableHeader={tableHeader}
                 hasAction={true}
                 tableLabel="students"
+                showSerialNumber={true}
             />
         </div>
      );
