@@ -23,7 +23,7 @@ function StudentResult(props) {
                 const response = await axios.get(`${config.apiUrl}/result/${studentId}`, {headers:{
                     authorization:`Bearer ${localStorage.getItem('accessToken')}`
                   }})
-                   console.log(response.data.result.results)
+                 
                   setData(response.data.result)
                   setResults(response.data.result?.results?.reverse())
                   setIsFetching(false)
@@ -33,7 +33,7 @@ function StudentResult(props) {
         })()
     },[])
 
-    // const arr = [1,2,3].reverse
+
 
     return (
         <div>
@@ -71,10 +71,11 @@ function StudentResult(props) {
         
                 {results.length < 1 && <div className={styles.noRecord}>NO RECORD UPLOADED YET</div>}
                  {results.map((item, i)=>
-                    <div className={styles.studentTable}>
+                    <div key={i} className={styles.studentTable}>
                         <ResultTable
                             tableTitle={`Results for ${item?.session} SESSION`}
                             results={item?.scores}
+                            
                         />  
                        <div>
                             <Link style={{textDecoration:'none'}} to={`/user/uploadResult?action=edit&id=${item._id}`}><b>Edit</b> <AiFillEdit size={27} color="#1A8F4A" /></Link>

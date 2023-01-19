@@ -12,8 +12,8 @@ function LectureList(props) {
       
       <div className={styles.line}></div>
 
-      {programmes.map(programm=>(
-            <Row className={`${styles.programme}`}>
+      {programmes.map((programm,i)=>(
+            <Row className={`${styles.programme}`} key={i}>
               <Col lg="4" sm="12"  className={` ${styles.video}`}>
                 <iframe src={programm.src} height="100%" width="100%"  className= {styles.vid}   />
               </Col>

@@ -24,6 +24,7 @@ const About = () => {
                                     style={{backgroundColor:active==index && ' #1A8F4A', color:active==index && 'white'}} 
                                     className={styles.icon}
                                     onClick={()=>setActive(index)}
+                                    key={index}       
                             >
                                 {item.icon}
                                 <p className='ml-3'>{item.label}</p>
@@ -34,7 +35,7 @@ const About = () => {
 
                    <div className="tabList">
                         {ourValues[active].item.map((item, i)=>
-                        <div className={styles.flex}>
+                        <div key={i} className={styles.flex}>
                             <div className={styles.flexicon} >
                                 <FaAngleDoubleRight/>
                             </div>   

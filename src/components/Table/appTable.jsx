@@ -41,7 +41,7 @@ const AppTable = ({
                             <tr key={i} className={styles.data}>
                                 {showSerialNumber && <td>{i+1}</td> }
                                 {entries.map((item, i)=>
-                                    <td> {row[item]} </td>
+                                    <td key={i}> {row[item]} </td>
                                 )}
 
                                 {hasAction && 
