@@ -68,14 +68,16 @@
     cursor: pointer;
   }
 }
-
+.lectures{
+    height: 90vh;
+}
 .para2 {
   &_main {
     font-family: Open Sans;
     font-size: 24px;
     font-weight: 700;
     line-height: 33px;
-    border-bottom: 3px solid #1a8f4a;
+    border-bottom: 3px solid #1A8F4A;
     color: #161e03;
     padding-bottom: 4px;
 
