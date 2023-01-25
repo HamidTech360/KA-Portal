@@ -3,31 +3,10 @@ import styles from "./styles/resources.module.scss";
 import { FiUpload } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import LectureCard from "./lectureCard";
-import img from "./../../../assets/news2.jpg";
-
+import { lectureInfo, newsInfo } from "./resourcesData";
 import { BsArrowRight } from "react-icons/bs";
 
 function Resources(props) {
-  const cardInfo = [
-    {
-      img: img,
-      name: "Dr Zakir NAikh",
-      title: "The Benefits of Patience",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis pharetra arcu ipsum elementum erat egestas...",
-    },
-    {
-      img: img,
-      name: "Dr Zakir NAikh",
-      title: "The Benefits of Patience",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis pharetra arcu ipsum elementum erat egestas...",
-    },
-    {
-      img: img,
-      name: "Dr Zakir NAikh",
-      title: "The Benefits of Patience",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis pharetra arcu ipsum elementum erat egestas...",
-    },
-  ];
   return (
     <div className={styles.resources}>
       <div className={styles.para1}>
@@ -54,20 +33,45 @@ function Resources(props) {
             {" "}
             <Link>
               {" "}
-              See all <BsArrowRight className={styles.arrow} size={20}/>{" "}
+              See all <BsArrowRight className={styles.arrow} size={20} />{" "}
             </Link>{" "}
           </span>
         </p>
 
-        <div className="row" style={{ paddingTop: "30px" }}>
-          {cardInfo.map((info, i) => (
-            <div className="col-12 col-lg-4 col-md-6">
+        <div className="row">
+          {lectureInfo.map((info, i) => (
+            <div className="col-12 col-lg-4 col-md-4" key={i}>
               <LectureCard
                 image={info.img}
                 name={info.name}
                 title={info.title}
                 body={info.body}
               />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.news_body}>
+        <p className={styles.para2}>
+          <span className={styles.para2_main}>Latest News</span>
+          <span className={styles.para2_sub}>
+            {" "}
+            <Link>
+              {" "}
+              See all <BsArrowRight className={styles.arrow} size={20} />{" "}
+            </Link>{" "}
+          </span>
+        </p>
+
+        <div className="row" style={{ paddingTop: "30px" }}>
+          {newsInfo.map((info, i) => (
+            <div className="col-12 col-lg-4 col-md-4">
+              <div className={styles.news}>
+                <p className={styles.news_author}>{`by ${info.author}`}</p>
+                <p className={styles.news_title}>{`by ${info.title}`}</p>
+                <p className={styles.news_text}>{info.text}</p>
+              </div>
             </div>
           ))}
         </div>
