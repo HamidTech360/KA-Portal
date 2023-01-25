@@ -39,4 +39,22 @@ export const newsInfo=[
         text: `  “I’m going to say this very bluntly again,” he added. “Buy them
         only if you’re prepared to lose all your money.”`
     },
+];
+
+export const eventsInfo=[
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
 ]

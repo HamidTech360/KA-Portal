@@ -3,8 +3,9 @@ import styles from "./styles/resources.module.scss";
 import { FiUpload } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import LectureCard from "./lectureCard";
-import { lectureInfo, newsInfo } from "./resourcesData";
+import { lectureInfo, newsInfo, eventsInfo } from "./resourcesData";
 import { BsArrowRight } from "react-icons/bs";
+import EventsCard from "../../Home/templates/events/eventsCard";
 
 function Resources(props) {
   return (
@@ -64,7 +65,7 @@ function Resources(props) {
           </span>
         </p>
 
-        <div className="row" style={{ paddingTop: "30px" }}>
+        <div className="row">
           {newsInfo.map((info, i) => (
             <div className="col-12 col-lg-4 col-md-4">
               <div className={styles.news}>
@@ -74,6 +75,38 @@ function Resources(props) {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className={styles.events_body}>
+        <p className={styles.para2}>
+          <span className={styles.para2_main}>Latest News</span>
+          <span className={styles.para2_sub}>
+            {" "}
+            <Link>
+              {" "}
+              See all <BsArrowRight className={styles.arrow} size={20} />{" "}
+            </Link>{" "}
+          </span>
+        </p>
+
+        <div className="row">
+          { eventsInfo.map((info,i)=>(
+
+          <div className="col-12 col-lg-4 col-md-4">
+            <div className={styles.events}>
+              <div className={styles.badge}>
+                <div className={styles.badge_para1}>
+                  <p>{info.date}</p>
+                  <p>{info.month}</p>
+                </div>
+              </div>
+              <p className={styles.events_text}>
+                {info.text}
+              </p>
+            </div>
+          </div>
+          )) }
         </div>
       </div>
     </div>
