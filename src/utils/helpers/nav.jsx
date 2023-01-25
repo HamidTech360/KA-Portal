@@ -58,6 +58,13 @@ export const AuthNav = [
         location:['/user/uploadResult']
     },
     {
+        label:'Resources',
+        icon:<AiOutlineCloudUpload size={authIconSize} />,
+        path:'/user/resources',
+        location:['/user/resources']
+    },
+   
+    {
         label:'Notifications',
         icon:<IoMdNotificationsOutline size={authIconSize}/>,
         path:'/user/notification',

@@ -55,16 +55,15 @@ const Events = () => {
         initialSlide={2}
        
         
-      >
-        <SwiperSlide>
-            <EventsCard/>
-        </SwiperSlide>
-       
-        <SwiperSlide><EventsCard/></SwiperSlide>
-        <SwiperSlide><EventsCard/></SwiperSlide>
-        <SwiperSlide><EventsCard/></SwiperSlide>
-        <SwiperSlide><EventsCard/></SwiperSlide>
-        <SwiperSlide><EventsCard/></SwiperSlide>
+      >       
+        <SwiperSlide><EventsCard date='24-25' month='march' text='Careers Opportunity at Kharul Adab School'  /></SwiperSlide>
+        <SwiperSlide><EventsCard date='24-25' month='march' text='Careers Opportunity at Kharul Adab School'  /></SwiperSlide>
+        <SwiperSlide><EventsCard date='24-25' month='march' text='Careers Opportunity at Kharul Adab School'  /></SwiperSlide>
+        <SwiperSlide><EventsCard date='24-25' month='march' text='Careers Opportunity at Kharul Adab School'  /></SwiperSlide>
+        <SwiperSlide><EventsCard date='24-25' month='march' text='Careers Opportunity at Kharul Adab School'  /></SwiperSlide>
+        <SwiperSlide><EventsCard date='24-25' month='march' text='Careers Opportunity at Kharul Adab School'  /></SwiperSlide>
+        <SwiperSlide><EventsCard date='24-25' month='march' text='Careers Opportunity at Kharul Adab School'  /></SwiperSlide>
+
       </Swiper>
 
       
