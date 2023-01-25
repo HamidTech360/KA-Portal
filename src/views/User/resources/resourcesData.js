@@ -57,4 +57,34 @@ export const eventsInfo=[
         month:'march',
         text:'Careers Opportunity at Kharul Adab School'
     },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
+    {
+        date:'27-28',
+        month:'march',
+        text:'Careers Opportunity at Kharul Adab School'
+    },
 ]

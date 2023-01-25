@@ -58,10 +58,10 @@ export const AuthNav = [
         location:['/user/uploadResult']
     },
     {
-        label:'Resources',
+        label:'Events',
         icon:<AiOutlineCloudUpload size={authIconSize} />,
-        path:'/user/resources',
-        location:['/user/resources']
+        path:'/user/events',
+        location:['/user/events']
     },
    
     {
@@ -70,12 +70,12 @@ export const AuthNav = [
         path:'/user/notification',
         location:['/user/notification']
     },
-    {
-        label:'Settings',
-        icon:<AiOutlineSetting size={authIconSize}/>,
-        path:'/user/settings',
-        location:['/user/settings']
-    },
+    // {
+    //     label:'Settings',
+    //     icon:<AiOutlineSetting size={authIconSize}/>,
+    //     path:'/user/settings',
+    //     location:['/user/settings']
+    // },
     
     
 ]

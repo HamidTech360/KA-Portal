@@ -31,7 +31,7 @@ const AuthLayout = () => {
         </div>
         <div className={styles.pageContent}>
           <Routes>
-            <Route path="/resources" element={< Resources />} />
+            <Route path="/events" element={< Resources />} />
             <Route path="/students/profile" element={<StudentProfile />} />
             <Route path="/students/create" element={<RegisterStudent />} />
             <Route path="/students/result" element={<StudentResult />} />
