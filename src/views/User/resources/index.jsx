@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import LectureCard from "./lectureCard";
 import img from "./../../../assets/news2.jpg";
 
+import { BsArrowRight } from "react-icons/bs";
+
 function Resources(props) {
   const cardInfo = [
     {
@@ -48,7 +50,13 @@ function Resources(props) {
       <div className={styles.lectures}>
         <p className={styles.para2}>
           <span className={styles.para2_main}>Lectures</span>
-          <span className={styles.para2_sub}></span>
+          <span className={styles.para2_sub}>
+            {" "}
+            <Link>
+              {" "}
+              See all <BsArrowRight className={styles.arrow} size={20}/>{" "}
+            </Link>{" "}
+          </span>
         </p>
 
         <div className="row" style={{ paddingTop: "30px" }}>

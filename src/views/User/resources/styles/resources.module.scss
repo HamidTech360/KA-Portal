@@ -68,22 +68,45 @@
     cursor: pointer;
   }
 }
-.lectures{
-    height: 90vh;
+.lectures {
+  height: 90vh;
 }
 .para2 {
+    display: flex;
+    justify-content: space-between;
+
   &_main {
     font-family: Open Sans;
     font-size: 24px;
     font-weight: 700;
     line-height: 33px;
-    border-bottom: 3px solid #1A8F4A;
+    border-bottom: 3px solid #1a8f4a;
     color: #161e03;
     padding-bottom: 4px;
+  
 
-    @include responsive(phone){
-        font-size: 20px;
-        padding-bottom: 3px;
+    @include responsive(phone) {
+      font-size: 20px;
+      padding-bottom: 3px;
     }
   }
+
+  &_sub {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #138951;
+
+
+    &:hover{
+        color: #138951 !important;
+    }
+  }
+}
+
+.arrow{
+    margin-left: 10px;
+    margin-top: -4px;
+  
 }
