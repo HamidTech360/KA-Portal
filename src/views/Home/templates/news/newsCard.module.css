@@ -1,0 +1,80 @@
+.card {
+  height: auto;
+  border-radius: 15px;
+  border: 0px;
+}
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 430px) {
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card_body {
+    padding: 20px !important;
+  }
+}
+
+.title {
+  font-family: Lato;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 38px;
+  text-transform: uppercase;
+  color: #2A2A2A;
+}
+@media screen and (max-width: 430px) {
+  .title {
+    padding-left: 12px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .title {
+    padding-left: 16px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+    padding-top: 0px !important;
+  }
+}
+
+.text {
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0em;
+  color: #4F4F4F;
+}
+
+.btn {
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-decoration: none;
+  color: #1A8F4A;
+}
+@media screen and (max-width: 768px) {
+  .btn {
+    font-size: 16px;
+  }
+}
+.btn:hover {
+  color: #1A8F4A;
+  text-decoration: none;
+}
+
+.arrow {
+  color: #8FC620;
+}/*# sourceMappingURL=newsCard.module.css.map */

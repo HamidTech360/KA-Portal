@@ -1,0 +1,147 @@
+.result {
+  padding: 2rem;
+  padding-bottom: 100px;
+}
+@media screen and (max-width: 768px) {
+  .result {
+    padding: 1rem;
+    padding-bottom: 100px;
+  }
+}
+
+.para1 {
+  font-family: Open Sans;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 49px;
+  color: #1A8F4A;
+}
+@media screen and (max-width: 768px) {
+  .para1 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .para1 {
+    font-size: 25px;
+  }
+}
+
+.para2 {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1A8F4A;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+.para2_logo {
+  color: #667085;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.para2_sub {
+  color: #1A8F4A;
+  cursor: pointer;
+}
+
+.pass_container {
+  margin-right: 50px;
+}
+@media screen and (max-width: 768px) {
+  .pass_container {
+    margin-right: 0px !important;
+  }
+}
+
+.passport {
+  height: 214px;
+  width: 100%;
+  border-radius: 3px;
+  background: #DADADA;
+  outline: 3px solid orange;
+  outline-offset: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media screen and (max-width: 768px) {
+  .passport {
+    height: 100px;
+    outline: 2px solid orange;
+    outline-offset: 5px;
+  }
+}
+
+.para4 {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 600;
+  color: #161E03;
+}
+@media screen and (max-width: 768px) {
+  .para4 {
+    font-size: 20px;
+  }
+}
+.details {
+  font-family: Open Sans;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  .details {
+    font-size: 15px;
+    display: block;
+    padding-bottom: 15px;
+  }
+}
+.details_main {
+  color: #737D89;
+  grid-column: 1/2;
+}
+@media screen and (max-width: 768px) {
+  .details_main {
+    margin-right: 7px;
+  }
+}
+.details_sub {
+  font-weight: 600;
+  color: #161E03;
+  grid-column: 2/4;
+}
+
+.studentTable {
+  background-color: #FFFFFF;
+  margin-top: 40px;
+}
+
+.studentInfo {
+  padding-left: 130px;
+  padding-left: 30px !important;
+}
+@media screen and (max-width: 768px) {
+  .studentInfo {
+    padding-left: 0px;
+  }
+}
+
+.noRecord {
+  margin-top: 50px;
+  text-align: center;
+  color: lightgray;
+  font-size: 28px;
+  font-weight: 600;
+}
+@media screen and (max-width: 768px) {
+  .noRecord {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=studentResult.module.css.map */

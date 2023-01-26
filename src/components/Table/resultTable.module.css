@@ -1,0 +1,75 @@
+.pass, .fail {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 20px 7px 20px;
+  border-radius: 30px;
+}
+@media screen and (max-width: 768px) {
+  .pass, .fail {
+    padding: 5px 15px 5px 15px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+}
+
+.pass {
+  background-color: rgba(19, 137, 81, 0.15);
+  color: #1A8F4A;
+}
+
+.fail {
+  background-color: rgba(233, 109, 109, 0.15);
+  color: #E96D6D;
+}
+
+thead {
+  height: 60px;
+}
+
+.trows {
+  height: 70px;
+  margin-left: 100px !important;
+}
+@media screen and (max-width: 768px) {
+  .trows {
+    height: 50px;
+  }
+}
+
+.trows:nth-child(odd) {
+  border-left: 3px solid #1A8F4A;
+}
+
+.table_title {
+  font-family: Open Sans;
+  font-weight: 600;
+  line-height: 43px;
+}
+.table_title_main {
+  font-size: 24px;
+  color: #161E03;
+}
+@media screen and (max-width: 768px) {
+  .table_title_main {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+.table_title_sub {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 33px;
+  color: #667085;
+}
+@media screen and (max-width: 768px) {
+  .table_title_sub {
+    font-size: 17px;
+  }
+}
+
+.tableContainer {
+  overflow-x: scroll;
+  margin-left: -10px;
+  margin-right: -10px;
+}/*# sourceMappingURL=resultTable.module.css.map */

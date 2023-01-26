@@ -1,0 +1,44 @@
+.layoutContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 86vh;
+  overflow-y: hidden;
+}
+@media screen and (max-width: 768px) {
+  .layoutContent {
+    display: block;
+  }
+}
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  border-right: 2px solid whitesmoke;
+  max-height: 86vh;
+  padding: 3rem 2rem 1rem 2rem;
+  overflow-y: hidden;
+}
+@media screen and (max-width: 1100px) and (min-width: 768px) {
+  .sideBar {
+    width: 280px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sideBar {
+    display: none;
+  }
+}
+
+.pageContent {
+  background-color: #fcfff5;
+  flex: 1;
+  max-height: 89vh;
+  overflow-y: scroll;
+}
+@media screen and (max-width: 768px) {
+  .pageContent {
+    width: 100%;
+  }
+}/*# sourceMappingURL=layout.module.css.map */
