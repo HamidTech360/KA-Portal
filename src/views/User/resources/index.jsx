@@ -1,16 +1,33 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
-import {AiOutlineClose} from 'react-icons/ai'
+import { AiOutlineClose } from "react-icons/ai";
 import styles from "./styles/resources.module.scss";
 import { Modal } from "react-bootstrap";
 import { FiUpload } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import {  eventsInfo } from "./resourcesData";
-
+import { eventsInfo } from "./resourcesData";
+import { eventValidator } from "../../../utils/validators/auth";
+// import { useFormik } from "formik";
 
 function Resources(props) {
+  const formik = useFormik({
+    initialValues: {
+      eventTitle: "",
+      eventDescription: "",
+    },
 
-  const [showModal, setShowModal] = useState(false)
+    validationSchema: eventValidator(),
+    onSubmit:(values)=>{
+      console.log(values);
+
+
+      formik.handleReset()
+    },
+
+
+  });
+// console.log(formik.values);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={styles.resources}>
@@ -18,7 +35,7 @@ function Resources(props) {
         <span className={styles.para1_main}> Resources</span>
         <span>
           {" "}
-          <span className={styles.para1_sub} onClick={()=>setShowModal(true)} >
+          <span className={styles.para1_sub} onClick={() => setShowModal(true)}>
             <FiUpload size={20} className={styles.upload} />{" "}
             <span className="hideOnMobile">Upload Resources</span>
           </span>
@@ -31,73 +48,78 @@ function Resources(props) {
         <span className={styles.breadcrumb_para3}>Resouces</span>
       </p>
 
-
       <div className={styles.events_body}>
         <p className={styles.para2}>
           <span className={styles.para2_main}>Events</span>
         </p>
 
         <div className="row">
-          { eventsInfo.map((info,i)=>(
-
-          <div  className="col-12 col-lg-4 col-md-4">
-            <div style={{backgroundImage:`url('../../../assets/events.jpg')`}} className={styles.events}>
-              <div className={styles.badge}>
-                <div className={styles.badge_para1}>
-                  <p>{info.date}</p>
-                  <p>{info.month}</p>
+          {eventsInfo.map((info, i) => (
+            <div className="col-12 col-lg-4 col-md-4">
+              <div
+                style={{ backgroundImage: `url('../../../assets/events.jpg')` }}
+                className={styles.events}
+              >
+                <div className={styles.badge}>
+                  <div className={styles.badge_para1}>
+                    <p>{info.date}</p>
+                    <p>{info.month}</p>
+                  </div>
                 </div>
+                <p className={styles.events_text}>{info.text}</p>
               </div>
-              <p className={styles.events_text}>
-                {info.text}
-              </p>
             </div>
-          </div>
-          )) }
+          ))}
         </div>
 
         <Modal show={showModal}>
-            <div className={styles.modalContainer}>
-                <AiOutlineClose
-                   size={20} 
-                   style={{marginBottom:'20px', cursor:'pointer'}}
-                   onClick={()=>setShowModal(false)}
-                />
-                <form>
-                <div className="formBox">
-                      <div className={styles.modalHeader}>Upload Event</div>
-                      <div className={styles.formGroup}>
-                        <div className={styles.formLabel}>Event Title</div>
-                        <div className={styles.input__wrappper}>
-                          <input
-                            type="text"
-                            className={styles.input}
-                            name="header"
-                            // value={formik.values.address}
-                            // onChange={formik.handleChange}
-                            // onBlur={formik.handleBlur}
-                          />
-                        </div>
-                      </div>
-
-                      <div className={styles.formGroup}>
-                        <div className={styles.formLabel}>Event Description</div>
-                        <div className={styles.input__wrappper}>
-                          <textarea
-                            rows="10"
-                            type="text"
-                            name="body"
-                            // value={formik.values.address}
-                            // onChange={formik.handleChange}
-                            // onBlur={formik.handleBlur}
-                          ></textarea>
-                        </div>
-                      </div>
-
-                      <button className={styles.btnSubmit}>Submit</button>
+          <div className={styles.modalContainer}>
+            <AiOutlineClose
+              size={20}
+              style={{ marginBottom: "20px", cursor: "pointer" }}
+              onClick={() => setShowModal(false)}
+            />
+            <form onSubmit={formik.handleSubmit}>
+              <div className="formBox">
+                <div className={styles.modalHeader}>Upload Event</div>
+                <div className={styles.formGroup}>
+                  <div className={styles.formLabel}>Event Title</div>
+                  <div className={styles.input__wrappper}>
+                    <input
+                      type="text"
+                      className={styles.input}
+                      name="eventTitle"
+                      value={formik.values.eventTitle}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                  {formik.touched.eventTitle && formik.errors.eventTitle && (
+                  <p className={styles.errorMsg}>{formik.errors.eventTitle}</p>
+                )}
                   </div>
-                </form>
-            </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <div className={styles.formLabel}>Event Description</div>
+                  <div className={styles.input__wrappper}>
+                    <textarea
+                      rows="10"
+                      type="text"
+                      name="eventDescription"
+                      value={formik.values.eventDescription}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    ></textarea>
+                  </div>
+                  {formik.touched.eventDescription && formik.errors.eventDescription && (
+                  <p className={styles.errorMsg}>{formik.errors.eventDescription}</p>
+                )}
+                </div>
+
+                <button type="submit" className={styles.btnSubmit}>Submit</button>
+              </div>
+            </form>
+          </div>
         </Modal>
       </div>
     </div>
