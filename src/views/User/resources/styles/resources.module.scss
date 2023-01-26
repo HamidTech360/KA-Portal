@@ -1,5 +1,11 @@
 @import "./../../../../views/Home/templates/styles/news.module.scss";
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .resources {
   padding: 20px 20px;
   height: auto;
@@ -298,3 +304,107 @@ textarea{
   border-radius: 7px;
   // margin-top: 30px;
 }
+
+.top_barnner {
+  min-width: 100%;
+  min-height: 250px;
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  border-radius: 14px;
+  padding: 0 20px 35px 0;
+}
+
+.top_barnner > .barnner_details{
+  margin-left: 90px;
+}
+
+.top_barnner > .barnner_details .banner_ele1,
+.top_barnner > .barnner_details .banner_ele2{
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.top_barnner > .barnner_details .banner_ele3{
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 9px;
+}
+
+.btnRegister{
+  width: 300px;
+  height: 60px;
+  border: none;
+  color: white;
+  background-color: #1A8F4A;
+  border-radius: 7px;
+  margin-left: 90px;
+  margin-top: 30px;
+  // margin-top: 30px;
+
+  @media screen and (max-width: 440px){
+    max-width: 200px;
+   }
+   @media screen and (max-width: 285px){
+    max-width: 150px;
+   }
+}
+
+.about_event {
+  min-width: 100%;
+  min-height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 60px 25px;
+
+  @media screen and (max-width: 768px){
+   flex-direction: column;
+   margin: 40px 25px 25px 20px;
+  }
+}
+.about_event .about1 {
+  min-width: 50%;
+
+  @media screen and (max-width: 768px){
+    min-width: 100%;
+    padding: 10px 10px 10px 0;
+   }
+}
+
+.about_event .about2{
+  min-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px 20px 35px;
+  @media screen and (max-width: 768px){
+    display: none;
+   }
+   @media screen and (min-width:773px) and (max-width: 960px){
+    padding-left: 45px;
+   } 
+}
+
+.about2 .event2{
+  width: 350px;
+  height: auto;
+ 
+  @media screen and (max-width: 768px){
+    max-width: 350px;
+  } 
+}
+
+.about_event .about1 h4{
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-color: #1A8F4A;
+  font-weight: bolder;
+}
+
+.about_event .note{
+  font-size: 20px;
+  color: grey;
+}
+
