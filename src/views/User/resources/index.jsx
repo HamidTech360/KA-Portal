@@ -1,32 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { AiOutlineClose } from "react-icons/ai";
 import styles from "./styles/resources.module.scss";
 import { Modal } from "react-bootstrap";
 import { FiUpload } from "react-icons/fi";
+import moment from "moment/moment";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { eventsInfo } from "./resourcesData";
+// import { eventsInfo } from "./resourcesData";
 import { eventValidator } from "../../../utils/validators/auth";
 // import { useFormik } from "formik";
+import config from "../../../config/index.json";
+import axios from "axios";
 
 function Resources(props) {
+  const [eventsInfo, setEventsInfo] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await axios.get(`${config.apiUrl}/event`, {
+        header: `Bearer ${localStorage.getItem("accessToken")}`,
+      });
+      console.log(response.data.event);
+      setEventsInfo(response.data.event);
+    }
+    getData();
+  }, []);
+
   const formik = useFormik({
     initialValues: {
-      eventTitle: "",
-      eventDescription: "",
+      header: "",
+      body: "",
     },
 
     validationSchema: eventValidator(),
-    onSubmit:(values)=>{
+    onSubmit: (values) => {
+      try {
+        const { data } = axios.post(`${config.apiUrl}/event`, values, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+
+        Swal.fire({
+          icon: "success",
+          title: "Event",
+          text: "Event created successfully",
+        });
+      } catch (error) {
+        console.log(error.response);
+        Swal.fire({
+          icon: "error",
+          title: "Oops....",
+          text: error.response.data || "Fail to upload",
+          showCancelButton: true,
+          showConfirmButton: false,
+        });
+      }
+
       console.log(values);
-
-
-      formik.handleReset()
+      formik.handleReset();
     },
-
-
   });
-// console.log(formik.values);
+  // console.log(formik.values);
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -55,18 +91,19 @@ function Resources(props) {
 
         <div className="row">
           {eventsInfo.map((info, i) => (
-            <div className="col-12 col-lg-4 col-md-4">
+            <div className="col-12 col-lg-4 col-md-4" key={i}>
               <div
                 style={{ backgroundImage: `url('../../../assets/events.jpg')` }}
                 className={styles.events}
               >
                 <div className={styles.badge}>
                   <div className={styles.badge_para1}>
-                    <p>{info.date}</p>
-                    <p>{info.month}</p>
+                    <p>{moment(info.createAt).format('Do')} </p>
+                    <p>{moment(info.createAt).format('MMM')} </p>
+                    
                   </div>
                 </div>
-                <p className={styles.events_text}>{info.text}</p>
+                <p className={styles.events_text}>{info.body}</p>
               </div>
             </div>
           ))}
@@ -88,15 +125,15 @@ function Resources(props) {
                     <input
                       type="text"
                       className={styles.input}
-                      name="eventTitle"
-                      value={formik.values.eventTitle}
+                      name="header"
+                      value={formik.values.header}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                     />
-                  {formik.touched.eventTitle && formik.errors.eventTitle && (
-                  <p className={styles.errorMsg}>{formik.errors.eventTitle}</p>
-                )}
                   </div>
+                  {formik.touched.header && formik.errors.header && (
+                    <p className={styles.errorMsg}>{formik.errors.header}</p>
+                  )}
                 </div>
 
                 <div className={styles.formGroup}>
@@ -105,18 +142,20 @@ function Resources(props) {
                     <textarea
                       rows="10"
                       type="text"
-                      name="eventDescription"
-                      value={formik.values.eventDescription}
+                      name="body"
+                      value={formik.values.body}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                     ></textarea>
                   </div>
-                  {formik.touched.eventDescription && formik.errors.eventDescription && (
-                  <p className={styles.errorMsg}>{formik.errors.eventDescription}</p>
-                )}
+                  {formik.touched.body && formik.errors.body && (
+                    <p className={styles.errorMsg}>{formik.errors.body}</p>
+                  )}
                 </div>
 
-                <button type="submit" className={styles.btnSubmit}>Submit</button>
+                <button type="submit" className={styles.btnSubmit}>
+                  Submit
+                </button>
               </div>
             </form>
           </div>

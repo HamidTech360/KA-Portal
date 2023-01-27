@@ -131,7 +131,7 @@ const RegisterStudent = () => {
         Swal.fire({
           icon: "success",
           title: "Student record created",
-          text: `Stuent has been registered successfully with reg number ${data.student?.regNumber}`,
+          text: `Student has been registered successfully with reg number ${data.student?.regNumber}`,
         });
         formik.handleReset();
         ///////

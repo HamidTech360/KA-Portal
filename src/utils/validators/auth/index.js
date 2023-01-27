@@ -9,8 +9,8 @@ export const LoginValidator = () => {
 
 export const eventValidator = () => {
   return Yup.object({
-    eventTitle: Yup.string().required("Title is required"),
-    eventDescription: Yup.string().required("Title is required"),
+    header: Yup.string().required("Title is required"),
+    body: Yup.string().required("Title is required"),
   });
 };
 
