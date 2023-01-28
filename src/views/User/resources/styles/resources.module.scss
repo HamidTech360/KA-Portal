@@ -1,5 +1,11 @@
 @import "./../../../../views/Home/templates/styles/news.module.scss";
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .resources {
   padding: 20px 20px;
   height: auto;
@@ -298,7 +304,9 @@ textarea{
   border-radius: 7px;
   // margin-top: 30px;
 }
+
 .errorMsg{
   color: red;
   font-size: 14px;
 }
+

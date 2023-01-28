@@ -7,6 +7,7 @@ import { FiUpload } from "react-icons/fi";
 import moment from "moment/moment";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+
 // import { eventsInfo } from "./resourcesData";
 import { eventValidator } from "../../../utils/validators/auth";
 // import { useFormik } from "formik";
@@ -81,7 +82,7 @@ function Resources(props) {
       <p className={styles.breadcrumb}>
         <span className={styles.breadcrumb_para1}>Home</span>
         <span className={styles.breadcrumb_para2}>&gt;</span>
-        <span className={styles.breadcrumb_para3}>Resouces</span>
+        <span className={styles.breadcrumb_para3}>Resources</span>
       </p>
 
       <div className={styles.events_body}>

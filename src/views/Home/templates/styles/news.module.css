@@ -1,0 +1,61 @@
+.hideOnMobile {
+  visibility: visible;
+}
+@media screen and (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+}
+
+.hideOnDesktop {
+  visibility: none;
+}
+@media screen and (max-width: 768px) {
+  .hideOnDesktop {
+    visibility: visible;
+  }
+}
+
+.new {
+  padding: 100px 80px;
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../../../public/assets/news.jfif");
+  background-size: cover;
+  background-position: center;
+}
+@media screen and (max-width: 768px) {
+  .new {
+    height: auto;
+    width: 100% !important;
+    padding: 20px 7px;
+  }
+}
+
+.news_text {
+  font-family: Lato;
+  line-height: 1.1;
+}
+.news_text_sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: #EAEB06;
+}
+@media screen and (max-width: 768px) {
+  .news_text_sub {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+.news_text_main {
+  display: block;
+  font-size: 48px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+@media screen and (max-width: 768px) {
+  .news_text_main {
+    font-size: 38px;
+    font-weight: bold;
+  }
+}/*# sourceMappingURL=news.module.css.map */

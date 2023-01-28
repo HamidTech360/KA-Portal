@@ -1,0 +1,10 @@
+.icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1A8F4A;
+  margin-right: 20px;
+}/*# sourceMappingURL=fab.module.css.map */
