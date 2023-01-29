@@ -13,23 +13,31 @@ import Footer from './../../components/Footer/footer';
 
 const Home = () => {
 
-   // const [isFetching, setIsFetching] = useState(false)
-   // useEffect(()=>{
-   //    (async ()=>{
-   //       try{
-            
-   //       }catch(error){
-   //          console.log(error.response?.data)
-   //       }
-   //    })()
-   // },[])
+   const [isFetching, setIsFetching] = useState(true)
+   const [events, setEvent] = useState([])
+   useEffect(()=>{
+      (async ()=>{
+         try{
+            const response = await axios.get(`${config.apiUrl}/event`)
+            //console.log(response.data)
+            setEvent(response.data.event)
+            //setIsFetching(false)
+         }catch(error){
+            console.log(error.response?.data)
+         }
+      })()
+   },[])
     return ( 
         <div >
+         
            <AppHeader/>
            <Banner/>
            <About/>
            <Calendar/>
-           <Events/>
+           <Events
+               isFetching={isFetching}
+               events={events}
+           />
            <News/>
            <Footer/>
         </div>

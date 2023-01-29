@@ -78,9 +78,7 @@ function Resources(props) {
     },
   });
 
-  const trimString = (string)=>{
-    return string.split(" ").slice(0, 8).join(" ")  
-  }
+ 
  
 
   return (
@@ -111,19 +109,6 @@ function Resources(props) {
         <div className="row">
           {eventsInfo.map((info, i) => (
             <div  className="col-12 col-lg-4 col-md-4" key={i}>
-              {/* <div
-                style={{ backgroundImage: `url('../../../assets/events.jpg')`, backgroundSize:'cover' }}
-                className={styles.events}
-              >
-                <div className={styles.badge}>
-                  <div className={styles.badge_para1}>
-                    <p>{moment(info?.eventDate).format('Do')} </p>
-                    <p>{moment(info?.eventDate).format('MMM')} </p>
-                    
-                  </div>
-                </div>
-                <div className={styles.events_text}>{trimString(info.body)}...  </div>
-              </div> */}
               <EventCard
                   text={info?.body}
                   date={info?.eventDate}

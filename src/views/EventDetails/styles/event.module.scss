@@ -1,12 +1,7 @@
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
   
   .resources {
-    padding: 20px 20px;
+    // padding: 20px 20px;
     height: auto;
   }
   
@@ -182,17 +177,24 @@
   }
 
 .top_barnner {
-    min-width: 100%;
-    min-height: 250px;
+   width: 100%;
+   height: fit-content;
     background-position: center;
     background-repeat: none;
     background-size: cover;
     border-radius: 14px;
     padding: 0 20px 35px 0;
+
+   
   }
   
   .top_barnner > .barnner_details{
-    margin-left: 90px;
+    padding-left: 90px;
+    @media screen and (max-width:768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 20px;
+    }
   }
   
   .top_barnner > .barnner_details .banner_ele1,
@@ -200,17 +202,28 @@
     color: #ffffff;
     font-size: 30px;
     font-weight: bold;
+
+    @media screen and (max-width:768px) {
+      font-size: 22px;
+    }
   }
   
-  .top_barnner > .barnner_details .banner_ele3{
+  .banner_ele3{
     color: #ffffff;
     font-size: 20px;
-    margin-top: 9px;
+    margin-top: 14px;
+
+    @media screen and (max-width:768px) {
+      font-size: 14px;
+      margin-top: 14px;
+    }
+
+
   }
   
   .btnRegister{
     width: 300px;
-    height: 60px;
+    height: 50px;
     border: none;
     color: white;
     background-color: #1A8F4A;
@@ -219,12 +232,9 @@
     margin-top: 30px;
     // margin-top: 30px;
   
-    @media screen and (max-width: 440px){
-      max-width: 200px;
-     }
-     @media screen and (max-width: 285px){
-      max-width: 150px;
-     }
+    @media screen and (max-width:768px) {
+      margin-left: 20px;
+    }
   }
   
   .about_event {
@@ -279,9 +289,24 @@
     font-weight: bolder;
   }
   
-  .about_event .note{
-    font-size: 20px;
+   .note{
+    font-size: 17px;
     color: grey;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding-right: 15px;
+    white-space: pre-line;
+
+    @media screen and (max-width:768px) {
+      font-size: 15px;
+    }
+  }
+  .noteDate{
+    font-size: 14px;
+    padding-right: 20px;
+    @media screen and (max-width:768px) {
+      font-size: 12px;
+    }
   }
   
   
