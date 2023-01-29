@@ -1,14 +1,15 @@
 @import "./../../../../views/Home/templates/styles/news.module.scss";
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// *{
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
 .resources {
-  padding: 20px 20px;
-  height: auto;
+  padding: 20px 20px 70px 20px;
+  padding-bottom: 200px;
+  // height: auto;
 }
 .para1 {
   font-family: Open Sans;
@@ -191,10 +192,10 @@
   border-radius: 9.982301712036133px;
   background-repeat: no-repeat;
   margin-bottom: 20px;
+ 
   @include responsive(phone){
     margin-bottom: 10px;
-    width: 95%;
-    margin-right: 10px;
+    // margin-right: 10px;
   }
 }
 
@@ -236,9 +237,11 @@
   font-weight: 700;
   line-height: 25px;
   color: #f6f6f6;
-  padding-top: 125px;
-  padding-left: 22px;
-
+  display: flex;
+  align-items: flex-end;
+  height: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
   @include responsive(tab){
     font-size: 16px;
   }
@@ -303,6 +306,10 @@ textarea{
   background-color: #1A8F4A;
   border-radius: 7px;
   // margin-top: 30px;
+  &:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .errorMsg{
