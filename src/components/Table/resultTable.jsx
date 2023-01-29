@@ -13,7 +13,7 @@ function ResultTable({tableTitle,results}) {
             exam2:item[4]
         })
     })
-    // console.log(resultArr)
+    //console.log(resultArr)
 
     const getTotal = (result)=>{
         return  parseInt( result.test1 || 0)  + 
@@ -52,6 +52,30 @@ function ResultTable({tableTitle,results}) {
         }
     }
 
+    const getOverall = ()=>{
+        
+        let sumTotal = 0
+        const overall = resultArr.length * 200
+
+        resultArr.forEach(item=>{
+            sumTotal += getTotal(item)
+        })
+        const totalPercent = sumTotal/overall * 100
+        return Math.round(totalPercent * 10) / 10
+        
+        
+    }
+    
+    const getOverallGrade = ()=>{
+
+        if(getOverall() >= 80 && getOverall() <= 100) return 'Excellent'
+        else if (getOverall() >= 70 && getOverall() < 80 ) return 'Very Good'
+        else if (getOverall() >= 60 && getOverall() < 70 ) return 'Good'
+        else if (getOverall() >= 50 && getOverall() < 60 ) return 'Fair'
+        else if (getOverall() < 50) return 'Fail'
+        else return 'Invalid score'
+    }
+
     return (
         <div>
             <div className={styles.table_title}>
@@ -62,11 +86,11 @@ function ResultTable({tableTitle,results}) {
                 <table>
                     <thead>
                         <th >Subjects</th>
-                        <th>1st CA</th>
-                        <th>1st Exam</th>
-                        <th>2nd CA</th>
+                        <th>1st  CA</th>
+                        <th>1st  Exam</th>
+                        <th>2nd  CA</th>            
+                        <th>2nd  Exam</th>
                         <th>Comment</th>
-                        <th>2nd Exam</th>
                         <th>Total</th>
                         <th>Average</th>
                         <th>Grade</th>
@@ -79,13 +103,13 @@ function ResultTable({tableTitle,results}) {
                             <td>{result.test1 || 'Awaiting'}</td>
                             <td>{result.exam1 || 'Awaiting'}</td>
                             <td>{result.test2 || 'Awaiting'}</td>
+                            <td>{result.exam2 || 'Awaiting'}</td>
                             <td> 
                                 {passed(result)==="Awaiting"?'Awaiting':
                                 <span className={passed(result)? `${styles.pass}`: `${styles.fail}`}>
                                         {passed(result) ? 'Pass': 'Fail'}
                                 </span>}
                              </td>
-                            <td>{result.exam2 || 'Awaiting'}</td>
                             <td>{getTotal(result)}</td>
                             <td>{getPercentage(result)}%</td>
                             <td> {getGrade(result)} </td>
@@ -94,6 +118,10 @@ function ResultTable({tableTitle,results}) {
                     
                     </tbody>
                 </table>
+            </div>
+            <div className={styles.totalGrade}>
+                <div className={`${styles.figure} ${getOverall() < 50? styles.failTotal:styles.passTotal}`}>{getOverall()}%</div>
+                <div className={styles.totalComment}>{getOverallGrade()}</div>
             </div>
         </div>
     );

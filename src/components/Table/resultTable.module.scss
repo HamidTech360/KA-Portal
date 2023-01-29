@@ -79,3 +79,32 @@ thead{
     margin-left: -10px;
     margin-right: -10px;
 }
+.totalGrade{
+    margin-top: 15px;
+    // display: flex;
+}
+.figure{
+    font-weight: 700;
+   
+    font-size: 23px;
+    margin-right: 15px;
+    width: fit-content;
+}
+.totalComment{
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+.passTotal{
+    background-color: rgba(19, 137, 81, 0.15);
+    color: #1A8F4A;
+    padding: 10px 15px 10px 15px;
+    border-radius: 7px;
+}
+.failTotal{
+    background-color:rgba(233, 109, 109, 0.15);
+    color: #E96D6D;
+    padding: 10px 15px 10px 15px;
+    border-radius: 7px;
+}
