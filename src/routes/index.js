@@ -9,6 +9,7 @@ import Resources from './../views/Resources/resources';
 import Login from "../views/Auth/login";
 import News from "../views/News";
 import AuthLayout from "../Layouts/AuthLayout";
+import EventDetails from "../views/EventDetails";
 
 
 const AllRoutes = ()=>(
@@ -18,7 +19,9 @@ const AllRoutes = ()=>(
             <Route path="/login" element={ < Login />} />
             <Route path="/news" element={ < News />} />
             <Route path="/user/*" element={<PrivateRoute><AuthLayout/></PrivateRoute>} />
+            <Route path="/eventdetails" element={ <EventDetails />} />
             <Route path="/" element={ <Home/>} />
+            
         </Routes>
     
     </BrowserRouter>

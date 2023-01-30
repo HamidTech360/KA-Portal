@@ -1,0 +1,70 @@
+.card_body {
+  height: 401.84px;
+  width: 379px;
+  border-radius: 11px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("./../../../../../public/assets/events.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  padding: 100px;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .card_body {
+    margin: 30% auto;
+    max-width: 100%;
+    margin-top: 10px;
+    display: flex;
+    height: 350px;
+    width: 100% !important;
+  }
+}
+
+.badge_para1 {
+  color: #FCFCFC;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: center;
+  line-height: 10px;
+}
+
+.badge {
+  height: 74px;
+  border-radius: 11px;
+  padding: 20px;
+  position: absolute;
+  border: 1.42px solid;
+  box-shadow: 7px 7px 11px 0px rgba(0, 0, 0, 0.1490196078);
+  background: radial-gradient(100% 100% at 100% 100%, rgba(110, 110, 110, 0.09) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(132.84deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.05) 100%), radial-gradient(100% 107.84% at 0% 0%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.105694) 78.86%, rgba(255, 255, 255, 0) 100%);
+}
+@media screen and (max-width: 768px) {
+  .badge {
+    height: auto;
+    padding: 10px;
+  }
+}
+
+.para {
+  height: 61px;
+  width: 303px;
+  position: absolute;
+  left: 31px;
+  top: 304px;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FCFCFC;
+}
+@media screen and (max-width: 768px) {
+  .para {
+    top: 270px;
+    left: 21px;
+    font-size: 15px;
+    padding-right: 20px;
+  }
+}/*# sourceMappingURL=eventCard.module.css.map */

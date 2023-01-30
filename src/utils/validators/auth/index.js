@@ -9,8 +9,11 @@ export const LoginValidator = () => {
 
 export const eventValidator = () => {
   return Yup.object({
-    header: Yup.string().required("Title is required"),
-    body: Yup.string().required("Title is required"),
+    header: Yup.string().required("Event title is required"),
+    eventDate:Yup.string().required('Event Date is Required'),
+    body: Yup
+      .string().required("Event bodt is required")
+      .min(20, 'Event body caanot be less than 20 chaaracters'),
   });
 };
 

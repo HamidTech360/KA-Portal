@@ -50,7 +50,7 @@ function StudentResult(props) {
 
                 <Row >
                     <Col lg="3" md="3" sm="5" xs="5" >
-                        <img className={styles.passport} src={data.gender==="male"?"../../../assets/man.jpg":"../../../assets/woman.png"} alt='student passport' />
+                        <img className={styles.passport} src={data.gender?.toLowerCase()==="male"?"../../../assets/man.jpg":"../../../assets/woman.png"} alt='student passport' />
                     </Col>
 
                     <Col lg="9" md="9" sm="7" xs="7" className={styles.studentInfo}>
