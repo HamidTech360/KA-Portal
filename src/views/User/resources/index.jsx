@@ -34,9 +34,9 @@ function Resources(props) {
     },
 
     validationSchema: eventValidator(),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
-        const { data } = axios.post(`${config.apiUrl}/event`, values, {
+        const { data } = await axios.post(`${config.apiUrl}/event`, values, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

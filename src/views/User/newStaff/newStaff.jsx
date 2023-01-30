@@ -4,24 +4,48 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import { staffValidator } from "../../../utils/validators/auth";
+import config from "./../../../config/index.json";
+import axios from "axios";
+import  Swal  from "sweetalert2";
 function NewStaff(props) {
   const [isLoading, setIsLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
-      post: "",
+      role: "",
       phoneNumber: "",
       email: "",
       address: "",
     },
     validationSchema: staffValidator(),
-    onSubmit: (values) => {
-      setIsLoading(true);
-      console.log(values);
-
-      formik.handleReset();
-      setIsLoading(false);
+    onSubmit: async (values) => {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.post(`${config.apiUrl}/staff`, values, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+        Swal.fire({
+          icon: "success",
+          title: "Event",
+          text: "User created successfully",
+        });
+        formik.handleReset();
+        // console.log(data);
+      } catch (error) {
+        console.log(error.response);
+        Swal.fire({
+          icon: "error",
+          title: "Oppsy...",
+          text: error.response.data || "Fail to Save Data",
+          showCancelButton: true,
+          showConfirmButton: false,
+        });
+      } finally {
+        setIsLoading(false);
+      }
     },
   });
 
@@ -81,14 +105,14 @@ function NewStaff(props) {
                 <input
                   type="text"
                   className={styles.input}
-                  name="post"
-                  value={formik.values.post}
+                  name="role"
+                  value={formik.values.role}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
               </div>
-              {formik.touched.post && formik.errors.post && (
-                <p className={styles.errorMsg}>{formik.errors.post}</p>
+              {formik.touched.role && formik.errors.role && (
+                <p className={styles.errorMsg}>{formik.errors.role}</p>
               )}
             </Col>
             <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>

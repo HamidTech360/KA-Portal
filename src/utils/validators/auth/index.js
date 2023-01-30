@@ -39,6 +39,7 @@ export const staffValidator= () =>{
     lastName: Yup.string().required("LastName is required"),
     phoneNumber: Yup.string().required("Phone number is required").max(14),
     email: Yup.string().required("email is required"),
+    role: Yup.string().required("email is required"),
     address: Yup.string().required("address is required"),
   })
 }
