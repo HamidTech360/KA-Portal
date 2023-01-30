@@ -64,18 +64,12 @@ export const AuthNav = [
         location:['/user/events']
     },
    
-    {
-        label:'Notifications',
-        icon:<IoMdNotificationsOutline size={authIconSize}/>,
-        path:'/user/notification',
-        location:['/user/notification']
-    },
     // {
-    //     label:'Settings',
-    //     icon:<AiOutlineSetting size={authIconSize}/>,
-    //     path:'/user/settings',
-    //     location:['/user/settings']
+    //     label:'Notifications',
+    //     icon:<IoMdNotificationsOutline size={authIconSize}/>,
+    //     path:'/user/notification',
+    //     location:['/user/notification']
     // },
-    
-    
+   
+     
 ]

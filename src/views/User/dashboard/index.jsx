@@ -1,12 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Fab from '../../../components/Fab/fab';
 import AppTable from '../../../components/Table/appTable';
 import styles from './styles/dashboard.module.scss'
 import Calendar from 'react-calendar';
+import { Link } from 'react-router-dom';
 import './styles/calendar.css'
 import NotificationCard from '../../../components/NotificationCard';
 import { addDays, differenceInCalendarDays } from 'date-fns';
+import {IoMdAddCircleOutline} from 'react-icons/io'
 import config from "./../../../config/index.json";
 
 // import 'react-calendar/dist/Calendar.css'
@@ -16,11 +18,10 @@ import moment from "moment/moment";
 import Loader from "./../../../components/Loader/loader";
 
 const Dashboard = () => {
-  const [notification, setNotification] = useState([]);
-  const [totalStudents, setTotalStudents] = useState([]);
-  const [totalStaffs, setTotalStaffs] = useState([]);
-  const [totalEvents, setTotalEvents] = useState([]);
-  const [staffs, setStaffs] = useState([]);
+ 
+  const [data, setData] = useState({});
+  const [staffs, setStaffs] = useState([])
+  const [notificationInView, setNotificationInView] = useState(null)
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
@@ -30,13 +31,14 @@ const Dashboard = () => {
         const response = await axios.get(`${config.apiUrl}/analytics`, {
           header: `Bearer ${localStorage.getItem("accessToken")}`,
         });
-        console.log(response.data);
-        setNotification(response.data.notifications);
-        setTotalStudents(response.data.totalStudents);
-        setTotalStaffs(response.data.totalStaffs);
-        setTotalEvents(response.data.totalEvents);
-        setStaffs(response.data.staffs);
-
+        setData(response.data);
+        const staffs__c = [...response.data.staffs]
+        staffs__c.forEach(s=>{
+            s['fullName'] = `Ustaaz ${s?.firstName} ${s?.lastName}`
+        })
+        setStaffs(staffs__c)
+        
+       
         setIsFetching(false);
       } catch (error) {
         console.log(error.response);
@@ -46,57 +48,14 @@ const Dashboard = () => {
     getData();
   }, []);
 
-  const data = [
-    {
-      id: 1,
-      name: "Adekolu Fatima",
-      photo: "image1.jpg",
-      gender: "Female",
-      program: "Program title",
-      Level: 100,
-    },
+ 
 
-    {
-      id: 2,
-      name: "Abdullah Fatih",
-      photo: "image2.jpg",
-      gender: "Male",
-      program: "Program title",
-      Level: 300,
-    },
-
-    {
-      id: 3,
-      name: "Adekolu Fatima",
-      photo: "image3.jpg",
-      gender: "Female",
-      program: "Program title",
-      Level: 100,
-    },
-    {
-      id: 4,
-      name: "Abdullah Fatih",
-      photo: "image4.jpg",
-      gender: "Male",
-      program: "Program title",
-      Level: 300,
-    },
-    {
-      id: 5,
-      name: "Adekolu Fatima",
-      photo: "image5.jpg",
-      gender: "Female",
-      program: "Program title",
-      Level: 100,
-    },
-  ];
+ 
   const tableHeader = [
-    { label: "Student Id", key: "id" },
-    { label: "Name", key: "name" },
-    { label: "Photo", key: "" },
-    { label: "Gender", key: "gender" },
-    { label: "Program", key: "program" },
-    { label: "Level", key: "Level" },
+    { label: "Name", key: "fullName" },
+    { label: "Role", key: "role" },
+    { label: "Contact", key: "phoneNumber" },
+    { label: "Email", key: "email" },
   ];
 
   const [date, setDate] = useState(new Date());
@@ -132,6 +91,10 @@ const Dashboard = () => {
     }
   }
 
+  const handleViewNotification = (index)=>{
+    if(index===notificationInView) return setNotificationInView(null)
+    setNotificationInView(index)
+  }
   return (
     <div className={styles.dashboard}>
       {isFetching && <Loader />}
@@ -140,73 +103,97 @@ const Dashboard = () => {
         <div className={`${styles.subHeader}`}>Today</div>
       </div>
       <div className={styles.card}>
+
         <div className={styles.card1}>
           <Fab bgColor="#E1FFED" />
 
           <div className={styles.cardContent}>
             <div className={styles.details}>Total Students</div>
-            <div className={styles.subDetails}>{totalStudents}</div>
+            <div className={styles.subDetails}>{data?.activeStudents}</div>
             <div className={styles.details}>
               <b style={{ color: "green" }}>+10%</b> than last month
             </div>
           </div>
         </div>
+
         <div className={`${styles.card2} hideOnMobile`}>
           <Fab bgColor="#F0FFD1" />
           <div className={styles.cardContent}>
             <div className={styles.details}>Total Staffs</div>
-            <div className={styles.subDetails}>{totalStaffs}</div>
+            <div className={styles.subDetails}>{data?.totalStaffs}</div>
             <div className={styles.details}>
               <b style={{ color: "lightgreen" }}>-0.5%</b> than last month
             </div>
 
           </div>
         </div>
+
         <div className={`${styles.card3} hideOnMobile`}>
           <Fab bgColor="#FFF2D4 " />
           <div className={styles.cardContent}>
             <div className={styles.details}>Total Events</div>
-            <div className={styles.subDetails}>{totalEvents}</div>
+            <div className={styles.subDetails}>{data?.totalEvents}</div>
             <div className={styles.details}>
-              <b style={{ color: "orange" }}>-0.5%</b> than last month=======
-            <div className={styles.calTab}>
-                <div className={styles.tab}>
-                    <h5 className={styles.notify}>Notifications</h5>
+              <b style={{ color: "orange" }}>-0.5%</b> than last month
                     
-                    {[1,2,3,4].map((item, i)=>
-                        <NotificationCard
-                            isLatest={i===0}
-                            date={"4.4.2019; 13:44"}
-                            header="Registration for winter semester starts"
-                            body={"Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit amet consectetur adipisicing"}
-                        />
-                    )}
-                  
-                </div>
-                <div className={styles.calendar}>
-                    <div className={styles.calHeader}>
-                        <h4 style={{ fontSize: "19px", fontWeight: "600" }}>School Calendar</h4>
-                        <h5 style={{ color: "#1A8F4A", fontSize: "17px" }}>{month} {date.getFullYear()}</h5>
-                    </div>
+            </div>
+          </div>
+        </div>
 
-                    <Calendar 
-                        onChange={setDate} 
-                        value={date}
-                        tileClassName = {tileClassName}
+       </div>
+
+
+
+       <div className={styles.calTab}>
+            <div className={styles.tab}>
+                <div className={styles.notificationHeader}>
+                    <div  className={`${styles.notify}`}>Notifications</div>
+                    <div className="float-right"><IoMdAddCircleOutline size={24}  style={{cursor:'pointer'}}/></div>
+                </div>
+                        
+                {data?.notifications?.map((item, i)=>
+                    <NotificationCard
+                        key={i}
+                        index={i}
+                        handleClick={handleViewNotification}
+                        isLatest={i===0}
+                        isInView={i===notificationInView}
+                        date={item?.createdAt}
+                        header={item?.header}
+                        body={item?.body}
                     />
-                </div>
-
+                )}
+                    
             </div>
 
+            <div className={styles.calendar}>
+                <div className={styles.calHeader}>
+                    <h4 style={{ fontSize: "19px", fontWeight: "600" }}>School Calendar</h4>
+                    <h5 style={{ color: "#1A8F4A", fontSize: "17px" }}>{month} {date.getFullYear()}</h5>
+                </div>
+
+                <Calendar 
+                    onChange={setDate} 
+                    value={date}
+                    tileClassName = {tileClassName}
+                />
+            </div>
+       </div>
+        
+
+       
+       
 
       <div className={styles.tableSection}>
-        <div className={styles.tableHead}>Staff List</div>
+        <div className={styles.tableHead}>Staff List <Link to="/user/newStaff"><IoMdAddCircleOutline/></Link></div>
         <AppTable
           hasAction={false}
           tableHeader={tableHeader}
-          tableData={data}
+          tableData={staffs}
+          showSerialNumber
         />
       </div>
+  
     </div>
   );
 };
