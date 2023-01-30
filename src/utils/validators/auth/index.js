@@ -34,3 +34,15 @@ export const RegisterValidator = () => {
       .min(10, "Phone number can not be less than 11 digits"),
   });
 };
+
+
+export const staffValidator= () =>{
+  return Yup.object({
+    firstName: Yup.string().required("FirstName is required"),
+    lastName: Yup.string().required("LastName is required"),
+    phoneNumber: Yup.string().required("Phone number is required").max(14),
+    email: Yup.string().required("email is required"),
+    address: Yup.string().required("address is required"),
+  })
+}
+
