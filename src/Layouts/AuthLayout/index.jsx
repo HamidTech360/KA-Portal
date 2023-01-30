@@ -18,8 +18,10 @@ import RegisterStudent from "../../views/User/newStudent";
 import StudentProfile from "../../views/User/profile";
 import StudentResult from "../../views/User/studentResult";
 import Resources from "../../views/User/resources";
+// import Resources from "../../views/User/resources";
 
 import styles from "./layout.module.scss";
+import NewStaff from './../../views/User/newStaff/newStaff';
 
 const AuthLayout = () => {
   return (
@@ -31,6 +33,7 @@ const AuthLayout = () => {
         </div>
         <div className={styles.pageContent}>
           <Routes>
+            <Route path="/newStaff" element={< NewStaff />} />
             <Route path="/events" element={< Resources />} />
             <Route path="/students/profile" element={<StudentProfile />} />
             <Route path="/students/create" element={<RegisterStudent />} />

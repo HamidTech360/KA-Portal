@@ -98,9 +98,8 @@ function Resources(props) {
               >
                 <div className={styles.badge}>
                   <div className={styles.badge_para1}>
-                    <p>{moment(info.createAt).format('Do')} </p>
-                    <p>{moment(info.createAt).format('MMM')} </p>
-                    
+                    <p>{moment(info.createAt).format("Do")} </p>
+                    <p>{moment(info.createAt).format("MMM")} </p>
                   </div>
                 </div>
                 <p className={styles.events_text}>{info.body}</p>
