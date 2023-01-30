@@ -1,0 +1,55 @@
+.banner {
+  height: 463px;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(26, 143, 74, 0.4)), url("../../../assets/banner5.jpg");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 300px;
+  }
+}
+
+.text {
+  position: absolute;
+  top: 40%;
+  left: 14%;
+  line-height: 27px;
+}
+@media screen and (max-width: 768) {
+  .text {
+    top: 50%;
+    left: 10%;
+  }
+}
+
+.para1 {
+  font-family: Open Sans;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #EAEB06;
+}
+@media screen and (max-width: 768) {
+  .para1 {
+    font-size: 17px;
+  }
+}
+
+.para2 {
+  font-family: Absara Bold;
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 70px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FFFFFF;
+}
+@media screen and (max-width: 768) {
+  .para2 {
+    font-size: 40px;
+  }
+}/*# sourceMappingURL=banner.module.css.map */

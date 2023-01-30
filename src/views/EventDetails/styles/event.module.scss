@@ -1,0 +1,312 @@
+
+  
+  .resources {
+    // padding: 20px 20px;
+    height: auto;
+  }
+  
+  .para1 {
+    font-family: Open Sans;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 49px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #1a8f4a;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  
+    // @include responsive(tab) {
+    //   font-size: 30px;
+    // }
+    @media screen and (max-width:768px) {
+        font-size: 30px;
+    }
+  
+    &_sub {
+      font-family: Lato;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: 0em;
+      text-align: left;
+      text-decoration: none;
+      border: 1px solid #13895228;
+      color: #138951;
+      padding: 15px 35px;
+      border-radius: 10px;
+      cursor: pointer;
+  
+    //   @include responsive(tab) {
+    //     padding: 10px 25px;
+    //     visibility: visible !important;
+    //   }
+      @media screen and (max-width:768px) {
+        padding: 10px 25px;
+        visibility: visible !important;
+      }
+  
+      &:hover {
+        color: #138951;
+      }
+    }
+  }
+
+  .badge {
+    height: 69px;
+    width: 97px;
+    border-radius: 9px;
+    padding: 19px;
+  
+    background: linear-gradient(
+      132.84deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    box-shadow: 6px 6px 9.9823px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(9px);
+    border-radius: 9px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 4px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #ffffff;
+  
+    // @include responsive(tab){
+    //     height: 65px;
+    //     width: 90px;
+    // }
+
+    @media screen and (max-width:768px) {
+        height: 65px;
+        width: 90px;
+    }
+
+    // @include responsive(phone){
+    //   height: 63px;
+    //   width: 86px;
+    // }
+
+    // @media screen and (max-width:768px) {
+    //     height: 65px;
+    //     width: 90px;
+    // }
+  }
+  
+  .events_text {
+    font-family: Open Sans;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 25px;
+    color: #f6f6f6;
+    padding-top: 125px;
+    padding-left: 22px;
+  
+    // @include responsive(tab){
+    //   font-size: 16px;
+    // }
+
+    @media screen and (max-width:768px) {
+        font-size: 16px;
+    }
+  }
+
+  .breadcrumb {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #667085;
+  
+    &_para1 {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    &_para2 {
+      margin-right: 10px;
+    }
+    &_para3 {
+      cursor: pointer;
+    }
+  }
+  
+  .para2 {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    // @include responsive(tab) {
+    //   padding-bottom: 5px;
+    // }
+
+    @media screen and (max-width:768px) {
+        padding-bottom: 5px;
+    }
+
+    &_main {
+      font-family: Open Sans;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 33px;
+      border-bottom: 3px solid #1a8f4a;
+      color: #161e03;
+      // padding-bottom: 4px;
+    //   @include responsive(phone) {
+    //     font-size: 20px;
+    //     padding-bottom: 3px;
+    //   }
+
+      @media screen and (max-width:443px) {
+        font-size: 20px;
+      }
+    }
+  
+    &_sub {
+      font-family: Open Sans;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 22px;
+      color: #138951;
+  
+      &:hover {
+        color: #138951 !important;
+      }
+    }
+  }
+
+.top_barnner {
+   width: 100%;
+   height: fit-content;
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    border-radius: 14px;
+    padding: 0 20px 35px 0;
+
+   
+  }
+  
+  .top_barnner > .barnner_details{
+    padding-left: 90px;
+    @media screen and (max-width:768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 20px;
+    }
+  }
+  
+  .top_barnner > .barnner_details .banner_ele1,
+  .top_barnner > .barnner_details .banner_ele2{
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+
+    @media screen and (max-width:768px) {
+      font-size: 22px;
+    }
+  }
+  
+  .banner_ele3{
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 14px;
+
+    @media screen and (max-width:768px) {
+      font-size: 14px;
+      margin-top: 14px;
+    }
+
+
+  }
+  
+  .btnRegister{
+    width: 300px;
+    height: 50px;
+    border: none;
+    color: white;
+    background-color: #1A8F4A;
+    border-radius: 7px;
+    margin-left: 90px;
+    margin-top: 30px;
+    // margin-top: 30px;
+  
+    @media screen and (max-width:768px) {
+      margin-left: 20px;
+    }
+  }
+  
+  .about_event {
+    min-width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 60px 25px;
+  
+    @media screen and (max-width: 768px){
+     flex-direction: column;
+     margin: 40px 25px 25px 20px;
+    }
+  }
+  .about_event .about1 {
+    min-width: 50%;
+  
+    @media screen and (max-width: 768px){
+      min-width: 100%;
+      padding: 10px 10px 10px 0;
+     }
+  }
+  
+  .about_event .about2{
+    min-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px 20px 35px;
+    @media screen and (max-width: 768px){
+      display: none;
+     }
+     @media screen and (min-width:773px) and (max-width: 960px){
+      padding-left: 45px;
+     } 
+  }
+  
+  .about2 .event2{
+    width: 350px;
+    height: auto;
+   
+    @media screen and (max-width: 768px){
+      max-width: 350px;
+    } 
+  }
+  
+  .about_event .about1 h4{
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-color: #1A8F4A;
+    font-weight: bolder;
+  }
+  
+   .note{
+    font-size: 17px;
+    color: grey;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding-right: 15px;
+    white-space: pre-line;
+
+    @media screen and (max-width:768px) {
+      font-size: 15px;
+    }
+  }
+  .noteDate{
+    font-size: 14px;
+    padding-right: 20px;
+    @media screen and (max-width:768px) {
+      font-size: 12px;
+    }
+  }
+  
+  

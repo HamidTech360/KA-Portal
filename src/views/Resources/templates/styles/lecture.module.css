@@ -1,0 +1,80 @@
+.lecture {
+  padding: 5rem 4rem 4rem 5rem;
+  width: 100%;
+}
+@media screen and (max-width: 430px) {
+  .lecture {
+    padding: 0;
+    padding-top: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .lecture {
+    padding: 1rem 0.5rem 4rem 0.5rem;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.text {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #333333;
+  margin-right: 15px;
+}
+@media screen and (max-width: 430px) {
+  .text_filter {
+    margin-right: 30px;
+  }
+}
+
+.input {
+  height: 43px;
+  width: 260px;
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: #707070;
+  border: 1px solid #D0D5DD;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+}
+@media screen and (max-width: 768px) {
+  .input {
+    height: 39px;
+    width: 240px;
+    border-radius: 4px;
+  }
+}
+
+.input:focus {
+  outline: none;
+}
+
+.upper {
+  display: flex;
+  width: 100%;
+}
+@media screen and (max-width: 430px) {
+  .upper {
+    display: block;
+  }
+}
+
+.search {
+  flex: 1;
+  justify-content: flex-end;
+  margin-left: 1rem;
+}
+@media screen and (max-width: 430px) {
+  .search {
+    padding-top: 1.5rem;
+  }
+}
+
+.filter {
+  margin-left: 1rem;
+}/*# sourceMappingURL=lecture.module.css.map */

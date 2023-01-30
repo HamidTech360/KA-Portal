@@ -1,0 +1,127 @@
+.lecture_List {
+  padding-top: 40px;
+  margin-bottom: 100px;
+}
+
+.book {
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  padding-bottom: 5px;
+}
+@media screen and (max-width: 768px) {
+  .book {
+    padding-bottom: 3px;
+    padding-right: 0 !important;
+    font-weight: bold;
+  }
+}
+
+.line {
+  border-bottom: 1px solid #D7D7D7;
+}
+
+.line2 {
+  border-bottom: 1.7px solid #D7D7D7;
+}
+
+.programme {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+@media screen and (max-width: 768px) {
+  .programme {
+    padding-bottom: 15px;
+    margin: 0 !important;
+  }
+}
+
+.text {
+  padding-right: 100px !important;
+}
+@media screen and (max-width: 768px) {
+  .text {
+    padding-right: 0px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .video {
+    width: 100%;
+    height: 300px;
+    padding: 0 !important;
+  }
+}
+
+.vid {
+  width: 100%;
+  border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .vid {
+    padding-bottom: 7px;
+  }
+}
+
+.para1 {
+  font-family: Open Sans;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 28px;
+  color: #515151;
+}
+@media screen and (max-width: 768px) {
+  .para1 {
+    font-weight: 500;
+    line-height: 34px;
+    font-size: 20px;
+  }
+}
+
+.para2 {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #4A4A4A;
+}
+@media screen and (max-width: 768px) {
+  .para2 {
+    line-height: 17px;
+  }
+}
+
+.para3 {
+  font-family: Open Sans;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #515151;
+}
+@media screen and (max-width: 768px) {
+  .para3 {
+    font-size: 19px;
+    line-height: 20px;
+  }
+}
+
+.para4 {
+  font-family: Open Sans;
+  font-family: Lato;
+  color: #41495a;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 28px;
+}
+@media screen and (max-width: 768px) {
+  .para4 {
+    font-size: 15px;
+  }
+}
+.para4_link {
+  color: #1554F6;
+  text-decoration: none;
+}/*# sourceMappingURL=lectureList.module.css.map */

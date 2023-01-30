@@ -4,6 +4,7 @@ import AppTable from '../../../components/Table/appTable';
 import styles from './styles/dashboard.module.scss'
 import Calendar from 'react-calendar';
 import './styles/calendar.css'
+import NotificationCard from '../../../components/NotificationCard';
 import { addDays, differenceInCalendarDays } from 'date-fns';
 // import 'react-calendar/dist/Calendar.css'
 
@@ -124,43 +125,16 @@ const Dashboard = () => {
             <div className={styles.calTab}>
                 <div className={styles.tab}>
                     <h5 className={styles.notify}>Notifications</h5>
-                    <div className={styles.subTab} id={styles.overlay}>
-                        <div className={styles.tabMain}>
-                            <h6 style={{ color: "#000", fontSize: "16px", fontWeight: "700" }}>Registration for winter semester starts</h6>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>Lorem ipsum dolor sit amet consectetur adipisicing.....</h6>
-                        </div>
-                        <div className={styles.subRight}>
-                            <h6 style={{ color: "orange", fontSize: "14px" }}>Unread</h6>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>4.4.2019; 13:44</h6>
-                        </div>
-                    </div>
-                    <div className={styles.subTab}>
-                        <div className={styles.tabMain}>
-                            <h6 style={{ color: "#000", fontSize: "16px", fontWeight: "700" }}>Registration for winter semester starts</h6>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>Lorem ipsum dolor sit amet consectetur adipisicing.....</h6>
-                        </div>
-                        <div className={styles.subRight}>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>4.4.2019; 13:44</h6>
-                        </div>
-                    </div>
-                    <div className={styles.subTab}>
-                        <div className={styles.tabMain}>
-                            <h6 style={{ color: "#000", fontSize: "16px", fontWeight: "700" }}>Registration for winter semester starts</h6>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>Lorem ipsum dolor sit amet consectetur adipisicing.....</h6>
-                        </div>
-                        <div className={styles.subRight}>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>4.4.2019; 13:44</h6>
-                        </div>
-                    </div>
-                    <div className={styles.subTab}>
-                        <div className={styles.tabMain}>
-                            <h6 style={{ color: "#000", fontSize: "16px", fontWeight: "700" }}>Registration for winter semester starts</h6>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>Lorem ipsum dolor sit amet consectetur adipisicing.....</h6>
-                        </div>
-                        <div className={styles.subRight}>
-                            <h6 style={{ fontSize: "13px", color: "grey" }}>4.4.2019; 13:44</h6>
-                        </div>
-                    </div>
+                    
+                    {[1,2,3,4].map((item, i)=>
+                        <NotificationCard
+                            isLatest={i===0}
+                            date={"4.4.2019; 13:44"}
+                            header="Registration for winter semester starts"
+                            body={"Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit amet consectetur adipisicing"}
+                        />
+                    )}
+                  
                 </div>
                 <div className={styles.calendar}>
                     <div className={styles.calHeader}>

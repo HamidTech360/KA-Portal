@@ -1,0 +1,27 @@
+
+ .activeSubTab{
+    
+    border-left: 4px solid #1A8F4A;
+    background-color: #cbf0da
+ }
+ .subTab, .activeSubTab{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 7px;
+ }
+
+//  #overlay {
+//     width: 100%;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     background-color: #cbf0da;;
+//     z-index: 2;
+//     border-radius: 7px;
+//     border-left: 4px solid #1A8F4A;
+//     padding: 16px;
+// }

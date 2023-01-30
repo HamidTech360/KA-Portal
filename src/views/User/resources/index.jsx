@@ -6,23 +6,30 @@ import { Modal } from "react-bootstrap";
 import { FiUpload } from "react-icons/fi";
 import moment from "moment/moment";
 import Swal from "sweetalert2";
+import EventCard from "../../../components/EventCard";
 import { Link } from "react-router-dom";
-// import { eventsInfo } from "./resourcesData";
+import Loader from "../../../components/Loader/loader";
 import { eventValidator } from "../../../utils/validators/auth";
-// import { useFormik } from "formik";
 import config from "../../../config/index.json";
 import axios from "axios";
 
 function Resources(props) {
   const [eventsInfo, setEventsInfo] = useState([]);
+  const [isFetching, setIsFetching] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     async function getData() {
+     try{
       const response = await axios.get(`${config.apiUrl}/event`, {
         header: `Bearer ${localStorage.getItem("accessToken")}`,
       });
-      console.log(response.data.event);
       setEventsInfo(response.data.event);
+      setIsFetching(false)
+     }catch(error){
+        console.log(error.response?.data)
+     }
     }
     getData();
   }, []);
@@ -31,12 +38,16 @@ function Resources(props) {
     initialValues: {
       header: "",
       body: "",
+      eventDate:''
     },
 
     validationSchema: eventValidator(),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      setIsLoading(true)
+      
       try {
-        const { data } = axios.post(`${config.apiUrl}/event`, values, {
+        
+        const { data } =await axios.post(`${config.apiUrl}/event`, values, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
@@ -47,6 +58,10 @@ function Resources(props) {
           title: "Event",
           text: "Event created successfully",
         });
+        setShowModal(false)
+        const events__c = [...eventsInfo]
+        events__c.push(values)
+        setEventsInfo(events__c)
       } catch (error) {
         console.log(error.response);
         Swal.fire({
@@ -56,17 +71,19 @@ function Resources(props) {
           showCancelButton: true,
           showConfirmButton: false,
         });
+      }finally{
+        setIsLoading(false)
       }
-
-      console.log(values);
       formik.handleReset();
     },
   });
-  // console.log(formik.values);
-  const [showModal, setShowModal] = useState(false);
+
+ 
+ 
 
   return (
     <div className={styles.resources}>
+        {isFetching && <Loader/> }
       <div className={styles.para1}>
         <span className={styles.para1_main}> Resources</span>
         <span>
@@ -81,7 +98,7 @@ function Resources(props) {
       <p className={styles.breadcrumb}>
         <span className={styles.breadcrumb_para1}>Home</span>
         <span className={styles.breadcrumb_para2}>&gt;</span>
-        <span className={styles.breadcrumb_para3}>Resouces</span>
+        <span className={styles.breadcrumb_para3}>Resources</span>
       </p>
 
       <div className={styles.events_body}>
@@ -91,19 +108,11 @@ function Resources(props) {
 
         <div className="row">
           {eventsInfo.map((info, i) => (
-            <div className="col-12 col-lg-4 col-md-4" key={i}>
-              <div
-                style={{ backgroundImage: `url('../../../assets/events.jpg')` }}
-                className={styles.events}
-              >
-                <div className={styles.badge}>
-                  <div className={styles.badge_para1}>
-                    <p>{moment(info.createAt).format("Do")} </p>
-                    <p>{moment(info.createAt).format("MMM")} </p>
-                  </div>
-                </div>
-                <p className={styles.events_text}>{info.body}</p>
-              </div>
+            <div  className="col-12 col-lg-4 col-md-4" key={i}>
+              <EventCard
+                  text={info?.body}
+                  date={info?.eventDate}
+              />
             </div>
           ))}
         </div>
@@ -136,6 +145,23 @@ function Resources(props) {
                 </div>
 
                 <div className={styles.formGroup}>
+                  <div className={styles.formLabel}>Event Date</div>
+                  <div className={styles.input__wrappper}>
+                    <input
+                      type="date"
+                      className={styles.input}
+                      name="eventDate"
+                      value={formik.values.eventDate}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                    />
+                  </div>
+                  {formik.touched.eventDate && formik.errors.eventDate && (
+                    <p className={styles.errorMsg}>{formik.errors.eventDate}</p>
+                  )}
+                </div>
+
+                <div className={styles.formGroup}>
                   <div className={styles.formLabel}>Event Description</div>
                   <div className={styles.input__wrappper}>
                     <textarea
@@ -152,8 +178,8 @@ function Resources(props) {
                   )}
                 </div>
 
-                <button type="submit" className={styles.btnSubmit}>
-                  Submit
+                <button disabled={isLoading} type="submit" className={styles.btnSubmit}>
+                     {isLoading?'Submitting...':'Submit'}
                 </button>
               </div>
             </form>
