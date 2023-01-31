@@ -10,4 +10,5 @@ export const levels = [
     {label:'SSS 2', value:'9'},
     {label:'SSS 3', value:'10'},
     {label:'Graduated', value:'11'},
+    {label:'Not Active', value:"12"}
 ]
