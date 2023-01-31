@@ -62,6 +62,16 @@ const Students = () => {
         })()
     },[])
 
+    const handleSearch = (e)=>{
+        //console.log(e.target.value)
+        let query = e.target.value
+       const filtered = studentsRecord?.filter((item)=>
+           item?.firstName?.toLowerCase() === query?.toLowerCase()  || item.lastName?.toLowerCase()  === query?.toLowerCase() 
+        )
+        setFilteredList(filtered)
+    }
+    
+
     
 
 
@@ -75,7 +85,11 @@ const Students = () => {
                 </div>
                 <div className={styles.searchPanel}>
                     <div className={styles.search}>
-                        <input type="text" placeholder='Search by Name' />
+                        <input 
+                            type="text" 
+                            placeholder='Search by Name' 
+                            onChange={(e)=>handleSearch(e)}
+                        />
                         <BsSearch size={20} className={styles.mdsearch}/> 
                     </div>
 
@@ -117,6 +131,7 @@ const Students = () => {
             </div>
 
         
+            <div className={styles.tblContainer}>
             <AppTable
                 tableData={filteredList.length>0?filteredList:studentsRecord}
                 tableHeader={tableHeader}
@@ -124,6 +139,7 @@ const Students = () => {
                 tableLabel="students"
                 showSerialNumber={true}
             />
+            </div>
         </div>
      );
 }

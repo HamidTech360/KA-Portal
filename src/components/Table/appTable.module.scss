@@ -2,12 +2,13 @@
     max-width: 100%;
     overflow-x: scroll;
     margin-bottom: 50px;
+    min-height: 300px !important;
 }
 
 table{
     width: 100%;
     border-collapse: collapse;
-
+    
     @media screen and (max-width:768px) {
         font-size: 13px;
     }
@@ -32,4 +33,7 @@ th:first-child{
 }
 th:last-child{
     border-top-right-radius: 8px !important;
+}
+.NavDropdownItem{
+    z-index: 1;
 }

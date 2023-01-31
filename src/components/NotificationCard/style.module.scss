@@ -2,7 +2,8 @@
  .activeSubTab{
     
     border-left: 4px solid #1A8F4A;
-    background-color: #cbf0da
+    background-color: #cbf0da;
+   
  }
  .subTab, .activeSubTab{
     display: flex;
@@ -12,6 +13,12 @@
     padding: 20px;
     border-radius: 7px;
     cursor: pointer;
+    color: grey;
+    font-size: 14px;
+ }
+ .text{
+   line-height: 20px;
+   padding-right: 10px;
  }
 
 //  #overlay {

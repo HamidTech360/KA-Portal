@@ -47,14 +47,14 @@ const AppTable = ({
                                 {hasAction && 
                                     <td style={{cursor:'pointer'}}>
                                         {tableLabel ==="students" && 
-                                        <NavDropdown >
-                                            <NavDropdown.Item> 
+                                        <NavDropdown className={styles.NavDropdown} >
+                                            <NavDropdown.Item className={styles.NavDropdownItem}> 
                                                 <Link style={linkStyle} to={`/user/students/profile?id=${row._id}`}>View Profile</Link>
                                             </NavDropdown.Item>
-                                            <NavDropdown.Item>  
+                                            <NavDropdown.Item className={styles.NavDropdownItem}>  
                                                 <Link style={linkStyle} to={`/user/students/create?action=edit&id=${row._id}`}>Update Profile</Link>
                                             </NavDropdown.Item>
-                                            <NavDropdown.Item>  
+                                            <NavDropdown.Item className={styles.NavDropdownItem}>  
                                                 <Link style={linkStyle} to={`/user/students/result?id=${row._id}`}>View Result</Link>
                                             </NavDropdown.Item>
                                         </NavDropdown>

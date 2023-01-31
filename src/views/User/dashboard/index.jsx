@@ -94,6 +94,10 @@ const Dashboard = () => {
     if (index === notificationInView) return setNotificationInView(null);
     setNotificationInView(index);
   };
+
+  
+
+
   return (
     <div className={styles.dashboard}>
       {isFetching && <Loader />}
@@ -182,9 +186,9 @@ const Dashboard = () => {
       {/* modal */}
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <div className={styles.modalContainer}>
+        <div className={styles.modalContainer} style={{padding:'20px'}}>
           <AiOutlineClose
-            size={20}
+            size={25}
             style={{ marginBottom: "20px", cursor: "pointer" }}
             onClick={() => setShowModal(false)}
           />

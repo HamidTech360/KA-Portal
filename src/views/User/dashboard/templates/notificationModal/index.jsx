@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import styles from "./notificationModal.module.scss";
-import { notificationValidator } from "./../../../../utils/validators/auth/index";
+import { notificationValidator } from "../../../../../utils/validators/auth";
 import axios from "axios";
-import config from "./../../../../config/index.json";
+import config from "../../../../../config/index.json";
 import Swal from "sweetalert2";
 function NotificationModal(props) {
   const [isLoading, setIsLoading] = useState(false);

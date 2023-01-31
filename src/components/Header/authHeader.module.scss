@@ -7,11 +7,13 @@
     padding-left: 1.5rem;
     overflow-x: hidden;
     height: 100px;
+    //box-shadow: 5px 5px whitesmoke;
     // background-color: #FCFCFC;
     border-bottom: 1px solid whitesmoke;
     @media screen and (max-width:768px) {
         padding-bottom: 0.5rem;
         padding-left: 0.5rem;
+        box-shadow: 5px 5px whitesmoke;
     }
     
 
