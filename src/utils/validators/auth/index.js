@@ -17,6 +17,11 @@ export const eventValidator = () => {
   });
 };
 
+
+
+
+
+
 export const RegisterValidator = () => {
   return Yup.object({
     firstName: Yup.string().required("FirstName is required"),
@@ -46,4 +51,15 @@ export const staffValidator= () =>{
     address: Yup.string().required("address is required"),
   })
 }
+
+
+
+export const notificationValidator = () => {
+  return Yup.object({
+    header: Yup.string().required("Header title is required"),
+    body: Yup
+      .string().required("Notification body is required")
+      .min(20, 'Notification body caanot be less than 20 chaaracters'),
+  });
+};
 
