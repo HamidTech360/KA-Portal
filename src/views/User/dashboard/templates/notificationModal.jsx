@@ -2,25 +2,56 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import styles from "./notificationModal.module.scss";
 import { notificationValidator } from "./../../../../utils/validators/auth/index";
-
+import axios from "axios";
+import config from "./../../../../config/index.json";
+import Swal from "sweetalert2";
 function NotificationModal(props) {
-  //   const [isLoading, setIsLoading] = false;
+  const [isLoading, setIsLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       header: "",
       body: "",
     },
     validationSchema: notificationValidator(),
-    onSubmit:(values)=>{
+    onSubmit: async (values) => {
+        setIsLoading(true)
+      try {
+        const { data } = await axios.post(
+          `${config.apiUrl}/notification`,
+          values,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
+        Swal.fire({
+          icon: "Success",
+          title: "Notification",
+          text: "Notification Created Successfully ",
+        });
+        setIsLoading(false)
+      } catch (error) {
+        console.log(error.response);
+        Swal.fire({
+          icon: "error",
+          title: "Oops....",
+          text: error.response.data || "Fail to upload",
+          showCancelButton: true,
+          showConfirmButton: false,
+        });
+      }finally{
+        setIsLoading(false)
+      }
 
-        
-        console.log(values);
-
-        formik.handleReset();
-    }
-    });
   
-//   console.log(formik.values);
+  
+
+      formik.handleReset();
+    },
+  });
+
+  //   console.log(formik.values);
   return (
     <div className={styles.modalContainer}>
       <form onSubmit={formik.handleSubmit}>
@@ -59,10 +90,9 @@ function NotificationModal(props) {
               <p className={styles.errorMsg}>{formik.errors.body}</p>
             )}
           </div>
-          
 
-          <button type="submit" className={styles.btnSubmit}>
-            Submit
+          <button disabled={isLoading} type="submit" className={styles.btnSubmit}>
+            {isLoading? 'Please wait....': 'Submit'}
           </button>
         </div>
       </form>
