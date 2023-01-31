@@ -176,7 +176,6 @@ const Dashboard = () => {
             tileClassName={tileClassName}
           />
 
-          <NotificationModal />
         </div>
       </div>
 
