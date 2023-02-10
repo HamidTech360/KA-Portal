@@ -89,13 +89,13 @@ const RegisterStudent = () => {
     },
     validationSchema: RegisterValidator(),
     onSubmit: async (values) => {
-      if (!OTPVerified && !openAuthMoal) {
-        return setOpenAuthModal(true);
-      }
+      // if (!OTPVerified && !openAuthMoal) {
+      //   return setOpenAuthModal(true);
+      // }
 
       setisLoading(true);
       try {
-        //editing record
+        //*******************************editing record**************************************//
         if (action === "edit") {
           const { data } = await axios.put(
             `${config.apiUrl}/student/${studentId}`,
@@ -115,9 +115,10 @@ const RegisterStudent = () => {
           formik.handleReset();
           return;
         }
-        ///////
+        ///////_______________________________________________________________________________________///////
+        
 
-        //saving record
+        //***************************************saving record********************************??
         const { data } = await axios.post(
           `${config.apiUrl}/student/create`,
           values,
@@ -134,7 +135,7 @@ const RegisterStudent = () => {
           text: `Student has been registered successfully with reg number ${data.student?.regNumber}`,
         });
         formik.handleReset();
-        ///////
+        ///////_______________________________________________________________________________________///////
         setOTPVerified(false);
       } catch (error) {
         console.log(error.response);

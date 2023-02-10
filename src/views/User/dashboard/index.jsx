@@ -150,6 +150,8 @@ const Dashboard = () => {
             </div>
           </div>
 
+          {data?.notifications?.length < 1 &&  <div className={`${styles.noItem} text-center`}>No notification yet</div>}
+
           {data?.notifications?.map((item, i) => (
             <NotificationCard
               key={i}
