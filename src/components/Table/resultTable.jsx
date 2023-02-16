@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useRef} from 'react';
+import { useReactToPrint } from 'react-to-print';
+import {AiFillPrinter} from 'react-icons/ai'
+import ResultFileHeader from '../ResultFileHeader';
 import styles from './resultTable.module.scss'
 
-function ResultTable({tableTitle,results}) {
+const ResultTable =  ({session,results, fileName, data}) =>{
+
+    //refs
+    const componentRef = useRef();
+    const titleRef = useRef();
+    const subTitleRef = useRef();
+    const headerRef = useRef()
+    const containerRef = useRef()
+    const footerRef = useRef()
+    //console.log(session);
 
     const resultArr = []
+    const printTextRef = useRef()
      results?.forEach(item=>{
         resultArr.push({
             subject:item[0] || 0,
@@ -13,7 +26,9 @@ function ResultTable({tableTitle,results}) {
             exam2:item[4]
         })
     })
-    //console.log(resultArr)
+
+    
+
 
     const getTotal = (result)=>{
         return  parseInt( result.test1 || 0)  + 
@@ -34,11 +49,11 @@ function ResultTable({tableTitle,results}) {
         if(!result.test1 || !result.exam1 || !result.test1 || !result.exam2) return 'Awaiting'
 
         const percent = getPercentage(result)
-        if(percent >= 80 && percent <= 100) return 'Excellent'
-        else if (percent >= 70 && percent < 80 ) return 'Very Good'
-        else if (percent >= 60 && percent < 70 ) return 'Good'
-        else if (percent >= 50 && percent < 60 ) return 'Fair'
-        else if (percent < 50) return 'Fail'
+        if(percent >= 80 && percent <= 100) return 'ممتاز'
+        else if (percent >= 70 && percent < 80 ) return 'جيد جدا'
+        else if (percent >= 60 && percent < 70 ) return 'جيد'
+        else if (percent >= 50 && percent < 60 ) return 'مقبول'
+        else if (percent < 50) return 'راسب'
         else return 'Invalid score'
     }
 
@@ -68,32 +83,65 @@ function ResultTable({tableTitle,results}) {
     
     const getOverallGrade = ()=>{
 
-        if(getOverall() >= 80 && getOverall() <= 100) return 'Excellent'
-        else if (getOverall() >= 70 && getOverall() < 80 ) return 'Very Good'
-        else if (getOverall() >= 60 && getOverall() < 70 ) return 'Good'
-        else if (getOverall() >= 50 && getOverall() < 60 ) return 'Fair'
-        else if (getOverall() < 50) return 'Fail'
+        if(getOverall() >= 80 && getOverall() <= 100) return 'ممتاز'
+        else if (getOverall() >= 70 && getOverall() < 80 ) return 'جيد جدا'
+        else if (getOverall() >= 60 && getOverall() < 70 ) return 'جيد'
+        else if (getOverall() >= 50 && getOverall() < 60 ) return 'مقبول'
+        else if (getOverall() < 50) return 'راسب'
         else return 'Invalid score'
     }
 
+   
+
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle:fileName
+        // onBeforeGetContent:()=>{
+        //     setIsReadyToPrint(true)
+        // },
+        // onAfterPrint:()=>{
+        //     setIsReadyToPrint(false)
+        // }
+    });
+
+    const printResult = ()=>{
+        printTextRef.current.style.display="none"
+        titleRef.current.style.display="none"
+        subTitleRef.current.style.display="none"
+        headerRef.current.style.display="block"
+        footerRef.current.style.display="block"
+        containerRef.current.style.padding="0rem 1rem"
+      
+        handlePrint()
+        printTextRef.current.style.display="block"
+        containerRef.current.style.padding="0rem"
+        titleRef.current.style.display="block"
+        subTitleRef.current.style.display="block"
+        headerRef.current.style.display="none"
+        footerRef.current.style.display="none"
+    }
+
     return (
-        <div>
+        <div ref={componentRef} >
             <div className={styles.table_title}>
-                <p className={styles.table_title_main}> {tableTitle}</p>
-                <p className={styles.table_title_sub}> List of offered courses</p>
+                <p ref={titleRef} className={styles.table_title_main}> {`Results for ${session} SESSION`}</p>
+                <p ref={subTitleRef} className={styles.table_title_sub}> List of offered courses</p>
             </div>
-            <div className={styles.tableContainer}>
+            <div ref={headerRef} style={{display:'none'}}>
+                <ResultFileHeader data={data} session={session} />
+            </div>
+            <div ref={containerRef} className={styles.tableContainer}>
                 <table>
                     <thead>
-                        <th >Subjects</th>
-                        <th>1st  CA</th>
-                        <th>1st  Exam</th>
-                        <th>2nd  CA</th>            
-                        <th>2nd  Exam</th>
-                        <th>Comment</th>
-                        <th>Total</th>
-                        <th>Average</th>
-                        <th>Grade</th>
+                        <th > <b>مواد</b> <br />  </th>
+                        <th> <b>إختبار فترة الأولى</b> <br /> </th>
+                        <th>  <b>إمتحان فترة الأولى</b> <br /> </th>
+                        <th><b>إختبار فترة الثانية</b> <br /></th>            
+                        <th><b>إمتحان فترة الثانية</b> <br />  </th>
+                        <th>تعليق</th>
+                        <th>مجموع</th>
+                        <th>معدل</th>
+                        <th>رتبة</th>
                     </thead>
 
                     <tbody>
@@ -112,7 +160,7 @@ function ResultTable({tableTitle,results}) {
                              </td>
                             <td>{getTotal(result)}</td>
                             <td>{getPercentage(result)}%</td>
-                            <td> {getGrade(result)} </td>
+                            <td> <b>{getGrade(result)}</b> </td>
                         </tr>
                         ))}
                     
@@ -122,6 +170,24 @@ function ResultTable({tableTitle,results}) {
             <div className={styles.totalGrade}>
                 <div className={`${styles.figure} ${getOverall() < 50? styles.failTotal:styles.passTotal}`}>{getOverall()}%</div>
                 <div className={styles.totalComment}>{getOverallGrade()}</div>
+            </div>
+            <div ref={footerRef} style={{display:'none', padding:'0 1rem'}} className={styles.resultFileFooter}>
+                <div className={styles.footerItem}>
+                    <div className={styles.infoValue}> </div>
+                    <div className={styles.infoLabel}>  <b>توقيع الوكيل</b> </div>
+                </div>
+                <div className={styles.footerItem}>
+                    <div className={styles.infoValue}></div>
+                    <div className={styles.infoLabel}><b>تعليق</b></div>
+                </div>
+                <div style={{marginTop:'40px', marginRight:'25px'}} className={styles.infoValue}></div>
+            </div>
+            <div
+                style={{color:'#1A8F4A', cursor:'pointer', float:'left', marginRight:'20px'}}
+                onClick={()=>printResult()}
+                ref={printTextRef}
+            >
+                    Print <AiFillPrinter size={23} />
             </div>
         </div>
     );

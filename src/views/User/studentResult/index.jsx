@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import config from '../../../config'
+import { levels, getStudentClass } from '../../../utils/helpers/data/levels';
 import { useSearchParams, Link } from "react-router-dom";
 import Loader from "../../../components/Loader/loader";
 import axios from "axios";
@@ -8,6 +9,7 @@ import ResultTable from '../../../components/Table/resultTable';
 import styles from './style/studentResult.module.scss'
 import { AiFillEdit } from 'react-icons/ai';
 
+
 function StudentResult(props) {
 
     const [searchParams] = useSearchParams()
@@ -15,7 +17,9 @@ function StudentResult(props) {
     const [isFetching, setIsFetching]  = useState(true)
     const [data, setData] = useState({})
     const [results, setResults] = useState([])
+
     
+   
 
     useEffect(()=>{
         (async ()=>{
@@ -23,7 +27,6 @@ function StudentResult(props) {
                 const response = await axios.get(`${config.apiUrl}/result/${studentId}`, {headers:{
                     authorization:`Bearer ${localStorage.getItem('accessToken')}`
                   }})
-                 
                   setData(response.data.result)
                   setResults(response.data.result?.results?.reverse())
                   setIsFetching(false)
@@ -32,6 +35,9 @@ function StudentResult(props) {
             }
         })()
     },[])
+
+  
+//    console.log(data)
 
 
 
@@ -58,7 +64,7 @@ function StudentResult(props) {
                         
                         <div className={styles.details}>
                             <span className={styles.details_main}>Class:</span>
-                            <span className={styles.details_sub}>{data?.level}</span>
+                            <span className={styles.details_sub}>{getStudentClass(data?.level)}</span>
                         </div>
 
                         <div className={styles.details}>
@@ -73,12 +79,16 @@ function StudentResult(props) {
                  {results.map((item, i)=>
                     <div key={i} className={styles.studentTable}>
                         <ResultTable
-                            tableTitle={`Results for ${item?.session} SESSION`}
+                            session={item?.session}
                             results={item?.scores}
-                            
+                            data={data}
+                            level={data?.level}
+                            fileName={`${data?.firstName} ${data?.lastName} - ${item?.session} SESSION `}
                         />  
                        <div>
-                            <Link style={{textDecoration:'none'}} to={`/user/uploadResult?action=edit&id=${item._id}`}><b>Edit</b> <AiFillEdit size={27} color="#1A8F4A" /></Link>
+                            <Link style={{textDecoration:'none', color:'#1A8F4A'}} to={`/user/uploadResult?action=edit&id=${item._id}`}>
+                                <b>Edit</b> <AiFillEdit size={27} />
+                            </Link>
                         </div>                  
                     </div>
                  )}

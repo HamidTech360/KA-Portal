@@ -81,7 +81,8 @@ thead{
 }
 .totalGrade{
     margin-top: 15px;
-    // display: flex;
+    display: flex;
+    margin-bottom: 15px;
 }
 .figure{
     font-weight: 700;
@@ -107,4 +108,28 @@ thead{
     color: #E96D6D;
     padding: 10px 15px 10px 15px;
     border-radius: 7px;
+}
+.resultFileFooter{
+    margin-top: 20px;
+}
+.footerItem{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 15px 20px;
+}
+.infoValue{
+    border-bottom: 1px solid;
+    flex: 1;
+    font-weight: 600;
+    text-align: center;
+    @media screen and (max-width:768px) {
+        font-size: 0.5rem;
+    }
+    
 }

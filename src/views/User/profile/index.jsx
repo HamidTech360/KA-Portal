@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { getStudentClass } from "../../../utils/helpers/data/levels";
 import Loader from "../../../components/Loader/loader";
 import axios from "axios";
 import config from '../../../config'
@@ -84,7 +85,7 @@ const StudentProfile = () => {
 
             <div className={styles.para5}>
                 <p className={styles.para5_main}>Class</p>
-                <p className={styles.para5_sub}>{record?.level}</p>
+                <p className={styles.para5_sub}>{getStudentClass(record?.level)}</p>
             </div>
 
             <div className={styles.para5}>

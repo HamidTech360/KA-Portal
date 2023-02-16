@@ -140,6 +140,9 @@
   font-size: 28px;
   font-weight: 600;
 }
+.print{
+  margin-left: 20px;
+}
 @media screen and (max-width: 768px) {
   .noRecord {
     font-size: 20px;
