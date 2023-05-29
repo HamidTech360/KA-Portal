@@ -51,7 +51,9 @@ const UploadResult = () => {
                             test1:item[1],
                             exam1:item[2],
                             test2:item[3],
-                            exam2:item[4]
+                            exam2:item[4],
+                            test3:item[5],
+                            exam3:item[6]
                         })
                   })
                   setTableData(formattedRecord)
@@ -70,14 +72,18 @@ const UploadResult = () => {
         test1:'',
         exam1:'',
         test2:'',
-        exam2:''
+        exam2:'',
+        test3:'',
+        exam3:''
     })
     const tableHeader = [
         {label:'Subject', key:'subject'},
-        {label:'1st Semester Test ', key:'test1'},
-        {label:'1st Semester Exam ',  key:'exam1'},
-        {label:'2nd Semester Test', key:'test2'},
-        {label:'2nd Semester Exam', key:'exam2'},
+        {label:'1st term Test ', key:'test1'},
+        {label:'1st term Exam ',  key:'exam1'},
+        {label:'2nd term Test', key:'test2'},
+        {label:'2nd term Exam', key:'exam2'},
+        {label:'3rd term Test', key:'test3'},
+        {label:'3rd term Exam', key:'exam3'},
     ]
     
     const authOTP = ()=>{
@@ -112,7 +118,9 @@ const UploadResult = () => {
             test1:record.test1,
             exam1:record.exam1,
             test2:record.test2,
-            exam2:record.exam2
+            exam2:record.exam2,
+            test3:record.test3,
+            exam3:record.exam3
         })
         setShowModal(true)
         setRecordToBeEdited(index)
@@ -128,10 +136,12 @@ const UploadResult = () => {
             test1:result.test1 ,
             exam1:result.exam1 ,
             test2:result.test2 ,
-            exam2:result.exam2 
+            exam2:result.exam2 ,
+            test3:result.test3,
+            exam3:result.exam3 
         })
         console.log(tableData)
-        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'' })
+        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'', test3:'', exam3:'' })
         setShowModal(false)
     }
 
@@ -145,7 +155,7 @@ const UploadResult = () => {
         setTableData(tabledata__c)
         setShowModal(false)
         setRecordToBeEdited(null)
-        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'' })
+        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'', test3:'', exam3:'' })
         //alert('done')
     }
 
@@ -161,12 +171,12 @@ const UploadResult = () => {
             
             if(tableData.length < 1) return alert('No record added yet')
             tableData.forEach(element=>{
-                resultList.push([element.subject, element.test1, element.exam1, element.test2, element.exam2])
+                resultList.push([element.subject, element.test1, element.exam1, element.test2, element.exam2, element.test3, element.exam3])
             })
             if(!validateSession(values.session)) return alert('Invalid session format entered. Session should look like this "2020/2021"')
-            if(!OTPVerified && !openAuthMoal ){
-                return setOpenAuthModal(true)
-             }
+            // if(!OTPVerified && !openAuthMoal ){
+            //     return setOpenAuthModal(true)
+            //  }
             setisLoading(true)
             const payload = {
                 scores:resultList,
@@ -174,6 +184,7 @@ const UploadResult = () => {
                 session:values.session
             }
             console.log(payload);
+            
             let response
             try{
                  if(action==="edit"){
@@ -358,6 +369,32 @@ const UploadResult = () => {
                                     className={styles.input}
                                     name="exam2"
                                     value={result?.exam2}
+                                    onChange={(e)=>handleChange(e)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.row}>
+                            <div className={styles.formLabel}> Third Semester Test Score </div>
+                            <div className={styles.input__wrappper}>
+                                <input
+                                    type="number"
+                                    className={styles.input}
+                                    name="test3"
+                                    value={result?.test3}
+                                    onChange={(e)=>handleChange(e)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.row}>
+                            <div className={styles.formLabel}> Third Semester Exam Score </div>
+                            <div className={styles.input__wrappper}>
+                                <input
+                                    type="number"
+                                    className={styles.input}
+                                    name="exam3"
+                                    value={result?.exam3}
                                     onChange={(e)=>handleChange(e)}
                                 />
                             </div>

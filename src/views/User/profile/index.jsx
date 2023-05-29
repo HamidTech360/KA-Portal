@@ -79,6 +79,11 @@ const StudentProfile = () => {
             </div>
 
             <div className={styles.para5}>
+                <p className={styles.para5_main}>Registration Number</p>
+                <p className={styles.para5_sub}>{record?.regNumber}</p>
+            </div>
+
+            <div className={styles.para5}>
                 <p className={styles.para5_main}>Date of Birth</p>
                 <p className={styles.para5_sub}>{record?.dob}</p>
             </div>

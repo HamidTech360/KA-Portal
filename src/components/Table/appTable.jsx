@@ -21,6 +21,7 @@ const AppTable = ({
     tableHeader.forEach(element => {
         entries.push(element.key)
     });
+   
     
     return ( 
         <div className={styles.tableContainer}>
@@ -43,6 +44,8 @@ const AppTable = ({
                                 {entries.map((item, i)=>
                                     <td key={i}> {row[item]} </td>
                                 )}
+
+                                
 
                                 {hasAction && 
                                     <td style={{cursor:'pointer'}}>

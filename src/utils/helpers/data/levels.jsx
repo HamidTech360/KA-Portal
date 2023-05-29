@@ -15,5 +15,5 @@ export const levels = [
 
 export const getStudentClass = (level)=>{
     const itemIndex = levels.findIndex(el=>el.value==level)
-    return levels[itemIndex]?.arabicLabel
+    return levels[itemIndex]?.label
 }

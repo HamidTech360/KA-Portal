@@ -5,16 +5,19 @@ import styles from "./newsCard.module.scss";
 import { Link } from "react-router-dom";
 import img from './../../../../assets/news2.jpg'
 import { BsArrowRightShort } from "react-icons/bs";
-function NewsCard(props) {
+function NewsCard({title, body}) {
+
+  const trimString = (string)=>{
+    return string.split(" ").slice(0, 20).join(" ")  
+} 
   return (
     <div>
       <Card className={styles.card} style={{ width: "20rem" }}>
         <Card.Img variant="top" src={img} style={{ height: "200px" }} />
         <Card.Body className={styles.card_body}>
-          <Card.Title className={styles.title}>News Title</Card.Title>
+          <Card.Title style={{fontSize:'20px'}} className={styles.title}>{title}</Card.Title>
           <Card.Text className={styles.text}>
-            Ac, amet lacus, tristique viverra et sit convallis. Egestas amet
-            bibendum vitae in egestas Ut libero lorem arcu interdum...
+            {trimString(body)}...
           </Card.Text>
           <Link className={styles.btn} to="#">
             {" "}

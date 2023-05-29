@@ -69,7 +69,7 @@ function Footer(props) {
         <div className={`col-12 col-lg-2  col-md-6 ${styles.social_location}`}>
           <p>Location</p>
           <p className={styles.location}>
-            KM 30, Lagos/Ibadan Expressway, Imolisa Village, Ogun State.
+           Adabi Area, Awotan, Apete, Ibadan, Oyo state, Nigeria``.
           </p>
         </div>
         <div className={` col-12 col-lg-2  col-md-6 `}>

@@ -23,7 +23,9 @@ const ResultTable =  ({session,results, fileName, data}) =>{
             test1:item[1] ,
             exam1:item[2] ,
             test2:item[3] ,
-            exam2:item[4]
+            exam2:item[4],
+            test3:item[5] ,
+            exam3:item[6]
         })
     })
 
@@ -34,11 +36,13 @@ const ResultTable =  ({session,results, fileName, data}) =>{
         return  parseInt( result.test1 || 0)  + 
                 parseInt(result.exam1 || 0)  + 
                 parseInt( result.test2 || 0) +
-                parseInt(result.exam2 || 0) 
+                parseInt(result.exam2 || 0) +
+                parseInt( result.test3 || 0) +
+                parseInt(result.exam3 || 0) 
     }
 
     const getPercentage = (result)=>{
-        const overall = 200
+        const overall = 300
         const total = getTotal(result)
 
         return Math.ceil((total/overall) * 100)
@@ -46,19 +50,19 @@ const ResultTable =  ({session,results, fileName, data}) =>{
 
     const getGrade = (result)=>{
 
-        if(!result.test1 || !result.exam1 || !result.test1 || !result.exam2) return 'Awaiting'
+        if(!result.test1 || !result.exam1 || !result.test2 || !result.exam2|| !result.test3 || !result.exam3) return 'Awaiting'
 
         const percent = getPercentage(result)
-        if(percent >= 80 && percent <= 100) return 'ممتاز'
-        else if (percent >= 70 && percent < 80 ) return 'جيد جدا'
-        else if (percent >= 60 && percent < 70 ) return 'جيد'
-        else if (percent >= 50 && percent < 60 ) return 'مقبول'
-        else if (percent < 50) return 'راسب'
+        if(percent >= 80 && percent <= 100) return 'Excellent'
+        else if (percent >= 70 && percent < 80 ) return 'Very Good' 
+        else if (percent >= 60 && percent < 70 ) return 'Good'
+        else if (percent >= 50 && percent < 60 ) return 'Fair'
+        else if (percent < 50) return 'Fail'
         else return 'Invalid score'
     }
 
     const passed = (result)=>{
-        if(!result.test1 || !result.exam1 || !result.test1 || !result.exam2) return 'Awaiting'
+        if(!result.test1 || !result.exam1 || !result.test2 || !result.exam2|| !result.test3 || !result.exam3) return 'Awaiting'
         const avg = getPercentage(result)
         if(avg < 50){
             return false
@@ -70,7 +74,7 @@ const ResultTable =  ({session,results, fileName, data}) =>{
     const getOverall = ()=>{
         
         let sumTotal = 0
-        const overall = resultArr.length * 200
+        const overall = resultArr.length * 300
 
         resultArr.forEach(item=>{
             sumTotal += getTotal(item)
@@ -83,11 +87,11 @@ const ResultTable =  ({session,results, fileName, data}) =>{
     
     const getOverallGrade = ()=>{
 
-        if(getOverall() >= 80 && getOverall() <= 100) return 'ممتاز'
-        else if (getOverall() >= 70 && getOverall() < 80 ) return 'جيد جدا'
-        else if (getOverall() >= 60 && getOverall() < 70 ) return 'جيد'
-        else if (getOverall() >= 50 && getOverall() < 60 ) return 'مقبول'
-        else if (getOverall() < 50) return 'راسب'
+        if(getOverall() >= 80 && getOverall() <= 100) return 'Excellent'
+        else if (getOverall() >= 70 && getOverall() < 80 ) return 'Very Good '
+        else if (getOverall() >= 60 && getOverall() < 70 ) return 'Good'
+        else if (getOverall() >= 50 && getOverall() < 60 ) return 'Fair'
+        else if (getOverall() < 50) return 'Fail'
         else return 'Invalid score'
     }
 
@@ -127,21 +131,23 @@ const ResultTable =  ({session,results, fileName, data}) =>{
                 <p ref={titleRef} className={styles.table_title_main}> {`Results for ${session} SESSION`}</p>
                 <p ref={subTitleRef} className={styles.table_title_sub}> List of offered courses</p>
             </div>
-            <div ref={headerRef} style={{display:'none'}}>
+            <div ref={headerRef} style={{display:'none', marginBottom:'70px'}}>
                 <ResultFileHeader data={data} session={session} />
             </div>
             <div ref={containerRef} className={styles.tableContainer}>
                 <table>
                     <thead>
-                        <th > <b>مواد</b> <br />  </th>
-                        <th> <b>إختبار فترة الأولى</b> <br /> </th>
-                        <th>  <b>إمتحان فترة الأولى</b> <br /> </th>
-                        <th><b>إختبار فترة الثانية</b> <br /></th>            
-                        <th><b>إمتحان فترة الثانية</b> <br />  </th>
-                        <th>تعليق</th>
-                        <th>مجموع</th>
-                        <th>معدل</th>
-                        <th>رتبة</th>
+                        <th > <b>Subjects</b>   </th>
+                        <th> <b> 1st CA  </b>  </th>
+                        <th>  <b> 1st Exam </b>  </th>
+                        <th><b>  2nd CA</b> </th>            
+                        <th><b>  2nd Exam</b>   </th>
+                        <th><b>  3rd CA</b> </th>            
+                        <th><b>  3rd Exam</b>   </th>
+                        <th>Comment</th>
+                        <th>Total</th>
+                        <th>Average</th>
+                        <th>Grade</th>
                     </thead>
 
                     <tbody>
@@ -152,6 +158,8 @@ const ResultTable =  ({session,results, fileName, data}) =>{
                             <td>{result.exam1 || 'Awaiting'}</td>
                             <td>{result.test2 || 'Awaiting'}</td>
                             <td>{result.exam2 || 'Awaiting'}</td>
+                            <td>{result.test3 || 'Awaiting'}</td>
+                            <td>{result.exam3 || 'Awaiting'}</td>
                             <td> 
                                 {passed(result)==="Awaiting"?'Awaiting':
                                 <span className={passed(result)? `${styles.pass}`: `${styles.fail}`}>
@@ -173,12 +181,12 @@ const ResultTable =  ({session,results, fileName, data}) =>{
             </div>
             <div ref={footerRef} style={{display:'none', padding:'0 1rem'}} className={styles.resultFileFooter}>
                 <div className={styles.footerItem}>
-                    <div className={styles.infoValue}> </div>
-                    <div className={styles.infoLabel}>  <b>توقيع الوكيل</b> </div>
+                    <div className={styles.infoLabel}>  <b> Principal's Signature</b> </div>
+                    <div className={styles.infoValue}> </div>            
                 </div>
                 <div className={styles.footerItem}>
-                    <div className={styles.infoValue}></div>
-                    <div className={styles.infoLabel}><b>تعليق</b></div>
+                    <div className={styles.infoLabel}><b>Comment</b></div>
+                    <div className={styles.infoValue}></div>           
                 </div>
                 <div style={{marginTop:'40px', marginRight:'25px'}} className={styles.infoValue}></div>
             </div>

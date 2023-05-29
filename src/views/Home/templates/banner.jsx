@@ -36,8 +36,7 @@ const Banner = () => {
                     Khayrul Adab School of Arabic and Islamic Studies
                 </div>
                 <div className={`${styles.normalText}`}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit omnis,
-                     iste esse fugit harum quasi. Tenetur eveniet provident facere voluptatum.
+                Welcome to Bright Horizons Academy, where knowledge meets limitless possibilities! As a premier institution of learning
                 </div>
                 <button className={`${styles.btnRegister} btn btn-success`}>Register today</button>
             </div>

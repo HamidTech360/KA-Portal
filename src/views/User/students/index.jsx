@@ -49,7 +49,7 @@ const Students = () => {
                 const allStudents = [...response.data.students]
                 allStudents.forEach(item=>{
                     const itemIndex = levels.findIndex(el=>el.value==item?.level)
-                    item['class'] = levels[itemIndex]?.arabicLabel
+                    item['class'] = levels[itemIndex]?.label
                     item['fullName'] = `${item.firstName} ${item.lastName}`
                 })
 

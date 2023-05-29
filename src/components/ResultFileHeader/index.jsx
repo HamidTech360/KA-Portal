@@ -20,22 +20,20 @@ const ResultFileHeader = ({data, session})=>{
             <div className={styles.box}>كشف الدرجات </div>
             <div className={styles.info}>
                 <div className={styles.infoItem}>
-                     <div className={styles.infoValue}> {data?.firstName} {data?.lastName}</div>
-                     <div className={styles.infoLabel}> <b> :  إسم الطالب</b>  </div>
-                     
+                    <div className={styles.infoLabel}> <b>Student's Name:</b>  </div>
+                     <div className={styles.infoValue}> {data?.firstName} {data?.lastName}</div>       
                 </div>
                 <div className={styles.infoItem}>
-                    <div className={styles.infoValue}> Sesion {session} </div>
-                     <div className={styles.infoLabel}> <b>:عام الدراسي </b>  </div>
+                    <div className={styles.infoLabel}> <b>Session:</b>  </div>
+                    <div className={styles.infoValue}> Sesion {session} </div>   
                 </div>
                 <div className={styles.infoItem}>
-                     <div className={styles.infoValue}> {getStudentClass(data?.level)} </div>
-                     <div className={styles.infoLabel}> <b>: الصف </b>  </div>    
+                    <div className={styles.infoLabel}> <b>Class : </b>  </div>  
+                     <div className={styles.infoValue}> {getStudentClass(data?.level)} </div>     
                 </div>
                 <div className={styles.infoItem}>
-                     <div className={styles.infoValue}>  </div>
-                     <div className={styles.infoLabel}> <b> : إسم المدرس </b>  </div>
-                    
+                    <div className={styles.infoLabel}> <b> Class Teacher : </b>  </div>
+                     <div className={styles.infoValue}>  </div>   
                 </div>
             </div>
         </div>
