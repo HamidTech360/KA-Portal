@@ -32,7 +32,7 @@ function Footer(props) {
         }
   ]
   return (
-    <div className={styles.footer}>
+    <div className={styles.footer} id="contactUs">
       <div className={styles.letter}>
         <div className={styles.letter_main}>
           <div className={styles.letter_text}>

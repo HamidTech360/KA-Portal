@@ -48,7 +48,7 @@ const About = () => {
                       
                 </Col>
 
-                <Col lg={6} md={6} sm={12} xs={12}  className={styles.sidebar2}>
+                <Col id='aboutUs' lg={6} md={6} sm={12} xs={12}  className={styles.sidebar2}>
                     <img className={styles.img} src= "../../../assets/Image.svg" alt="Al-Qur'an" />
                     <div className={styles.article}>
                         <h1>About Our Institution</h1>
@@ -68,7 +68,7 @@ const About = () => {
                         <iframe width="100%"  src="https://www.youtube.com/embed/ekpCDd9jE9c"></iframe>
                     </div>
 
-                    <div className={styles.foot}>
+                    <div className={styles.foot} id="programs">
                          
                         <div className={styles.que}>
                             <h1 >Is <span>Khayrul Adab School</span> the right choice for you?</h1>

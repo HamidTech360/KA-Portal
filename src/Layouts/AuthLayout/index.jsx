@@ -25,7 +25,7 @@ import NewStaff from './../../views/User/newStaff/newStaff';
 
 const AuthLayout = () => {
   return (
-    <div>
+    <div className={styles.appContent}>
       <AuthHeader />
       <div className={styles.layoutContent}>
         <div className={styles.sideBar}>

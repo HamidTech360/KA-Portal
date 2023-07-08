@@ -28,11 +28,15 @@ export const navItems = [
     },
     {
         label:'About Us',
-        icon:<AiFillInfoCircle color={color} size={iconSize} />
+        icon:<AiFillInfoCircle color={color} size={iconSize} />,
+        path:"#aboutUs",
+        hash:true
     },
     {
         label:'Contact Us',
-        icon:<MdHelp color={color} size={iconSize} />
+        icon:<MdHelp color={color} size={iconSize} />,
+        path:"#contactUs",
+        hash:true
     }
 ]
 

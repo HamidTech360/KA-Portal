@@ -51,9 +51,9 @@ const UploadResult = () => {
                             test1:item[1],
                             exam1:item[2],
                             test2:item[3],
-                            exam2:item[4],
-                            test3:item[5],
-                            exam3:item[6]
+                            exam2:item[4]
+                            // test3:item[5],
+                            // exam3:item[6]
                         })
                   })
                   setTableData(formattedRecord)
@@ -73,8 +73,8 @@ const UploadResult = () => {
         exam1:'',
         test2:'',
         exam2:'',
-        test3:'',
-        exam3:''
+        // test3:'',
+        // exam3:''
     })
     const tableHeader = [
         {label:'Subject', key:'subject'},
@@ -82,8 +82,8 @@ const UploadResult = () => {
         {label:'1st term Exam ',  key:'exam1'},
         {label:'2nd term Test', key:'test2'},
         {label:'2nd term Exam', key:'exam2'},
-        {label:'3rd term Test', key:'test3'},
-        {label:'3rd term Exam', key:'exam3'},
+        // {label:'3rd term Test', key:'test3'},
+        // {label:'3rd term Exam', key:'exam3'},
     ]
     
     const authOTP = ()=>{
@@ -119,8 +119,8 @@ const UploadResult = () => {
             exam1:record.exam1,
             test2:record.test2,
             exam2:record.exam2,
-            test3:record.test3,
-            exam3:record.exam3
+            // test3:record.test3,
+            // exam3:record.exam3
         })
         setShowModal(true)
         setRecordToBeEdited(index)
@@ -137,11 +137,12 @@ const UploadResult = () => {
             exam1:result.exam1 ,
             test2:result.test2 ,
             exam2:result.exam2 ,
-            test3:result.test3,
-            exam3:result.exam3 
+            // test3:result.test3,
+            // exam3:result.exam3 
         })
         console.log(tableData)
-        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'', test3:'', exam3:'' })
+        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'' })
+        //test3:'', exam3:''
         setShowModal(false)
     }
 
@@ -155,7 +156,8 @@ const UploadResult = () => {
         setTableData(tabledata__c)
         setShowModal(false)
         setRecordToBeEdited(null)
-        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'', test3:'', exam3:'' })
+        setResult({subject:'',test1:'', exam1:'',test2:'', exam2:'' })
+        //test3:'', exam3:''
         //alert('done')
     }
 
@@ -171,7 +173,8 @@ const UploadResult = () => {
             
             if(tableData.length < 1) return alert('No record added yet')
             tableData.forEach(element=>{
-                resultList.push([element.subject, element.test1, element.exam1, element.test2, element.exam2, element.test3, element.exam3])
+                resultList.push([element.subject, element.test1, element.exam1, element.test2, element.exam2, ])
+                //element.test3, element.exam3
             })
             if(!validateSession(values.session)) return alert('Invalid session format entered. Session should look like this "2020/2021"')
             // if(!OTPVerified && !openAuthMoal ){
@@ -374,7 +377,7 @@ const UploadResult = () => {
                             </div>
                         </div>
 
-                        <div className={styles.row}>
+                        {/* <div className={styles.row}>
                             <div className={styles.formLabel}> Third Semester Test Score </div>
                             <div className={styles.input__wrappper}>
                                 <input
@@ -398,7 +401,7 @@ const UploadResult = () => {
                                     onChange={(e)=>handleChange(e)}
                                 />
                             </div>
-                        </div>
+                        </div> */}
 
                         <button onClick={recordToBeEdited != null? modifyRecord:AddToList} className={styles.btnAddResult}>
                             {action==="edit"? "Modify record":'Add Result'}

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { Offcanvas } from 'react-bootstrap';
 import { navItems } from '../../utils/helpers/nav';
 import {HiOutlineMenuAlt1} from 'react-icons/hi'
@@ -21,11 +22,11 @@ const AppHeader = () => {
             </div>
             <div  className={`${styles.navSection} hideOnMobile justify-content-end`}>
                 <Link to="/" style={linkStyle}><span className={`${styles.navItem}`}>Home</span></Link>
-                <Link to="#" style={linkStyle}><span className={`${styles.navItem}`}>About Us</span></Link>
+                <span><HashLink to="#aboutUs" style={linkStyle}><span className={`${styles.navItem}`}>About Us</span></HashLink></span>
                 <Link to="/login" style={linkStyle}><span className={`${styles.navItem}`}>E-portal</span></Link>
-                <Link to="#" style={linkStyle}><span className={`${styles.navItem}`}>Programs</span></Link>
+                <span><HashLink to="#programs" style={linkStyle}><span className={`${styles.navItem}`}>Programs</span></HashLink></span>
                 <Link to="/resources" style={linkStyle}><span className={`${styles.navItem}`}>Resources</span></Link>
-                <Link to="#" style={linkStyle}><span className={`${styles.navItem}`}>Contact us</span></Link>
+                <span><HashLink to="#contactUs" style={linkStyle}><span className={`${styles.navItem}`}>Contact us</span></HashLink></span>
                 
             </div>
 
@@ -48,12 +49,20 @@ const AppHeader = () => {
 
                 <div className={styles.navItems}>
                     {navItems.map((item, i)=>
-                       <Link key={i} style={{textDecoration:'none'}} to={item.path} >
-                            <div  className={styles.navItem}>
-                                <span   className={styles.icon}>{item.icon}</span>
-                                <span>{item.label}</span>
-                            </div>
-                       </Link>
+                      (item.hash?
+                        <HashLink style={{textDecoration:'none'}} to={item.path}>
+                        <div  className={styles.navItem}>
+                            <span   className={styles.icon}>{item.icon}</span>
+                            <span>{item.label}</span>
+                        </div>
+                        </HashLink>
+                        :
+                        <Link key={i} style={{textDecoration:'none'}} to={item.path} >
+                        <div  className={styles.navItem}>
+                            <span   className={styles.icon}>{item.icon}</span>
+                            <span>{item.label}</span>
+                        </div>
+                   </Link>)
                     )}
                 </div>
             </div>
