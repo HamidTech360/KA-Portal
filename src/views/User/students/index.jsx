@@ -19,7 +19,7 @@ const Students = () => {
     const [filteredList, setFilteredList] = useState([])
 
     const tableHeader = [
-        {label:'Student ID', key:'regNumber'},
+        {label:'Reg Number', key:'registrationNumber'},
         {label:'Name', key:'fullName'},
         {label:'Gender',  key:'gender'},
         {label:'Level', key:'class'},

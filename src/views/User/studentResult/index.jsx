@@ -69,7 +69,7 @@ function StudentResult(props) {
 
                         <div className={styles.details}>
                             <span className={styles.details_main}>Reg Number:</span>
-                            <span className={styles.details_sub}>{data?.regNumber}</span>
+                            <span className={styles.details_sub}>{data?.registrationNumber}</span>
                         </div>
                        
                     </Col>

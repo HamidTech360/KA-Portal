@@ -62,6 +62,7 @@ const RegisterStudent = () => {
         parentName: record.parentName,
         phoneNumber: record.phoneNumber,
         parentAddress: record.parentAddress,
+        registrationNumber:record.registrationNumber
       });
     }
   }, [record]);
@@ -86,6 +87,7 @@ const RegisterStudent = () => {
       parentName: "",
       parentAddress: "",
       phoneNumber: "",
+      registrationNumber:""
     },
     validationSchema: RegisterValidator(),
     onSubmit: async (values) => {
@@ -132,7 +134,7 @@ const RegisterStudent = () => {
         Swal.fire({
           icon: "success",
           title: "Student record created",
-          text: `Student has been registered successfully with reg number ${data.student?.regNumber}`,
+          text: `Student has been registered successfully with reg number ${data.student?.registrationNumber}`,
         });
         formik.handleReset();
         ///////_______________________________________________________________________________________///////
@@ -332,7 +334,28 @@ const RegisterStudent = () => {
                 )}
               </Col>
             </Row>
+
+            <Row>
+              <Col lg="6" md="12" sm="12" xs="12" className={styles.formGroup}>
+                <div className={styles.formLabel}>Registration Number</div>
+                <div className={styles.input__wrappper}>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    name="registrationNumber"
+                    value={formik.values.registrationNumber}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                {formik.touched.registrationNumber && formik.errors.registrationNumber && (
+                  <p className={styles.errorMsg}>{formik.errors.registrationNumber}</p>
+                )}
+              </Col>
+            </Row>
           </div>
+
+          {/* student info ends here */}
 
           <div className={styles.formContent}>
             <div className={`${styles.formHeader} mb-5`}>

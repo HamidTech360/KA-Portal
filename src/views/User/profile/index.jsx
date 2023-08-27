@@ -80,7 +80,7 @@ const StudentProfile = () => {
 
             <div className={styles.para5}>
                 <p className={styles.para5_main}>Registration Number</p>
-                <p className={styles.para5_sub}>{record?.regNumber}</p>
+                <p className={styles.para5_sub}>{record?.registrationNumber}</p>
             </div>
 
             <div className={styles.para5}>

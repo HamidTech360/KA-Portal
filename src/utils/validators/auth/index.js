@@ -34,6 +34,7 @@ export const RegisterValidator = () => {
     level: Yup.string().required("Level is required"),
     parentName: Yup.string().required("LastName is required"),
     parentAddress: Yup.string().required("Parent Name is required"),
+    registrationNumber:Yup.string().required('Registration Number is required'),
     phoneNumber: Yup.string()
       .required("Phone number is required")
       .min(10, "Phone number can not be less than 11 digits"),

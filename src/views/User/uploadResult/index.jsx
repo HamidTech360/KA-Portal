@@ -40,7 +40,7 @@ const UploadResult = () => {
                   setRecord(response.data.result)
                   console.log(response.data.result?.scores)
                   formik.setValues({
-                    regNumber:response.data.result?.regNumber,
+                    registrationNumber:response.data.result?.regNumber,
                     session:response.data.result?.session
                   })
 
@@ -165,7 +165,7 @@ const UploadResult = () => {
 
     const formik = useFormik({
         initialValues:{
-            regNumber:'',
+            registrationNumber:'',
             session:''
         },
         validationSchema:UploadResultValidator,
@@ -183,7 +183,7 @@ const UploadResult = () => {
             setisLoading(true)
             const payload = {
                 scores:resultList,
-                regNumber:values.regNumber,
+                registrationNumber:values.registrationNumber,
                 session:values.session
             }
             console.log(payload);
@@ -247,15 +247,15 @@ const UploadResult = () => {
                                 <input
                                     type="text"
                                     className={styles.input}
-                                    name="regNumber"
+                                    name="registrationNumber"
                                     disabled={action==="edit"}
-                                    value={formik.values.regNumber}
+                                    value={formik.values.registrationNumber}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                 />
                                 {
-                                    formik.touched.regNumber && formik.errors.regNumber &&
-                                    <p className={styles.errorMsg}>{formik.errors.regNumber}</p>
+                                    formik.touched.registrationNumber && formik.errors.registrationNumber &&
+                                    <p className={styles.errorMsg}>{formik.errors.registrationNumber}</p>
                                 }
                             </div>
                         </Col>

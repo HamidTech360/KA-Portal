@@ -2,7 +2,7 @@ import * as Yup from 'yup'
 
 export const UploadResultValidator = ()=>{
     return Yup.object({
-        regNumber:Yup
+        registrationNumber:Yup
             .string()
             .required('Registration Number is required'),
         session:Yup
