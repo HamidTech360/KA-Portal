@@ -64,7 +64,7 @@ const StudentProfile = () => {
             <p className={styles.para2}> {record?.firstName} {record?.lastName}</p>
             <p className={styles.para4}>
                 {record?.firstName} {record?.lastName} is a student of Khayrul Adab modrosa. {record?.gender?.toLowerCase()=="male"?'He':'She'} is currently in the 
-                 class {record?.level}. {record?.gender?.toLowerCase()=="male"?'He':'She'} was admitted on {record?.admissionDate}
+                 class {getStudentClass(record?.level)}. {record?.gender?.toLowerCase()=="male"?'He':'She'} was admitted on {record?.admissionDate}
             </p>
 
            

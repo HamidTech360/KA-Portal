@@ -33,7 +33,8 @@ const Banner = () => {
             <div onClick={()=>setBackground('left')} className={` hideOnMobile ${styles.control}`}><AiOutlineLeft color='white' size={20} /></div>
             <div className={`${styles.nameBox} text-center`}>
                 <div className={`  ${styles.bold}`}>
-                    Khayrul Adab School of Arabic and Islamic Studies
+                    {/* Khayrul Adab School of Arabic and Islamic Studies */}
+                    Adabi Group of schools
                 </div>
                 <div className={`${styles.normalText}`}>
                 Welcome to khayrul adab school, where knowledge meets limitless possibilities! As a premier institution of learning

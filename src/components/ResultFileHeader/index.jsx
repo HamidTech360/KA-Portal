@@ -11,7 +11,7 @@ const ResultFileHeader = ({data, session})=>{
                 </div> */}
                 <div className={styles.headertext}>
                     <div className={styles.name1}>مدرسة خير الأدب للدراسات العربية والإسلامية</div>
-                    <div className={styles.name2}>KHAYRUL ADAB SCHOOL OF ARABIC AND ISLAMIC STUDIES</div>
+                    <div className={styles.name2}>ADABI GROUP OF SCHOOLS</div>
                     <div className={styles.address}>
                         P.O Box 21181, Adabi Area, Apete, Ibadan, Nigeria
                     </div>

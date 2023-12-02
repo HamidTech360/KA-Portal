@@ -24,8 +24,8 @@ const ResultTable =  ({session,results, fileName, data}) =>{
             exam1:item[2] ,
             test2:item[3] ,
             exam2:item[4],
-            // test3:item[5] ,
-            // exam3:item[6]
+            test3:item[5] ,
+            exam3:item[6]
         })
     })
 
@@ -36,13 +36,13 @@ const ResultTable =  ({session,results, fileName, data}) =>{
         return  parseInt( result.test1 || 0)  + 
                 parseInt(result.exam1 || 0)  + 
                 parseInt( result.test2 || 0) +
-                parseInt(result.exam2 || 0) 
-                // parseInt( result.test3 || 0) +
-                // parseInt(result.exam3 || 0) 
+                parseInt(result.exam2 || 0) +
+                parseInt( result.test3 || 0) +
+                parseInt(result.exam3 || 0) 
     }
 
     const getPercentage = (result)=>{
-        const overall = 200
+        const overall = 300
         const total = getTotal(result)
 
         return Math.ceil((total/overall) * 100)
@@ -75,7 +75,7 @@ const ResultTable =  ({session,results, fileName, data}) =>{
     const getOverall = ()=>{
         
         let sumTotal = 0
-        const overall = resultArr.length * 200
+        const overall = resultArr.length * 300
 
         resultArr.forEach(item=>{
             sumTotal += getTotal(item)
@@ -143,8 +143,8 @@ const ResultTable =  ({session,results, fileName, data}) =>{
                         <th>  <b> 1st Exam </b>  </th>
                         <th><b>  2nd CA</b> </th>            
                         <th><b>  2nd Exam</b>   </th>
-                        {/* <th><b>  3rd CA</b> </th>            
-                        <th><b>  3rd Exam</b>   </th> */}
+                        <th><b>  3rd CA</b> </th>            
+                        <th><b>  3rd Exam</b>   </th>
                         <th>Comment</th>
                         <th>Total</th>
                         <th>Average</th>
@@ -159,8 +159,8 @@ const ResultTable =  ({session,results, fileName, data}) =>{
                             <td>{result.exam1 || 'Awaiting'}</td>
                             <td>{result.test2 || 'Awaiting'}</td>
                             <td>{result.exam2 || 'Awaiting'}</td>
-                            {/* <td>{result.test3 || 'Awaiting'}</td>
-                            <td>{result.exam3 || 'Awaiting'}</td> */}
+                            <td>{result.test3 || 'Awaiting'}</td>
+                            <td>{result.exam3 || 'Awaiting'}</td>
                             <td> 
                                 {passed(result)==="Awaiting"?'Awaiting':
                                 <span className={passed(result)? `${styles.pass}`: `${styles.fail}`}>
