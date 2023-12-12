@@ -34,15 +34,15 @@ const ResultTable =  ({session,results, fileName, data}) =>{
 
     const getTotal = (result)=>{
         return  parseInt( result.test1 || 0)  + 
-                parseInt(result.exam1 || 0)  + 
-                parseInt( result.test2 || 0) +
-                parseInt(result.exam2 || 0) +
-                parseInt( result.test3 || 0) +
-                parseInt(result.exam3 || 0) 
+                parseInt(result.exam1 || 0)   
+                // parseInt( result.test2 || 0) +
+                // parseInt(result.exam2 || 0) +
+                // parseInt( result.test3 || 0) +
+                // parseInt(result.exam3 || 0) 
     }
 
     const getPercentage = (result)=>{
-        const overall = 300
+        const overall = 100 //300
         const total = getTotal(result)
 
         return Math.ceil((total/overall) * 100)
@@ -50,8 +50,8 @@ const ResultTable =  ({session,results, fileName, data}) =>{
 
     const getGrade = (result)=>{
 
-        if(!result.test1 || !result.exam1 || !result.test2 || !result.exam2) return 'Awaiting'
-        //|| !result.test3 || !result.exam3
+        if(!result.test1 || !result.exam1 ) return 'Awaiting'
+        //|| !result.test2 || !result.exam2|| !result.test3 || !result.exam3
         const percent = getPercentage(result)
         if(percent >= 80 && percent <= 100) return 'Excellent'
         else if (percent >= 70 && percent < 80 ) return 'Very Good' 
@@ -62,8 +62,8 @@ const ResultTable =  ({session,results, fileName, data}) =>{
     }
 
     const passed = (result)=>{
-        if(!result.test1 || !result.exam1 || !result.test2 || !result.exam2) return 'Awaiting'
-        //|| !result.test3 || !result.exam3
+        if(!result.test1 || !result.exam1 ) return 'Awaiting'
+        //|| !result.test2 || !result.exam2 || !result.test3 || !result.exam3
         const avg = getPercentage(result)
         if(avg < 50){
             return false
@@ -75,7 +75,7 @@ const ResultTable =  ({session,results, fileName, data}) =>{
     const getOverall = ()=>{
         
         let sumTotal = 0
-        const overall = resultArr.length * 300
+        const overall = resultArr.length * 100 //300
 
         resultArr.forEach(item=>{
             sumTotal += getTotal(item)
@@ -132,21 +132,21 @@ const ResultTable =  ({session,results, fileName, data}) =>{
                 <p ref={titleRef} className={styles.table_title_main}> {`Results for ${session} SESSION`}</p>
                 <p ref={subTitleRef} className={styles.table_title_sub}> List of offered courses</p>
             </div>
-            <div ref={headerRef} style={{display:'none', marginBottom:'70px'}}>
+            <div ref={headerRef} style={{display:'none', marginBottom:'20px'}}>
                 <ResultFileHeader data={data} session={session} />
             </div>
             <div ref={containerRef} className={styles.tableContainer}>
                 <table>
                     <thead>
                         <th > <b>Subjects</b>   </th>
-                        <th> <b> 1st CA  </b>  </th>
-                        <th>  <b> 1st Exam </b>  </th>
-                        <th><b>  2nd CA</b> </th>            
+                        <th> <b> CA Test </b>  </th>
+                        <th>  <b>  Exam </b>  </th>
+                        {/* <th><b>  2nd CA</b> </th>            
                         <th><b>  2nd Exam</b>   </th>
                         <th><b>  3rd CA</b> </th>            
-                        <th><b>  3rd Exam</b>   </th>
+                        <th><b>  3rd Exam</b>   </th> */}
                         <th>Comment</th>
-                        <th>Total</th>
+                        {/* <th>Total</th> */}
                         <th>Average</th>
                         <th>Grade</th>
                     </thead>
@@ -157,17 +157,17 @@ const ResultTable =  ({session,results, fileName, data}) =>{
                             <td>{result.subject}</td>
                             <td>{result.test1 || 'Awaiting'}</td>
                             <td>{result.exam1 || 'Awaiting'}</td>
-                            <td>{result.test2 || 'Awaiting'}</td>
+                            {/* <td>{result.test2 || 'Awaiting'}</td>
                             <td>{result.exam2 || 'Awaiting'}</td>
                             <td>{result.test3 || 'Awaiting'}</td>
-                            <td>{result.exam3 || 'Awaiting'}</td>
+                            <td>{result.exam3 || 'Awaiting'}</td> */}
                             <td> 
                                 {passed(result)==="Awaiting"?'Awaiting':
                                 <span className={passed(result)? `${styles.pass}`: `${styles.fail}`}>
                                         {passed(result) ? 'Pass': 'Fail'}
                                 </span>}
                              </td>
-                            <td>{getTotal(result)}</td>
+                            {/* <td>{getTotal(result)}</td> */}
                             <td>{getPercentage(result)}%</td>
                             <td> <b>{getGrade(result)}</b> </td>
                         </tr>
