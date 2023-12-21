@@ -135,6 +135,9 @@ const ResultTable =  ({session,results, fileName, data}) =>{
             <div ref={headerRef} style={{display:'none', marginBottom:'20px'}}>
                 <ResultFileHeader data={data} session={session} />
             </div>
+            <div style={{fontWeight:'700', marginBottom:'20px', fontSize:'15px', paddingLeft:'10px', textAlign:'center'}}>
+                FIRST TERM REPORT
+            </div>
             <div ref={containerRef} className={styles.tableContainer}>
                 <table>
                     <thead>

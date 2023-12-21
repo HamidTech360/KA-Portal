@@ -6,14 +6,14 @@ const ResultFileHeader = ({data, session})=>{
     return(
         <div>
             <div className={styles.header}>
-                {/* <div className="logo">
+                <div className="logo">
                     <img src="../../assets/logo.png" alt="logo" />
-                </div> */}
+                </div>
                 <div className={styles.headertext}>
                     {/* <div className={styles.name1}>مدرسة خير الأدب للدراسات العربية والإسلامية</div> */}
                     <div className={styles.name2}>ADABI GROUP OF SCHOOLS, ADABI AREA, APETE IBADAN</div>
                     <div className={styles.address}>
-                        P.O Box 21181, Adabi Area, Apete, Ibadan, Nigeria
+                        NO 1, Adabi Area, Awotan, Apete, Ibadan, Oyo state, Nigeria.
                     </div>
                 </div>
             </div>
